@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ReservationService {
+public class ReservationService{
     @Autowired
     private ReservationRepository reservationRepository;
 
@@ -21,17 +21,21 @@ public class ReservationService {
     @Autowired
     private LogementRepository logementRepository;
 
+
     public List<Reservation> getAllReservations() {
         return reservationRepository.findAll();
     }
+
 
     public Optional<Reservation> getReservationById(Long id) {
         return reservationRepository.findById(id);
     }
 
+
     public Reservation addReservation(Reservation reservation) {
         return reservationRepository.save(reservation);
     }
+
 
     public Reservation updateReservation(Long id, Reservation updatedReservation) {
         return reservationRepository.findById(id).map(reservation -> {
@@ -50,6 +54,7 @@ public class ReservationService {
             return reservationRepository.save(reservation);
         }).orElse(null);
     }
+
 
     public void deleteReservation(Long id) {
         reservationRepository.deleteById(id);

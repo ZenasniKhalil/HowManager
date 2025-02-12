@@ -13,17 +13,21 @@ public class LogementService {
     @Autowired
     private LogementRepository logementRepository;
 
+
     public List<Logement> getAllLogements() {
         return logementRepository.findAll();
     }
+
 
     public Optional<Logement> getLogementById(int numero) {
         return logementRepository.findById(numero);
     }
 
+
     public Logement addLogement(Logement logement) {
         return logementRepository.save(logement);
     }
+
 
     public Logement updateLogement(int numero, Logement updatedLogement) {
         return logementRepository.findById(numero).map(logement -> {
@@ -36,6 +40,7 @@ public class LogementService {
             return logementRepository.save(logement);
         }).orElse(null);
     }
+
 
     public void deleteLogement(int numero) {
         logementRepository.deleteById(numero);

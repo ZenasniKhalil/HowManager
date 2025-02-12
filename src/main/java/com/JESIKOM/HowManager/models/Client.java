@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 public class Client {
-    //PLOP
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-incrémentation
     private Long id;

@@ -21,11 +21,12 @@ public class ClientService {
         return clientRepository.findById(id);
     }
 
+    //Vérif a faire ? (client existe pas etc )
     public Client addClient(Client client) {
         return clientRepository.save(client);
     }
 
-    public Client updateClient(Long id, Client updatedClient) {
+    public Client updateClientById(Long id, Client updatedClient) {
         return clientRepository.findById(id).map(client -> {
             client.setNom(updatedClient.getNom());
             client.setPrenom(updatedClient.getPrenom());
@@ -41,7 +42,7 @@ public class ClientService {
         }).orElse(null);
     }
 
-    public void deleteClient(Long id) {
+    public void deleteClientById(Long id) {
         clientRepository.deleteById(id);
     }
 }
