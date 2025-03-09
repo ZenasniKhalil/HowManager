@@ -1,6 +1,7 @@
 package com.JESIKOM.HowManager.service;
 
 import com.JESIKOM.HowManager.models.Logement;
+import com.JESIKOM.HowManager.models.TypeLogement;
 import com.JESIKOM.HowManager.repository.LogementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class LogementService {
+public class LogementService implements ILogementService {
     @Autowired
     private LogementRepository logementRepository;
 
@@ -44,5 +45,35 @@ public class LogementService {
 
     public void deleteLogement(int numero) {
         logementRepository.deleteById(numero);
+    }
+
+    @Override
+    public List<Logement> getLogementByCapacite(int capacite) {
+        return logementRepository.findLogementByCapacite(capacite);
+    }
+
+    @Override
+    public List<Logement> getLogementDisponibleByCapacite(int capacite) {
+        return logementRepository.findLogementByCapaciteAndDisponibleTrue(capacite);
+    }
+
+    @Override
+    public List<Logement> getLogementByPrix(double prix) {
+        return logementRepository.findLogementByPrixOrderByPrixAsc(prix);
+    }
+
+    @Override
+    public List<Logement> getLogementDisponibleByPrix(double prix) {
+        return logementRepository.findLogementByPrixAndDisponibleTrueOrderByPrixAsc(prix);
+    }
+
+    @Override
+    public List<Logement> getAllLogementByDisponible(boolean disponible) {
+        return logementRepository.findLogementByDisponible(disponible);
+    }
+
+    @Override
+    public List<Logement> getLogementByType(TypeLogement type) {
+        return logementRepository.findLogementByType(type);
     }
 }

@@ -13,16 +13,14 @@ interface IClientService {
 
     public Client addClient(Client client);
 
-    public Client updateClient(Client client);
+    public Client updateClientById(Long id, Client updatedClient);
 
     public void deleteClientById(Long id);
 
-    public List<Client>getClientByNameContains(String name);
+    public List<Client>getClientByNomContaining(String name);
 
     public List<Client>getClientByEmail(String email);
 
-    //Plutot que delete ?
-    public void ArchiveClient(Client client);
 
 
 }

@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ClientService {
+public class ClientService implements IClientService {
     @Autowired
     private ClientRepository clientRepository;
 
@@ -25,6 +25,8 @@ public class ClientService {
     public Client addClient(Client client) {
         return clientRepository.save(client);
     }
+
+
 
     public Client updateClientById(Long id, Client updatedClient) {
         return clientRepository.findById(id).map(client -> {
@@ -45,4 +47,16 @@ public class ClientService {
     public void deleteClientById(Long id) {
         clientRepository.deleteById(id);
     }
+
+    @Override
+    public List<Client> getClientByNomContaining(String name) {
+        return clientRepository.findClientByNomContaining(name);
+    }
+
+    @Override
+    public List<Client> getClientByEmail(String email) {
+        return clientRepository.findClientByEmail(email);
+    }
+
 }
+

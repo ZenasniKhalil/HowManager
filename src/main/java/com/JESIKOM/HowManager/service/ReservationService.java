@@ -7,11 +7,12 @@ import com.JESIKOM.HowManager.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ReservationService{
+public class ReservationService implements IReservationService {
     @Autowired
     private ReservationRepository reservationRepository;
 
@@ -27,7 +28,7 @@ public class ReservationService{
     }
 
 
-    public Optional<Reservation> getReservationById(Long id) {
+    public Optional<Reservation> getReservationById(long id) {
         return reservationRepository.findById(id);
     }
 
@@ -37,7 +38,7 @@ public class ReservationService{
     }
 
 
-    public Reservation updateReservation(Long id, Reservation updatedReservation) {
+    public Reservation updateReservation(long id, Reservation updatedReservation) {
         return reservationRepository.findById(id).map(reservation -> {
             reservation.setClient(updatedReservation.getClient());
             reservation.setLogement(updatedReservation.getLogement());
@@ -56,8 +57,34 @@ public class ReservationService{
     }
 
 
-    public void deleteReservation(Long id) {
+    public void deleteReservation(long id) {
         reservationRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Reservation> getReservationsByDate_Debut(LocalDate date) {
+        return reservationRepository.findReservationByDateDebut(date);
+    }
+
+    @Override
+    public List<Reservation> getReservationsByClient(long iDClient) {
+
+        return reservationRepository.findReservationByClient_Id(iDClient);
+    }
+
+    @Override
+    public LocalDate GetDate_Fin(Reservation reservation) {
+        return reservation.getDateDebut().plusDays(reservation.getNombreNuits());
+    }
+
+    @Override
+    public String exportReservation(Reservation reservation) {
+        return "";
+    }
+
+    @Override
+    public String exportFacturation(Reservation reservation) {
+        return "";
     }
 
 }
