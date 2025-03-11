@@ -18,7 +18,7 @@ public class App extends Application {
         Parent root = loader.load();
 
         primaryStage.setTitle("How Manager");
-        Scene scene = new Scene(root, 600, 500);
+        Scene scene = new Scene(root, 1000, 700);
 
         primaryStage.setScene(scene);
         primaryStage.show();
