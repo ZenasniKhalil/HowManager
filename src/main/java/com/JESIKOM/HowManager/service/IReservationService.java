@@ -22,7 +22,7 @@ interface IReservationService {
     //? Client ou string ?
     List<Reservation>getReservationsByClient(long idClient);
 
-    LocalDate GetDate_Fin(Reservation reservation);
+    LocalDate getDate_Fin(Reservation reservation);
 
     String exportReservation(Reservation reservation);
 

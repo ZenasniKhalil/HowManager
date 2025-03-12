@@ -1,5 +1,6 @@
 package com.JESIKOM.HowManager.service;
 
+import com.JESIKOM.HowManager.models.Logement;
 import com.JESIKOM.HowManager.models.Reservation;
 import com.JESIKOM.HowManager.repository.ClientRepository;
 import com.JESIKOM.HowManager.repository.LogementRepository;
@@ -32,9 +33,11 @@ public class ReservationService implements IReservationService {
         return reservationRepository.findById(id);
     }
 
-
+    //return en cas d'invalidité ? exception ?
     public Reservation addReservation(Reservation reservation) {
-        return reservationRepository.save(reservation);
+        if (logementAvailableBetween(reservation.getLogement(),reservation.getDateDebut(),getDate_Fin(reservation)))
+            return reservationRepository.save(reservation);
+        else return null;
     }
 
 
@@ -73,7 +76,7 @@ public class ReservationService implements IReservationService {
     }
 
     @Override
-    public LocalDate GetDate_Fin(Reservation reservation) {
+    public LocalDate getDate_Fin(Reservation reservation) {
         return reservation.getDateDebut().plusDays(reservation.getNombreNuits());
     }
 
@@ -85,6 +88,17 @@ public class ReservationService implements IReservationService {
     @Override
     public String exportFacturation(Reservation reservation) {
         return "";
+    }
+
+    private boolean logementAvailableBetween( Logement logement,LocalDate startDate, LocalDate endDate) {
+        List<Reservation> occupiedReservations = reservationRepository.findReservationsByLogement_Numero(logement.getNumero());
+        for (Reservation reservation : occupiedReservations) {
+            //Invariant superposition de plages horaires
+            if ((reservation.getDateDebut().isEqual(endDate) || reservation.getDateDebut().isBefore(endDate)) &&
+                    (getDate_Fin(reservation).isEqual(startDate) || getDate_Fin(reservation).isAfter(startDate)))
+                return false;
+        }
+        return true;
     }
 
 }
