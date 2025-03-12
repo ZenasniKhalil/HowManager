@@ -10,6 +10,7 @@ public class Logement {
     private int numero;
 
     @Column(name = "type", nullable = false)
+    @Enumerated(EnumType.STRING)
     private TypeLogement type;
 
     @Column(name = "capacite", nullable = false)
@@ -35,6 +36,9 @@ public class Logement {
         this.propre = propre;
         this.commentaire = commentaire;
         this.prix = prix;
+    }
+
+    public Logement() {
     }
 
     public int getNumero() {

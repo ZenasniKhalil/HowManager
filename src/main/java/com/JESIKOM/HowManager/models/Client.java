@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
+@Table(name = "client")
 public class Client {
 
     @Id
@@ -47,8 +48,7 @@ public class Client {
     public Client() {
     }
 
-    public Client(Long id, String nom, String prenom, String telephone, String email, String adresse, LocalDate dateNaissance, String nationalite, String numeroIdentite, TypeIdentite typeIdentite, String remarque) {
-        this.id = id;
+    public Client( String nom, String prenom, String telephone, String email, String adresse, LocalDate dateNaissance, String nationalite, String numeroIdentite, TypeIdentite typeIdentite, String remarque) {
         this.nom = nom;
         this.prenom = prenom;
         this.telephone = telephone;
@@ -63,10 +63,6 @@ public class Client {
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getNom() {
