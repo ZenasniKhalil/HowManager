@@ -78,6 +78,7 @@
 					<include>**/*.fxml</include>
 					<include>**/*.properties</include>
 					<include>**/*.css</include>
+					<include>**/*.png</include>
 				</includes>
 			</resource>
 		</resources>

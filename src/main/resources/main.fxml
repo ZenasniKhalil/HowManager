@@ -62,14 +62,7 @@
             </Button>
          </children>
       </HBox>
-      <Pane layoutX="233.0" layoutY="153.0" prefHeight="550.0" prefWidth="716.0" style="-fx-background-color: lightgray;">
-         <children>
-            <ImageView fitHeight="139.0" fitWidth="133.0" layoutX="392.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/utilisateur.png" />
-               </image>
-            </ImageView>
-         </children></Pane>
+      <Pane layoutX="233.0" layoutY="153.0" prefHeight="550.0" prefWidth="716.0" style="-fx-background-color: lightgray;" />
       <Pane layoutX="1.0" layoutY="153.0" prefHeight="550.0" prefWidth="232.0" style="-fx-background-color: #3498db;">
          <children>
             <StackPane layoutX="214.0" layoutY="-18.0" />
@@ -161,7 +154,12 @@
          <children>
             <StackPane layoutX="6.0" prefHeight="129.0" prefWidth="129.0">
                <children>
-                  <Button fx:id="importerPhotoProfil" mnemonicParsing="false" onAction="#chargerPhotoProfil" prefHeight="55.0" prefWidth="54.0" style="-fx-background-radius: 50;" />
+                  <ImageView fitHeight="139.0" fitWidth="133.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/utilisateur.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="importerPhotoProfil" mnemonicParsing="false" onAction="#chargerPhotoProfil" prefHeight="55.0" prefWidth="54.0" style="-fx-background-radius: 50; -fx-background-color: transparent;" />
                </children>
             </StackPane>
             <MenuButton contentDisplay="CENTER" layoutY="98.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="150.0" text="Sylvain ROY">
