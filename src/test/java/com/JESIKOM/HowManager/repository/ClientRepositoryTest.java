@@ -54,7 +54,8 @@ class ClientRepositoryTest {
 
     @Test
     void findClientByPrenomAndNomAndEmailIgnoreCase() {
-        List<Client> clients = clientRepository.findClientByPrenomAndNomAndEmailIgnoreCase("Jean","Dupont","jean.dUpont@email.com");
+        List<Client> clients = clientRepository.findClientByPrenomAndNomAndEmailIgnoreCase(
+                "Jean","Dupont","jean.dUpont@email.com");
         assertEquals(1,clients.size());
         assertEquals("Dupont",clients.get(0).getNom());
     }
