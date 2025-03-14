@@ -23,7 +23,10 @@ public class ClientService implements IClientService {
 
     //Vérif a faire ? (client existe pas etc )
     public Client addClient(Client client) {
-        return clientRepository.save(client);
+        if (isUnique(client)) {
+            return clientRepository.save(client);
+        }
+        return null;
     }
 
 
@@ -56,6 +59,11 @@ public class ClientService implements IClientService {
     @Override
     public List<Client> getClientByEmail(String email) {
         return clientRepository.findClientByEmail(email);
+    }
+    private boolean isUnique(Client client) {
+        List<Client> homonymes =
+                clientRepository.findClientByPrenomAndNomAndEmail(client.getPrenom(), client.getNom(), client.getEmail());
+        return homonymes.isEmpty();
     }
 
 }
