@@ -53,16 +53,16 @@ public class ClientService implements IClientService {
 
     @Override
     public List<Client> getClientByNomContaining(String name) {
-        return clientRepository.findClientByNomContaining(name);
+        return clientRepository.findClientByNomContainingIgnoreCase(name);
     }
 
     @Override
     public List<Client> getClientByEmail(String email) {
-        return clientRepository.findClientByEmail(email);
+        return clientRepository.findClientByEmailIgnoreCase(email);
     }
     private boolean isUnique(Client client) {
         List<Client> homonymes =
-                clientRepository.findClientByPrenomAndNomAndEmail(client.getPrenom(), client.getNom(), client.getEmail());
+                clientRepository.findClientByPrenomAndNomAndEmailIgnoreCase(client.getPrenom(), client.getNom(), client.getEmail());
         return homonymes.isEmpty();
     }
 
