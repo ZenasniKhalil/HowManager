@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/main.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/main.fxml"));
 
         Parent root = loader.load();
 
