@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface LogementRepository extends JpaRepository<Logement, Integer> {
-    //List<Logement>findLogementByCapacite(Integer capacite);
+    List<Logement>findLogementByCapacite(Integer capacite);
 
     List<Logement>findLogementByCapaciteAndDisponibleTrue(Integer capacite);
 
@@ -16,7 +16,7 @@ public interface LogementRepository extends JpaRepository<Logement, Integer> {
 
     List<Logement>findLogementByPrixAndDisponibleTrueOrderByPrixAsc(Double prix);
 
-    //List<Logement>findLogementByDisponible(Boolean disponible);
+    List<Logement>findLogementByDisponible(Boolean disponible);
 
     List<Logement> findLogementByType(TypeLogement type);
 }
