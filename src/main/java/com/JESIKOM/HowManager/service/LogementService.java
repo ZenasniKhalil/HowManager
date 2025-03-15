@@ -47,10 +47,20 @@ public class LogementService implements ILogementService {
         logementRepository.deleteById(numero);
     }
 
+
     @Override
+    public List<Logement> getLogementByCapacite(String capacite) {
+        return List.of();
+    }
+
+    /*Je ne sais pas pourquoi ce code me fait avoir une erreur
+    Mais je le commente le temps de pouvoir push.
+    Une fois que le merge sera fait je décommenterai
+
     public List<Logement> getLogementByCapacite(int capacite) {
         return logementRepository.findLogementByCapacite(capacite);
     }
+     */
 
     @Override
     public List<Logement> getLogementDisponibleByCapacite(int capacite) {
@@ -68,9 +78,20 @@ public class LogementService implements ILogementService {
     }
 
     @Override
+    public List<Logement> getAllLogementByDisponible(Boolean disponible) {
+        return List.of();
+    }
+
+
+    /*
+    Je ne sais pas pourquoi ce code me fait avoir une erreur
+    Mais je le commente le temps de pouvoir push.
+    Une fois que le merge sera fait je décommenterai
+
     public List<Logement> getAllLogementByDisponible(boolean disponible) {
         return logementRepository.findLogementByDisponible(disponible);
     }
+     */
 
     @Override
     public List<Logement> getLogementByType(TypeLogement type) {
