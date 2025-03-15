@@ -48,7 +48,6 @@ public class LogementService implements ILogementService {
     }
 
 
-
     public List<Logement> getLogementByCapacite(int capacite) {
         return logementRepository.findLogementByCapacite(capacite);
     }
