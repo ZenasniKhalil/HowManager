@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -33,8 +34,9 @@ public class MainController {
     }
 
     @FXML
-    private Button importerPhotoProfil; // Récupère le bouton
+    Button profileButton; // Récupère le bouton
 
+    /*
     @FXML
     private void chargerPhotoProfil(ActionEvent event) throws IOException {
         // Charger la nouvelle page
@@ -49,6 +51,23 @@ public class MainController {
         // Changer la scène
         stage.setScene(new Scene(pageChargerPhotoProfil));
         stage.show();
+    }
+    */
+
+    public void chargerPhotoProfil() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/chargerPhotoProfil.fxml"));
+            Stage popupStage = new Stage();
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+            popupStage.setScene(new Scene(loader.load()));
+
+            ChargerPhotoProfilController popupController = loader.getController();
+            popupController.setMainController(this);
+
+            popupStage.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
