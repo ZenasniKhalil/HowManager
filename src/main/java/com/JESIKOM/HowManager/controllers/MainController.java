@@ -73,4 +73,10 @@ public class MainController {
         // Appliquer le clip pour rendre l'image ronde
         profileImage.setClip(clip);
     }
+
+    public void ras(){
+        //Pour pouvoir commit
+        System.out.println("ras");
+    }
+
 }
