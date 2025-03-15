@@ -64,6 +64,7 @@ public class MainController {
         profileButton.setVisible(false); // Cache le bouton
 
         // Créer un cercle de la taille de l'ImageView
+        //RAS
         double radius = Math.min(profileImage.getFitWidth(), profileImage.getFitHeight()) / 2;
         Circle clip = new Circle(radius);
         clip.setCenterX(profileImage.getFitWidth() / 2);
