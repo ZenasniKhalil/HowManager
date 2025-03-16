@@ -17,7 +17,7 @@ interface ILogementService {
 
     void deleteLogement(int numero);
 
-    List<Logement> getLogementByCapacite(String capacite);
+    List<Logement> getLogementByCapacite(int capacite);
 
     List<Logement> getLogementDisponibleByCapacite(int capacite);
 
@@ -25,7 +25,7 @@ interface ILogementService {
 
     List<Logement> getLogementDisponibleByPrix(double prix);
 
-    List<Logement> getAllLogementByDisponible(Boolean disponible);
+    List<Logement> getAllLogementByDisponible(boolean disponible);
 
     List<Logement> getLogementByType(TypeLogement type);
 

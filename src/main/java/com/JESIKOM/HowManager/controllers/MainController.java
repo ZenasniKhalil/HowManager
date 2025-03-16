@@ -40,17 +40,14 @@ public class MainController {
     @FXML Button profileButton; // Récupère le bouton
     @FXML private ImageView profileImage;
 
-    /*
+
     @FXML
     public void initialize() {
-        // Rendre l'image cliquable pour rouvrir la popup
+        //Rendre l'image cliquable pour rouvrir la popup
         profileImage.setOnMouseClicked(event -> chargerPhotoProfil());
-
-        // Optionnel : Rendre aussi le bouton cliquable
-        //profileButton.setOnAction(event -> openPopup());
     }
 
-     */
+
 
     public void chargerPhotoProfil() {
         try {
