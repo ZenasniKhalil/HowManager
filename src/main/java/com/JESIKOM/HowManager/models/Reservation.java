@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "reservation")
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-incrémentation
@@ -64,6 +67,10 @@ public class Reservation {
         this.modePaiement = modePaiement;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
+    }
+
+    public Reservation() {
+
     }
 
     public Long getId() {
