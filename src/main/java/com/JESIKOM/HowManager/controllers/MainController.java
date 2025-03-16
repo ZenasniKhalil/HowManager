@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -39,12 +40,13 @@ public class MainController {
 
     @FXML Button profileButton; // Récupère le bouton
     @FXML private ImageView profileImage;
-
+    @FXML private MenuItem voirProfil;
 
     @FXML
     public void initialize() {
         //Rendre l'image cliquable pour rouvrir la popup
         profileImage.setOnMouseClicked(event -> chargerPhotoProfil());
+
     }
 
 

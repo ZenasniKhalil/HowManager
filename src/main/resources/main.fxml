@@ -164,7 +164,7 @@
             </StackPane>
             <MenuButton contentDisplay="CENTER" layoutY="98.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="150.0" text="Sylvain ROY">
               <items>
-                <MenuItem mnemonicParsing="false" text="Voir mon profil" />
+                <MenuItem mnemonicParsing="false" text="Voir mon profil" fx:id="voirProfil" />
                 <MenuItem mnemonicParsing="false" text="Modifier mes paramètres" />
                   <MenuItem mnemonicParsing="false" text="Changer de compte" />
                   <SeparatorMenuItem mnemonicParsing="false" text="sep1" />

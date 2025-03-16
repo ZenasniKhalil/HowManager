@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="700.0" prefWidth="638.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.JESIKOM.HowManager.controllers.VoirMonProfilController">
+   <children>
+      <Label layoutX="23.0" layoutY="221.0" text="Nom" textFill="#004aad">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="22.0" layoutY="256.0" text="Prénom(s)" textFill="#004aad">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="24.0" layoutY="293.0" text="ID personnel" textFill="#004aad">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="23.0" layoutY="437.0" text="Sexe" textFill="#004aad">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="329.0" text="Email" textFill="#004aad">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="366.0" text="Mot de passe" textFill="#004aad">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="23.0" layoutY="401.0" text="Téléphone" textFill="#004aad">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="21.0" layoutY="477.0" text="Type de contrat" textFill="#004aad">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="258.0" layoutY="406.0" text="Poste occupé" textFill="#004aad">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="20.0" layoutY="521.0" text="Début" textFill="#004aad">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="23.0" layoutY="560.0" text="Fin" textFill="#004aad">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="92.0" layoutY="644.0" mnemonicParsing="false" text="Enregistrer les modifications" />
+      <Button layoutX="409.0" layoutY="535.0" mnemonicParsing="false" text="Retour" />
+      <Label layoutX="233.0" layoutY="15.0" text="MON PROFIL" textFill="#004aad">
+         <font>
+            <Font name="Berlin Sans FB" size="30.0" />
+         </font>
+      </Label>
+      <Group layoutX="42.0" layoutY="49.0" />
+      <ImageView fitHeight="112.0" fitWidth="122.0" layoutX="20.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/appareil_photo.png" />
+         </image>
+      </ImageView>
+      <TextField layoutX="135.0" layoutY="221.0" prefHeight="30.0" prefWidth="201.0" promptText="Nom" text="ROY">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="135.0" layoutY="256.0" prefHeight="30.0" prefWidth="235.0" promptText="Prenom(s)" text="Sylvain">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="135.0" layoutY="291.0" prefHeight="30.0" prefWidth="202.0" promptText="ID personnel" text="SR2021">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="135.0" layoutY="327.0" prefHeight="30.0" prefWidth="291.0" promptText="Email" text="sylvain.roy@gmail.com">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <PasswordField layoutX="135.0" layoutY="364.0" prefHeight="26.0" prefWidth="291.0" />
+      <TextField layoutX="135.0" layoutY="397.0" prefHeight="30.0" prefWidth="291.0" promptText="Téléphone" text="01 02 03 04 05">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="136.0" layoutY="434.0" prefHeight="30.0" prefWidth="291.0" promptText="Email">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <ChoiceBox fx:id="typeContrat" layoutX="148.0" layoutY="478.0" prefWidth="150.0" />
+   </children>
+</AnchorPane>
