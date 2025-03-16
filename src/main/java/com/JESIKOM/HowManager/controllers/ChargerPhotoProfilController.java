@@ -9,6 +9,9 @@ import java.io.File;
 
 public class ChargerPhotoProfilController {
     private MainController mainController;
+    @FXML
+    private Button btnNo;
+
 
     public void setMainController(MainController controller) {
         this.mainController = controller;
@@ -20,19 +23,16 @@ public class ChargerPhotoProfilController {
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.jpeg"));
         File file = fileChooser.showOpenDialog(null);
 
-        /*
         if (file != null && mainController != null) {
             mainController.setProfileImage(file);
         }
-
-         */
-
         closePopup();
     }
 
     @FXML
     public void closePopup() {
-        ((Stage) this.mainController.profileButton.getScene().getWindow()).close();
+        Stage popupStage = (Stage) btnNo.getScene().getWindow();
+        popupStage.close();
     }
 
 

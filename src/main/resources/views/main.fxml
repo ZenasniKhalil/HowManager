@@ -160,6 +160,7 @@
                      </image>
                   </ImageView>
                   <Button fx:id="profileButton" mnemonicParsing="false" onAction="#chargerPhotoProfil" prefHeight="55.0" prefWidth="54.0" style="-fx-background-radius: 50; -fx-background-color: transparent; -fx-border-color: transparent;" />
+                  <ImageView fx:id="profileImage" fitWidth="54.0" fitHeight="55.0" layoutX="50" layoutY="50" />
                </children>
             </StackPane>
             <MenuButton contentDisplay="CENTER" layoutY="98.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="150.0" text="Sylvain ROY">
