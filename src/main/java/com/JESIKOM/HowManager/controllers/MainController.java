@@ -37,9 +37,20 @@ public class MainController {
         System.out.println("Hello World");
     }
 
-    @FXML
-    Button profileButton; // Récupère le bouton
+    @FXML Button profileButton; // Récupère le bouton
     @FXML private ImageView profileImage;
+
+    /*
+    @FXML
+    public void initialize() {
+        // Rendre l'image cliquable pour rouvrir la popup
+        profileImage.setOnMouseClicked(event -> chargerPhotoProfil());
+
+        // Optionnel : Rendre aussi le bouton cliquable
+        //profileButton.setOnAction(event -> openPopup());
+    }
+
+     */
 
     public void chargerPhotoProfil() {
         try {
@@ -63,20 +74,14 @@ public class MainController {
         profileImage.setImage(image);
         profileButton.setVisible(false); // Cache le bouton
 
-        // Créer un cercle de la taille de l'ImageView
-        //RAS
+        //Créer un cercle de la taille de l'ImageView
         double radius = Math.min(profileImage.getFitWidth(), profileImage.getFitHeight()) / 2;
         Circle clip = new Circle(radius);
         clip.setCenterX(profileImage.getFitWidth() / 2);
         clip.setCenterY(profileImage.getFitHeight() / 2);
 
-        // Appliquer le clip pour rendre l'image ronde
+        //Appliquer le clip pour rendre l'image ronde
         profileImage.setClip(clip);
-    }
-
-    public void ras(){
-        //Pour pouvoir commit
-        System.out.println("ras");
     }
 
 }
