@@ -2,7 +2,7 @@ package com.JESIKOM.HowManager.repository;
 
 import com.JESIKOM.HowManager.models.Logement;
 import com.JESIKOM.HowManager.models.TypeLogement;
-import org.hibernate.annotations.Filter;
+//import org.hibernate.annotations.Filter;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface ClientRepository extends JpaRepository<Client, Long> {
-    List<Client> findClientByNomContainingIgnoreCase(String nom);
+    List<Client> findClientByNameContainsIgnoreCase(String nom);
 
     List<Client> findClientByEmailIgnoreCase(String email);
 

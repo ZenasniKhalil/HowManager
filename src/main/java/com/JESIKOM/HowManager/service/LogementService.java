@@ -47,10 +47,11 @@ public class LogementService implements ILogementService {
         logementRepository.deleteById(numero);
     }
 
-    @Override
+
     public List<Logement> getLogementByCapacite(int capacite) {
         return logementRepository.findLogementByCapacite(capacite);
     }
+
 
     @Override
     public List<Logement> getLogementDisponibleByCapacite(int capacite) {
@@ -67,10 +68,11 @@ public class LogementService implements ILogementService {
         return logementRepository.findLogementByPrixAndDisponibleTrueOrderByPrixAsc(prix);
     }
 
-    @Override
+
     public List<Logement> getAllLogementByDisponible(boolean disponible) {
         return logementRepository.findLogementByDisponible(disponible);
     }
+
 
     @Override
     public List<Logement> getLogementByType(TypeLogement type) {

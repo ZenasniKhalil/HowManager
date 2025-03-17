@@ -8,9 +8,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.shape.Circle;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 
 public class MainController {
@@ -33,25 +38,45 @@ public class MainController {
     }
 
     @FXML
-    private Button importerPhotoProfil; // Récupère le bouton
+    Button profileButton; // Récupère le bouton
+    @FXML private ImageView profileImage;
 
-    @FXML
-    private void chargerPhotoProfil(ActionEvent event) throws IOException {
-        // Charger la nouvelle page
-        Parent pageChargerPhotoProfil = FXMLLoader.load(getClass().getResource("/chargerPhotoProfil.fxml"));
+    public void chargerPhotoProfil() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/chargerPhotoProfil.fxml"));
+            Stage popupStage = new Stage();
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+            popupStage.setScene(new Scene(loader.load()));
+            popupStage.setResizable(false);
 
-        // Récupérer la scène actuelle
-        Scene scene = ((Node) event.getSource()).getScene();
+            ChargerPhotoProfilController popupController = loader.getController();
+            popupController.setMainController(this);
 
-        // Récupérer la fenêtre (stage)
-        Stage stage = (Stage) scene.getWindow();
-
-        // Changer la scène
-        stage.setScene(new Scene(pageChargerPhotoProfil));
-        stage.show();
+            popupStage.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
+    public void setProfileImage(File file) {
+        Image image = new Image(file.toURI().toString());
+        profileImage.setImage(image);
+        profileButton.setVisible(false); // Cache le bouton
 
+        // Créer un cercle de la taille de l'ImageView
+        //RAS
+        double radius = Math.min(profileImage.getFitWidth(), profileImage.getFitHeight()) / 2;
+        Circle clip = new Circle(radius);
+        clip.setCenterX(profileImage.getFitWidth() / 2);
+        clip.setCenterY(profileImage.getFitHeight() / 2);
 
+        // Appliquer le clip pour rendre l'image ronde
+        profileImage.setClip(clip);
+    }
+
+    public void ras(){
+        //Pour pouvoir commit
+        System.out.println("ras");
+    }
 
 }
