@@ -58,8 +58,8 @@ public class ClientService implements IClientService {
     }
      */
 
-    public List<Client> getClientByNameContains(String name) {
-        return clientRepository.findClientByNameContainsIgnoreCase(name);
+    public List<Client> getClientByNomContains(String name) {
+        return clientRepository.findClientByNomContainsIgnoreCase(name);
     }
 
     @Override

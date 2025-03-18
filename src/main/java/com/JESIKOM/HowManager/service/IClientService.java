@@ -17,7 +17,7 @@ interface IClientService {
 
     public void deleteClientById(Long id);
 
-    public List<Client>getClientByNameContains(String name);
+    public List<Client>getClientByNomContains(String name);
 
     public List<Client>getClientByEmail(String email);
 

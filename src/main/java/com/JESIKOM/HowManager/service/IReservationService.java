@@ -9,18 +9,18 @@ import java.util.Optional;
 interface IReservationService {
     List<Reservation> getAllReservations();
 
-    Optional<Reservation> getReservationById(long id);
+    Optional<Reservation> getReservationById(Long id);
 
     Reservation addReservation(Reservation reservation);
 
-    Reservation updateReservation(long id, Reservation updatedReservation);
+    Reservation updateReservation(Long id, Reservation updatedReservation);
     //Archivage ?
-    void deleteReservation(long id);
+    void deleteReservation(Long id);
 
     List<Reservation>getReservationsByDate_Debut(LocalDate date);
 
     //? Client ou string ?
-    List<Reservation>getReservationsByClient(long idClient);
+    List<Reservation>getReservationsByClient(Long idClient);
 
     LocalDate getDate_Fin(Reservation reservation);
 

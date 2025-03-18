@@ -21,9 +21,9 @@ interface ILogementService {
 
     List<Logement> getLogementDisponibleByCapacite(int capacite);
 
-    List<Logement> getLogementByPrix(double prix);
+    List<Logement> getLogementByPrix(Double prix);
 
-    List<Logement> getLogementDisponibleByPrix(double prix);
+    List<Logement> getLogementDisponibleByPrix(Double prix);
 
     List<Logement> getAllLogementByDisponible(boolean disponible);
 
