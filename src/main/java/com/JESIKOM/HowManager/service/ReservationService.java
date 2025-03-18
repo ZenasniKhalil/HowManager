@@ -29,7 +29,7 @@ public class ReservationService implements IReservationService {
     }
 
 
-    public Optional<Reservation> getReservationById(long id) {
+    public Optional<Reservation> getReservationById(Long id) {
         return reservationRepository.findById(id);
     }
 
@@ -41,7 +41,7 @@ public class ReservationService implements IReservationService {
     }
 
 
-    public Reservation updateReservation(long id, Reservation updatedReservation) {
+    public Reservation updateReservation(Long id, Reservation updatedReservation) {
         return reservationRepository.findById(id).map(reservation -> {
             reservation.setClient(updatedReservation.getClient());
             reservation.setLogement(updatedReservation.getLogement());
@@ -60,7 +60,7 @@ public class ReservationService implements IReservationService {
     }
 
 
-    public void deleteReservation(long id) {
+    public void deleteReservation(Long id) {
         reservationRepository.deleteById(id);
     }
 
@@ -70,7 +70,7 @@ public class ReservationService implements IReservationService {
     }
 
     @Override
-    public List<Reservation> getReservationsByClient(long iDClient) {
+    public List<Reservation> getReservationsByClient(Long iDClient) {
 
         return reservationRepository.findReservationByClient_Id(iDClient);
     }

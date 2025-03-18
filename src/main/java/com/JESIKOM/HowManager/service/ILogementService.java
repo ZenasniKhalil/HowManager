@@ -17,15 +17,15 @@ interface ILogementService {
 
     void deleteLogement(int numero);
 
-    List<Logement> getLogementByCapacite(String capacite);
+    List<Logement> getLogementByCapacite(int capacite);
 
     List<Logement> getLogementDisponibleByCapacite(int capacite);
 
-    List<Logement> getLogementByPrix(double prix);
+    List<Logement> getLogementByPrix(Double prix);
 
-    List<Logement> getLogementDisponibleByPrix(double prix);
+    List<Logement> getLogementDisponibleByPrix(Double prix);
 
-    List<Logement> getAllLogementByDisponible(Boolean disponible);
+    List<Logement> getAllLogementByDisponible(boolean disponible);
 
     List<Logement> getLogementByType(TypeLogement type);
 
