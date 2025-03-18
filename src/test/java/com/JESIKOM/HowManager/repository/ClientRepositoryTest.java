@@ -27,18 +27,18 @@ class ClientRepositoryTest {
     }
     @Test
     void shouldFindClientByNomContainingIgnoreCase() {
-     List<Client> clients = clientRepository.findClientByNameContainsIgnoreCase("existepas");
+     List<Client> clients = clientRepository.findClientByNomContainsIgnoreCase("existepas");
      assertEquals(0,clients.size());
-     List<Client> clients2 = clientRepository.findClientByNameContainsIgnoreCase("Dupont");
+     List<Client> clients2 = clientRepository.findClientByNomContainsIgnoreCase("Dupont");
      assertEquals(1,clients2.size());
      assertEquals("Dupont",clients2.get(0).getNom());
-     List<Client> clients3 = clientRepository.findClientByNameContainsIgnoreCase("Dupon");
+     List<Client> clients3 = clientRepository.findClientByNomContainsIgnoreCase("Dupon");
      assertEquals(clients2.get(0),clients3.get(0));
-     List<Client> clients4 = clientRepository.findClientByNameContainsIgnoreCase("Du");
+     List<Client> clients4 = clientRepository.findClientByNomContainsIgnoreCase("Du");
      assertEquals(2,clients4.size());
      assertEquals("Dupont",clients4.get(0).getNom());
      assertEquals("Dubois",clients4.get(1).getNom());
-     List<Client> clients5 = clientRepository.findClientByNameContainsIgnoreCase("dupo");
+     List<Client> clients5 = clientRepository.findClientByNomContainsIgnoreCase("dupo");
      assertEquals("Dupont",clients5.get(0).getNom());
 
     }
