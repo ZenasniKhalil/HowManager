@@ -68,11 +68,11 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button layoutX="154.0" layoutY="625.0" mnemonicParsing="false" text="Modifier mon profil">
+      <Button layoutX="154.0" layoutY="625.0" mnemonicParsing="false" style="-fx-background-color: #3498db;" text="Modifier mon profil" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="18.0" />
          </font></Button>
-      <Button layoutX="393.0" layoutY="625.0" mnemonicParsing="false" text="Retour">
+      <Button fx:id="retour" layoutX="393.0" layoutY="625.0" mnemonicParsing="false" onAction="#closePopup" text="Retour" textFill="#3498db">
          <font>
             <Font size="18.0" />
          </font></Button>

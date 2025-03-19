@@ -41,6 +41,7 @@ public class MainController {
     @FXML Button profileButton; // Récupère le bouton
     @FXML private ImageView profileImage;
     @FXML private MenuItem voirProfil;
+    @FXML private MenuItem voirMonProfilButton;
 
     @FXML
     public void initialize() {
@@ -81,6 +82,23 @@ public class MainController {
 
         //Appliquer le clip pour rendre l'image ronde
         profileImage.setClip(clip);
+    }
+
+    public void voirMonProfil(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/voirMonProfil.fxml"));
+            Stage popupStage = new Stage();
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+            popupStage.setScene(new Scene(loader.load()));
+            popupStage.setResizable(false);
+
+            //ChargerPhotoProfilController popupController = loader.getController();
+            //popupController.setMainController(this);
+
+            popupStage.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

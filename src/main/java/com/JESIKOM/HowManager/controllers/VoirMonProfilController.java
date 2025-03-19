@@ -2,24 +2,24 @@ package com.JESIKOM.HowManager.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 public class VoirMonProfilController {
     @FXML private ChoiceBox<String> typeContrat;
     @FXML private PasswordField passwordField;
     @FXML private TextField textField;
     @FXML private CheckBox showPasswordCheckBox;
+    private MainController mainController;
+    @FXML private Button retour;
 
     @FXML
     public void initialize() {
         // Ajouter les options à la ChoiceBox
-        typeContrat.setItems(FXCollections.observableArrayList("Option 1", "Option 2", "Option 3"));
+        //typeContrat.setItems(FXCollections.observableArrayList("Option 1", "Option 2", "Option 3"));
 
         // Définir une valeur par défaut (optionnel)
-        typeContrat.setValue("Option 1");
+        //typeContrat.setValue("Option 1");
 
 
 
@@ -47,7 +47,11 @@ public class VoirMonProfilController {
         passwordField.textProperty().addListener((observable, oldValue, newValue) -> {
             textField.setText(newValue);
         });
+    }
 
-
+    @FXML
+    public void closePopup() {
+        Stage popupStage = (Stage) retour.getScene().getWindow();
+        popupStage.close();
     }
 }
