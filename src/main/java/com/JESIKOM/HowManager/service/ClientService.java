@@ -51,20 +51,36 @@ public class ClientService implements IClientService {
         clientRepository.deleteById(id);
     }
 
+    /* Le nom de la méthode est : getClientByNameContains
     @Override
     public List<Client> getClientByNomContaining(String name) {
         return clientRepository.findClientByNomContainingIgnoreCase(name);
+    }
+     */
+
+    public List<Client> getClientByNomContains(String name) {
+        return clientRepository.findClientByNomContainsIgnoreCase(name);
     }
 
     @Override
     public List<Client> getClientByEmail(String email) {
         return clientRepository.findClientByEmailIgnoreCase(email);
     }
+
+    @Override
+    public void ArchiveClient(Client client) {
+        //to do
+    }
+
     private boolean isUnique(Client client) {
         List<Client> homonymes =
                 clientRepository.findClientByPrenomAndNomAndEmailIgnoreCase(client.getPrenom(), client.getNom(), client.getEmail());
         return homonymes.isEmpty();
     }
 
-}
+    //J'ai défini ces méthodes, sinon je ne pouvais pas merge
+    public Client updateClient(Client client){
+        return null;
+    }
 
+}

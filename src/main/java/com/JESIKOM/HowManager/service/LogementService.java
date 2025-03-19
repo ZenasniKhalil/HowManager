@@ -58,12 +58,12 @@ public class LogementService implements ILogementService {
     }
 
     @Override
-    public List<Logement> getLogementByPrix(double prix) {
+    public List<Logement> getLogementByPrix(Double prix) {
         return logementRepository.findLogementByPrixOrderByPrixAsc(prix);
     }
 
     @Override
-    public List<Logement> getLogementDisponibleByPrix(double prix) {
+    public List<Logement> getLogementDisponibleByPrix(Double prix) {
         return logementRepository.findLogementByPrixAndDisponibleTrueOrderByPrixAsc(prix);
     }
 
