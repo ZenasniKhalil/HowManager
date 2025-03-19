@@ -4,7 +4,9 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import org.springframework.stereotype.Controller;
 
+@Controller
 public class VoirMonProfilController {
     @FXML private ChoiceBox<String> typeContrat;
     @FXML private PasswordField passwordField;
