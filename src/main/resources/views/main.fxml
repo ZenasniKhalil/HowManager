@@ -22,7 +22,7 @@
             <StackPane>
                <children>
             
-                                          <Button prefHeight="26.0" prefWidth="27.0" />
+                  <Button prefHeight="26.0" prefWidth="27.0" />
                   <ImageView fitHeight="26.0" fitWidth="27.0">
                      <image>
                         <Image url="@../images/chercher.png" />
@@ -165,7 +165,7 @@
             </StackPane>
             <MenuButton contentDisplay="CENTER" layoutY="98.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="150.0" text="Sylvain ROY">
               <items>
-                <MenuItem mnemonicParsing="false" text="Voir mon profil" />
+                <MenuItem fx:id="voirMonProfilButton" mnemonicParsing="false" onAction="#voirMonProfil" text="Voir mon profil" />
                   <SeparatorMenuItem mnemonicParsing="false" text="sep1" />
                   <MenuItem mnemonicParsing="false" text="Me déconnecter" />
               </items>
