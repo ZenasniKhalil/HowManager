@@ -6,7 +6,9 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import org.springframework.stereotype.Controller;
 
+@Controller
 public class VoirMonProfilController {
     @FXML private ChoiceBox<String> typeContrat;
     @FXML private PasswordField passwordField;

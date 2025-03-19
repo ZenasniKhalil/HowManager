@@ -4,9 +4,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.springframework.stereotype.Controller;
 
 import java.io.File;
-
+@Controller
 public class ChargerPhotoProfilController {
     private MainController mainController;
     @FXML

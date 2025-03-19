@@ -15,10 +15,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.springframework.stereotype.Controller;
 
 import java.io.File;
 import java.io.IOException;
-
+@Controller
 public class MainController {
 
     public MainController() {
