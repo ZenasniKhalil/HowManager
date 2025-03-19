@@ -12,7 +12,7 @@ public class ChargerPhotoProfilController {
     @FXML
     private Button btnNo;
 
-
+    @FXML
     public void setMainController(MainController controller) {
         this.mainController = controller;
     }
