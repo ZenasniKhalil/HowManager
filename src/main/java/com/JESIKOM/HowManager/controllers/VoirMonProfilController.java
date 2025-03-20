@@ -2,7 +2,10 @@ package com.JESIKOM.HowManager.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.springframework.stereotype.Controller;
 
@@ -14,6 +17,7 @@ public class VoirMonProfilController {
     @FXML private CheckBox showPasswordCheckBox;
     private MainController mainController;
     @FXML private Button retour;
+    @FXML Button modifProfilButton;
 
     @FXML
     public void initialize() {
@@ -27,6 +31,9 @@ public class VoirMonProfilController {
 
         // Synchronisation initiale
         textField.setText(passwordField.getText());
+
+        textField.setVisible(false); // Caché au début
+        textField.setEditable(false); // Empêche la modification
 
         // Gestion du changement de visibilité
         showPasswordCheckBox.setOnAction(event -> {
@@ -55,5 +62,22 @@ public class VoirMonProfilController {
     public void closePopup() {
         Stage popupStage = (Stage) retour.getScene().getWindow();
         popupStage.close();
+    }
+
+    public void modifierProfil(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/modifMonProfil.fxml"));
+            Stage popupStage = new Stage();
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+            popupStage.setScene(new Scene(loader.load()));
+            popupStage.setResizable(false);
+
+            //ModifMonProfilController popupController = loader.getController();
+            //popupController.setMainController(this);
+
+            popupStage.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
