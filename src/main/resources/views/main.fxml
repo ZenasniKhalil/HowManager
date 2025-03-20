@@ -167,7 +167,7 @@
               <items>
                 <MenuItem fx:id="voirMonProfilButton" mnemonicParsing="false" onAction="#voirMonProfil" text="Voir mon profil" />
                   <SeparatorMenuItem mnemonicParsing="false" text="sep1" />
-                  <MenuItem mnemonicParsing="false" text="Me déconnecter" />
+                  <MenuItem fx:id="deconnexionItem" mnemonicParsing="false" onAction="#demandeDeconnexion" text="Me déconnecter" />
               </items>
                <font>
                   <Font name="System Bold" size="18.0" />

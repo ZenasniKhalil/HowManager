@@ -43,6 +43,7 @@ public class MainController {
     @FXML private ImageView profileImage;
     @FXML private MenuItem voirProfil;
     @FXML private MenuItem voirMonProfilButton;
+    @FXML private MenuItem deconnexionItem;
 
     @FXML
     public void initialize() {
@@ -95,6 +96,23 @@ public class MainController {
 
             //ChargerPhotoProfilController popupController = loader.getController();
             //popupController.setMainController(this);
+
+            popupStage.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void demandeDeconnexion(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/seDeconnecter.fxml"));
+            Stage popupStage = new Stage();
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+            popupStage.setScene(new Scene(loader.load()));
+            popupStage.setResizable(false);
+
+            SeDeconnecterController popupController = loader.getController();
+            popupController.setMainController(this);
 
             popupStage.showAndWait();
         } catch (Exception e) {

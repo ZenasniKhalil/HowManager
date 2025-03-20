@@ -1,11 +1,18 @@
 package com.JESIKOM.HowManager.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 import org.springframework.stereotype.Controller;
+
+import java.io.IOException;
 
 @Controller
 public class ModifMonProfilController {
@@ -16,6 +23,7 @@ public class ModifMonProfilController {
 
     @FXML
     public void initialize() {
+
         cdiItem.setOnAction(event -> menuButtonContrat.setText("CDI"));
         cddItem.setOnAction(event -> menuButtonContrat.setText("CDD"));
         caItem.setOnAction(event -> menuButtonContrat.setText("Contrat d'apprentissage"));
@@ -27,8 +35,10 @@ public class ModifMonProfilController {
         this.voirMonProfilController = controller;
     }
 
-    @FXML public void closePopup(){
+    @FXML public void closePopup(ActionEvent event) throws IOException {
+
         Stage popupStage = (Stage) retour.getScene().getWindow();
         popupStage.close();
+
     }
 }
