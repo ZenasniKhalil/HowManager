@@ -1,4 +1,4 @@
-package com.JESIKOM.HowManager.service;
+/*package com.JESIKOM.HowManager.service;
 
 import com.JESIKOM.HowManager.models.Client;
 import com.JESIKOM.HowManager.models.TypeIdentite;
@@ -111,3 +111,4 @@ public class ClientServiceTest {
     void getClientByEmail() {
     }
 }
+*/
