@@ -82,16 +82,21 @@
             <Font size="18.0" />
          </font>
       </PasswordField>
-      <Label layoutX="65.0" layoutY="419.0" text="Mot de passe oublié ?" textFill="#0646a7" underline="true">
+      <Label layoutX="65.0" layoutY="425.0" text="E-mail oublié ?" textFill="#0646a7" underline="true">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Button layoutX="148.0" layoutY="493.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="176.0" style="-fx-background-color: #0646a7;" text="Se connecter" textFill="WHITE">
+      <Button layoutX="148.0" layoutY="514.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="176.0" style="-fx-background-color: #0646a7;" text="Se connecter" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
+      <Label layoutX="65.0" layoutY="448.0" text="Mot de passe oublié ?" textFill="#0646a7" underline="true">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
 
 
 </children>

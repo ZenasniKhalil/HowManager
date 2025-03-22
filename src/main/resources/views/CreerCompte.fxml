@@ -8,21 +8,20 @@
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="638.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.JESIKOM.HowManager.controllers.ModifMonProfilController">
+<AnchorPane prefHeight="700.0" prefWidth="638.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.JESIKOM.HowManager.controllers.CreerCompteController">
 <children>
-    <Label layoutX="23.0" layoutY="202.0" text="Nom" textFill="#004aad">
+    <Label layoutX="23.0" layoutY="202.0" text="Nom *" textFill="#004aad">
         <font>
             <Font size="18.0" />
         </font>
     </Label>
-    <Label layoutX="22.0" layoutY="237.0" text="Prénom(s)" textFill="#004aad">
+    <Label layoutX="22.0" layoutY="237.0" text="Prénom(s) *" textFill="#004aad">
         <font>
             <Font size="18.0" />
         </font>
@@ -72,15 +71,15 @@
             <Font size="18.0" />
         </font>
     </Label>
-    <Button layoutX="115.0" layoutY="625.0" mnemonicParsing="false" style="-fx-background-color: #3498db;" text="Enregistrer les modifications" textFill="WHITE">
+    <Button layoutX="219.0" layoutY="625.0" mnemonicParsing="false" style="-fx-background-color: #3498db;" text="Valider" textFill="WHITE">
         <font>
             <Font name="System Bold" size="18.0" />
         </font></Button>
-    <Button fx:id="retour" layoutX="438.0" layoutY="625.0" mnemonicParsing="false" onAction="#closePopup" text="Retour" textFill="#3498db">
+    <Button fx:id="retour" layoutX="326.0" layoutY="625.0" mnemonicParsing="false" onAction="#closePopup" text="Retour" textFill="#3498db">
         <font>
             <Font size="18.0" />
         </font></Button>
-    <Label layoutX="171.0" layoutY="15.0" text="MODIFIER MON PROFIL" textFill="#004aad">
+    <Label layoutX="171.0" layoutY="15.0" text="CRÉER MON COMPTE" textFill="#004aad">
         <font>
             <Font name="Berlin Sans FB" size="30.0" />
         </font>
@@ -91,33 +90,33 @@
             <Image url="@../images/appareil_photo.png" />
         </image>
     </ImageView>
-    <TextField layoutX="149.0" layoutY="202.0" prefHeight="30.0" prefWidth="201.0" promptText="Nom" text="ROY">
+    <TextField layoutX="149.0" layoutY="202.0" prefHeight="30.0" prefWidth="201.0" promptText="Nom">
         <font>
             <Font size="14.0" />
         </font>
     </TextField>
-    <TextField layoutX="149.0" layoutY="237.0" prefHeight="30.0" prefWidth="235.0" promptText="Prenom(s)" text="Sylvain">
+    <TextField layoutX="149.0" layoutY="237.0" prefHeight="30.0" prefWidth="235.0" promptText="Prenom(s)">
         <font>
             <Font size="14.0" />
         </font>
     </TextField>
-    <TextField disable="true" layoutX="149.0" layoutY="272.0" prefHeight="30.0" prefWidth="202.0" promptText="ID personnel" text="SR2021">
+    <TextField layoutX="149.0" layoutY="272.0" prefHeight="30.0" prefWidth="202.0" promptText="ID personnel">
         <font>
             <Font size="14.0" />
         </font>
     </TextField>
-    <TextField layoutX="149.0" layoutY="308.0" prefHeight="30.0" prefWidth="291.0" promptText="Email" text="sylvain.roy@gmail.com">
+    <TextField layoutX="149.0" layoutY="308.0" prefHeight="30.0" prefWidth="291.0" promptText="Email">
         <font>
             <Font size="14.0" />
         </font>
     </TextField>
-    <PasswordField fx:id="passwordField" layoutX="149.0" layoutY="345.0" prefHeight="26.0" prefWidth="179.0" promptText="Mot de passe" text="123456789">
-         <font>
+    <PasswordField fx:id="passwordField" layoutX="149.0" layoutY="345.0" prefHeight="26.0" prefWidth="179.0" promptText="Mot de passe">
+        <font>
             <Font size="14.0" />
-         </font></PasswordField>
+        </font></PasswordField>
     <TextField fx:id="textField" layoutX="149.0" layoutY="345.0" prefHeight="26.0" prefWidth="291.0" text="123456789" visible="false" />
     <CheckBox fx:id="showPasswordCheckBox" layoutX="330.0" layoutY="350.0" text="Afficher" />
-    <TextField layoutX="149.0" layoutY="381.0" prefHeight="30.0" prefWidth="142.0" promptText="Téléphone" text="01 02 03 04 05">
+    <TextField layoutX="149.0" layoutY="381.0" prefHeight="30.0" prefWidth="142.0" promptText="Téléphone">
         <font>
             <Font size="14.0" />
         </font>
@@ -137,22 +136,21 @@
             <Font size="14.0" />
         </font>
     </TextField>
-      <MenuButton fx:id="menuButtonContrat" layoutX="150.0" layoutY="455.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="194.0" text="CDI">
+    <MenuButton fx:id="menuButtonContrat" layoutX="150.0" layoutY="455.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="194.0" text="Choisir">
         <items>
-          <MenuItem fx:id="cddItem" mnemonicParsing="false" text="CDD" />
+            <MenuItem fx:id="cddItem" mnemonicParsing="false" text="CDD" />
+            <MenuItem fx:id="cdiItem" mnemonicParsing="false" style="hhh: jjj;" text="CDI" />
             <MenuItem fx:id="interimItem" mnemonicParsing="false" text="Intérim" />
             <MenuItem fx:id="caItem" mnemonicParsing="false" text="Contrat d'apprentissage" />
             <MenuItem fx:id="cpItem" mnemonicParsing="false" text="Contrat de professionnalisation" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-          <MenuItem fx:id="cdiItem" mnemonicParsing="false" style="hhh: jjj;" text="Choisir" />
         </items>
-      </MenuButton>
-      <Accordion />
-      <MenuButton layoutX="150.0" layoutY="418.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Choisir">
+    </MenuButton>
+    <Accordion />
+    <MenuButton layoutX="150.0" layoutY="418.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Choisir">
         <items>
-          <MenuItem mnemonicParsing="false" text="Féminin" />
-          <MenuItem mnemonicParsing="false" text="Masculin" />
+            <MenuItem mnemonicParsing="false" text="Féminin" />
+            <MenuItem mnemonicParsing="false" text="Masculin" />
         </items>
-      </MenuButton>
+    </MenuButton>
 </children>
 </AnchorPane>
