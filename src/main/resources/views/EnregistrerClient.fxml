@@ -2,6 +2,7 @@
 
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
@@ -36,9 +37,9 @@
                 <TextField prefHeight="26.0" prefWidth="378.0" promptText="Rechercher" />
             </children>
         </HBox>
-        <Pane layoutX="233.0" layoutY="153.0" prefHeight="550.0" prefWidth="716.0" style="-fx-background-color: lightgray;">
+        <Pane layoutX="233.0" layoutY="153.0" prefHeight="550.0" prefWidth="716.0" style="-fx-background-color: #EEEEEE;">
             <children>
-                <TextField alignment="CENTER" layoutX="218.0" layoutY="13.0" minWidth="-Infinity" prefHeight="38.0" prefWidth="230.0" style="-fx-background-color: #0646A7;">
+                <TextField alignment="CENTER" layoutX="174.0" layoutY="15.0" minWidth="-Infinity" prefHeight="35.0" prefWidth="128.0" style="-fx-background-color: #0646A7;">
                     <font>
                         <Font name="System Bold" size="26.0" />
                     </font>
@@ -48,275 +49,258 @@
                         <PerspectiveTransform />
                     </effect>
                 </TextField>
-                <Text fill="WHITE" layoutX="292.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clients" wrappingWidth="121.04057632304063">
+                <Text fill="WHITE" layoutX="190.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clients" wrappingWidth="121.04057632304063">
                     <font>
                         <Font name="System Bold" size="27.0" />
                     </font>
                 </Text>
-                <TextField layoutX="76.0" layoutY="100.0" prefHeight="38.0" prefWidth="189.0" promptText="Rechercher" />
-                <Button layoutX="40.0" layoutY="101.0" prefHeight="38.0" prefWidth="38.0" />
-                <ImageView fitHeight="45.0" fitWidth="38.0" layoutX="38.0" layoutY="97.0">
-                    <image>
-                        <Image url="@../images/chercher.png" />
-                    </image>
-                </ImageView>
-                <Button layoutX="409.0" layoutY="104.0" mnemonicParsing="false" style="-fx-background-color: #146CDF;" text="Enregistrer Un nouveau Client" textFill="WHITE">
+                <Button layoutX="335.0" layoutY="25.0" mnemonicParsing="false" style="-fx-background-color: #146CDF;" text="Enregistrer Un nouveau Client" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="19.0" />
                     </font>
                 </Button>
-                <ListView layoutX="1.0" layoutY="183.0" prefHeight="364.0" prefWidth="715.0" />
-                <MenuButton id="menuButtonMain" layoutX="246.0" layoutY="188.0" mnemonicParsing="false" style="-fx-background-color: #BAB8B8;" text="Type des clients">
+            <ListView layoutX="12.0" layoutY="78.0" prefHeight="338.0" prefWidth="344.0" style="-fx-background-color: #D9D9D9;" />
+            <HBox alignment="CENTER" layoutX="30.0" layoutY="128.0" prefHeight="27.0" prefWidth="233.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" wrappingWidth="42.221221923828125">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Text>
+                  <TextField />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="7.0" layoutY="173.0" prefHeight="27.0" prefWidth="249.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prenom" wrappingWidth="66.03738784790039">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Text>
+                  <TextField prefHeight="25.0" prefWidth="146.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="-14.0" layoutY="216.0" prefHeight="27.0" prefWidth="292.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse" wrappingWidth="67.80143690109253">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Text>
+                  <TextField prefHeight="25.0" prefWidth="150.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="-12.0" layoutY="258.0" prefHeight="40.0" prefWidth="260.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Code Postale" wrappingWidth="59.86292004585266" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Text>
+                  <TextField prefHeight="25.0" prefWidth="113.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="-23.0" layoutY="308.0" prefHeight="40.0" prefWidth="260.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ville" wrappingWidth="43.10345959663391" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Text>
+                  <TextField prefHeight="25.0" prefWidth="73.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="133.0" layoutY="309.0" prefHeight="40.0" prefWidth="260.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pays" wrappingWidth="43.10345959663391" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Text>
+                  <TextField prefHeight="25.0" prefWidth="73.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="-5.0" layoutY="352.0" prefHeight="27.0" prefWidth="292.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Num" wrappingWidth="43.98524808883667">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Text>
+                  <TextField prefHeight="25.0" prefWidth="147.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="-5.0" layoutY="384.0" prefHeight="27.0" prefWidth="292.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="43.98524808883667">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Text>
+                  <TextField prefHeight="25.0" prefWidth="147.0" />
+               </children>
+            </HBox>
+            <ListView layoutX="365.0" layoutY="79.0" prefHeight="338.0" prefWidth="344.0" style="-fx-background-color: #D9D9D9;" />
+            <ListView layoutX="367.0" layoutY="78.0" prefHeight="30.0" prefWidth="344.0" style="-fx-background-color: #65A8FF63;" />
+            <Text fill="#032a64" layoutX="425.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations Réservation" wrappingWidth="253.5837405068918">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Text>
+            <ListView layoutX="14.0" layoutY="79.0" prefHeight="30.0" prefWidth="344.0" style="-fx-background-color: #65A8FF63;" />
+            <Text fill="#032a64" layoutX="76.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations Personnelles" wrappingWidth="253.5837405068918">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Text>
+            <HBox alignment="CENTER" layoutX="423.0" layoutY="127.0" prefHeight="27.0" prefWidth="263.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date d'entrée" wrappingWidth="105.77243423461914">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Text>
+                  <DatePicker prefHeight="25.0" prefWidth="143.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="430.0" layoutY="174.0" prefHeight="27.0" prefWidth="262.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date de sortie" wrappingWidth="112.35451889038086">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Text>
+                  <DatePicker prefHeight="25.0" prefWidth="167.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="332.0" layoutY="215.0" prefHeight="27.0" prefWidth="364.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de personnes" wrappingWidth="176.5925211906433">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Text>
+                  <TextField prefHeight="25.0" prefWidth="119.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="401.0" layoutY="299.0" prefHeight="40.0" prefWidth="260.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Type logement" wrappingWidth="112.6427013874054" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Text>
+                  <MenuButton mnemonicParsing="false" text="Selectionner">
                     <items>
-                        <MenuItem fx:id="menuItem1" text="Clients Actuels" />
-                        <MenuItem fx:id="menuItem2" text="Anciens Clients" />
-                        <MenuItem fx:id="menuItem3" text="Clients Enregistres" />
+                      <MenuItem mnemonicParsing="false" text="Action 1" />
+                      <MenuItem mnemonicParsing="false" text="Action 2" />
                     </items>
-                    <font>
-                        <Font name="System Bold" size="19.0" />
-                    </font>
-                </MenuButton>
-                <HBox id="#BAB8B8" layoutY="237.0" prefHeight="43.0" prefWidth="720.0" style="-fx-background-color: #BAB8B8;">
-                    <children>
-                        <TextField prefHeight="43.0" prefWidth="109.0" style="-fx-background-color: #BAB8B8#BAB8B8;" text="#">
-                            <font>
-                                <Font size="20.0" />
-                            </font>
-                        </TextField>
-                        <TextField prefHeight="31.0" prefWidth="112.0" style="-fx-background-color: #BAB8B8#BAB8B8;" text="Id">
-                            <font>
-                                <Font size="20.0" />
-                            </font>
-                        </TextField>
-                        <TextField prefHeight="43.0" prefWidth="138.0" style="-fx-background-color: #BAB8B8#BAB8B8;" text="Nom">
-                            <font>
-                                <Font size="20.0" />
-                            </font>
-                        </TextField>
-                        <TextField prefHeight="43.0" prefWidth="159.0" style="-fx-background-color: #BAB8B8#BAB8B8;" text="Prenom">
-                            <font>
-                                <Font size="20.0" />
-                            </font>
-                        </TextField>
-                        <TextField prefHeight="31.0" prefWidth="112.0" style="-fx-background-color: #BAB8B8#BAB8B8;" text="Email">
-                            <font>
-                                <Font size="20.0" />
-                            </font>
-                        </TextField>
-                        <TextField prefHeight="31.0" prefWidth="112.0" style="-fx-background-color: #BAB8B8#BAB8B8;" text="Tel">
-                            <font>
-                                <Font size="20.0" />
-                            </font>
-                        </TextField>
-                    </children>
-                </HBox>
-                <HBox id="#BAB8B8" layoutX="-2.0" layoutY="289.0" prefHeight="43.0" prefWidth="722.0" style="-fx-background-color: #BAB8B8;">
-                    <children>
-                        <TextField prefHeight="43.0" prefWidth="82.0" text="1">
-                            <font>
-                                <Font size="20.0" />
-                            </font>
-                        </TextField>
-                        <TextField prefHeight="43.0" prefWidth="127.0" text="SBB232">
-                            <font>
-                                <Font size="17.0" />
-                            </font>
-                        </TextField>
-                        <TextField prefHeight="43.0" prefWidth="136.0" text="Kireche">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                        </TextField>
-                        <TextField prefHeight="43.0" prefWidth="137.0" text="Kader">
-                            <font>
-                                <Font size="20.0" />
-                            </font>
-                        </TextField>
-                        <TextField prefHeight="43.0" prefWidth="179.0" text="ade.krc@gmail.com">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                        </TextField>
-                        <TextField prefHeight="43.0" prefWidth="120.0" text="0615797609">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                        </TextField>
-                    </children>
-                </HBox>
-                <HBox id="#BAB8B8" layoutX="-2.0" layoutY="333.0" prefHeight="43.0" prefWidth="722.0" style="-fx-background-color: #BAB8B8;">
-                    <children>
-                        <TextField prefHeight="43.0" prefWidth="82.0" text="1">
-                            <font>
-                                <Font size="20.0" />
-                            </font>
-                        </TextField>
-                        <TextField prefHeight="43.0" prefWidth="127.0" text="SBB232">
-                            <font>
-                                <Font size="17.0" />
-                            </font>
-                        </TextField>
-                        <TextField prefHeight="43.0" prefWidth="136.0" text="Kireche">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                        </TextField>
-                        <TextField prefHeight="43.0" prefWidth="137.0" text="Kader">
-                            <font>
-                                <Font size="20.0" />
-                            </font>
-                        </TextField>
-                        <TextField prefHeight="43.0" prefWidth="179.0" text="ade.krc@gmail.com">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                        </TextField>
-                        <TextField prefHeight="43.0" prefWidth="120.0" text="0615797609">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                        </TextField>
-                    </children>
-                </HBox>
-                <HBox id="#BAB8B8" layoutX="-2.0" layoutY="499.0" prefHeight="43.0" prefWidth="722.0" style="-fx-background-color: #BAB8B8;">
-                    <children>
-                        <TextField prefHeight="43.0" prefWidth="82.0" text="1">
-                            <font>
-                                <Font size="20.0" />
-                            </font>
-                        </TextField>
-                        <TextField prefHeight="43.0" prefWidth="127.0" text="SBB232">
-                            <font>
-                                <Font size="17.0" />
-                            </font>
-                        </TextField>
-                        <TextField prefHeight="43.0" prefWidth="136.0" text="Kireche">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                        </TextField>
-                        <TextField prefHeight="43.0" prefWidth="137.0" text="Kader">
-                            <font>
-                                <Font size="20.0" />
-                            </font>
-                        </TextField>
-                        <TextField prefHeight="43.0" prefWidth="179.0" text="ade.krc@gmail.com">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                        </TextField>
-                        <TextField prefHeight="43.0" prefWidth="120.0" text="0615797609">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                        </TextField>
-                    </children>
-                </HBox>
-                <HBox id="#BAB8B8" layoutX="-2.0" layoutY="459.0" prefHeight="43.0" prefWidth="722.0" style="-fx-background-color: #BAB8B8;">
-                    <children>
-                        <TextField prefHeight="43.0" prefWidth="82.0" text="1">
-                            <font>
-                                <Font size="20.0" />
-                            </font>
-                        </TextField>
-                        <TextField prefHeight="43.0" prefWidth="127.0" text="SBB232">
-                            <font>
-                                <Font size="17.0" />
-                            </font>
-                        </TextField>
-                        <TextField prefHeight="43.0" prefWidth="136.0" text="Kireche">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                        </TextField>
-                        <TextField prefHeight="43.0" prefWidth="137.0" text="Kader">
-                            <font>
-                                <Font size="20.0" />
-                            </font>
-                        </TextField>
-                        <TextField prefHeight="43.0" prefWidth="179.0" text="ade.krc@gmail.com">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                        </TextField>
-                        <TextField prefHeight="43.0" prefWidth="120.0" text="0615797609">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                        </TextField>
-                    </children>
-                </HBox>
-                <HBox id="#BAB8B8" layoutX="-2.0" layoutY="420.0" prefHeight="43.0" prefWidth="722.0" style="-fx-background-color: #BAB8B8;">
-                    <children>
-                        <TextField prefHeight="43.0" prefWidth="82.0" text="1">
-                            <font>
-                                <Font size="20.0" />
-                            </font>
-                        </TextField>
-                        <TextField prefHeight="43.0" prefWidth="127.0" text="SBB232">
-                            <font>
-                                <Font size="17.0" />
-                            </font>
-                        </TextField>
-                        <TextField prefHeight="43.0" prefWidth="136.0" text="Kireche">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                        </TextField>
-                        <TextField prefHeight="43.0" prefWidth="137.0" text="Kader">
-                            <font>
-                                <Font size="20.0" />
-                            </font>
-                        </TextField>
-                        <TextField prefHeight="43.0" prefWidth="179.0" text="ade.krc@gmail.com">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                        </TextField>
-                        <TextField prefHeight="43.0" prefWidth="120.0" text="0615797609">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                        </TextField>
-                    </children>
-                </HBox>
-                <HBox id="#BAB8B8" layoutX="-2.0" layoutY="376.0" prefHeight="43.0" prefWidth="722.0" style="-fx-background-color: #BAB8B8;">
-                    <children>
-                        <TextField prefHeight="43.0" prefWidth="82.0" text="1">
-                            <font>
-                                <Font size="20.0" />
-                            </font>
-                        </TextField>
-                        <TextField prefHeight="43.0" prefWidth="127.0" text="SBB232">
-                            <font>
-                                <Font size="17.0" />
-                            </font>
-                        </TextField>
-                        <TextField prefHeight="43.0" prefWidth="136.0" text="Kireche">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                        </TextField>
-                        <TextField prefHeight="43.0" prefWidth="137.0" text="Kader">
-                            <font>
-                                <Font size="20.0" />
-                            </font>
-                        </TextField>
-                        <TextField prefHeight="43.0" prefWidth="179.0" text="ade.krc@gmail.com">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                        </TextField>
-                        <TextField prefHeight="43.0" prefWidth="120.0" text="0615797609">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                        </TextField>
-                    </children>
-                </HBox>
+                  </MenuButton>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="347.0" layoutY="251.0" prefHeight="40.0" prefWidth="260.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enfants" wrappingWidth="53.87476086616516" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Text>
+                  <TextField prefHeight="25.0" prefWidth="73.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="492.0" layoutY="253.0" prefHeight="40.0" prefWidth="260.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adultes" wrappingWidth="54.95203137397766" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Text>
+                  <TextField prefHeight="25.0" prefWidth="73.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="417.0" layoutY="383.0" prefHeight="27.0" prefWidth="292.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID attribué" wrappingWidth="90.30232954025269">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Text>
+                  <TextField prefHeight="25.0" prefWidth="123.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="400.0" layoutY="332.0" prefHeight="40.0" prefWidth="260.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="N° Logement" wrappingWidth="112.6427013874054" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Text>
+                  <MenuButton mnemonicParsing="false" text="Selectionner">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                     </items>
+                  </MenuButton>
+               </children>
+            </HBox>
+            <ListView layoutX="11.0" layoutY="424.0" prefHeight="119.0" prefWidth="345.0" style="-fx-background-color: #D9D9D9;" />
+            <ListView layoutX="11.0" layoutY="422.0" prefHeight="30.0" prefWidth="344.0" style="-fx-background-color: #65A8FF63;" />
+            <Text fill="#032a64" layoutX="100.0" layoutY="444.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Code Promotionnel" wrappingWidth="253.5837405068918">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Text>
+            <HBox alignment="CENTER" layoutX="43.0" layoutY="474.0" prefHeight="27.0" prefWidth="249.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Code" wrappingWidth="66.03738784790039">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Text>
+                  <TextField prefHeight="25.0" prefWidth="146.0" />
+               </children>
+            </HBox>
+            <ListView layoutX="363.0" layoutY="423.0" prefHeight="119.0" prefWidth="347.0" style="-fx-background-color: #D9D9D9;" />
+            <ListView layoutX="365.0" layoutY="421.0" prefHeight="30.0" prefWidth="344.0" style="-fx-background-color: #65A8FF63;" />
+            <Text fill="#032a64" layoutX="450.0" layoutY="443.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Demandes Spécifiques" wrappingWidth="253.5837405068918">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="375.0" layoutY="477.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Commenatire :" wrappingWidth="118.21429792425647">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Text>
+            <TextField layoutX="490.0" layoutY="460.0" prefHeight="74.0" prefWidth="213.0" />
+            <ImageView fitHeight="40.0" fitWidth="28.0" layoutX="35.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/fiche.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="40.0" fitWidth="37.0" layoutX="37.0" layoutY="418.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/code_promo%201.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="28.0" fitWidth="33.0" layoutX="389.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/info.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="28.0" fitWidth="33.0" layoutX="392.0" layoutY="422.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/comment.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="28.0" fitWidth="33.0" layoutX="308.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/fleche.png" />
+               </image>
+            </ImageView>
 
             </children></Pane>
-        <Pane layoutX="1.0" layoutY="153.0" prefHeight="550.0" prefWidth="232.0" style="-fx-background-color: #3498db;">
+        <Pane layoutX="-3.0" layoutY="141.0" prefHeight="564.0" prefWidth="234.0" style="-fx-background-color: #3498db;">
             <children>
                 <StackPane layoutX="214.0" layoutY="-18.0" />
                 <StackPane layoutX="170.0" layoutY="-18.0" prefHeight="64.0" prefWidth="70.0">
@@ -326,7 +310,7 @@
                                 <Image url="@../images/fleche_gauche_retour.png" />
                             </image>
                         </ImageView>
-                        <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
+                        <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="0.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
                     </children>
                 </StackPane>
                 <Group layoutX="-2.0" layoutY="36.0">
@@ -343,6 +327,7 @@
                             </image>
                         </ImageView>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#004aadf5" height="41.0" layoutX="219.0" layoutY="6.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke-width: 0;" width="14.0" />
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                     </children>
                 </Group>
                 <Group layoutX="-4.0" layoutY="73.0">
@@ -451,20 +436,7 @@
                 <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
             </children>
         </StackPane>
-        <StackPane layoutX="-33.0" layoutY="-25.0">
-            <children>
-                <ImageView fitHeight="112.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/logo_avec_nom.png" />
-                    </image>
-                </ImageView>
-                <ImageView fitHeight="212.0" fitWidth="208.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/logo_avec_nom.png" />
-                    </image>
-                </ImageView>
-            </children>
-        </StackPane>
+        <StackPane layoutX="-33.0" layoutY="-25.0" />
         <StackPane layoutX="595.0" layoutY="75.0">
             <children>
                 <ImageView fitHeight="52.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
@@ -477,6 +449,11 @@
         </StackPane>
         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+          <ImageView fitHeight="212.0" fitWidth="208.0" layoutX="-41.0" layoutY="-28.0" pickOnBounds="true" preserveRatio="true">
+              <image>
+                  <Image url="@../images/logo_avec_nom.png" />
+              </image>
+          </ImageView>
 
 
     </children>
