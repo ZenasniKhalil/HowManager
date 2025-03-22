@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.JESIKOM.HowManager.controllers.MotDePasseOublieController">
+<AnchorPane prefHeight="700.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.JESIKOM.HowManager.controllers.IdentifiantOublieController">
 <children>
     <HBox layoutX="115.0" layoutY="89.0" />
     <HBox layoutX="116.0" layoutY="27.0" prefHeight="31.0" prefWidth="631.0" />
@@ -48,12 +48,12 @@
             <Image url="@../images/logo_avec_nom.png" />
         </image>
     </ImageView>
-    <Label layoutX="70.0" layoutY="178.0" text="Mot de passe oublié" textFill="#0646a7">
+    <Label layoutX="95.0" layoutY="178.0" text="Identifiant oublié" textFill="#0646a7">
         <font>
             <Font name="Berlin Sans FB Bold" size="36.0" />
         </font>
     </Label>
-    <Label layoutX="83.0" layoutY="231.0" text="Réinitialisez votre mot de passe en quelques clics" textFill="#0646a7">
+    <Label layoutX="86.0" layoutY="231.0" text="Réinitialisez votre identifiant en quelques clics" textFill="#0646a7">
         <font>
             <Font size="14.0" />
         </font>
@@ -63,7 +63,7 @@
             <Font size="18.0" />
         </font>
     </Label>
-    <Label layoutX="20.0" layoutY="271.0" text="Recevoir le code permettant de modifier le mot de passe par :" textFill="#0646a7">
+    <Label layoutX="20.0" layoutY="271.0" text="Recevoir le code permettant de modifier l'identifiant par :" textFill="#0646a7">
         <font>
             <Font size="16.0" />
         </font>
@@ -78,14 +78,14 @@
             <Font name="System Bold" size="18.0" />
         </font>
     </Button>
-      <RadioButton layoutX="22.0" layoutY="304.0" mnemonicParsing="false" text="SMS" textFill="#0646a7" />
-      <RadioButton layoutX="22.0" layoutY="325.0" mnemonicParsing="false" text="E-mail" textFill="#0646a7" />
-      <Label layoutX="22.0" layoutY="436.0" text="Retour" textFill="#0646a7" underline="true">
-         <font>
+    <RadioButton layoutX="22.0" layoutY="304.0" mnemonicParsing="false" text="SMS" textFill="#0646a7" />
+    <RadioButton layoutX="22.0" layoutY="325.0" mnemonicParsing="false" text="E-mail" textFill="#0646a7" />
+    <Label layoutX="22.0" layoutY="436.0" text="Retour" textFill="#0646a7" underline="true">
+        <font>
             <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
-      <ToggleButtonGroup selectionType="SINGLE" />
+        </font>
+    </Label>
+    <ToggleButtonGroup selectionType="SINGLE" />
 
 
 </children>

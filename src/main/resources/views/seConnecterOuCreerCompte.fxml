@@ -62,7 +62,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="64.0" layoutY="265.0" text="E-mail *" textFill="#0646a7">
+      <Label layoutX="64.0" layoutY="265.0" text="Identifiant *" textFill="#0646a7">
          <font>
             <Font size="18.0" />
          </font>
@@ -72,7 +72,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField layoutX="64.0" layoutY="293.0" prefHeight="39.0" prefWidth="338.0" promptText="E-mail">
+      <TextField layoutX="64.0" layoutY="293.0" prefHeight="39.0" prefWidth="338.0" promptText="Identifiant">
          <font>
             <Font size="18.0" />
          </font>
@@ -82,7 +82,7 @@
             <Font size="18.0" />
          </font>
       </PasswordField>
-      <Label layoutX="65.0" layoutY="425.0" text="E-mail oublié ?" textFill="#0646a7" underline="true">
+      <Label layoutX="65.0" layoutY="425.0" text="Identifiant oublié ?" textFill="#0646a7" underline="true">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>

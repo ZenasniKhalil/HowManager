@@ -46,7 +46,7 @@
             <Image url="@../images/logo_avec_nom.png" />
         </image>
     </ImageView>
-    <Label layoutX="66.0" layoutY="191.0" text="Mot de passse oublié" textFill="#0646a7">
+    <Label layoutX="66.0" layoutY="191.0" text="Mot de passe oublié" textFill="#0646a7">
         <font>
             <Font name="Berlin Sans FB Bold" size="36.0" />
         </font>
