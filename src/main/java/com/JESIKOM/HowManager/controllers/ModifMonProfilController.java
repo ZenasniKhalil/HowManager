@@ -23,7 +23,6 @@ public class ModifMonProfilController {
 
     @FXML
     public void initialize() {
-
         cdiItem.setOnAction(event -> menuButtonContrat.setText("CDI"));
         cddItem.setOnAction(event -> menuButtonContrat.setText("CDD"));
         caItem.setOnAction(event -> menuButtonContrat.setText("Contrat d'apprentissage"));

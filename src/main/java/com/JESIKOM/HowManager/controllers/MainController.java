@@ -49,9 +49,7 @@ public class MainController {
     public void initialize() {
         //Rendre l'image cliquable pour rouvrir la popup
         profileImage.setOnMouseClicked(event -> chargerPhotoProfil());
-
     }
-
 
 
     public void chargerPhotoProfil() {
