@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.PerspectiveTransform?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="700.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.JESIKOM.HowManager.controllers.MainController">
+    <children>
+        <HBox layoutX="115.0" layoutY="89.0">
+            <children>
+                <StackPane>
+                    <children>
+
+                        <Button prefHeight="26.0" prefWidth="27.0" />
+                        <ImageView fitHeight="26.0" fitWidth="27.0">
+                            <image>
+                                <Image url="@../images/chercher.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </StackPane>
+                <TextField prefHeight="26.0" prefWidth="378.0" promptText="Rechercher" />
+            </children>
+        </HBox>
+        <Pane layoutX="233.0" layoutY="153.0" prefHeight="550.0" prefWidth="716.0" style="-fx-background-color: lightgray;">
+            <children>
+                <TextField alignment="CENTER" layoutX="218.0" layoutY="13.0" minWidth="-Infinity" prefHeight="38.0" prefWidth="230.0" style="-fx-background-color: #0646A7;">
+                    <font>
+                        <Font name="System Bold" size="26.0" />
+                    </font>
+                </TextField>
+                <TextField editable="false" text="client">
+                    <effect>
+                        <PerspectiveTransform />
+                    </effect>
+                </TextField>
+                <Text fill="WHITE" layoutX="292.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clients" wrappingWidth="121.04057632304063">
+                    <font>
+                        <Font name="System Bold" size="27.0" />
+                    </font>
+                </Text>
+                <TextField layoutX="76.0" layoutY="100.0" prefHeight="38.0" prefWidth="189.0" promptText="Rechercher" />
+                <Button layoutX="40.0" layoutY="101.0" prefHeight="38.0" prefWidth="38.0" />
+                <ImageView fitHeight="45.0" fitWidth="38.0" layoutX="38.0" layoutY="97.0">
+                    <image>
+                        <Image url="@../images/chercher.png" />
+                    </image>
+                </ImageView>
+                <Button layoutX="409.0" layoutY="104.0" mnemonicParsing="false" style="-fx-background-color: #146CDF;" text="Enregistrer Un nouveau Client" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="19.0" />
+                    </font>
+                </Button>
+                <ListView layoutX="1.0" layoutY="183.0" prefHeight="364.0" prefWidth="715.0" />
+                <MenuButton id="menuButtonMain" layoutX="246.0" layoutY="188.0" mnemonicParsing="false" style="-fx-background-color: #BAB8B8;" text="Type des clients">
+                    <items>
+                        <MenuItem fx:id="menuItem1" text="Clients Actuels" />
+                        <MenuItem fx:id="menuItem2" text="Anciens Clients" />
+                        <MenuItem fx:id="menuItem3" text="Clients Enregistres" />
+                    </items>
+                    <font>
+                        <Font name="System Bold" size="19.0" />
+                    </font>
+                </MenuButton>
+                <HBox id="#BAB8B8" layoutY="237.0" prefHeight="43.0" prefWidth="720.0" style="-fx-background-color: #BAB8B8;">
+                    <children>
+                        <TextField prefHeight="43.0" prefWidth="109.0" style="-fx-background-color: #BAB8B8#BAB8B8;" text="#">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </TextField>
+                        <TextField prefHeight="31.0" prefWidth="112.0" style="-fx-background-color: #BAB8B8#BAB8B8;" text="Id">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </TextField>
+                        <TextField prefHeight="43.0" prefWidth="138.0" style="-fx-background-color: #BAB8B8#BAB8B8;" text="Nom">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </TextField>
+                        <TextField prefHeight="43.0" prefWidth="159.0" style="-fx-background-color: #BAB8B8#BAB8B8;" text="Prenom">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </TextField>
+                        <TextField prefHeight="31.0" prefWidth="112.0" style="-fx-background-color: #BAB8B8#BAB8B8;" text="Email">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </TextField>
+                        <TextField prefHeight="31.0" prefWidth="112.0" style="-fx-background-color: #BAB8B8#BAB8B8;" text="Tel">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </TextField>
+                    </children>
+                </HBox>
+                <HBox id="#BAB8B8" layoutX="-2.0" layoutY="289.0" prefHeight="43.0" prefWidth="722.0" style="-fx-background-color: #BAB8B8;">
+                    <children>
+                        <TextField prefHeight="43.0" prefWidth="82.0" text="1">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </TextField>
+                        <TextField prefHeight="43.0" prefWidth="127.0" text="SBB232">
+                            <font>
+                                <Font size="17.0" />
+                            </font>
+                        </TextField>
+                        <TextField prefHeight="43.0" prefWidth="136.0" text="Kireche">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </TextField>
+                        <TextField prefHeight="43.0" prefWidth="137.0" text="Kader">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </TextField>
+                        <TextField prefHeight="43.0" prefWidth="179.0" text="ade.krc@gmail.com">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </TextField>
+                        <TextField prefHeight="43.0" prefWidth="120.0" text="0615797609">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </TextField>
+                    </children>
+                </HBox>
+                <HBox id="#BAB8B8" layoutX="-2.0" layoutY="333.0" prefHeight="43.0" prefWidth="722.0" style="-fx-background-color: #BAB8B8;">
+                    <children>
+                        <TextField prefHeight="43.0" prefWidth="82.0" text="1">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </TextField>
+                        <TextField prefHeight="43.0" prefWidth="127.0" text="SBB232">
+                            <font>
+                                <Font size="17.0" />
+                            </font>
+                        </TextField>
+                        <TextField prefHeight="43.0" prefWidth="136.0" text="Kireche">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </TextField>
+                        <TextField prefHeight="43.0" prefWidth="137.0" text="Kader">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </TextField>
+                        <TextField prefHeight="43.0" prefWidth="179.0" text="ade.krc@gmail.com">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </TextField>
+                        <TextField prefHeight="43.0" prefWidth="120.0" text="0615797609">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </TextField>
+                    </children>
+                </HBox>
+                <HBox id="#BAB8B8" layoutX="-2.0" layoutY="499.0" prefHeight="43.0" prefWidth="722.0" style="-fx-background-color: #BAB8B8;">
+                    <children>
+                        <TextField prefHeight="43.0" prefWidth="82.0" text="1">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </TextField>
+                        <TextField prefHeight="43.0" prefWidth="127.0" text="SBB232">
+                            <font>
+                                <Font size="17.0" />
+                            </font>
+                        </TextField>
+                        <TextField prefHeight="43.0" prefWidth="136.0" text="Kireche">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </TextField>
+                        <TextField prefHeight="43.0" prefWidth="137.0" text="Kader">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </TextField>
+                        <TextField prefHeight="43.0" prefWidth="179.0" text="ade.krc@gmail.com">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </TextField>
+                        <TextField prefHeight="43.0" prefWidth="120.0" text="0615797609">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </TextField>
+                    </children>
+                </HBox>
+                <HBox id="#BAB8B8" layoutX="-2.0" layoutY="459.0" prefHeight="43.0" prefWidth="722.0" style="-fx-background-color: #BAB8B8;">
+                    <children>
+                        <TextField prefHeight="43.0" prefWidth="82.0" text="1">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </TextField>
+                        <TextField prefHeight="43.0" prefWidth="127.0" text="SBB232">
+                            <font>
+                                <Font size="17.0" />
+                            </font>
+                        </TextField>
+                        <TextField prefHeight="43.0" prefWidth="136.0" text="Kireche">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </TextField>
+                        <TextField prefHeight="43.0" prefWidth="137.0" text="Kader">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </TextField>
+                        <TextField prefHeight="43.0" prefWidth="179.0" text="ade.krc@gmail.com">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </TextField>
+                        <TextField prefHeight="43.0" prefWidth="120.0" text="0615797609">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </TextField>
+                    </children>
+                </HBox>
+                <HBox id="#BAB8B8" layoutX="-2.0" layoutY="420.0" prefHeight="43.0" prefWidth="722.0" style="-fx-background-color: #BAB8B8;">
+                    <children>
+                        <TextField prefHeight="43.0" prefWidth="82.0" text="1">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </TextField>
+                        <TextField prefHeight="43.0" prefWidth="127.0" text="SBB232">
+                            <font>
+                                <Font size="17.0" />
+                            </font>
+                        </TextField>
+                        <TextField prefHeight="43.0" prefWidth="136.0" text="Kireche">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </TextField>
+                        <TextField prefHeight="43.0" prefWidth="137.0" text="Kader">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </TextField>
+                        <TextField prefHeight="43.0" prefWidth="179.0" text="ade.krc@gmail.com">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </TextField>
+                        <TextField prefHeight="43.0" prefWidth="120.0" text="0615797609">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </TextField>
+                    </children>
+                </HBox>
+                <HBox id="#BAB8B8" layoutX="-2.0" layoutY="376.0" prefHeight="43.0" prefWidth="722.0" style="-fx-background-color: #BAB8B8;">
+                    <children>
+                        <TextField prefHeight="43.0" prefWidth="82.0" text="1">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </TextField>
+                        <TextField prefHeight="43.0" prefWidth="127.0" text="SBB232">
+                            <font>
+                                <Font size="17.0" />
+                            </font>
+                        </TextField>
+                        <TextField prefHeight="43.0" prefWidth="136.0" text="Kireche">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </TextField>
+                        <TextField prefHeight="43.0" prefWidth="137.0" text="Kader">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </TextField>
+                        <TextField prefHeight="43.0" prefWidth="179.0" text="ade.krc@gmail.com">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </TextField>
+                        <TextField prefHeight="43.0" prefWidth="120.0" text="0615797609">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </TextField>
+                    </children>
+                </HBox>
+
+            </children></Pane>
+        <Pane layoutX="1.0" layoutY="153.0" prefHeight="550.0" prefWidth="232.0" style="-fx-background-color: #3498db;">
+            <children>
+                <StackPane layoutX="214.0" layoutY="-18.0" />
+                <StackPane layoutX="170.0" layoutY="-18.0" prefHeight="64.0" prefWidth="70.0">
+                    <children>
+                        <ImageView fitHeight="75.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/fleche_gauche_retour.png" />
+                            </image>
+                        </ImageView>
+                        <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
+                    </children>
+                </StackPane>
+                <Group layoutX="-2.0" layoutY="36.0">
+                    <children>
+                        <Button layoutX="28.0" layoutY="6.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="191.0" style="-fx-background-color: #3477db;" text="TABLEAU DE BORD" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Button>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3477db" height="41.0" layoutX="2.0" layoutY="6.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke-width: 0;" width="27.0" />
+                        <ImageView fitHeight="55.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/tableau_de_bord.png" />
+                            </image>
+                        </ImageView>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#004aadf5" height="41.0" layoutX="219.0" layoutY="6.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke-width: 0;" width="14.0" />
+                    </children>
+                </Group>
+                <Group layoutX="-4.0" layoutY="73.0">
+                    <children>
+                        <Button layoutX="4.0" layoutY="21.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="218.0" style="-fx-background-color: #3477db;" text="RÉSERVATIONS" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Button>
+                        <ImageView fitHeight="65.0" fitWidth="75.0" layoutX="-4.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/reservations.png" />
+                            </image>
+                        </ImageView>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#004aadf5" height="41.0" layoutX="221.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke-width: 0;" width="14.0" />
+                    </children>
+                </Group>
+                <Group layoutX="-3.0" layoutY="126.0">
+                    <children>
+                        <Button layoutX="-40.0" layoutY="73.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="276.0" style="-fx-background-color: #3477db;" text="PERSONNEL" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Button>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#004aadf5" height="41.0" layoutX="221.0" layoutY="73.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke-width: 0;" width="14.0" />
+                        <ImageView fitHeight="102.0" fitWidth="75.0" layoutX="-9.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/personnel.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </Group>
+                <Group layoutX="-76.0" layoutY="130.0">
+                    <children>
+                        <Button layoutY="16.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="308.0" style="-fx-background-color: #3477db;" text="STOCKS" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Button>
+                        <ImageView fitHeight="65.0" fitWidth="65.0" layoutX="69.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/stocks.png" />
+                            </image>
+                        </ImageView>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#004aadf5" height="41.0" layoutX="293.0" layoutY="16.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke-width: 0;" width="14.0" />
+                    </children>
+                </Group>
+                <Button layoutX="9.0" layoutY="252.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="224.0" style="-fx-background-color: #3477db;" text="INFOS COURANTES" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Button>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3477db" height="41.0" layoutY="252.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke-width: 0;" width="27.0" />
+                <ImageView fitHeight="75.0" fitWidth="65.0" layoutX="-9.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/infos_courantes.png" />
+                    </image>
+                </ImageView>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#004aadf5" height="41.0" layoutX="218.0" layoutY="252.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke-width: 0;" width="14.0" />
+            </children></Pane>
+        <Group layoutX="757.0" layoutY="-9.0">
+            <children>
+                <StackPane layoutX="6.0" prefHeight="129.0" prefWidth="129.0">
+                    <children>
+                        <ImageView fitHeight="129.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/utilisateur.png" />
+                            </image>
+                        </ImageView>
+                        <Button fx:id="profileButton" mnemonicParsing="false" onAction="#chargerPhotoProfil" prefHeight="55.0" prefWidth="54.0" style="-fx-background-radius: 50; -fx-background-color: transparent; -fx-border-color: transparent;" />
+                        <ImageView fx:id="profileImage" fitHeight="55.0" fitWidth="54.0" layoutX="50" layoutY="50" />
+                    </children>
+                </StackPane>
+                <MenuButton contentDisplay="CENTER" layoutY="98.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="150.0" text="Sylvain ROY">
+                    <items>
+                        <MenuItem fx:id="voirMonProfilButton" mnemonicParsing="false" onAction="#voirMonProfil" text="Voir mon profil" />
+                        <SeparatorMenuItem mnemonicParsing="false" text="sep1" />
+                        <MenuItem mnemonicParsing="false" text="Me déconnecter" />
+                    </items>
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                    <graphic>
+                        <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
+                    </graphic>
+                </MenuButton>
+            </children>
+        </Group>
+        <StackPane layoutX="555.0" layoutY="76.0" style="-fx-background-color: transparent; -fx-border-color: transparent;">
+            <children>
+                <ImageView fitHeight="53.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/notifications.png" />
+                    </image>
+                </ImageView>
+                <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
+            </children>
+        </StackPane>
+        <StackPane layoutX="638.0" layoutY="79.0">
+            <children>
+                <ImageView fitHeight="46.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/messages.png" />
+                    </image>
+                </ImageView>
+                <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
+            </children>
+        </StackPane>
+        <StackPane layoutX="-33.0" layoutY="-25.0">
+            <children>
+                <ImageView fitHeight="112.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/logo_avec_nom.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="212.0" fitWidth="208.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/logo_avec_nom.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </StackPane>
+        <StackPane layoutX="595.0" layoutY="75.0">
+            <children>
+                <ImageView fitHeight="52.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/parametres.png" />
+                    </image>
+                </ImageView>
+                <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="54.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
+            </children>
+        </StackPane>
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+
+
+    </children>
+</AnchorPane>
