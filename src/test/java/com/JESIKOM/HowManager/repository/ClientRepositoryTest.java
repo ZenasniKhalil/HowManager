@@ -1,4 +1,4 @@
-/*package com.JESIKOM.HowManager.repository;
+package com.JESIKOM.HowManager.repository;
 
 
 import com.JESIKOM.HowManager.models.Client;
@@ -60,5 +60,3 @@ class ClientRepositoryTest {
         assertEquals("Dupont",clients.get(0).getNom());
     }
 }
-
-*/
