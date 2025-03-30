@@ -8,7 +8,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name="planningpattern")
+@Table(name="planning_pattern")
 public class PlanningPattern {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-incrémentation
@@ -20,7 +20,7 @@ public class PlanningPattern {
     @Column(columnDefinition = "TEXT")
     String description;
 
-    @ManyToMany(mappedBy = "planningpattern")
+    @OneToMany(mappedBy = "planningpattern")
     List<PlageHoraire> plageHoraires;
 
     @Lob
