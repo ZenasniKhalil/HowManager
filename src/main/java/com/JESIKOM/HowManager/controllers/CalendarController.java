@@ -19,6 +19,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.ZonedDateTime;
 import java.util.*;
+import org.springframework.stereotype.Controller;
+
+@Controller
 
 public class CalendarController implements Initializable {
 
@@ -164,7 +167,7 @@ public class CalendarController implements Initializable {
         Random random = new Random();
         for (int i = 0; i < 50; i++) {
             ZonedDateTime time = ZonedDateTime.of(year, month, random.nextInt(27)+1, 16,0,0,0,dateFocus.getZone());
-            calendarActivities.add(new CalendarActivity(time, "Hans", 111111));
+            calendarActivities.add(new CalendarActivity(time, "Kireche", 111111));
         }
 
         return createCalendarMap(calendarActivities);
