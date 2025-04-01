@@ -15,7 +15,5 @@ public class Tache  extends PlageHoraire{
     @Column(nullable = false)
     StatusTache status;
 
-    @ManyToOne
-    @JoinColumn(name = "planning_id", nullable = false)
-    private Planning planning;
+
 }

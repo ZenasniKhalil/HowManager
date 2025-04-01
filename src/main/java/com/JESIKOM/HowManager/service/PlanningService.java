@@ -1,41 +1,53 @@
 package com.JESIKOM.HowManager.service;
 
+import com.JESIKOM.HowManager.models.*;
 import com.JESIKOM.HowManager.models.Tache;
-import com.JESIKOM.HowManager.models.Planning;
-import com.JESIKOM.HowManager.models.Tache;
-import com.JESIKOM.HowManager.models.TypeMajoration;
 import com.JESIKOM.HowManager.repository.TacheRepository;
 import com.JESIKOM.HowManager.repository.PlanningRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class PlanningService {
     @Autowired
-    private PlanningRepository PlanningRepository;
+    private PlanningRepository planningRepository;
 
-    @Autowired
-    private TacheService TacheService;
-
-    @Autowired
-    private TacheRepository TacheRepository;
-
-    Planning getPlanningById(Long pid){return null;}
-
-    Planning addPlanning(Planning p) {return null;}
-
-    void deletePlanning(Long pid) {}
-
-    Planning updateSafePlanning(long pid, Planning updatedP) {return null;}
-
-    Tache   addIntoPlanningTache(long pPid, long pHid) {return null;
+    Optional<Planning> getPlanningById(Long id) {
+        return planningRepository.findById(id);
     }
 
-    void deleteTachefromPlanning(Long PPid,long PHid) {}
+    List<Planning> getAllPlannings() {
+        return planningRepository.findAll();
+    }
 
-    boolean isConflictingTacheinPlanning(Long PPid,long PHid) {return true;}
+    Planning addPlanning(Planning pP) {
+        return planningRepository.save(pP);
+    }
+
+    void deletePlanning(Long pid) {
+        planningRepository.deleteById(pid);
+    }
+
+    Planning   updatePlanning(long pid, Planning updatedP) throws IllegalArgumentException {
+        if (!isConflictingPlanning(updatedP)) {
+            return planningRepository.findById(pid).map(p->{
+                p.setPersonnel(updatedP.getPersonnel());
+                p.setAnnee(updatedP.getAnnee());
+                p.setTaches(updatedP.getTaches());
+                p.setNote(updatedP.getNote());
+                return planningRepository.save(p);
+            }).orElse(null);
+        }
+        else throw new IllegalArgumentException("Conflit dans updatedPlanning" );
+    }
+
+
+    private boolean isConflictingPlanning(Planning p) {return false;}
+
 
 
 

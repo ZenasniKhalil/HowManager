@@ -38,8 +38,5 @@ public class PlageHoraire {
     @Column(columnDefinition = "TEXT")
     private String notes;
 
-    @ManyToOne
-    @JoinColumn(name = "planning_pattern_id", nullable = false)
-    private PlanningPattern planningpattern;
 
 }

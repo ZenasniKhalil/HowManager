@@ -16,12 +16,14 @@ public class PlanningPattern {
 
     @Column(nullable = false,length =100)
     String nom;
-    @Lob
-    @Column(columnDefinition = "TEXT")
-    String description;
 
-    @OneToMany(mappedBy = "planningpattern")
-    List<PlageHoraire> plageHoraires;
+    @Column( length = 4000)  // Spécifier une longueur maximale
+    private String description;
+
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "planningPattern_id")
+    List<PlageHoraire> plagesHoraires;
 
     @Lob
     @Column(columnDefinition = "TEXT")

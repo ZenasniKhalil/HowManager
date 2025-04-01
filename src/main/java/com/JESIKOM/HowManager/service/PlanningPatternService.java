@@ -8,7 +8,9 @@ import com.JESIKOM.HowManager.repository.PlanningPatternRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class PlanningPatternService {
@@ -20,23 +22,44 @@ public class PlanningPatternService {
     @Autowired
     private PlageHoraireService plageHoraireService;
 
-    @Autowired
-    private PlageHoraireRepository plageHoraireRepository;
-
-    PlanningPattern   addPlanningPattern(PlanningPattern pP) {return null;}
-
-    void deletePlanningPattern(Long pid) {}
-
-    PlanningPattern   updateSafePlanningPattern(long pPid, PlanningPattern updatedPp) {return null;}
-
-    PlageHoraire   addIntoPlanningPlageHoraire(long pPid, long pHid) {return null;
+    Optional<PlanningPattern> getPlanningPatternById(Long id) {
+        return planningPatternRepository.findById(id);
     }
 
-    void deletePlageHorairefromPlanningPattern(Long PPid,long PHid) {}
+    List<PlanningPattern> getAllPlanningPatterns() {
+        return planningPatternRepository.findAll();
+    }
 
-    boolean isConflictingPlageHoraireinPlanningPattern(Long PPid,long PHid) {return true;}
+    List<PlanningPattern> getPlanningPatternsByDescContains(String description) {
+        return planningPatternRepository.findByDescriptionContainsIgnoreCase(description);
+    }
 
-    PlanningPattern updatePlanningPattern(long pid, PlanningPattern updatedPp) {return null;}
+
+    PlanningPattern   addPlanningPattern(PlanningPattern pP) {
+        return planningPatternRepository.save(pP);
+    }
+
+    void deletePlanningPattern(Long pid) {
+        planningPatternRepository.deleteById(pid);
+    }
+
+    PlanningPattern   updatePlanningPattern(long pPid, PlanningPattern updatedPp) throws IllegalArgumentException {
+        if (!isConflictingPlanningPattern(updatedPp)) {
+            return planningPatternRepository.findById(pPid).map(pp->{
+                pp.setNom(updatedPp.getNom());
+                pp.setDescription(updatedPp.getDescription());
+                pp.setPlagesHoraires(updatedPp.getPlagesHoraires());
+                pp.setNote(updatedPp.getNote());
+                return planningPatternRepository.save(pp);
+            }).orElse(null);
+        }
+        else throw new IllegalArgumentException("Conflit dans updatedPlanningPattern" );
+    }
+
+
+     private boolean isConflictingPlanningPattern(PlanningPattern pp) {return false;}
+
+
 
     float computeNombreHeuresPlanning(long pPid){return -1;}
 
@@ -46,3 +69,4 @@ public class PlanningPatternService {
 
 
 }
+

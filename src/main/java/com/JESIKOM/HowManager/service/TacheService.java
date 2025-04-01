@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class TacheService {
@@ -15,7 +16,8 @@ public class TacheService {
     @Autowired
     TacheRepository tacheRepository;
 
-    public Tache getTacheById(Long tid){return null;}
+    public Optional<Tache> getTacheById(Long tid){
+        return tacheRepository.findById(tid) ;}
 
     public Tache addTache(Tache t) {return null;}
 

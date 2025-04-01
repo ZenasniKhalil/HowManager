@@ -22,7 +22,8 @@ public class Planning {
     @Column(nullable = false)
     int semaine;
 
-    @OneToMany(mappedBy = "planning")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "planning_id")
     List<Tache> taches;
 
     @Lob
