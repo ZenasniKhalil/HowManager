@@ -57,7 +57,9 @@ public class PlanningPatternService {
     }
 
 
-     private boolean isConflictingPlanningPattern(PlanningPattern pp) {return false;}
+     private boolean isConflictingPlanningPattern(PlanningPattern pp) {
+return false;
+        }
 
 
 
