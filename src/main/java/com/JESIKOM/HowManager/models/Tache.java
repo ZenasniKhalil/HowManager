@@ -3,6 +3,8 @@ package com.JESIKOM.HowManager.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -11,6 +13,12 @@ import lombok.*;
 @Entity
 @Table(name = "tache")
 public class Tache  extends PlageHoraire{
+    @Column(nullable = false,name="date_debut")
+    LocalDate dateDebut;
+
+    @Column(nullable = false,name="date_fin")
+    LocalDate dateFin;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     StatusTache status;

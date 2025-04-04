@@ -2,19 +2,20 @@ package com.JESIKOM.HowManager.service;
 
 import com.JESIKOM.HowManager.models.*;
 import com.JESIKOM.HowManager.models.Tache;
-import com.JESIKOM.HowManager.repository.TacheRepository;
 import com.JESIKOM.HowManager.repository.PlanningRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+
+import java.util.*;
 
 @Service
 public class PlanningService {
     @Autowired
     private PlanningRepository planningRepository;
+
+    @Autowired
+    private TacheService tacheService;
 
     Optional<Planning> getPlanningById(Long id) {
         return planningRepository.findById(id);
@@ -46,15 +47,46 @@ public class PlanningService {
     }
 
 
-
+    /*
+        Check le chevauchement de taches,
+        l'egalité de semaine et l'egalité de l'année basé sur la semaine
+        ( semaine 1 du calendrier = semaine où le premier jeudi de janvier est dedans)
+     */
     private boolean isConflictingPlanning(Planning p) {
+        List<Tache> tachesTested = new LinkedList<>();
 
-        return false;}
+        for (Tache t : p.getTaches()) {
+            for (Tache t2 : tachesTested) {
+                if (tacheService.overlapsWith(t, t2) ||
+                        tacheService.getWeekOfTache(t)!=tacheService.getWeekOfTache(t2) ||
+                                tacheService.getWeekBasedYearOfTache(t)!=tacheService.getWeekBasedYearOfTache(t2))
+                            {
+                    return true;
+                }
+            }
+            tachesTested.add(t);
+        }
+        return false;
+    }
 
+    float computeNombreHeuresPlanning(Planning p){
+        float duree= 0;
+        for( Tache t : p.getTaches()) {
+            duree+=tacheService.computeDuree(t);
 
+        }
+        return duree;
+    }
 
+Map<TypeMajoration,Float> computeNbHeuresWithMajoration(Planning p){
+    Map<TypeMajoration,Float> res =new HashMap<>();
+    for( Tache t : p.getTaches()) {
+        Map<TypeMajoration,Float> mapToAdd = tacheService.computeHeuresMajorees(t);
+        mapToAdd.forEach((k, v) -> res.merge(k, v, Float::sum));
+    }
+    return res;
 
-    float computeNombreHeuresPlanning(long pid){return -1;}
-
-    Map<TypeMajoration,Float> computeNbHeuresWithMajoration(){return null;}
+    }
 }
+
+

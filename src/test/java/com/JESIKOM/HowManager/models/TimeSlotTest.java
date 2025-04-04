@@ -80,6 +80,17 @@ class TimeSlotTest {
     @Test
     void overlapsWith() {
         TimeSlot beforeAfter = new TimeSlot(beforeTime, afterTime);
+        TimeSlot beforeBefore = new TimeSlot(beforeTime, beforeTime.plusMinutes(10));
+        TimeSlot afterAfter = new TimeSlot(afterTime, afterTime.plusMinutes(10));
+        TimeSlot beforeWithin = new TimeSlot(beforeTime,withinTime);
+        TimeSlot withinAfter = new TimeSlot(withinTime,afterTime);
+        TimeSlot withinWithin = new TimeSlot(withinTime,withinTime.plusMinutes(10));
+        assertFalse(currentTs.overlapsWith(beforeBefore));
+        assertFalse(currentTs.overlapsWith(afterAfter));
+        assertTrue(currentTs.overlapsWith(beforeAfter));
+        assertTrue(currentTs.overlapsWith(beforeWithin));
+        assertTrue(currentTs.overlapsWith(withinAfter));
+        assertTrue(currentTs.overlapsWith(withinWithin));
     }
 }
 

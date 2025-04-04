@@ -1,12 +1,13 @@
 package com.JESIKOM.HowManager.service;
 
 import com.JESIKOM.HowManager.models.Personnel;
-import com.JESIKOM.HowManager.models.PlanningPattern;
+import com.JESIKOM.HowManager.models.Planning;
 import com.JESIKOM.HowManager.models.TypeMajoration;
 import com.JESIKOM.HowManager.repository.PersonnelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -15,18 +16,15 @@ import java.util.Optional;
 public class PersonnelService {
     @Autowired
     private PersonnelRepository personnelRepository;
-    @Autowired
-    private PlanningPatternService planningPatternService;
-    @Autowired
-    private PlanningService planningService;
-
 
     Map<TypeMajoration,Float> getHeuresEffectuees(int year, int month) {
         return null;
     }
+
     public Personnel addPersonnel(Personnel p ){
         return null;
     }
+
     public Optional<Personnel> getPersonnelByMatricule(Long matricule){
         return personnelRepository.findByMatricule(matricule);
     }
@@ -81,16 +79,17 @@ public class PersonnelService {
     public void deletePersonnelByMatricule(Long matricule){
         personnelRepository.deleteByMatricule(matricule);
     }
-    private boolean areConflictingPatternsofPersonnel(Personnel p){
-        return false;
 
-    }
-    private boolean areConflictingPatternsOfPersonnelByMatricule(Long pid) throws IllegalArgumentException{
-        Optional<Personnel> p = personnelRepository.findByMatricule(pid);
-        if(p.isPresent()){
-            return areConflictingPatternsofPersonnel(p.get());
+
+    private boolean areConflictingPlanningOfPersonnel(Personnel perso){
+        List<Planning> tested = new LinkedList<>();
+        for(Planning p : perso.getPlannings()){
+            for (Planning test : tested){
+                if (p.getAnnee()==test.getAnnee() && p.getSemaine()==test.getSemaine())
+                    return true;
+            }
+            tested.add(p);
         }
-        else throw new IllegalArgumentException("Mauvais ID");
-
+        return false;
     }
 }

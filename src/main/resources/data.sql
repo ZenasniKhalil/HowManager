@@ -59,14 +59,24 @@ INSERT INTO personnel (date_naissance, nom, prenom, genre, nationalite, phone, e
 VALUES ('1990-05-15', 'Doe', 'John', 'Homme', 'Française', '0600000001', 'john.doe@example.com', '123 Rue A', 'Actif', 'Technicien', '/contrat/john.pdf', 15.5, 35, 140),
        ('1985-10-20', 'Smith', 'Alice', 'Femme', 'Française', '0600000002', 'alice.smith@example.com', '456 Rue B', 'Actif', 'Manager', '/contrat/alice.pdf', 20, 40, 160);
 
--- Insérer 3 plages horaires (dont 2 qui se chevauchent)
-INSERT INTO plage_horaire (jour_debut, heure_debut, jour_fin, heure_fin, poste, lieu, notes)
-VALUES ('LUNDI', '08:00:00', 'LUNDI', '12:00:00', 'Technicien', 'Site A', 'Matinée'),
-       ('LUNDI', '11:00:00', 'LUNDI', '15:00:00', 'Technicien', 'Site B', 'Chevauchement matin-après-midi'), -- Se chevauche avec la première
-       ('MARDI', '09:00:00', 'MARDI', '13:00:00', 'Manager', 'Site C', 'Matinée complète'),
-       ('MERCREDI', '09:00:00', 'MERCREDI', '12:00:00', 'Technicien', 'Site X', 'Installation équipement' ),
-       ('MERCREDI', '10:30:00', 'MERCREDI', '14:00:00', 'Technicien', 'Site Y', 'Maintenance serveur'), -- Chevauchement avec la première
-       ('JEUDI', '14:00:00', 'JEUDI', '18:00:00', 'Manager', 'Bureau', 'Réunion de direction');
+INSERT INTO weekly_time_slot (start_day, start_time, end_day, end_time)
+VALUES
+    ('MONDAY', '08:00:00', 'MONDAY', '12:00:00'),
+    ('MONDAY', '11:00:00', 'MONDAY', '15:00:00'), -- Se chevauche avec la première
+    ('TUESDAY', '09:00:00', 'TUESDAY', '13:00:00'),
+    ('WEDNESDAY', '09:00:00', 'WEDNESDAY', '12:00:00'),
+    ('WEDNESDAY', '10:30:00', 'WEDNESDAY', '14:00:00'), -- Se chevauche avec la première
+    ('THURSDAY', '14:00:00', 'THURSDAY', '18:00:00');
+
+-- Associer les WeeklyTimeSlot aux PlageHoraire
+INSERT INTO plage_horaire (weekly_time_slot_id, poste, lieu, notes)
+VALUES
+    (1, 'Technicien', 'Site A', 'Matinée'),
+    (2, 'Technicien', 'Site B', 'Chevauchement matin-après-midi'),
+    (3, 'Manager', 'Site C', 'Matinée complète'),
+    (4, 'Technicien', 'Site X', 'Installation équipement'),
+    (5, 'Technicien', 'Site Y', 'Maintenance serveur'),
+    (6, 'Manager', 'Bureau', 'Réunion de direction');
 -- Insérer 2 planningPattern
 INSERT INTO planning_pattern (nom, description, note)
 VALUES ('Planning Semaine A', 'Régulier du lundi au vendredi', 'Note A'),
@@ -78,7 +88,7 @@ VALUES (1, 2024, 14, 'Planning semaine 14 pour John'),
        (2, 2024, 15, 'Planning semaine 15 pour Alice');
 
 -- Insérer 3 tâches (dont 2 qui se chevauchent)
-INSERT INTO tache (id, status)
-VALUES    (4, 'PLANIFIEE'),
-          (5, 'EN_COURS'),
-          (6, 'PLANIFIEE');
+INSERT INTO tache (id,date_debut,date_fin, status)
+VALUES    (4, '2025-01-01','2025-01-01','PLANIFIEE'),
+          (5, '2025-01-01','2025-01-01','EN_COURS'),
+          (6, '2025-01-02','2025-01-02','PLANIFIEE');
