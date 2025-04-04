@@ -1,0 +1,12 @@
+package com.JESIKOM.HowManager.models;
+
+public enum TypeMajoration {
+    HEURE_SUPPLEMENTAIRE_25,
+    HEURE_SUPPLEMENTAIRE_50,
+    TRAVAIL_NUIT,
+    TRAVAIL_DIMANCHE,
+    JOUR_FERIE,
+    JOUR_FERIE_1ER_MAI,
+    HORAIRE_COUPE,
+    HAUTE_SAISON
+}

@@ -1,0 +1,101 @@
+package com.JESIKOM.HowManager.models;
+
+import java.time.DayOfWeek;
+import java.time.Duration;
+import java.time.LocalTime;
+
+public class WeeklyTimeSlot {
+    public final DayOfWeek startDay;
+    public final DayOfWeek endDay;
+    public final LocalTime startTime;
+    public final LocalTime endTime;
+
+    public WeeklyTimeSlot(DayOfWeek startDay, LocalTime startTime, DayOfWeek endDay, LocalTime endTime) {
+        if (startDay.compareTo(endDay) > 0 || (startDay == endDay && startTime.isAfter(endTime))) {
+            throw new IllegalArgumentException("Start time must be before end time within the week");
+        }
+        this.startDay = startDay;
+        this.endDay = endDay;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
+
+    public boolean isBefore(DayOfWeek day, LocalTime time) {
+        return (endDay.compareTo(day) < 0) || (day == endDay && endTime.isBefore(time));
+    }
+
+    public boolean isAfter(DayOfWeek day, LocalTime time) {
+        return (startDay.compareTo(day) > 0) || (day == startDay && startTime.isAfter(time));
+    }
+
+    public boolean isWithin(DayOfWeek day, LocalTime time) {
+        return !isBefore(day, time) && !isAfter(day, time);
+    }
+
+    public boolean overlapsWith(WeeklyTimeSlot other) {
+
+        return !(this.endDay.compareTo(other.startDay) < 0 || this.startDay.compareTo(other.endDay) > 0) &&
+                !(this.endDay == other.startDay && this.endTime.isBefore(other.startTime)) &&
+                !(this.startDay == other.endDay && this.startTime.isAfter(other.endTime));
+    }
+
+    public float computeTime() {
+        if (startDay == endDay) {
+            long duration = Duration.between(startTime, endTime).toMinutes();
+            return duration % 60 + ((float) duration - ((float) duration % 60)) / 60;
+        }
+            else{
+                int counter = 0;
+                DayOfWeek day = startDay;
+                while (day.compareTo(endDay)<0) {
+                    counter++;
+                    day=day.plus(1);
+                }
+            long duration = Duration.between(LocalTime.of(0,0,0), endTime).toMinutes();
+                float hourDuration = (float) duration / 60 ;
+
+            return (float)(24.0*counter) + hourDuration;
+
+
+        }
+
+
+
+    }
+
+    public static WeeklyTimeSlot merge(WeeklyTimeSlot ts1, WeeklyTimeSlot ts2) {
+        if (ts1.startDay.compareTo(ts2.endDay) > 0 || ts2.startDay.compareTo(ts1.endDay) > 0) {
+            throw new IllegalArgumentException("Cannot merge non-overlapping weekly time slots");
+        }
+
+        DayOfWeek newStartDay= ts1.startDay.compareTo(ts2.startDay) < 0 ? ts1.startDay : ts2.startDay;
+
+
+        LocalTime newStartTime;
+        if (ts1.startDay.equals(ts2.startDay)) {
+            newStartTime = ts1.startTime.isBefore(ts2.startTime) ? ts1.startTime : ts2.startTime;
+        } else {
+            newStartTime = (newStartDay.equals(ts1.startDay)) ? ts1.startTime : ts2.startTime;
+        }
+
+        DayOfWeek newEndDay = ts1.endDay.compareTo(ts2.endDay) > 0 ? ts1.endDay : ts2.endDay;
+
+        LocalTime newEndTime;
+        if (ts1.endDay.equals(ts2.endDay)) {
+            newEndTime = ts1.endTime.isAfter(ts2.endTime) ? ts1.endTime : ts2.endTime;
+        } else {
+            if (newEndDay.equals(ts1.endDay)) {
+                newEndTime = ts1.endTime;
+            } else {
+                newEndTime = ts2.endTime;
+            }
+        }
+
+        return new WeeklyTimeSlot(newStartDay, newStartTime, newEndDay, newEndTime);
+    }
+
+    @Override
+    public String toString() {
+        return startDay + " " + startTime + " to " + endDay + " " + endTime;
+    }
+}

@@ -109,5 +109,8 @@ public class ClientServiceTest {
 
     @Test
     void getClientByEmail() {
+        when(clientRepository.findClientByEmailIgnoreCase(c1.getEmail())).thenReturn(List.of(c1));
+        assertEquals(List.of(c1),clientService.getClientByEmail(c1.getEmail()));
+
     }
 }
