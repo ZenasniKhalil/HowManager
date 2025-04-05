@@ -9,6 +9,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -69,41 +70,50 @@
          </children>
       </HBox>
 
-      <Pane layoutX="233.0" layoutY="153.0" prefHeight="550.0" prefWidth="716.0" style="-fx-background-color: transparent;">
-         <children>
+      <ScrollPane fitToHeight="false" fitToWidth="true" layoutX="233.0" layoutY="153.0" pannable="true" prefHeight="550.0" prefWidth="716.0" style="-fx-background-color: transparent;" vbarPolicy="AS_NEEDED">
+         <content>
+            <VBox spacing="20">
+               <VBox layoutX="333.0" layoutY="14.0">
+                  <HBox alignment="CENTER" spacing="10">
+                     <Button onAction="#previousYear" text="&lt;" />
+                     <Label fx:id="yearLabel" style="-fx-font-size: 20px;" text="2025" />
+                     <Button onAction="#nextYear" text="&gt;" />
+                  </HBox>
+                  <BarChart fx:id="barChart" layoutX="349.0" layoutY="-2.0" prefHeight="252.0" prefWidth="200.0" title="Réservations par mois">
+                     <xAxis>
+                        <CategoryAxis label="Mois" />
+                     </xAxis>
+                     <yAxis>
+                        <NumberAxis label="Nombre de réservations" />
+                     </yAxis>
+                  </BarChart>
+               </VBox>
 
-            <VBox layoutX="333.0" layoutY="14.0">
-               <HBox alignment="CENTER" spacing="10">
-                  <Button onAction="#previousYear" text="&lt;" />
-                  <Label fx:id="yearLabel" style="-fx-font-size: 20px;" text="2025" />
-                  <Button onAction="#nextYear" text="&gt;" />
-               </HBox>
-               <BarChart fx:id="barChart" layoutX="349.0" layoutY="-2.0" prefHeight="252.0" prefWidth="326.0" title="Réservations par mois">
-                  <xAxis>
-                     <CategoryAxis label="Mois" />
-                  </xAxis>
-                  <yAxis>
-                     <NumberAxis label="Nombre de réservations" />
-                  </yAxis>
-               </BarChart>
-            </VBox>
-            <VBox layoutY="14.0" prefHeight="245.0" prefWidth="295.0">
-               <children>
-                  <Label text="      Types de logements occupés" textFill="#4e4c4c">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <PieChart fx:id="pieChart" prefHeight="214.0" prefWidth="270.0" />
-               </children>
-            </VBox>
-            <ImageView fitHeight="46.0" fitWidth="46.0" layoutX="671.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/fleche_cercle_droite.png" />
-               </image>
-            </ImageView>
+               <VBox prefHeight="245.0" prefWidth="295.0">
+                  <children>
+                     <Label text="      Types de logements occupés" textFill="#4e4c4c">
+                        <font>
+                           <Font size="18.0" />
+                        </font>
+                     </Label>
+                     <PieChart fx:id="pieChart_logements_occupes" prefHeight="214.0" prefWidth="270.0" />
+                  </children>
+               </VBox>
 
-         </children></Pane>
+               <VBox prefHeight="245.0" prefWidth="295.0">
+                  <children>
+                     <Label text="   Types de logements disponibles" textFill="#4e4c4c">
+                        <font>
+                           <Font size="18.0" />
+                        </font>
+                     </Label>
+                     <PieChart fx:id="pieChart_logements_disponibles" prefHeight="214.0" prefWidth="270.0" />
+                  </children>
+               </VBox>
+            </VBox>
+         </content>
+      </ScrollPane>
+
       <Pane layoutX="1.0" layoutY="153.0" prefHeight="550.0" prefWidth="232.0" style="-fx-background-color: #3498db;">
          <children>
             <StackPane layoutX="214.0" layoutY="-18.0" />
