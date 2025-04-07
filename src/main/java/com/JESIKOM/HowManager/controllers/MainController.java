@@ -33,7 +33,8 @@ public class MainController {
     @FXML private MenuItem voirProfil;
     @FXML private MenuItem voirMonProfilButton;
     @FXML private MenuItem deconnexionItem;
-    @FXML private PieChart pieChart;
+    @FXML private PieChart pieChart_logements_occupes;
+    @FXML private PieChart pieChart_logements_disponibles;
     @FXML private BarChart<String, Number> barChart;
     @FXML private Label yearLabel;
     private int currentYear = 2025; // Année affichée par défaut
@@ -45,14 +46,14 @@ public class MainController {
 
     @FXML
     public void initialize() {
-        /*Diagramme circulaire début*/
+        /*Diagramme circulaire logements occupés début*/
         //Rendre l'image cliquable pour rouvrir la popup
         profileImage.setOnMouseClicked(event -> chargerPhotoProfil());
-        PieChart.Data slice1 = new PieChart.Data("Suite", 30);
-        PieChart.Data slice2 = new PieChart.Data("Double", 25);
-        PieChart.Data slice3 = new PieChart.Data("Simple", 45);
-        pieChart.getData().addAll(slice1, slice2, slice3);
-        /*Diagramme circulaire fin*/
+        PieChart.Data slice1_o = new PieChart.Data("Suite", 30);
+        PieChart.Data slice2_o = new PieChart.Data("Double", 25);
+        PieChart.Data slice3_o = new PieChart.Data("Simple", 45);
+        pieChart_logements_occupes.getData().addAll(slice1_o, slice2_o, slice3_o);
+        /*Diagramme circulaire logements occupés fin*/
 
         /*Histogramme début*/
         // Initialiser les données pour chaque année
@@ -61,6 +62,15 @@ public class MainController {
         reservationsData.put(2026, new int[]{130, 95, 105, 140, 160, 190, 180, 170, 160, 150, 140, 130});
         loadData(currentYear); // Charger les données de l'année par défaut
         /*Histogramme fin*/
+
+        /*Diagramme circulaire logements disponibles début*/
+        //Rendre l'image cliquable pour rouvrir la popup
+        profileImage.setOnMouseClicked(event -> chargerPhotoProfil());
+        PieChart.Data slice1_d = new PieChart.Data("Suite", 20);
+        PieChart.Data slice2_d = new PieChart.Data("Double", 50);
+        PieChart.Data slice3_d = new PieChart.Data("Simple", 30);
+        pieChart_logements_disponibles.getData().addAll(slice1_d, slice2_d, slice3_d);
+        /*Diagramme circulaire logements disponibles fin*/
     }
 
     private void loadData(int year) {
