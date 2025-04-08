@@ -12,6 +12,8 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -125,7 +127,61 @@
                      <Font size="18.0" />
                   </font>
                </Label>
-
+               <VBox alignment="CENTER" style="-fx-border-color: #3498db;">
+                  <children>
+                     <Button mnemonicParsing="false" style="-fx-background-color: #ffffff; -fx-border-color: #004aad;" text="Maintenance" textFill="#3498db" />
+                     <TableView prefHeight="200.0" prefWidth="200.0">
+                       <columns>
+                          <TableColumn fx:id="colDescription1" prefWidth="150.0" text="Description" />
+                          <TableColumn fx:id="colDate1" prefWidth="150.0" text="Date d'échéance" />
+                          <TableColumn fx:id="colPriorite1" prefWidth="120.0" text="Priorité" />
+                          <TableColumn fx:id="colStatut1" prefWidth="120.0" text="Statut" />
+                          <TableColumn fx:id="colAssigne1" prefWidth="150.0" text="Attribué à" />
+                       </columns>
+                     </TableView>
+                  </children>
+               </VBox>
+               <VBox alignment="CENTER" style="-fx-border-color: #3498db;">
+                  <children>
+                     <Button mnemonicParsing="false" style="-fx-border-color: #004aad;" text="Nettoyage" />
+                     <TableView prefHeight="200.0" prefWidth="200.0">
+                        <columns>
+                           <TableColumn fx:id="colDescription2" prefWidth="150.0" text="Description" />
+                           <TableColumn fx:id="colDate2" prefWidth="150.0" text="Date d'échéance" />
+                           <TableColumn fx:id="colPriorite2" prefWidth="120.0" text="Priorité" />
+                           <TableColumn fx:id="colStatut2" prefWidth="120.0" text="Statut" />
+                           <TableColumn fx:id="colAssigne2" prefWidth="150.0" text="Attribué à" />
+                        </columns>
+                     </TableView>
+                  </children>
+               </VBox>
+               <VBox alignment="CENTER" style="-fx-border-color: #3498db;">
+                  <children>
+                     <Button mnemonicParsing="false" text="Paiement" />
+                     <TableView prefHeight="200.0" prefWidth="200.0">
+                        <columns>
+                           <TableColumn fx:id="colDescription3" prefWidth="150.0" text="Description" />
+                           <TableColumn fx:id="colDate3" prefWidth="150.0" text="Date d'échéance" />
+                           <TableColumn fx:id="colPriorite3" prefWidth="120.0" text="Priorité" />
+                           <TableColumn fx:id="colStatut3" prefWidth="120.0" text="Statut" />
+                           <TableColumn fx:id="colAssigne3" prefWidth="150.0" text="Attribué à" />
+                        </columns>
+                     </TableView>
+                  </children>
+               </VBox>
+                     <Label style="-fx-background-color: #3498db; -fx-border-color: #000000;" text="   Check in/Check out   " textFill="WHITE">
+                        <font>
+                           <Font size="18.0" />
+                        </font>
+                     </Label>
+                     <TableView prefHeight="200.0" prefWidth="130.0">
+                        <columns>
+                           <TableColumn fx:id="colIdClient" prefWidth="150.0" text="Identifiant client" />
+                           <TableColumn fx:id="colIdLogement" prefWidth="150.0" text="N° de Logement" />
+                           <TableColumn fx:id="colNature" prefWidth="120.0" text="Nature" />
+                        </columns>
+                     </TableView>
+               
             </VBox>
          </content>
       </ScrollPane>
