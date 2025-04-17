@@ -3,7 +3,7 @@ package com.JESIKOM.HowManager.models;
 import jakarta.persistence.*;
 import lombok.*;
 
-@NoArgsConstructor
+
 @AllArgsConstructor
 @Entity
 @Table(name = "plage_horaire")

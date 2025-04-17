@@ -34,7 +34,8 @@ class PlanningPatternServiceTest {
      void setUp() {
         pp= new PlanningPattern();
         pp.setNom("Test");
-        pp.setPlagesHoraires();
+
+
 
     }
 
