@@ -5,10 +5,10 @@ import lombok.*;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
-@Setter
+
 @Entity
 @Table(name = "weekly_time_slot")
-@Getter
+
 @NoArgsConstructor
 @AllArgsConstructor
 public class WeeklyTimeSlot {
@@ -41,6 +41,38 @@ public class WeeklyTimeSlot {
     @Override
     public String toString() {
         return startDay + " " + startTime + " to " + endDay + " " + endTime;
+    }
+
+    public DayOfWeek getStartDay() {
+        return startDay;
+    }
+
+    public void setStartDay(DayOfWeek startDay) {
+        this.startDay = startDay;
+    }
+
+    public LocalTime getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(LocalTime startTime) {
+        this.startTime = startTime;
+    }
+
+    public DayOfWeek getEndDay() {
+        return endDay;
+    }
+
+    public void setEndDay(DayOfWeek endDay) {
+        this.endDay = endDay;
+    }
+
+    public LocalTime getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(LocalTime endTime) {
+        this.endTime = endTime;
     }
 }
 

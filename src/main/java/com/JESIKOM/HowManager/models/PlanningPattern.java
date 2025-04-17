@@ -29,6 +29,35 @@ public class PlanningPattern {
     @Column(columnDefinition = "TEXT")
     String note;
 
+    public String getNom() {
+        return nom;
+    }
 
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<PlageHoraire> getPlagesHoraires() {
+        return plagesHoraires;
+    }
+
+    public void setPlagesHoraires(List<PlageHoraire> plagesHoraires) {
+        this.plagesHoraires = plagesHoraires;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
 }

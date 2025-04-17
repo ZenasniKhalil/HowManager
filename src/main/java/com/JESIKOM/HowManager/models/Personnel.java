@@ -2,13 +2,14 @@ package com.JESIKOM.HowManager.models;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@Data
 @Entity
 @Table(name = "personnel")
 public class Personnel {
@@ -87,4 +88,172 @@ public class Personnel {
     @ManyToOne
     @JoinColumn(name = "superieur_hierarchique_id")
     private Personnel superieurHierarchique;
+
+    public Long getMatricule() {
+        return matricule;
+    }
+
+    public void setMatricule(Long matricule) {
+        this.matricule = matricule;
+    }
+
+    public LocalDate getDateNaissance() {
+        return dateNaissance;
+    }
+
+    public void setDateNaissance(LocalDate dateNaissance) {
+        this.dateNaissance = dateNaissance;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public String getNationalite() {
+        return nationalite;
+    }
+
+    public void setNationalite(String nationalite) {
+        this.nationalite = nationalite;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getPoste() {
+        return poste;
+    }
+
+    public void setPoste(String poste) {
+        this.poste = poste;
+    }
+
+    public String getLienContrat() {
+        return LienContrat;
+    }
+
+    public void setLienContrat(String lienContrat) {
+        LienContrat = lienContrat;
+    }
+
+    public List<String> getPersonnelDocuments() {
+        return personnelDocuments;
+    }
+
+    public void setPersonnelDocuments(List<String> personnelDocuments) {
+        this.personnelDocuments = personnelDocuments;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
+    public float getTauxHoraire() {
+        return tauxHoraire;
+    }
+
+    public void setTauxHoraire(float tauxHoraire) {
+        this.tauxHoraire = tauxHoraire;
+    }
+
+    public Map<TypeMajoration, Float> getMajorations() {
+        return majorations;
+    }
+
+    public void setMajorations(Map<TypeMajoration, Float> majorations) {
+        this.majorations = majorations;
+    }
+
+    public float getNbHeureSemaine() {
+        return nbHeureSemaine;
+    }
+
+    public void setNbHeureSemaine(float nbHeureSemaine) {
+        this.nbHeureSemaine = nbHeureSemaine;
+    }
+
+    public float getNbHeureMois() {
+        return nbHeureMois;
+    }
+
+    public void setNbHeureMois(float nbHeureMois) {
+        this.nbHeureMois = nbHeureMois;
+    }
+
+    public List<PlanningPattern> getPlanningPatterns() {
+        return planningPatterns;
+    }
+
+    public void setPlanningPatterns(List<PlanningPattern> planningPatterns) {
+        this.planningPatterns = planningPatterns;
+    }
+
+    public List<Planning> getPlannings() {
+        return plannings;
+    }
+
+    public void setPlannings(List<Planning> plannings) {
+        this.plannings = plannings;
+    }
+
+    public Personnel getSuperieurHierarchique() {
+        return superieurHierarchique;
+    }
+
+    public void setSuperieurHierarchique(Personnel superieurHierarchique) {
+        this.superieurHierarchique = superieurHierarchique;
+    }
 }
