@@ -65,7 +65,7 @@ public class WeeklyTimeSlotService {
     }
 
     public boolean isBefore(WeeklyTimeSlot slot, DayOfWeek day, LocalTime time) {
-        return (slot.getEndDay().compareTo(day) < 0) || (day == slot.getEndDay() && slot.getEndTime().isBefore(time));
+        return (slot.getEndDay().compareTo(day) < 0) || (day == slot.getEndDay() && (slot.getEndTime().isBefore(time)));
     }
 
     public boolean isAfter(WeeklyTimeSlot slot, DayOfWeek day, LocalTime time) {
@@ -76,8 +76,14 @@ public class WeeklyTimeSlotService {
         return !isBefore(slot, day, time) && !isAfter(slot, day, time);
     }
 
+    public boolean isFollowing( WeeklyTimeSlot slotFollower, WeeklyTimeSlot slotFollowed){
+        return  slotFollower.getStartDay().equals(slotFollowed.getEndDay()) &&
+                slotFollower.getStartTime().equals(slotFollowed.getEndTime());
+    }
+
     public boolean overlapsWith(WeeklyTimeSlot slot1, WeeklyTimeSlot slot2) {
-        return !(slot1.getEndDay().compareTo(slot2.getStartDay()) < 0 || slot1.getStartDay().compareTo(slot2.getEndDay()) > 0) &&
+        return  !(isFollowing(slot1,slot2)||isFollowing(slot2,slot1)) &&
+                !(slot1.getEndDay().compareTo(slot2.getStartDay()) < 0 || slot1.getStartDay().compareTo(slot2.getEndDay()) > 0) &&
                 !(slot1.getEndDay() == slot2.getStartDay() && slot1.getEndTime().isBefore(slot2.getStartTime())) &&
                 !(slot1.getStartDay() == slot2.getEndDay() && slot1.getStartTime().isAfter(slot2.getEndTime()));
     }

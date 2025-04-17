@@ -25,6 +25,8 @@ class WeeklyTimeSlotServiceTest {
 
     private WeeklyTimeSlot currentTs;
     private final LocalTime beforeTime = LocalTime.of(0, 0);
+    private final LocalTime sameEndTime = LocalTime.of(2, 0);
+    private final LocalTime sameBeginTime = LocalTime.of(1, 0);
     private final LocalTime afterTime = LocalTime.of(3, 0);
     private final LocalTime withinTime = LocalTime.of(1, 30);
     private final DayOfWeek beforeDate = DayOfWeek.MONDAY;
@@ -40,7 +42,6 @@ class WeeklyTimeSlotServiceTest {
     void mergeTest() {
         WeeklyTimeSlot nextTs = new WeeklyTimeSlot(sameDate, beforeTime, afterDate, beforeTime.plusMinutes(30));
         WeeklyTimeSlot ts = weeklyTimeSlotService.merge(currentTs, nextTs);
-
         assertEquals(currentTs.getStartDay(), ts.getStartDay());
         assertEquals(nextTs.getEndDay(), ts.getEndDay());
         assertEquals(nextTs.getStartTime(), ts.getStartTime());
@@ -49,12 +50,15 @@ class WeeklyTimeSlotServiceTest {
 
     @Test
     void isBeforeTest() {
+        assertFalse(weeklyTimeSlotService.isBefore(currentTs,sameDate,sameBeginTime));
+        assertFalse(weeklyTimeSlotService.isBefore(currentTs,sameDate,sameEndTime));
         assertFalse(weeklyTimeSlotService.isBefore(currentTs, sameDate, beforeTime));
         assertFalse(weeklyTimeSlotService.isBefore(currentTs, sameDate, withinTime));
         assertFalse(weeklyTimeSlotService.isBefore(currentTs, beforeDate, afterTime));
         assertTrue(weeklyTimeSlotService.isBefore(currentTs, afterDate, beforeTime));
         assertTrue(weeklyTimeSlotService.isBefore(currentTs, sameDate, afterTime));
     }
+
 
     @Test
     void isAfterTest() {
@@ -75,6 +79,17 @@ class WeeklyTimeSlotServiceTest {
     }
 
     @Test
+    void isfollowingTest(){
+        WeeklyTimeSlot slotTrue = new WeeklyTimeSlot(sameDate, sameEndTime, sameDate, sameEndTime.plusMinutes(30));
+        WeeklyTimeSlot falseDay = new WeeklyTimeSlot(afterDate, sameEndTime, sameDate, sameEndTime.plusMinutes(30));
+        WeeklyTimeSlot falseTime1 = new WeeklyTimeSlot(sameDate,beforeTime,sameDate,sameEndTime);
+        assertTrue(weeklyTimeSlotService.isFollowing(slotTrue, currentTs));
+        assertFalse(weeklyTimeSlotService.isFollowing(falseDay, currentTs));
+        assertFalse(weeklyTimeSlotService.isFollowing(falseTime1, currentTs));
+        assertFalse(weeklyTimeSlotService.isFollowing(currentTs,currentTs));
+    }
+
+    @Test
     void overlapsWithTest() {
         WeeklyTimeSlot beforeAfter = new WeeklyTimeSlot(beforeDate, beforeTime, sameDate, afterTime);
         WeeklyTimeSlot beforeBefore = new WeeklyTimeSlot(beforeDate, afterTime, sameDate, beforeTime);
@@ -82,6 +97,8 @@ class WeeklyTimeSlotServiceTest {
         WeeklyTimeSlot beforeWithin = new WeeklyTimeSlot(beforeDate, beforeTime, sameDate, withinTime);
         WeeklyTimeSlot withinAfter = new WeeklyTimeSlot(sameDate, withinTime, sameDate, afterTime);
         WeeklyTimeSlot withinWithin = new WeeklyTimeSlot(sameDate, withinTime, sameDate, withinTime.plusMinutes(10));
+        WeeklyTimeSlot followingOne = new WeeklyTimeSlot(sameDate, sameEndTime, sameDate, afterTime);
+        WeeklyTimeSlot previousOne = new WeeklyTimeSlot(sameDate,beforeTime,sameDate, sameBeginTime);
 
         assertFalse(weeklyTimeSlotService.overlapsWith(currentTs, beforeBefore));
         assertFalse(weeklyTimeSlotService.overlapsWith(currentTs, afterAfter));
@@ -89,6 +106,10 @@ class WeeklyTimeSlotServiceTest {
         assertTrue(weeklyTimeSlotService.overlapsWith(currentTs, beforeWithin));
         assertTrue(weeklyTimeSlotService.overlapsWith(currentTs, withinAfter));
         assertTrue(weeklyTimeSlotService.overlapsWith(currentTs, withinWithin));
+
+        //Following TS
+        assertFalse(weeklyTimeSlotService.overlapsWith(currentTs, followingOne));
+        assertFalse(weeklyTimeSlotService.overlapsWith(currentTs, previousOne));
     }
 
     @Test
