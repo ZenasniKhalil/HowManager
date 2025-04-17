@@ -2,10 +2,13 @@ package com.JESIKOM.HowManager.models;
 
 import jakarta.persistence.*;
 import javafx.css.CssParser;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
-
+@NoArgsConstructor
+@AllArgsConstructor
 @Data
 @Entity
 @Table(name="planning_pattern")
@@ -53,6 +56,10 @@ public class PlanningPattern {
         this.plagesHoraires = plagesHoraires;
     }
 
+    public void addPlageHoraire(PlageHoraire plageHoraire) {plagesHoraires.add(plageHoraire);}
+
+    public void removePlageHoraire(PlageHoraire plageHoraire) {plagesHoraires.remove(plageHoraire);}
+
     public String getNote() {
         return note;
     }
@@ -60,4 +67,5 @@ public class PlanningPattern {
     public void setNote(String note) {
         this.note = note;
     }
+
 }

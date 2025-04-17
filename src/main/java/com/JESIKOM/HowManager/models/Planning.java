@@ -61,6 +61,10 @@ public class Planning {
         this.taches = taches;
     }
 
+    public void addTache(Tache tache) {taches.add(tache);}
+
+    public void removeTache(Tache tache) {taches.remove(tache);}
+
     public String getNote() {
         return note;
     }

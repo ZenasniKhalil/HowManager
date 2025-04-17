@@ -192,6 +192,9 @@ public class Personnel {
     public void setPersonnelDocuments(List<String> personnelDocuments) {
         this.personnelDocuments = personnelDocuments;
     }
+    public void addPersonnelDocument(String lienDocument){personnelDocuments.add(lienDocument);}
+
+    public void removePersonnelDocument(String lienDocument){personnelDocuments.remove(lienDocument);}
 
     public String getNotes() {
         return notes;
@@ -240,6 +243,9 @@ public class Personnel {
     public void setPlanningPatterns(List<PlanningPattern> planningPatterns) {
         this.planningPatterns = planningPatterns;
     }
+    public void addPlanningPattern(PlanningPattern planningPattern) {planningPatterns.add(planningPattern);}
+
+    public void removePlanningPattern(PlanningPattern planningPattern){planningPatterns.remove(planningPattern);}
 
     public List<Planning> getPlannings() {
         return plannings;
@@ -248,6 +254,10 @@ public class Personnel {
     public void setPlannings(List<Planning> plannings) {
         this.plannings = plannings;
     }
+
+    public void addPlanning(Planning planning) {plannings.add(planning);}
+
+    public void removePlanning(Planning planning){plannings.remove(planning);}
 
     public Personnel getSuperieurHierarchique() {
         return superieurHierarchique;
