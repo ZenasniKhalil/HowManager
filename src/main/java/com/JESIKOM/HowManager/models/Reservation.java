@@ -41,6 +41,8 @@ public class Reservation {
 
     @Column(name = "acompte", nullable = false)
     private double acompte;
+    @Column(name = "code_promotion")
+    private String codePromotion;
 
     @Lob
     @Column(name = "remarque", columnDefinition = "TEXT")
@@ -132,9 +134,13 @@ public class Reservation {
         this.nombreAdultes = nombreAdultes;
     }
 
-    public int getNombreEnfants() {return nombreEnfants;}
+    public int getNombreEnfants() {
+        return nombreEnfants;
+    }
 
-    public void setNombreEnfants(int nombreEnfants){this.nombreEnfants = nombreEnfants;}
+    public void setNombreEnfants(int nombreEnfants) {
+        this.nombreEnfants = nombreEnfants;
+    }
 
     public StatutReservation getStatut() {
         return statut;
@@ -150,6 +156,14 @@ public class Reservation {
 
     public void setAcompte(double acompte) {
         this.acompte = acompte;
+    }
+
+    public String getCodePromotion() {
+        return codePromotion;
+    }
+
+    public void setCodePromotion(String codePromotion) {
+        this.codePromotion = codePromotion;
     }
 
     public String getRemarque() {
@@ -183,4 +197,7 @@ public class Reservation {
     public void setCheckOut(LocalDateTime checkOut) {
         this.checkOut = checkOut;
     }
+
 }
+
+
