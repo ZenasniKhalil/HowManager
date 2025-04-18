@@ -59,8 +59,8 @@
                         <Font name="System Bold" size="19.0" />
                     </font>
                 </Button>
-            <ListView layoutX="12.0" layoutY="78.0" prefHeight="338.0" prefWidth="344.0" style="-fx-background-color: #D9D9D9;" />
-            <HBox alignment="CENTER" layoutX="30.0" layoutY="128.0" prefHeight="27.0" prefWidth="233.0">
+            <ListView layoutX="8.0" layoutY="78.0" prefHeight="338.0" prefWidth="344.0" style="-fx-background-color: #D9D9D9;" />
+            <HBox alignment="CENTER" layoutX="31.0" layoutY="119.0" prefHeight="27.0" prefWidth="233.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" wrappingWidth="42.221221923828125">
                      <font>
@@ -70,7 +70,7 @@
                   <TextField />
                </children>
             </HBox>
-            <HBox alignment="CENTER" layoutX="7.0" layoutY="173.0" prefHeight="27.0" prefWidth="249.0">
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="150.0" prefHeight="27.0" prefWidth="249.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prenom" wrappingWidth="66.03738784790039">
                      <font>
@@ -80,17 +80,17 @@
                   <TextField prefHeight="25.0" prefWidth="146.0" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" layoutX="-14.0" layoutY="216.0" prefHeight="27.0" prefWidth="292.0">
+            <HBox alignment="CENTER" layoutX="6.0" layoutY="185.0" prefHeight="27.0" prefWidth="292.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse" wrappingWidth="67.80143690109253">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Text>
-                  <TextField prefHeight="25.0" prefWidth="150.0" />
+                  <TextField prefHeight="26.0" prefWidth="182.0" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" layoutX="-12.0" layoutY="258.0" prefHeight="40.0" prefWidth="260.0">
+            <HBox alignment="CENTER" layoutX="-9.0" layoutY="214.0" prefHeight="40.0" prefWidth="260.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Code Postale" wrappingWidth="59.86292004585266" HBox.hgrow="ALWAYS">
                      <font>
@@ -100,7 +100,7 @@
                   <TextField prefHeight="25.0" prefWidth="113.0" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" layoutX="-23.0" layoutY="308.0" prefHeight="40.0" prefWidth="260.0">
+            <HBox alignment="CENTER" layoutX="-20.0" layoutY="252.0" prefHeight="40.0" prefWidth="260.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ville" wrappingWidth="43.10345959663391" HBox.hgrow="ALWAYS">
                      <font>
@@ -110,7 +110,7 @@
                   <TextField prefHeight="25.0" prefWidth="73.0" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" layoutX="133.0" layoutY="309.0" prefHeight="40.0" prefWidth="260.0">
+            <HBox alignment="CENTER" layoutX="134.0" layoutY="253.0" prefHeight="40.0" prefWidth="260.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pays" wrappingWidth="43.10345959663391" HBox.hgrow="ALWAYS">
                      <font>
@@ -120,7 +120,7 @@
                   <TextField prefHeight="25.0" prefWidth="73.0" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" layoutX="-5.0" layoutY="352.0" prefHeight="27.0" prefWidth="292.0">
+            <HBox alignment="CENTER" layoutY="298.0" prefHeight="27.0" prefWidth="292.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Num" wrappingWidth="43.98524808883667">
                      <font>
@@ -130,7 +130,7 @@
                   <TextField prefHeight="25.0" prefWidth="147.0" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" layoutX="-5.0" layoutY="384.0" prefHeight="27.0" prefWidth="292.0">
+            <HBox alignment="CENTER" layoutY="336.0" prefHeight="27.0" prefWidth="292.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="43.98524808883667">
                      <font>
@@ -140,14 +140,14 @@
                   <TextField prefHeight="25.0" prefWidth="147.0" />
                </children>
             </HBox>
-            <ListView layoutX="365.0" layoutY="79.0" prefHeight="338.0" prefWidth="344.0" style="-fx-background-color: #D9D9D9;" />
-            <ListView layoutX="367.0" layoutY="78.0" prefHeight="30.0" prefWidth="344.0" style="-fx-background-color: #65A8FF63;" />
+            <ListView layoutX="362.0" layoutY="79.0" prefHeight="338.0" prefWidth="347.0" style="-fx-background-color: #D9D9D9;" />
+            <ListView layoutX="364.0" layoutY="78.0" prefHeight="30.0" prefWidth="347.0" style="-fx-background-color: #65A8FF63;" />
             <Text fill="#032a64" layoutX="425.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations Réservation" wrappingWidth="253.5837405068918">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Text>
-            <ListView layoutX="14.0" layoutY="79.0" prefHeight="30.0" prefWidth="344.0" style="-fx-background-color: #65A8FF63;" />
+            <ListView layoutX="7.0" layoutY="79.0" prefHeight="30.0" prefWidth="344.0" style="-fx-background-color: #65A8FF63;" />
             <Text fill="#032a64" layoutX="76.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations Personnelles" wrappingWidth="253.5837405068918">
                <font>
                   <Font name="System Bold" size="18.0" />
@@ -243,9 +243,9 @@
                   </MenuButton>
                </children>
             </HBox>
-            <ListView layoutX="11.0" layoutY="424.0" prefHeight="119.0" prefWidth="345.0" style="-fx-background-color: #D9D9D9;" />
+            <ListView layoutX="11.0" layoutY="424.0" prefHeight="119.0" prefWidth="344.0" style="-fx-background-color: #D9D9D9;" />
             <ListView layoutX="11.0" layoutY="422.0" prefHeight="30.0" prefWidth="344.0" style="-fx-background-color: #65A8FF63;" />
-            <Text fill="#032a64" layoutX="100.0" layoutY="444.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Code Promotionnel" wrappingWidth="253.5837405068918">
+            <Text fill="#032a64" layoutX="100.0" layoutY="443.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Code Promotionnel" wrappingWidth="239.0">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -267,7 +267,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Text>
-            <Text layoutX="375.0" layoutY="477.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Commenatire :" wrappingWidth="118.21429792425647">
+            <Text layoutX="375.0" layoutY="477.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Commentaires :" wrappingWidth="118.21429792425647">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
@@ -298,6 +298,16 @@
                   <Image url="@../images/fleche.png" />
                </image>
             </ImageView>
+            <HBox alignment="CENTER" layoutX="5.0" layoutY="366.0" prefHeight="40.0" prefWidth="260.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date naissance" wrappingWidth="64.66290783882141" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Text>
+                  <DatePicker prefHeight="26.0" prefWidth="146.0" />
+               </children>
+            </HBox>
 
             </children></Pane>
         <Pane layoutX="-3.0" layoutY="141.0" prefHeight="564.0" prefWidth="234.0" style="-fx-background-color: #3498db;">
