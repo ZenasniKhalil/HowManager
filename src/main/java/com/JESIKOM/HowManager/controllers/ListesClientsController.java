@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -115,20 +116,20 @@ public class ListesClientsController {
         }
     }
 
-    public void ouvrirPageCreerClient(){
+    public void ouvrirPageCreerClient() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/EnregistrerClient.fxml"));
-            Stage popupStage = new Stage();
-            popupStage.initModality(Modality.APPLICATION_MODAL);
-            popupStage.setScene(new Scene(loader.load()));
-            popupStage.setResizable(false);
+            Parent root = loader.load();
 
-            EnregistrerClientController popupController = loader.getController();
-            popupController.setListeClientController(this);
+            //Obtenir le Stage actuel
+            Stage stage = (Stage) tableClients.getScene().getWindow(); // ← adapte ici aussi
 
-            popupStage.showAndWait();
+            stage.setScene(new Scene(root)); // Remplacer le contenu
+            stage.show(); // si nécessaire
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
 }
