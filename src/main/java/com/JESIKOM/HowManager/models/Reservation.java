@@ -29,8 +29,11 @@ public class Reservation {
     @Column(name = "nombre_nuits", nullable = false)
     private int nombreNuits;
 
-    @Column(name = "nombre_personnes", nullable = false)
-    private int nombrePersonnes;
+    @Column(name = "nombre_adultes", nullable = false)
+    private int nombreAdultes;
+
+    @Column(name = "nombre_enfants", nullable = false)
+    private int nombreEnfants;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "statut", nullable = false)
@@ -38,6 +41,8 @@ public class Reservation {
 
     @Column(name = "acompte", nullable = false)
     private double acompte;
+    @Column(name = "code_promotion")
+    private String codePromotion;
 
     @Lob
     @Column(name = "remarque", columnDefinition = "TEXT")
@@ -53,14 +58,14 @@ public class Reservation {
     @Column(name = "check_out")
     private LocalDateTime checkOut;
 
-    public Reservation(Long id, Client client, Logement logement, LocalDateTime dateReservation, LocalDate dateDebut, int nombreNuits, int nombrePersonnes, StatutReservation statut, double acompte, String remarque, ModePaiement modePaiement, LocalDateTime checkIn, LocalDateTime checkOut) {
+    public Reservation(Long id, Client client, Logement logement, LocalDateTime dateReservation, LocalDate dateDebut, int nombreNuits, int nombreAdultes, int nombreEnfants, StatutReservation statut, double acompte, String remarque, ModePaiement modePaiement, LocalDateTime checkIn, LocalDateTime checkOut) {
         this.id = id;
         this.client = client;
         this.logement = logement;
         this.dateReservation = dateReservation;
         this.dateDebut = dateDebut;
         this.nombreNuits = nombreNuits;
-        this.nombrePersonnes = nombrePersonnes;
+        this.nombreAdultes = nombreAdultes;
         this.statut = statut;
         this.acompte = acompte;
         this.remarque = remarque;
@@ -121,12 +126,20 @@ public class Reservation {
         this.nombreNuits = nombreNuits;
     }
 
-    public int getNombrePersonnes() {
-        return nombrePersonnes;
+    public int getNombreAdultes() {
+        return nombreAdultes;
     }
 
-    public void setNombrePersonnes(int nombrePersonnes) {
-        this.nombrePersonnes = nombrePersonnes;
+    public void setNombreAdultes(int nombreAdultes) {
+        this.nombreAdultes = nombreAdultes;
+    }
+
+    public int getNombreEnfants() {
+        return nombreEnfants;
+    }
+
+    public void setNombreEnfants(int nombreEnfants) {
+        this.nombreEnfants = nombreEnfants;
     }
 
     public StatutReservation getStatut() {
@@ -143,6 +156,14 @@ public class Reservation {
 
     public void setAcompte(double acompte) {
         this.acompte = acompte;
+    }
+
+    public String getCodePromotion() {
+        return codePromotion;
+    }
+
+    public void setCodePromotion(String codePromotion) {
+        this.codePromotion = codePromotion;
     }
 
     public String getRemarque() {
@@ -176,4 +197,7 @@ public class Reservation {
     public void setCheckOut(LocalDateTime checkOut) {
         this.checkOut = checkOut;
     }
+
 }
+
+

@@ -5,7 +5,6 @@ import lombok.Data;
 
 import java.util.List;
 
-@Data
 @Entity
 @Table(name = "planning")
 public class Planning {
@@ -30,4 +29,47 @@ public class Planning {
     @Column(columnDefinition = "TEXT")
     String note;
 
+    public Personnel getPersonnel() {
+        return personnel;
+    }
+
+    public void setPersonnel(Personnel personnel) {
+        this.personnel = personnel;
+    }
+
+    public int getAnnee() {
+        return annee;
+    }
+
+    public void setAnnee(int annee) {
+        this.annee = annee;
+    }
+
+    public int getSemaine() {
+        return semaine;
+    }
+
+    public void setSemaine(int semaine) {
+        this.semaine = semaine;
+    }
+
+    public List<Tache> getTaches() {
+        return taches;
+    }
+
+    public void setTaches(List<Tache> taches) {
+        this.taches = taches;
+    }
+
+    public void addTache(Tache tache) {taches.add(tache);}
+
+    public void removeTache(Tache tache) {taches.remove(tache);}
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
 }
