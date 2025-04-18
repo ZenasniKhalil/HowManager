@@ -46,12 +46,12 @@ VALUES (4, 'BUNGALOW', 5, 1, 1, 'Bungalow en bord de plage, idéal pour des vaca
 -- Insertion des réservations dans H2 Database
 
 -- Réservation 1 : Client 1, Logement 1
-INSERT INTO reservation (client_id, logement_id, date_reservation, date_debut, nombre_nuits, nombre_personnes, statut, acompte, remarque, mode_paiement, check_in, check_out)
-VALUES (1, 1, '2025-03-12T14:30:00', '2025-04-01', 5, 2, 'CONFIRMEE', 150.0, 'Besoin d''un lit bébé.', 'CARTE_BANCAIRE', NULL, NULL);
+INSERT INTO reservation (client_id, logement_id, date_reservation, date_debut, nombre_nuits, nombre_adultes, nombre_enfants, statut, acompte, remarque, mode_paiement, check_in, check_out)
+VALUES (1, 1, '2025-03-12T14:30:00', '2025-04-01', 5, 2,0, 'CONFIRMEE', 150.0, 'Besoin d''un lit bébé.', 'CARTE_BANCAIRE', NULL, NULL);
 
 -- Réservation 2 : Client 2, Logement 3
-INSERT INTO reservation (client_id, logement_id, date_reservation, date_debut, nombre_nuits, nombre_personnes, statut, acompte, remarque, mode_paiement, check_in, check_out)
-VALUES (2, 3, '2025-03-12T15:00:00', '2025-04-15', 3, 1, 'EN_ATTENTE', 50.0, 'Arrivée tardive prévue.', 'MOBILE_MONEY', NULL, NULL);
+INSERT INTO reservation (client_id, logement_id, date_reservation, date_debut, nombre_nuits, nombre_adultes, nombre_enfants, statut, acompte, remarque, mode_paiement, check_in, check_out)
+VALUES (2, 3, '2025-03-12T15:00:00', '2025-04-15', 3, 1,1,'EN_ATTENTE', 50.0, 'Arrivée tardive prévue.', 'MOBILE_MONEY', NULL, NULL);
 
 --MANAGEMENT PART
 -- Insérer 2 personnels sans planning ni planningPattern

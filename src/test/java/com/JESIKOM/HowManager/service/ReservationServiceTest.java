@@ -52,7 +52,7 @@ class ReservationServiceTest {
         logement.setPrix(100.0);
 
         reservation = new Reservation(1L, client, logement, LocalDateTime.now(), LocalDate.of(2025, 4, 10),
-                5, 2, StatutReservation.CONFIRMEE, 50.0, "Aucun", ModePaiement.CARTE_BANCAIRE, null, null);
+                5, 2,0, StatutReservation.CONFIRMEE, 50.0, "Aucun", ModePaiement.CARTE_BANCAIRE, null, null);
     }
 
     @Test
@@ -93,7 +93,7 @@ class ReservationServiceTest {
     void testAddReservation_Failure_LodgingNotAvailable() {
         when(reservationRepository.findReservationsByLogement_Numero(logement.getNumero()))
                 .thenReturn(List.of(new Reservation(2L, client, logement, LocalDateTime.now(),
-                        LocalDate.of(2025, 4, 9), 5, 2, StatutReservation.CONFIRMEE, 50.0, "Aucun", ModePaiement.CARTE_BANCAIRE, null, null)));
+                        LocalDate.of(2025, 4, 9), 5, 2,0, StatutReservation.CONFIRMEE, 50.0, "Aucun", ModePaiement.CARTE_BANCAIRE, null, null)));
 
         Reservation savedReservation = reservationService.addReservation(reservation);
 
