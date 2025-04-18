@@ -209,7 +209,7 @@
          <content>
             <AnchorPane prefHeight="618.0" prefWidth="702.0">
                <children>
-                  <Button layoutX="140.0" layoutY="24.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="129.0" style="-fx-background-color: #146CDF;" text="Clients" textFill="WHITE">
+                  <Button fx:id="retourListeClients" layoutX="140.0" layoutY="24.0" mnemonicParsing="false" onAction="#ouvrirListeClients" prefHeight="24.0" prefWidth="129.0" style="-fx-background-color: #146CDF;" text="Clients" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>

@@ -39,6 +39,7 @@ public class MainController {
     @FXML private Label yearLabel;
     private int currentYear = 2025; // Année affichée par défaut
     private final Map<Integer, int[]> reservationsData = new HashMap<>();
+    @FXML private Button reservations;
 
     public MainController() {
         System.out.println("MainController instancié !");
@@ -214,6 +215,22 @@ public class MainController {
             popupController.setMainController(this);
 
             popupStage.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void voirClients(ActionEvent event){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/ListesClients.fxml"));
+            Parent root = loader.load();
+
+            //Obtenir le Stage actuel
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            stage.setScene(new Scene(root)); // Remplacer le contenu
+            stage.show(); // si nécessaire
+
         } catch (Exception e) {
             e.printStackTrace();
         }
