@@ -46,9 +46,10 @@ public class MainController {
 
     @FXML
     public void initialize() {
-        /*Diagramme circulaire logements occupés début*/
         //Rendre l'image cliquable pour rouvrir la popup
         profileImage.setOnMouseClicked(event -> chargerPhotoProfil());
+
+        /*Diagramme circulaire logements occupés début*/
         PieChart.Data slice1_o = new PieChart.Data("Suite", 30);
         PieChart.Data slice2_o = new PieChart.Data("Double", 25);
         PieChart.Data slice3_o = new PieChart.Data("Simple", 45);
@@ -64,13 +65,12 @@ public class MainController {
         /*Histogramme fin*/
 
         /*Diagramme circulaire logements disponibles début*/
-        //Rendre l'image cliquable pour rouvrir la popup
-        profileImage.setOnMouseClicked(event -> chargerPhotoProfil());
         PieChart.Data slice1_d = new PieChart.Data("Suite", 20);
         PieChart.Data slice2_d = new PieChart.Data("Double", 50);
         PieChart.Data slice3_d = new PieChart.Data("Simple", 30);
         pieChart_logements_disponibles.getData().addAll(slice1_d, slice2_d, slice3_d);
         /*Diagramme circulaire logements disponibles fin*/
+
     }
 
     private void loadData(int year) {

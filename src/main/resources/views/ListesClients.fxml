@@ -6,6 +6,8 @@
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.PerspectiveTransform?>
 <?import javafx.scene.image.Image?>
@@ -18,7 +20,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="700.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.JESIKOM.HowManager.controllers.MainController">
+<AnchorPane prefHeight="700.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.JESIKOM.HowManager.controllers.ListesClientsController">
     <children>
         <HBox layoutX="115.0" layoutY="89.0">
             <children>
@@ -60,7 +62,7 @@
                   <Image url="@../images/chercher.png" />
                </image>
             </ImageView>
-            <Button layoutX="409.0" layoutY="104.0" mnemonicParsing="false" style="-fx-background-color: #146CDF;" text="Enregistrer Un nouveau Client" textFill="WHITE">
+            <Button layoutX="409.0" layoutY="104.0" mnemonicParsing="false" style="-fx-background-color: #146CDF;" text="Enregistrer un nouveau Client" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font>
@@ -76,244 +78,16 @@
                   <Font name="System Bold" size="19.0" />
                </font>
             </MenuButton>
-              <HBox id="#BAB8B8" layoutY="237.0" prefHeight="43.0" prefWidth="720.0" style="-fx-background-color: #BAB8B8;">
-               <children>
-                  <TextField prefHeight="43.0" prefWidth="109.0" style="-fx-background-color: #BAB8B8#BAB8B8;" text="#">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefHeight="31.0" prefWidth="112.0" style="-fx-background-color: #BAB8B8#BAB8B8;" text="Id">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefHeight="43.0" prefWidth="138.0" style="-fx-background-color: #BAB8B8#BAB8B8;" text="Nom">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefHeight="43.0" prefWidth="159.0" style="-fx-background-color: #BAB8B8#BAB8B8;" text="Prenom">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefHeight="31.0" prefWidth="112.0" style="-fx-background-color: #BAB8B8#BAB8B8;" text="Email">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefHeight="31.0" prefWidth="112.0" style="-fx-background-color: #BAB8B8#BAB8B8;" text="Tel">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </TextField>
-               </children>
-            </HBox>
-            <HBox id="#BAB8B8" layoutX="-2.0" layoutY="289.0" prefHeight="43.0" prefWidth="722.0" style="-fx-background-color: #BAB8B8;">
-               <children>
-                  <TextField prefHeight="43.0" prefWidth="82.0" text="1">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefHeight="43.0" prefWidth="127.0" text="SBB232">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefHeight="43.0" prefWidth="136.0" text="Kireche">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefHeight="43.0" prefWidth="137.0" text="Kader">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefHeight="43.0" prefWidth="179.0" text="ade.krc@gmail.com">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefHeight="43.0" prefWidth="120.0" text="0615797609">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </TextField>
-               </children>
-            </HBox>
-            <HBox id="#BAB8B8" layoutX="-2.0" layoutY="333.0" prefHeight="43.0" prefWidth="722.0" style="-fx-background-color: #BAB8B8;">
-               <children>
-                  <TextField prefHeight="43.0" prefWidth="82.0" text="1">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefHeight="43.0" prefWidth="127.0" text="SBB232">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefHeight="43.0" prefWidth="136.0" text="Kireche">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefHeight="43.0" prefWidth="137.0" text="Kader">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefHeight="43.0" prefWidth="179.0" text="ade.krc@gmail.com">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefHeight="43.0" prefWidth="120.0" text="0615797609">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </TextField>
-               </children>
-            </HBox>
-            <HBox id="#BAB8B8" layoutX="-2.0" layoutY="499.0" prefHeight="43.0" prefWidth="722.0" style="-fx-background-color: #BAB8B8;">
-               <children>
-                  <TextField prefHeight="43.0" prefWidth="82.0" text="1">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefHeight="43.0" prefWidth="127.0" text="SBB232">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefHeight="43.0" prefWidth="136.0" text="Kireche">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefHeight="43.0" prefWidth="137.0" text="Kader">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefHeight="43.0" prefWidth="179.0" text="ade.krc@gmail.com">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefHeight="43.0" prefWidth="120.0" text="0615797609">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </TextField>
-               </children>
-            </HBox>
-            <HBox id="#BAB8B8" layoutX="-2.0" layoutY="459.0" prefHeight="43.0" prefWidth="722.0" style="-fx-background-color: #BAB8B8;">
-               <children>
-                  <TextField prefHeight="43.0" prefWidth="82.0" text="1">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefHeight="43.0" prefWidth="127.0" text="SBB232">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefHeight="43.0" prefWidth="136.0" text="Kireche">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefHeight="43.0" prefWidth="137.0" text="Kader">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefHeight="43.0" prefWidth="179.0" text="ade.krc@gmail.com">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefHeight="43.0" prefWidth="120.0" text="0615797609">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </TextField>
-               </children>
-            </HBox>
-            <HBox id="#BAB8B8" layoutX="-2.0" layoutY="420.0" prefHeight="43.0" prefWidth="722.0" style="-fx-background-color: #BAB8B8;">
-               <children>
-                  <TextField prefHeight="43.0" prefWidth="82.0" text="1">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefHeight="43.0" prefWidth="127.0" text="SBB232">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefHeight="43.0" prefWidth="136.0" text="Kireche">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefHeight="43.0" prefWidth="137.0" text="Kader">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefHeight="43.0" prefWidth="179.0" text="ade.krc@gmail.com">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefHeight="43.0" prefWidth="120.0" text="0615797609">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </TextField>
-               </children>
-            </HBox>
-            <HBox id="#BAB8B8" layoutX="-2.0" layoutY="376.0" prefHeight="43.0" prefWidth="722.0" style="-fx-background-color: #BAB8B8;">
-               <children>
-                  <TextField prefHeight="43.0" prefWidth="82.0" text="1">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefHeight="43.0" prefWidth="127.0" text="SBB232">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefHeight="43.0" prefWidth="136.0" text="Kireche">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefHeight="43.0" prefWidth="137.0" text="Kader">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefHeight="43.0" prefWidth="179.0" text="ade.krc@gmail.com">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefHeight="43.0" prefWidth="120.0" text="0615797609">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </TextField>
-               </children>
-            </HBox>
+             <TableView fx:id="tableClients" layoutX="9.0" layoutY="231.0" prefHeight="302.0" prefWidth="698.0">
+                 <columns>
+                     <TableColumn fx:id="colID" prefWidth="200" text="ID" />
+                     <TableColumn fx:id="colNom" prefWidth="200" text="Nom" />
+                     <TableColumn fx:id="colPrenom" prefWidth="200" text="Prénom" />
+                     <TableColumn fx:id="colEmail" prefWidth="200" text="Email" />
+                     <TableColumn fx:id="colTelephone" prefWidth="200" text="Téléphone" />
+                     <TableColumn fx:id="colRemarque" prefWidth="200" text="Remarque" />
+                 </columns>
+             </TableView>
 
          </children></Pane>
         <Pane layoutX="1.0" layoutY="153.0" prefHeight="550.0" prefWidth="232.0" style="-fx-background-color: #3498db;">
@@ -347,7 +121,7 @@
                 </Group>
                 <Group layoutX="-4.0" layoutY="73.0">
                     <children>
-                        <Button layoutX="4.0" layoutY="21.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="218.0" style="-fx-background-color: #3477db;" text="RÉSERVATIONS" textFill="WHITE">
+                        <Button layoutX="4.0" layoutY="21.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="218.0" style="-fx-background-color: #004aad;" text="RÉSERVATIONS" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>
