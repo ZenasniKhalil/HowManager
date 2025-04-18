@@ -114,4 +114,21 @@ public class ListesClientsController {
             e.printStackTrace();
         }
     }
+
+    public void ouvrirPageCreerClient(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/EnregistrerClient.fxml"));
+            Stage popupStage = new Stage();
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+            popupStage.setScene(new Scene(loader.load()));
+            popupStage.setResizable(false);
+
+            EnregistrerClientController popupController = loader.getController();
+            popupController.setListeClientController(this);
+
+            popupStage.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

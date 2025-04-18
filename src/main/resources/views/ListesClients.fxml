@@ -62,7 +62,7 @@
                   <Image url="@../images/chercher.png" />
                </image>
             </ImageView>
-            <Button layoutX="409.0" layoutY="104.0" mnemonicParsing="false" style="-fx-background-color: #146CDF;" text="Enregistrer un nouveau Client" textFill="WHITE">
+            <Button fx:id="enregistrerNouveauClient" layoutX="409.0" layoutY="104.0" mnemonicParsing="false" onAction="#ouvrirPageCreerClient" style="-fx-background-color: #146CDF;" text="Enregistrer un nouveau Client" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font>
