@@ -61,6 +61,14 @@ public class Client {
         this.remarque = remarque;
     }
 
+    public Client(String nom, String prenom, String telephone, String email, String remarque) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.telephone = telephone;
+        this.email = email;
+        this.remarque = remarque;
+    }
+
     public Long getId() {
         return id;
     }
