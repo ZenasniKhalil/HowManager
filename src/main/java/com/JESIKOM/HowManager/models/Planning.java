@@ -3,6 +3,7 @@ package com.JESIKOM.HowManager.models;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -28,6 +29,11 @@ public class Planning {
     @Lob
     @Column(columnDefinition = "TEXT")
     String note;
+
+
+    public Planning(){
+        taches= new ArrayList<>();
+    }
 
     public Personnel getPersonnel() {
         return personnel;

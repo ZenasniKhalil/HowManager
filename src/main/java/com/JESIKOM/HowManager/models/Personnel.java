@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -88,6 +89,13 @@ public class Personnel {
     @ManyToOne
     @JoinColumn(name = "superieur_hierarchique_id")
     private Personnel superieurHierarchique;
+
+    public Personnel() {
+        planningPatterns=new ArrayList<>();
+        plannings = new ArrayList<>();
+        personnelDocuments = new ArrayList<>();
+        majorations = new HashMap<>();
+    }
 
     public Long getMatricule() {
         return matricule;

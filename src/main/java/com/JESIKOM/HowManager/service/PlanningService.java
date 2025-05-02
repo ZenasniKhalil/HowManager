@@ -25,8 +25,12 @@ public class PlanningService {
         return planningRepository.findAll();
     }
 
-    Planning addPlanning(Planning pP) {
-        return planningRepository.save(pP);
+    Planning addPlanning(Planning pP) throws IllegalArgumentException {
+        if (isConflictingPlanning(pP)) {
+            throw new IllegalArgumentException("Conflit dans le planning");
+        }
+        else
+            return planningRepository.save(pP);
     }
 
     void deletePlanning(Long pid) {
@@ -56,13 +60,13 @@ public class PlanningService {
         List<Tache> tachesTested = new LinkedList<>();
 
         for (Tache t : p.getTaches()) {
+            if (tacheService.getWeekOfTache(t)!=p.getSemaine() || tacheService.getWeekBasedYearOfTache(t)!=p.getSemaine()) {
+                System.out.println(  "semaine p :"+p.getSemaine()+"semaine t"+tacheService.getWeekOfTache(t));
+                return true;
+            }
             for (Tache t2 : tachesTested) {
-                if (tacheService.overlapsWith(t, t2) ||
-                        tacheService.getWeekOfTache(t)!=tacheService.getWeekOfTache(t2) ||
-                                tacheService.getWeekBasedYearOfTache(t)!=tacheService.getWeekBasedYearOfTache(t2))
-                            {
+                if (tacheService.overlapsWith(t, t2))
                     return true;
-                }
             }
             tachesTested.add(t);
         }
