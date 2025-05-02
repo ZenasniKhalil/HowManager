@@ -48,9 +48,11 @@ public class ReservationService implements IReservationService {
             reservation.setDateReservation(updatedReservation.getDateReservation());
             reservation.setDateDebut(updatedReservation.getDateDebut());
             reservation.setNombreNuits(updatedReservation.getNombreNuits());
-            reservation.setNombrePersonnes(updatedReservation.getNombrePersonnes());
+            reservation.setNombreAdultes(updatedReservation.getNombreAdultes());
+            reservation.setNombreEnfants(updatedReservation.getNombreEnfants());
             reservation.setStatut(updatedReservation.getStatut());
             reservation.setAcompte(updatedReservation.getAcompte());
+            reservation.setCodePromotion(updatedReservation.getCodePromotion());
             reservation.setRemarque(updatedReservation.getRemarque());
             reservation.setModePaiement(updatedReservation.getModePaiement());
             reservation.setCheckIn(updatedReservation.getCheckIn());

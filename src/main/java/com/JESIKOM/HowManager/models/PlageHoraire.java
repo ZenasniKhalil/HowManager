@@ -1,13 +1,10 @@
 package com.JESIKOM.HowManager.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@NoArgsConstructor
+
 @AllArgsConstructor
-@Data
 @Entity
 @Table(name = "plage_horaire")
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -46,6 +43,47 @@ public class PlageHoraire {
         this.lieu = lieu;
     }
 
+    public WeeklyTimeSlot getPlage() {
+        return plage;
+    }
+
+    public void setPlage(WeeklyTimeSlot plage) {
+        this.plage = plage;
+    }
+
+    public String getPoste() {
+        return poste;
+    }
+
+    public void setPoste(String poste) {
+        this.poste = poste;
+    }
+
+    public String getLieu() {
+        return lieu;
+    }
+
+    public void setLieu(String lieu) {
+        this.lieu = lieu;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
 
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public PlageHoraire() {
+    }
 }

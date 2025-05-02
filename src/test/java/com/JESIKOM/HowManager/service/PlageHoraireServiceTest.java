@@ -46,7 +46,6 @@ class PlageHoraireServiceTest {
         //Cas valide
         when(repository.save(ph1)).thenReturn(ph1);
         assertSame(ph1,service.addPlageHoraire(ph1));
-
     }
 
     @Test

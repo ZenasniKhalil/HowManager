@@ -30,7 +30,7 @@ public class Client {
     @Column(name = "date_naissance", nullable = false)
     private LocalDate dateNaissance;
 
-    @Column(nullable = false, length = 50)
+    @Column( length = 50)
     private String nationalite;
 
     @Column(name = "num_identite", nullable = false, unique = true, length = 50)
@@ -58,6 +58,14 @@ public class Client {
         this.nationalite = nationalite;
         this.numeroIdentite = numeroIdentite;
         this.typeIdentite = typeIdentite;
+        this.remarque = remarque;
+    }
+
+    public Client(String nom, String prenom, String telephone, String email, String remarque) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.telephone = telephone;
+        this.email = email;
         this.remarque = remarque;
     }
 

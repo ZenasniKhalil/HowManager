@@ -10,12 +10,24 @@ import java.io.File;
 @Controller
 public class ChargerPhotoProfilController {
     private MainController mainController;
-    @FXML
-    private Button btnNo;
+    private EnregistrerClientController enregistrerClientController;
+    private ListesClientsController listesClientsController;
+    @FXML private Button btnNo;
+
 
     @FXML
     public void setMainController(MainController controller) {
         this.mainController = controller;
+    }
+
+    @FXML
+    public void setEnregistrerClientController(EnregistrerClientController enregistrerClientController) {
+        this.enregistrerClientController = enregistrerClientController;
+    }
+
+    @FXML
+    public void setListeClientsController(ListesClientsController controller){
+        this.listesClientsController = controller;
     }
 
     @FXML
