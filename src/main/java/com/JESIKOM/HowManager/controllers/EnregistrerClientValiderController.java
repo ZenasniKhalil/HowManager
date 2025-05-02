@@ -22,9 +22,8 @@ public class EnregistrerClientValiderController {
     @FXML Button btnNo;
     @FXML Button btnYes;
 
-    @Autowired
     private ClientService clientService;
-
+    private String nom, prenom, telephone, email, remarque;
     /*
     @FXML private TextField nomField;
     @FXML private TextField prenomField;
@@ -34,19 +33,18 @@ public class EnregistrerClientValiderController {
 
      */
 
-    private String nom, prenom, telephone, email, remarque;
+
 
     public void closepopup(){
         Stage popupStage = (Stage) btnNo.getScene().getWindow();
         popupStage.close();
     }
 
+
     @FXML
     private void enregistrerClient(ActionEvent event) {
         try {
-            Client nouveauClient = new Client(
-                    nom, prenom, telephone, email, remarque
-            );
+            Client nouveauClient = new Client(nom, prenom, telephone, email, remarque);
 
             Client savedClient = clientService.addClient(nouveauClient);
 
@@ -61,6 +59,8 @@ public class EnregistrerClientValiderController {
             showAlert("Erreur", "Impossible d’enregistrer le client : " + e.getMessage());
         }
     }
+
+
 
     public void ouvrirConfirmationEnregistrementClient(ActionEvent event){
         try {

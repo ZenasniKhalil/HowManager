@@ -33,9 +33,6 @@ public class EnregistrerClientController {
     @Autowired
     private ClientService clientService;
 
-
-
-
     @FXML
     private TextField nomField, prenomField, telephoneField, emailField;
     @FXML
@@ -68,10 +65,6 @@ public class EnregistrerClientController {
             e.printStackTrace();
         }
     }
-
-
-
-
 
 
     public void chargerPhotoProfil() {
@@ -121,33 +114,49 @@ public class EnregistrerClientController {
          */
     }
 
-    public void ouvrirConfirmationValider() throws IOException {
+    @FXML
+    public void ouvrirConfirmationValider() {
         try {
-
             // Appliquer un flou sur la fenêtre principale
             BoxBlur blur = new BoxBlur(5, 5, 3);
             enregistrerClientPane.setEffect(blur);
-
 
             // Charger la popup
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/EnregistrerClientValider.fxml"));
             Parent popupRoot = fxmlLoader.load();
 
+            // Récupérer le contrôleur de la popup
+            EnregistrerClientValiderController popupController = fxmlLoader.getController();
+
+            // Injecter les données du formulaire
+            popupController.setClientInfos(
+                    nomField.getText(),
+                    prenomField.getText(),
+                    telephoneField.getText(),
+                    emailField.getText(),
+                    remarqueArea.getText(),
+                    this.clientService
+            );
+
+            // Créer et afficher la popup
             Stage popupStage = new Stage();
-            popupStage.initModality(Modality.WINDOW_MODAL); // bloque interaction avec la fenêtre principale
-            popupStage.initOwner(enregistrerClientPane.getScene().getWindow()); // rattacher au parent
+            popupStage.initModality(Modality.WINDOW_MODAL);
+            popupStage.initOwner(enregistrerClientPane.getScene().getWindow());
             popupStage.setScene(new Scene(popupRoot));
-            popupStage.setOnHiding(e -> {
-                // Supprimer le flou lorsque la popup se ferme
-                enregistrerClientPane.setEffect(null);
-            });
             popupStage.setResizable(false);
 
-            popupStage.show();
-        } catch (Exception e) {
+            popupStage.setOnHiding(e -> {
+                // Retirer le flou une fois la popup fermée
+                enregistrerClientPane.setEffect(null);
+            });
+
+            popupStage.showAndWait();
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 
     @FXML
     public void initialize() {
