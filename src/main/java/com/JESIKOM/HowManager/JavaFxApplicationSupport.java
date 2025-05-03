@@ -7,6 +7,7 @@ import javafx.scene.chart.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
+import lombok.Getter;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -18,6 +19,7 @@ import java.io.IOException;
 
 public class JavaFxApplicationSupport extends Application {
 
+    @Getter
     private static ConfigurableApplicationContext context;
 
     public static void setContext(ConfigurableApplicationContext ctx) {
@@ -100,4 +102,11 @@ public class JavaFxApplicationSupport extends Application {
             context.close();
         }
     }
+
+    public static ConfigurableApplicationContext getContext() {
+        return context;
+    }
+
+
+
 }

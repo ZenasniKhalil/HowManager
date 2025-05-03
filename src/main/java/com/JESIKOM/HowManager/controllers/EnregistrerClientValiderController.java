@@ -1,5 +1,121 @@
 package com.JESIKOM.HowManager.controllers;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
+import org.springframework.stereotype.Component;
+
+@Component
+public class EnregistrerClientValiderController {
+
+    private String nom, prenom, telephone, email, remarque;
+    @FXML Button btnNo;
+    @FXML Button btnYes;
+    private boolean valide = false; // par défaut l'utilisateur n’a pas encore validé
+
+    public void setClientInfos(String nom, String prenom, String telephone, String email, String remarque) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.telephone = telephone;
+        this.email = email;
+        this.remarque = remarque;
+    }
+
+    public boolean isValide() {
+        return valide;
+    }
+
+    @FXML
+    private void valider() {
+        valide = true;
+        closepopup();
+    }
+
+    @FXML
+    private void annuler() {
+        valide = false;
+        closepopup();
+    }
+
+    public void closepopup(){
+        Stage popupStage = (Stage) btnNo.getScene().getWindow();
+        popupStage.close();
+    }
+
+    /*
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
+     */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+package com.JESIKOM.HowManager.controllers;
+
+
 import com.JESIKOM.HowManager.models.Client;
 import com.JESIKOM.HowManager.models.TypeIdentite;
 import com.JESIKOM.HowManager.service.ClientService;
@@ -24,6 +140,8 @@ public class EnregistrerClientValiderController {
 
     private ClientService clientService;
     private String nom, prenom, telephone, email, remarque;
+
+ */
     /*
     @FXML private TextField nomField;
     @FXML private TextField prenomField;
@@ -34,7 +152,7 @@ public class EnregistrerClientValiderController {
      */
 
 
-
+/*
     public void closepopup(){
         Stage popupStage = (Stage) btnNo.getScene().getWindow();
         popupStage.close();
@@ -100,6 +218,12 @@ public class EnregistrerClientValiderController {
         this.email = email;
         this.remarque = remarque;
         this.clientService = clientService;
+
+        System.out.println("Client reçu : " + nom + " " + prenom);
+        System.out.println("clientService : " + clientService);
+
     }
 
 }
+
+ */
