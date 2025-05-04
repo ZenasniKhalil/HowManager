@@ -6,6 +6,9 @@ import lombok.Data;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe contenant les differentes taches sur une semaine concrète
+ */
 @Entity
 @Table(name = "planning")
 public class Planning {

@@ -11,23 +11,36 @@ import java.time.LocalTime;
 
 @NoArgsConstructor
 @AllArgsConstructor
+/**
+ * Classe de créneau horaire
+ */
 public class WeeklyTimeSlot {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
+    /**
+     * Jour de debut (énuméré)
+     */
     @Column(nullable = false,name ="start_day")
     @Enumerated(EnumType.STRING)
     private DayOfWeek startDay;
-
+    /**
+     * Heure de debut (h:min:sec)
+     */
     @Column(nullable = false,name ="start_time")
     private LocalTime startTime;
-
+    /**
+     * Jour de fin (énuméré)
+     */
     @Column(nullable = false,name ="end_day")
     @Enumerated(EnumType.STRING)
     private DayOfWeek endDay;
-
+    /**
+     * Heure de fin (h:min:sec)
+     */
     @Column(nullable = false,name ="end_time")
     private LocalTime endTime;
 

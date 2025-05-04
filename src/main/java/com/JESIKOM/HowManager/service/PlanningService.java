@@ -7,12 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+import java.time.LocalDate;
 import java.util.*;
 
 @Service
 public class PlanningService {
     @Autowired
     private PlanningRepository planningRepository;
+
 
     @Autowired
     private TacheService tacheService;
@@ -90,6 +92,22 @@ Map<TypeMajoration,Float> computeNbHeuresWithMajoration(Planning p){
     }
     return res;
 
+    }
+    public Planning createPlanningFromPlanningPattern(LocalDate MondayDate, PlanningPattern pp) {
+        Planning planning = new Planning();
+        for (PlageHoraire ph : pp.getPlagesHoraires()) {
+            Tache t = new Tache();
+            t.setPoste(ph.getPoste());
+            t.setLieu(ph.getLieu());
+            t.setPlage(ph.getPlage());
+            t.setStatus(StatusTache.PLANIFIEE);
+            t.setDateDebut(MondayDate.plusDays((ph.getPlage().getStartDay().getValue() - 1)));
+            t.setDateFin(MondayDate.plusDays(ph.getPlage().getEndDay().getValue() - 1));
+            t.setNotes(ph.getNotes());
+            t=tacheService.addTache(t);
+            planning.getTaches().add(t);
+        }
+    return planning;
     }
 }
 

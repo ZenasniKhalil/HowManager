@@ -8,6 +8,11 @@ import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
+
+/**
+ * Classe représentant un type de planning sur une semaine abstraite,
+ * utilisable pour créer des planning concret, contients des plages horaires
+ */
 @AllArgsConstructor
 @Data
 @Entity
