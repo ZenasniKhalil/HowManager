@@ -1,121 +1,6 @@
 package com.JESIKOM.HowManager.controllers;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.stage.Stage;
-import org.springframework.stereotype.Component;
-
-@Component
-public class EnregistrerClientValiderController {
-
-    private String nom, prenom, telephone, email, remarque;
-    @FXML Button btnNo;
-    @FXML Button btnYes;
-    private boolean valide = false; // par défaut l'utilisateur n’a pas encore validé
-
-    public void setClientInfos(String nom, String prenom, String telephone, String email, String remarque) {
-        this.nom = nom;
-        this.prenom = prenom;
-        this.telephone = telephone;
-        this.email = email;
-        this.remarque = remarque;
-    }
-
-    public boolean isValide() {
-        return valide;
-    }
-
-    @FXML
-    private void valider() {
-        valide = true;
-        closepopup();
-    }
-
-    @FXML
-    private void annuler() {
-        valide = false;
-        closepopup();
-    }
-
-    public void closepopup(){
-        Stage popupStage = (Stage) btnNo.getScene().getWindow();
-        popupStage.close();
-    }
-
-    /*
-    private void showAlert(String title, String content) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(content);
-        alert.showAndWait();
-    }
-
-     */
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-package com.JESIKOM.HowManager.controllers;
-
-
+import com.JESIKOM.HowManager.JavaFxApplicationSupport;
 import com.JESIKOM.HowManager.models.Client;
 import com.JESIKOM.HowManager.models.TypeIdentite;
 import com.JESIKOM.HowManager.service.ClientService;
@@ -138,10 +23,11 @@ public class EnregistrerClientValiderController {
     @FXML Button btnNo;
     @FXML Button btnYes;
 
-    private ClientService clientService;
-    private String nom, prenom, telephone, email, remarque;
 
- */
+    private ClientService clientService;
+
+    private Client client;
+
     /*
     @FXML private TextField nomField;
     @FXML private TextField prenomField;
@@ -151,24 +37,30 @@ public class EnregistrerClientValiderController {
 
      */
 
+    private String nom, prenom, telephone, email, remarque;
 
-/*
+    //Injection Spring
+    public EnregistrerClientValiderController(ClientService clientService){
+        this.clientService = clientService;
+    }
+
     public void closepopup(){
         Stage popupStage = (Stage) btnNo.getScene().getWindow();
         popupStage.close();
     }
 
-
     @FXML
     private void enregistrerClient(ActionEvent event) {
         try {
-            Client nouveauClient = new Client(nom, prenom, telephone, email, remarque);
+            Client nouveauClient = new Client();
 
             Client savedClient = clientService.addClient(nouveauClient);
 
             if (savedClient != null) {
+                System.out.println("Test id Client : "+savedClient.getId());
                 ouvrirConfirmationEnregistrementClient(event);
             } else {
+                System.out.println("client null");
                 showAlert("Erreur", "Ce client existe déjà ou des champs sont invalides.");
             }
 
@@ -178,11 +70,10 @@ public class EnregistrerClientValiderController {
         }
     }
 
-
-
     public void ouvrirConfirmationEnregistrementClient(ActionEvent event){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/EnregistrerClientValiderOui.fxml"));
+            loader.setControllerFactory(JavaFxApplicationSupport.getContext()::getBean);
             Stage popupStage = new Stage();
             popupStage.initModality(Modality.APPLICATION_MODAL);
             popupStage.setScene(new Scene(loader.load()));
@@ -211,19 +102,13 @@ public class EnregistrerClientValiderController {
         alert.showAndWait();
     }
 
-    public void setClientInfos(String nom, String prenom, String telephone, String email, String remarque, ClientService clientService) {
+    public void setClientInfos(String nom,String prenom,String telephone,String email,String remarque,ClientService clientService) {
         this.nom = nom;
         this.prenom = prenom;
         this.telephone = telephone;
         this.email = email;
         this.remarque = remarque;
         this.clientService = clientService;
-
-        System.out.println("Client reçu : " + nom + " " + prenom);
-        System.out.println("clientService : " + clientService);
-
     }
 
 }
-
- */

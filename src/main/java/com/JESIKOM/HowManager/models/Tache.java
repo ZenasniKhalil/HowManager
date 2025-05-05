@@ -20,7 +20,7 @@ public class Tache  extends PlageHoraire{
     LocalDate dateFin;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    //@Column(nullable = false)
     StatusTache status;
 
     public LocalDate getDateDebut() {

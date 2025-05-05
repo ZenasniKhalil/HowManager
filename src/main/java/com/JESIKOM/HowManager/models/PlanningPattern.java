@@ -6,8 +6,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
-@NoArgsConstructor
+
+/**
+ * Classe représentant un type de planning sur une semaine abstraite,
+ * utilisable pour créer des planning concret, contients des plages horaires
+ */
 @AllArgsConstructor
 @Data
 @Entity
@@ -31,6 +36,10 @@ public class PlanningPattern {
     @Lob
     @Column(columnDefinition = "TEXT")
     String note;
+
+    public PlanningPattern(){
+        plagesHoraires = new ArrayList<>();
+    }
 
     public String getNom() {
         return nom;

@@ -1,5 +1,6 @@
 package com.JESIKOM.HowManager.controllers;
 
+import com.JESIKOM.HowManager.JavaFxApplicationSupport;
 import com.JESIKOM.HowManager.models.Client;
 import com.JESIKOM.HowManager.service.ClientService;
 import javafx.collections.FXCollections;
@@ -119,6 +120,7 @@ public class ListesClientsController {
     public void ouvrirPageCreerClient() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/EnregistrerClient.fxml"));
+            loader.setControllerFactory(JavaFxApplicationSupport.getContext()::getBean);
             Parent root = loader.load();
 
             //Obtenir le Stage actuel

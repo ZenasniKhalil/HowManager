@@ -1,133 +1,6 @@
 package com.JESIKOM.HowManager.controllers;
 
-import com.JESIKOM.HowManager.models.Client;
-import com.JESIKOM.HowManager.service.ClientService;
 import com.JESIKOM.HowManager.JavaFxApplicationSupport;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextArea;
-import javafx.scene.effect.BoxBlur;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-@Component
-public class EnregistrerClientController {
-
-    @FXML private TextField nomField;
-    @FXML private TextField prenomField;
-    @FXML private TextField telephoneField;
-    @FXML private TextField emailField;
-    @FXML private TextArea remarqueArea;
-    @FXML private AnchorPane enregistrerClientPane;
-    @FXML private Button validerButton;
-
-    @Autowired
-    private ClientService clientService;
-
-    @FXML
-    public void ouvrirConfirmationValider() {
-        try {
-            // Appliquer un flou
-            enregistrerClientPane.setEffect(new BoxBlur(5, 5, 3));
-
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/EnregistrerClientValider.fxml"));
-            fxmlLoader.setControllerFactory(clazz -> JavaFxApplicationSupport.getContext().getBean(clazz));
-            Parent popupRoot = fxmlLoader.load();
-
-            EnregistrerClientValiderController popupController = fxmlLoader.getController();
-
-            // Envoyer les données à la popup
-            String nom = nomField.getText();
-            String prenom = prenomField.getText();
-            String telephone = telephoneField.getText();
-            String email = emailField.getText();
-            String remarque = remarqueArea.getText();
-
-            popupController.setClientInfos(nom, prenom, telephone, email, remarque);
-
-            // Afficher la popup
-            Stage popupStage = new Stage();
-            popupStage.initModality(Modality.WINDOW_MODAL);
-            popupStage.initOwner(enregistrerClientPane.getScene().getWindow());
-            popupStage.setScene(new Scene(popupRoot));
-            popupStage.setResizable(false);
-
-            popupStage.setOnHiding(e -> enregistrerClientPane.setEffect(null));
-            popupStage.showAndWait();
-
-            // Si validé, enregistrer le client
-            if (popupController.isValide()) {
-                Client nouveauClient = new Client();
-                nouveauClient.setNom(nom);
-                nouveauClient.setPrenom(prenom);
-                nouveauClient.setTelephone(telephone);
-                nouveauClient.setEmail(email);
-                nouveauClient.setRemarque(remarque);
-                clientService.addClient(nouveauClient);
-
-                System.out.println("Client ajouté :" + nouveauClient.getNom() + " " + nouveauClient.getPrenom());
-                System.out.println("clientService :" + clientService);
-            }else {
-                System.out.println("clientService :" + clientService);
-
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-package com.JESIKOM.HowManager.controllers;
-
-import com.JESIKOM.HowManager.JavaFxApplicationSupport;
-import com.JESIKOM.HowManager.models.Client;
 import com.JESIKOM.HowManager.service.ClientService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -143,7 +16,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.apache.catalina.core.ApplicationContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -163,14 +35,13 @@ public class EnregistrerClientController {
     private ClientService clientService;
 
 
+
+
     @FXML
     private TextField nomField, prenomField, telephoneField, emailField;
     @FXML
     private TextArea remarqueArea;
 
- */
-
-    /*
     @FXML
     private void ouvrirPopupConfirmation() {
         try {
@@ -199,9 +70,11 @@ public class EnregistrerClientController {
         }
     }
 
-     */
 
-/*
+
+
+
+
     public void chargerPhotoProfil() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/chargerPhotoProfil.fxml"));
@@ -219,13 +92,10 @@ public class EnregistrerClientController {
         }
     }
 
- */
-
     /*
     public void chargerPhotoProfil(ActionEvent actionEvent) {
     }*/
 
-/*
     public void voirMonProfil(ActionEvent actionEvent) {
     }
 
@@ -234,8 +104,6 @@ public class EnregistrerClientController {
     }
 
     public void ouvrirListeClients(){
-
- */
         /*
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/ListesClients.fxml"));
@@ -251,83 +119,41 @@ public class EnregistrerClientController {
             e.printStackTrace();
         }
 
-
+         */
     }
 
-         */
-
-    /*
-    @FXML
-    public void ouvrirConfirmationValider() {
+    public void ouvrirConfirmationValider() throws IOException {
         try {
 
-            Client client = new Client(
-                    nomField.getText(),
-                    prenomField.getText(),
-                    telephoneField.getText(),
-                    emailField.getText(),
-                    remarqueArea.getText());
             // Appliquer un flou sur la fenêtre principale
             BoxBlur blur = new BoxBlur(5, 5, 3);
             enregistrerClientPane.setEffect(blur);
 
-     */
 
-            /*
             // Charger la popup
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/EnregistrerClientValider.fxml"));
+            fxmlLoader.setControllerFactory(JavaFxApplicationSupport.getContext()::getBean);  // Injection Spring dans le FXML
             Parent popupRoot = fxmlLoader.load();
 
-             */
-
-/*
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/EnregistrerClientValider.fxml"));
-            // Pour chaque appel FXMLLoader, remplacez la ligne avec setControllerFactory par:
-            fxmlLoader.setControllerFactory(clazz -> JavaFxApplicationSupport.getContext().getBean(clazz));
-            Parent popupRoot = fxmlLoader.load();
-
-
-            // Récupérer le contrôleur de la popup
-            EnregistrerClientValiderController popupController = fxmlLoader.getController();
-
-            // Injecter les données du formulaire
-            popupController.setClientInfos(
-                    nomField.getText(),
-                    prenomField.getText(),
-                    telephoneField.getText(),
-                    emailField.getText(),
-                    remarqueArea.getText(),
-                    this.clientService
-            );
-
-            // Créer et afficher la popup
             Stage popupStage = new Stage();
-            popupStage.initModality(Modality.WINDOW_MODAL);
-            popupStage.initOwner(enregistrerClientPane.getScene().getWindow());
+            popupStage.initModality(Modality.WINDOW_MODAL); // bloque interaction avec la fenêtre principale
+            popupStage.initOwner(enregistrerClientPane.getScene().getWindow()); // rattacher au parent
             popupStage.setScene(new Scene(popupRoot));
-            popupStage.setResizable(false);
-
             popupStage.setOnHiding(e -> {
-                // Retirer le flou une fois la popup fermée
+                // Supprimer le flou lorsque la popup se ferme
                 enregistrerClientPane.setEffect(null);
             });
+            popupStage.setResizable(false);
 
-            popupStage.showAndWait();
-
-        } catch (IOException e) {
+            popupStage.show();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-
     @FXML
     public void initialize() {
-
         System.out.println("enregisterClientPane = " + enregistrerClientPane);
-        System.out.println("clientService = " + clientService);
-
     }
 
 }
-
- */
