@@ -137,13 +137,15 @@
                                 <Image url="@../images/utilisateur.png" />
                             </image>
                         </ImageView>
-                        <Button fx:id="profileButton" mnemonicParsing="false" onAction="#chargerPhotoProfil" prefHeight="55.0" prefWidth="54.0" style="-fx-background-radius: 50; -fx-background-color: transparent; -fx-border-color: transparent;" />
+                        <!-- onAction="#chargerPhotoProfil" -->
+                        <Button fx:id="profileButton" mnemonicParsing="false"  prefHeight="55.0" prefWidth="54.0" style="-fx-background-radius: 50; -fx-background-color: transparent; -fx-border-color: transparent;" />
                         <ImageView fx:id="profileImage" fitHeight="55.0" fitWidth="54.0" layoutX="50" layoutY="50" />
                     </children>
                 </StackPane>
                 <MenuButton contentDisplay="CENTER" layoutY="98.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="150.0" text="Sylvain ROY">
                     <items>
-                        <MenuItem fx:id="voirMonProfilButton" mnemonicParsing="false" onAction="#voirMonProfil" text="Voir mon profil" />
+                        <!-- onAction="#voirMonProfil" -->
+                        <MenuItem fx:id="voirMonProfilButton" mnemonicParsing="false"  text="Voir mon profil" />
                         <SeparatorMenuItem mnemonicParsing="false" text="sep1" />
                         <MenuItem mnemonicParsing="false" text="Me déconnecter" />
                     </items>
@@ -211,7 +213,8 @@
          <content>
             <AnchorPane prefHeight="618.0" prefWidth="702.0">
                <children>
-                  <Button fx:id="retourListeClients" layoutX="140.0" layoutY="24.0" mnemonicParsing="false" onAction="#ouvrirListeClients" prefHeight="24.0" prefWidth="129.0" style="-fx-background-color: #146CDF;" text="Clients" textFill="WHITE">
+                   <!-- onAction="#ouvrirListeClients" -->
+                  <Button fx:id="retourListeClients" layoutX="140.0" layoutY="24.0" mnemonicParsing="false"  prefHeight="24.0" prefWidth="129.0" style="-fx-background-color: #146CDF;" text="Clients" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>

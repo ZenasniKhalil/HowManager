@@ -7,6 +7,7 @@ import javafx.scene.chart.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
+import lombok.Getter;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -18,20 +19,18 @@ import java.io.IOException;
 
 public class JavaFxApplicationSupport extends Application {
 
+    @Getter
     private static ConfigurableApplicationContext context;
 
     public static void setContext(ConfigurableApplicationContext ctx) {
         context = ctx;
     }
-    public static ConfigurableApplicationContext getContext(){
-        return context;
-    }
 
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/ListesClients.fxml"));
-        loader.setControllerFactory(JavaFxApplicationSupport.getContext()::getBean);  // Injection Spring dans le FXML
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/seConnecterOuCreerCompte.fxml"));
+        loader.setControllerFactory(context::getBean);  // Injection Spring dans le FXML
 
         Parent root = loader.load();
         primaryStage.setTitle("How Manager");
@@ -103,4 +102,11 @@ public class JavaFxApplicationSupport extends Application {
             context.close();
         }
     }
+
+    public static ConfigurableApplicationContext getContext() {
+        return context;
+    }
+
+
+
 }
