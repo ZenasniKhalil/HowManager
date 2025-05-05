@@ -3,8 +3,12 @@ package com.JESIKOM.HowManager.models;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe contenant les differentes taches sur une semaine concrète
+ */
 @Entity
 @Table(name = "planning")
 public class Planning {
@@ -28,6 +32,11 @@ public class Planning {
     @Lob
     @Column(columnDefinition = "TEXT")
     String note;
+
+
+    public Planning(){
+        taches= new ArrayList<>();
+    }
 
     public Personnel getPersonnel() {
         return personnel;

@@ -7,12 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+import java.time.LocalDate;
 import java.util.*;
 
 @Service
 public class PlanningService {
     @Autowired
     private PlanningRepository planningRepository;
+
 
     @Autowired
     private TacheService tacheService;
@@ -25,8 +27,12 @@ public class PlanningService {
         return planningRepository.findAll();
     }
 
-    Planning addPlanning(Planning pP) {
-        return planningRepository.save(pP);
+    Planning addPlanning(Planning pP) throws IllegalArgumentException {
+        if (isConflictingPlanning(pP)) {
+            throw new IllegalArgumentException("Conflit dans le planning");
+        }
+        else
+            return planningRepository.save(pP);
     }
 
     void deletePlanning(Long pid) {
@@ -56,13 +62,13 @@ public class PlanningService {
         List<Tache> tachesTested = new LinkedList<>();
 
         for (Tache t : p.getTaches()) {
+            if (tacheService.getWeekOfTache(t)!=p.getSemaine() || tacheService.getWeekBasedYearOfTache(t)!=p.getSemaine()) {
+                System.out.println(  "semaine p :"+p.getSemaine()+"semaine t"+tacheService.getWeekOfTache(t));
+                return true;
+            }
             for (Tache t2 : tachesTested) {
-                if (tacheService.overlapsWith(t, t2) ||
-                        tacheService.getWeekOfTache(t)!=tacheService.getWeekOfTache(t2) ||
-                                tacheService.getWeekBasedYearOfTache(t)!=tacheService.getWeekBasedYearOfTache(t2))
-                            {
+                if (tacheService.overlapsWith(t, t2))
                     return true;
-                }
             }
             tachesTested.add(t);
         }
@@ -86,6 +92,22 @@ Map<TypeMajoration,Float> computeNbHeuresWithMajoration(Planning p){
     }
     return res;
 
+    }
+    public Planning createPlanningFromPlanningPattern(LocalDate MondayDate, PlanningPattern pp) {
+        Planning planning = new Planning();
+        for (PlageHoraire ph : pp.getPlagesHoraires()) {
+            Tache t = new Tache();
+            t.setPoste(ph.getPoste());
+            t.setLieu(ph.getLieu());
+            t.setPlage(ph.getPlage());
+            t.setStatus(StatusTache.PLANIFIEE);
+            t.setDateDebut(MondayDate.plusDays((ph.getPlage().getStartDay().getValue() - 1)));
+            t.setDateFin(MondayDate.plusDays(ph.getPlage().getEndDay().getValue() - 1));
+            t.setNotes(ph.getNotes());
+            t=tacheService.addTache(t);
+            planning.getTaches().add(t);
+        }
+    return planning;
     }
 }
 

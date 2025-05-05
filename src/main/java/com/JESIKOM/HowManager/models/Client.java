@@ -33,9 +33,12 @@ public class Client {
     @Column( length = 50)
     private String nationalite;
 
-    @Column(name = "num_identite", nullable = false, unique = true, length = 50)
+    @Column(name = "num_identite", unique = true, length = 50)
     private String numeroIdentite;
 
+    /**
+     * Type pièce d'identité (énuméré)
+     */
     @Enumerated(EnumType.STRING)
     @Column(name = "type_identite", nullable = false)
     private TypeIdentite typeIdentite;
