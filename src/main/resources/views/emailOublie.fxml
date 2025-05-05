@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.ToggleButtonGroup?>
+<!--<?import com.gluonhq.charm.glisten.control.ToggleButtonGroup?>-->
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,7 +16,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.JESIKOM.HowManager.controllers.IdentifiantOublieController">
+<AnchorPane prefHeight="700.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.JESIKOM.HowManager.controllers.EmailOublieController">
 <children>
     <HBox layoutX="115.0" layoutY="89.0" />
     <HBox layoutX="116.0" layoutY="27.0" prefHeight="31.0" prefWidth="631.0" />
@@ -78,14 +79,19 @@
             <Font name="System Bold" size="18.0" />
         </font>
     </Button>
-    <RadioButton layoutX="22.0" layoutY="304.0" mnemonicParsing="false" text="SMS" textFill="#0646a7" />
-    <RadioButton layoutX="22.0" layoutY="325.0" mnemonicParsing="false" text="E-mail" textFill="#0646a7" />
+    <RadioButton fx:id="smsButton" layoutX="22.0" layoutY="304.0" mnemonicParsing="false" text="SMS" textFill="#0646a7">
+         <toggleGroup>
+            <ToggleGroup fx:id="contactGroup" />
+         </toggleGroup></RadioButton>
+    <RadioButton fx:id="emailButton" layoutX="22.0" layoutY="325.0" mnemonicParsing="false" text="E-mail" textFill="#0646a7" toggleGroup="$contactGroup" />
+    <!--<RadioButton layoutX="22.0" layoutY="304.0" mnemonicParsing="false" text="SMS" textFill="#0646a7" />
+    <RadioButton layoutX="22.0" layoutY="325.0" mnemonicParsing="false" text="E-mail" textFill="#0646a7" />-->
     <Label layoutX="22.0" layoutY="436.0" text="Retour" textFill="#0646a7" underline="true">
         <font>
             <Font name="System Bold" size="14.0" />
         </font>
     </Label>
-    <ToggleButtonGroup selectionType="SINGLE" />
+    <!--<ToggleButtonGroup selectionType="SINGLE" />-->
 
 
 </children>
