@@ -12,6 +12,7 @@ import static javafx.application.Application.launch;
 public class HowManagerApplication {
 
 	public static void main(String[] args) {
+		//Init le context Spring
 		ConfigurableApplicationContext context = SpringApplication.run(HowManagerApplication.class, args);
 
 		// Lancer JavaFX

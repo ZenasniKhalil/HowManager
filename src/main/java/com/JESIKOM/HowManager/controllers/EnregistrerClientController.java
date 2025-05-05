@@ -1,5 +1,6 @@
 package com.JESIKOM.HowManager.controllers;
 
+import com.JESIKOM.HowManager.JavaFxApplicationSupport;
 import com.JESIKOM.HowManager.service.ClientService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -131,6 +132,7 @@ public class EnregistrerClientController {
 
             // Charger la popup
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/EnregistrerClientValider.fxml"));
+            fxmlLoader.setControllerFactory(JavaFxApplicationSupport.getContext()::getBean);  // Injection Spring dans le FXML
             Parent popupRoot = fxmlLoader.load();
 
             Stage popupStage = new Stage();

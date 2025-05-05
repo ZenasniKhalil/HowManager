@@ -23,12 +23,15 @@ public class JavaFxApplicationSupport extends Application {
     public static void setContext(ConfigurableApplicationContext ctx) {
         context = ctx;
     }
+    public static ConfigurableApplicationContext getContext(){
+        return context;
+    }
 
 
     @Override
     public void start(Stage primaryStage) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/ListesClients.fxml"));
-        loader.setControllerFactory(context::getBean);  // Injection Spring dans le FXML
+        loader.setControllerFactory(JavaFxApplicationSupport.getContext()::getBean);  // Injection Spring dans le FXML
 
         Parent root = loader.load();
         primaryStage.setTitle("How Manager");
