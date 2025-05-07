@@ -49,6 +49,16 @@ public class Client {
 
 
     public Client() {
+        this.nom = "ras";
+        this.prenom = "ras";
+        this.telephone = "ras";
+        this.email = "ras";
+        this.adresse = "ras";
+        this.dateNaissance = LocalDate.now();
+        this.nationalite = "ras";
+        this.numeroIdentite = "ras";
+        this.typeIdentite = TypeIdentite.CNI;
+        this.remarque = "ras";
     }
 
     public Client( String nom, String prenom, String telephone, String email, String adresse, LocalDate dateNaissance, String nationalite, String numeroIdentite, TypeIdentite typeIdentite, String remarque) {

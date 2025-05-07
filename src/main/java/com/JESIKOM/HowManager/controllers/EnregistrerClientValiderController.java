@@ -23,8 +23,6 @@ import java.time.LocalDate;
 public class EnregistrerClientValiderController {
     @FXML Button btnNo;
     @FXML Button btnYes;
-
-
     private ClientService clientService;
     private String nom, prenom, telephone, email, adresse, nat, numId, typeId, remarque;
     private LocalDate ddn;
@@ -52,9 +50,10 @@ public class EnregistrerClientValiderController {
     @FXML
     private void enregistrerClient(ActionEvent event) {
         try {
+            //Déclarer un EnregistrerClientController
             Client nouveauClient = new Client();
-
             Client savedClient = clientService.addClient(nouveauClient);
+
 
             if (savedClient != null) {
                 System.out.println("Test id Client : "+savedClient.getId());
@@ -118,7 +117,7 @@ public class EnregistrerClientValiderController {
         alert.setContentText(content);
         alert.showAndWait();
     }
-
+/*
     public void setClientInfos(String nom,String prenom,String telephone,String email,String remarque,ClientService clientService) {
         this.nom = nom;
         this.prenom = prenom;
@@ -127,6 +126,8 @@ public class EnregistrerClientValiderController {
         this.remarque = remarque;
         this.clientService = clientService;
     }
+
+ */
 
     public void setClientInfos(String nom, String prenom, String telephone,
                                String email, String adresse, LocalDate ddn,
@@ -143,7 +144,7 @@ public class EnregistrerClientValiderController {
         this.client.setNationalite(nat);
         this.client.setNumeroIdentite(numId);
         //this.client.setTypeIdentite(typeId);
-        //this.client.setTypeIdentite(TypeIdentite.labelToTypeIdentite(typeId));
+        this.client.setTypeIdentite(TypeIdentite.labelToTypeIdentite(typeId));
         this.client.setRemarque(remarque);
         this.clientService = clientService;
     }

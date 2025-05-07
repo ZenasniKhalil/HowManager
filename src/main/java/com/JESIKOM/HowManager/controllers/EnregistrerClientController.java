@@ -53,7 +53,7 @@ public class EnregistrerClientController {
     private TextField nomField, prenomField, telephoneField, emailField, adresseField, natField, numIdField;
     @FXML private TextArea remarqueArea;
     @FXML private DatePicker ddnField;
-    @FXML private TextField typeIdField;
+    //@FXML private MenuButton menuButtonTypeIdentite;
 
     @FXML
     private void ouvrirPopupConfirmation() {
@@ -77,7 +77,7 @@ public class EnregistrerClientController {
                     ddnField.getValue(),
                     natField.getText(),
                     numIdField.getText(),
-                    typeIdField.getText(),
+                    menuButtonTypeIdentite.getText(),
                     remarqueArea.getText(),
                     this.clientService
             );
@@ -142,6 +142,8 @@ public class EnregistrerClientController {
 
     public void ouvrirConfirmationValider() throws IOException {
         try {
+            //Faire setInfosClients, avant d'ouvrir la page
+
 
             // Appliquer un flou sur la fenêtre principale
             BoxBlur blur = new BoxBlur(5, 5, 3);
@@ -152,6 +154,24 @@ public class EnregistrerClientController {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/EnregistrerClientValider.fxml"));
             fxmlLoader.setControllerFactory(JavaFxApplicationSupport.getContext()::getBean);  // Injection Spring dans le FXML
             Parent popupRoot = fxmlLoader.load();
+
+            // Récupérer le contrôleur de la popup
+            EnregistrerClientValiderController valideur = fxmlLoader.getController();
+
+            // Lui passer les données du formulaire
+            valideur.setClientInfos(
+                    nomField.getText(),
+                    prenomField.getText(),
+                    telephoneField.getText(),
+                    emailField.getText(),
+                    adresseField.getText(),
+                    ddnField.getValue(),
+                    natField.getText(),
+                    numIdField.getText(),
+                    menuButtonTypeIdentite.getText(),
+                    remarqueArea.getText(),
+                    this.clientService
+            );
 
             Stage popupStage = new Stage();
             popupStage.initModality(Modality.WINDOW_MODAL); // bloque interaction avec la fenêtre principale
