@@ -17,6 +17,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.nio.Buffer;
+import java.time.LocalDate;
 
 @Component
 public class EnregistrerClientValiderController {
@@ -25,19 +26,18 @@ public class EnregistrerClientValiderController {
 
 
     private ClientService clientService;
-
+    private String nom, prenom, telephone, email, adresse, nat, numId, typeId, remarque;
+    private LocalDate ddn;
     private Client client;
 
-    /*
+
     @FXML private TextField nomField;
     @FXML private TextField prenomField;
     @FXML private TextField telephoneField;
     @FXML private TextField emailField;
     @FXML private TextArea remarqueArea;
 
-     */
 
-    private String nom, prenom, telephone, email, remarque;
 
     //Injection Spring
     public EnregistrerClientValiderController(ClientService clientService){
@@ -79,6 +79,23 @@ public class EnregistrerClientValiderController {
             popupStage.setScene(new Scene(loader.load()));
             popupStage.setResizable(false);
 
+
+
+
+            /*
+            // Lui passer les données du formulaire
+            this.setClientInfos(
+                    nomField.getText(),
+                    prenomField.getText(),
+                    telephoneField.getText(),
+                    emailField.getText(),
+                    remarqueArea.getText(),
+                    this.clientService
+            );
+
+             */
+
+
             //ChargerPhotoProfilController popupController = loader.getController();
             //popupController.setMainController(this);
 
@@ -111,4 +128,23 @@ public class EnregistrerClientValiderController {
         this.clientService = clientService;
     }
 
+    public void setClientInfos(String nom, String prenom, String telephone,
+                               String email, String adresse, LocalDate ddn,
+                               String nat, String numId, String typeId,
+                               String remarque, ClientService clientService) {
+        //this.nom = nom;
+        this.client.setNom(nom);
+        //this.prenom = prenom;
+        this.client.setPrenom(prenom);
+        this.client.setTelephone(telephone);
+        this.client.setEmail(email);
+        this.client.setAdresse(adresse);
+        this.client.setDateNaissance(ddn);
+        this.client.setNationalite(nat);
+        this.client.setNumeroIdentite(numId);
+        //this.client.setTypeIdentite(typeId);
+        //this.client.setTypeIdentite(TypeIdentite.labelToTypeIdentite(typeId));
+        this.client.setRemarque(remarque);
+        this.clientService = clientService;
+    }
 }

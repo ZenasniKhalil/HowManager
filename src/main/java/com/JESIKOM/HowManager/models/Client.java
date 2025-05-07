@@ -30,10 +30,10 @@ public class Client {
     @Column(name = "date_naissance", nullable = false)
     private LocalDate dateNaissance;
 
-    @Column( length = 50)
+    @Column( length = 50, nullable = false)
     private String nationalite;
 
-    @Column(name = "num_identite", unique = true, length = 50)
+    @Column(name = "num_identite", unique = true, length = 50, nullable = false)
     private String numeroIdentite;
 
     /**

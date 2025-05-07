@@ -1,16 +1,16 @@
 package com.JESIKOM.HowManager.controllers;
 
 import com.JESIKOM.HowManager.JavaFxApplicationSupport;
+import com.JESIKOM.HowManager.models.Client;
+import com.JESIKOM.HowManager.models.TypeIdentite;
 import com.JESIKOM.HowManager.service.ClientService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -31,16 +31,29 @@ public class EnregistrerClientController {
     @FXML private AnchorPane enregistrerClientPane;
     ListesClientsController listesClientsController;
 
+    @FXML
+    private MenuButton menuButtonTypeIdentite;
+
+    @FXML private MenuItem menuItemCni;
+    @FXML private MenuItem menuItemPasseport;
+    @FXML private MenuItem menuItemCarteSejour;
+    @FXML private MenuItem menuItemPermisConduire;
+
+
+
     @Autowired
     private ClientService clientService;
 
 
 
 
+
+
     @FXML
-    private TextField nomField, prenomField, telephoneField, emailField;
-    @FXML
-    private TextArea remarqueArea;
+    private TextField nomField, prenomField, telephoneField, emailField, adresseField, natField, numIdField;
+    @FXML private TextArea remarqueArea;
+    @FXML private DatePicker ddnField;
+    @FXML private TextField typeIdField;
 
     @FXML
     private void ouvrirPopupConfirmation() {
@@ -60,6 +73,11 @@ public class EnregistrerClientController {
                     prenomField.getText(),
                     telephoneField.getText(),
                     emailField.getText(),
+                    adresseField.getText(),
+                    ddnField.getValue(),
+                    natField.getText(),
+                    numIdField.getText(),
+                    typeIdField.getText(),
                     remarqueArea.getText(),
                     this.clientService
             );
@@ -154,6 +172,10 @@ public class EnregistrerClientController {
     @FXML
     public void initialize() {
         System.out.println("enregisterClientPane = " + enregistrerClientPane);
+        menuItemCni.setOnAction(e -> menuButtonTypeIdentite.setText("CNI"));
+        menuItemPasseport.setOnAction(e -> menuButtonTypeIdentite.setText("Passeport"));
+        menuItemCarteSejour.setOnAction(e -> menuButtonTypeIdentite.setText("Carte de séjour"));
+        menuItemPermisConduire.setOnAction(e -> menuItemPermisConduire.setText("Permis de conduire"));
     }
 
 }

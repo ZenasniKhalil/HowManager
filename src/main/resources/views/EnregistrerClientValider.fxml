@@ -10,12 +10,12 @@
 
 <AnchorPane prefHeight="280.0" prefWidth="442.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.JESIKOM.HowManager.controllers.EnregistrerClientValiderController">
     <!-- onAction="#enregistrerClient" -->
-    <Button fx:id="btnYes" layoutX="151.0" layoutY="200.0"  prefHeight="30.0" prefWidth="46.0" style="-fx-background-color: #004aad;" text="Oui" textFill="WHITE">
+    <Button fx:id="btnYes" layoutX="151.0" layoutY="200.0" onAction="#enregistrerClient" prefHeight="30.0" prefWidth="46.0" style="-fx-background-color: #004aad;" text="Oui" textFill="WHITE">
       <font>
          <Font name="System Bold" size="14.0" />
       </font></Button>
     <!-- onAction="#closepopup" -->
-    <Button fx:id="btnNo" layoutX="235.0" layoutY="201.0"  text="Non" textFill="#004aad">
+    <Button fx:id="btnNo" layoutX="235.0" layoutY="201.0" text="Non" textFill="#004aad">
       <font>
          <Font name="System Bold" size="14.0" />
       </font></Button>

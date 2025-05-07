@@ -42,7 +42,7 @@ class ReservationServiceTest {
     @BeforeEach
     void setUp() {
         client = new Client("Doe", "John", "0123456789", "john.doe@example.com", "123 Rue Exemple",
-                LocalDate.of(1990, 5, 15), "Française", "123456789", TypeIdentite.CIN, "Aucun");
+                LocalDate.of(1990, 5, 15), "Française", "123456789", TypeIdentite.CNI, "Aucun");
 
         logement = new Logement();
         logement.setNumero(1);
