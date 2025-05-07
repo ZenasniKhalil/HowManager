@@ -119,6 +119,7 @@ public class ListesClientsController {
 
     public void ouvrirPageCreerClient() {
         try {
+            System.out.println("ouvrirPageCreerClient()");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/EnregistrerClient.fxml"));
             loader.setControllerFactory(JavaFxApplicationSupport.getContext()::getBean);
             Parent root = loader.load();
