@@ -12,6 +12,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -20,11 +22,14 @@ import java.nio.Buffer;
 import java.time.LocalDate;
 
 @Component
+@Setter
+@Getter
 public class EnregistrerClientValiderController {
     @FXML Button btnNo;
     @FXML Button btnYes;
+
+
     private ClientService clientService;
-    private String nom, prenom, telephone, email, adresse, nat, numId, typeId, remarque;
     private LocalDate ddn;
     private Client client;
 
@@ -49,11 +54,11 @@ public class EnregistrerClientValiderController {
 
     @FXML
     private void enregistrerClient(ActionEvent event) {
-        try {
-            //Déclarer un EnregistrerClientController
-            Client nouveauClient = new Client();
-            Client savedClient = clientService.addClient(nouveauClient);
 
+        try {
+            System.out.println(" affichage" +client.toString()+"\n");
+
+            Client savedClient = clientService.addClient(client);
 
             if (savedClient != null) {
                 System.out.println("Test id Client : "+savedClient.getId());
@@ -117,22 +122,12 @@ public class EnregistrerClientValiderController {
         alert.setContentText(content);
         alert.showAndWait();
     }
-/*
-    public void setClientInfos(String nom,String prenom,String telephone,String email,String remarque,ClientService clientService) {
-        this.nom = nom;
-        this.prenom = prenom;
-        this.telephone = telephone;
-        this.email = email;
-        this.remarque = remarque;
-        this.clientService = clientService;
-    }
 
- */
 
     public void setClientInfos(String nom, String prenom, String telephone,
                                String email, String adresse, LocalDate ddn,
                                String nat, String numId, String typeId,
-                               String remarque, ClientService clientService) {
+                               String remarque) {
         //this.nom = nom;
         this.client.setNom(nom);
         //this.prenom = prenom;
@@ -143,9 +138,8 @@ public class EnregistrerClientValiderController {
         this.client.setDateNaissance(ddn);
         this.client.setNationalite(nat);
         this.client.setNumeroIdentite(numId);
-        //this.client.setTypeIdentite(typeId);
         this.client.setTypeIdentite(TypeIdentite.labelToTypeIdentite(typeId));
         this.client.setRemarque(remarque);
-        this.clientService = clientService;
+        System.out.println(client.toString());
     }
 }

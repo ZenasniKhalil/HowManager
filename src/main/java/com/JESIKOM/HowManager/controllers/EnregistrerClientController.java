@@ -23,6 +23,7 @@ import java.io.IOException;
 
 @Component
 public class EnregistrerClientController {
+    private final EnregistrerClientValiderController enregistrerClientValiderController;
     @FXML Button profileButton; // Récupère le bouton
     @FXML private ImageView profileImage;
     @FXML private MenuItem voirMonProfilButton;
@@ -41,23 +42,24 @@ public class EnregistrerClientController {
 
 
 
-    @Autowired
     private ClientService clientService;
-
-
-
-
-
 
     @FXML
     private TextField nomField, prenomField, telephoneField, emailField, adresseField, natField, numIdField;
     @FXML private TextArea remarqueArea;
     @FXML private DatePicker ddnField;
-    //@FXML private MenuButton menuButtonTypeIdentite;
+    @FXML private TextField typeIdField;
+
+    public EnregistrerClientController(ClientService clientService, EnregistrerClientValiderController enregistrerClientValiderController){
+        this.clientService=clientService;
+        this.enregistrerClientValiderController = enregistrerClientValiderController;
+    }
 
     @FXML
     private void ouvrirPopupConfirmation() {
+        System.out.println("dans ouvrirPopConfirmation");
         try {
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/EnregistrerClientValider.fxml"));
             Stage popupStage = new Stage();
             popupStage.initModality(Modality.APPLICATION_MODAL);
@@ -66,6 +68,7 @@ public class EnregistrerClientController {
 
             // Récupérer le contrôleur de la popup
             EnregistrerClientValiderController popupController = loader.getController();
+            System.out.println("controller loaded");
 
             // Lui passer les données du formulaire
             popupController.setClientInfos(
@@ -77,10 +80,10 @@ public class EnregistrerClientController {
                     ddnField.getValue(),
                     natField.getText(),
                     numIdField.getText(),
-                    menuButtonTypeIdentite.getText(),
-                    remarqueArea.getText(),
-                    this.clientService
+                    typeIdField.getText(),
+                    remarqueArea.getText()
             );
+            System.out.println("setclientInfo");
 
             popupStage.showAndWait();
         } catch (IOException e) {
@@ -142,8 +145,6 @@ public class EnregistrerClientController {
 
     public void ouvrirConfirmationValider() throws IOException {
         try {
-            //Faire setInfosClients, avant d'ouvrir la page
-
 
             // Appliquer un flou sur la fenêtre principale
             BoxBlur blur = new BoxBlur(5, 5, 3);
@@ -154,12 +155,8 @@ public class EnregistrerClientController {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/EnregistrerClientValider.fxml"));
             fxmlLoader.setControllerFactory(JavaFxApplicationSupport.getContext()::getBean);  // Injection Spring dans le FXML
             Parent popupRoot = fxmlLoader.load();
-
-            // Récupérer le contrôleur de la popup
             EnregistrerClientValiderController valideur = fxmlLoader.getController();
-
-            // Lui passer les données du formulaire
-            valideur.setClientInfos(
+            Client client = new Client(
                     nomField.getText(),
                     prenomField.getText(),
                     telephoneField.getText(),
@@ -168,10 +165,10 @@ public class EnregistrerClientController {
                     ddnField.getValue(),
                     natField.getText(),
                     numIdField.getText(),
-                    menuButtonTypeIdentite.getText(),
-                    remarqueArea.getText(),
-                    this.clientService
+                    TypeIdentite.labelToTypeIdentite(menuButtonTypeIdentite.getText()),
+                    remarqueArea.getText()
             );
+            valideur.setClient(client);
 
             Stage popupStage = new Stage();
             popupStage.initModality(Modality.WINDOW_MODAL); // bloque interaction avec la fenêtre principale

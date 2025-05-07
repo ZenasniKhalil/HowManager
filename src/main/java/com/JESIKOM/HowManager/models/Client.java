@@ -1,10 +1,12 @@
 package com.JESIKOM.HowManager.models;
 
 import jakarta.persistence.*;
+import lombok.ToString;
 
 import java.time.LocalDate;
 
 @Entity
+@ToString
 @Table(name = "client")
 public class Client {
 
@@ -165,4 +167,6 @@ public class Client {
     public void setRemarque(String remarque) {
         this.remarque = remarque;
     }
+
+
 }
