@@ -29,6 +29,14 @@ interface ILogementService {
 
     List<Logement> getLogementByType(TypeLogement type);
 
+    int getNbLogementOccupeByType(TypeLogement type);
+
+    int getNbLogementDisponibleByType(TypeLogement type);
+
+    int getNbLogementDisponible();
+
+    int getNbLogementOccupe();
+
 
 
 

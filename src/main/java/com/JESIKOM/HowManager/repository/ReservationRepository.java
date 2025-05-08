@@ -14,5 +14,7 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
 
     List<Reservation>findReservationsByLogement_Numero(long logementNum);
 
+    int countReservationByDateDebutBetween(LocalDate startDate, LocalDate endDate);
+
 
 }

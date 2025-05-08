@@ -28,4 +28,6 @@ interface IReservationService {
 
     String exportFacturation(Reservation reservation);
 
+    int getNombreReservationBetween(LocalDate startDate, LocalDate endDate);
+
 }
