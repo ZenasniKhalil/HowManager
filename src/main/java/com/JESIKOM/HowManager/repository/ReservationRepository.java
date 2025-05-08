@@ -12,7 +12,7 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
 
     List<Reservation>findReservationByClient_Id(long clientId);
 
-    List<Reservation>findReservationsByLogement_Numero(long logementNum);
+    List<Reservation>findReservationsByLogement_Numero(int logementNum);
 
     int countReservationByDateDebutBetween(LocalDate startDate, LocalDate endDate);
 
