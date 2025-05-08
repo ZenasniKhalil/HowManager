@@ -102,5 +102,8 @@ public class ReservationService implements IReservationService {
         }
         return true;
     }
+    public int getNombreReservationBetween(LocalDate startDate, LocalDate endDate) {
+        return reservationRepository.countReservationByDateDebutBetween(startDate, endDate);
+    }
 
 }
