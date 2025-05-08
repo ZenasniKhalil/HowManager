@@ -33,6 +33,10 @@ interface ILogementService {
 
     int getNbLogementDisponibleByType(TypeLogement type);
 
+    int getNbLogementDisponible();
+
+    int getNbLogementOccupe();
+
 
 
 

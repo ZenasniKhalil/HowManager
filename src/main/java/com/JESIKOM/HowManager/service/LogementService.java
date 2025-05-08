@@ -79,12 +79,22 @@ public class LogementService implements ILogementService {
 
     @Override
     public int getNbLogementOccupeByType(TypeLogement type) {
-    return logementRepository.countLogementByTypeAndDisponibleFalse(type);
+    return logementRepository.countLogementByTypeAndDisponible(type,false);
     }
 
     @Override
     public int getNbLogementDisponibleByType(TypeLogement type) {
-        return logementRepository.countLogementByTypeAndDisponibleTrue(type);
+        return logementRepository.countLogementByTypeAndDisponible(type,true );
+    }
+
+    @Override
+    public int getNbLogementDisponible() {
+        return logementRepository.countLogementByDisponible(true);
+    }
+
+    @Override
+    public int getNbLogementOccupe() {
+        return logementRepository.countLogementByDisponible(false);
     }
 
 
