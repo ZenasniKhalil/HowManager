@@ -19,4 +19,9 @@ public interface LogementRepository extends JpaRepository<Logement, Integer> {
     List<Logement>findLogementByDisponible(Boolean disponible);
 
     List<Logement> findLogementByType(TypeLogement type);
+
+    int countLogementByTypeAndDisponibleTrue(TypeLogement type);
+
+    int countLogementByTypeAndDisponibleFalse(TypeLogement type);
+
 }

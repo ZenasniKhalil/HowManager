@@ -76,4 +76,16 @@ public class LogementService implements ILogementService {
     public List<Logement> getLogementByType(TypeLogement type) {
         return logementRepository.findLogementByType(type);
     }
+
+    @Override
+    public int getNbLogementOccupeByType(TypeLogement type) {
+    return logementRepository.countLogementByTypeAndDisponibleFalse(type);
+    }
+
+    @Override
+    public int getNbLogementDisponibleByType(TypeLogement type) {
+        return logementRepository.countLogementByTypeAndDisponibleTrue(type);
+    }
+
+
 }
