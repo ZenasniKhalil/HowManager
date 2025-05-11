@@ -1,84 +1,57 @@
 package com.JESIKOM.HowManager.models;
 
 import jakarta.persistence.*;
-import lombok.Data;
-
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Classe contenant les differentes taches sur une semaine concrète
- */
 @Entity
 @Table(name = "planning")
 public class Planning {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-incrémentation
-    long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
     @ManyToOne
     @JoinColumn(name = "personnel_id")
-    Personnel personnel;
-    @Column(nullable = false)
-    int annee;
+    private Personnel personnel;
+
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
 
     @Column(nullable = false)
-    int semaine;
+    private int annee;
+
+    @Column(nullable = false)
+    private int semaine;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "planning_id")
-    List<Tache> taches;
+    private List<Tache> taches;
 
     @Lob
     @Column(columnDefinition = "TEXT")
-    String note;
+    private String note;
 
-
-    public Planning(){
-        taches= new ArrayList<>();
+    public Planning() {
+        taches = new ArrayList<>();
     }
 
-    public Personnel getPersonnel() {
-        return personnel;
-    }
+    public Personnel getPersonnel() { return personnel; }
+    public void setPersonnel(Personnel personnel) { this.personnel = personnel; }
 
-    public void setPersonnel(Personnel personnel) {
-        this.personnel = personnel;
-    }
+    public Client getClient() { return client; }
+    public void setClient(Client client) { this.client = client; }
 
-    public int getAnnee() {
-        return annee;
-    }
+    public int getAnnee() { return annee; }
+    public void setAnnee(int annee) { this.annee = annee; }
 
-    public void setAnnee(int annee) {
-        this.annee = annee;
-    }
+    public int getSemaine() { return semaine; }
+    public void setSemaine(int semaine) { this.semaine = semaine; }
 
-    public int getSemaine() {
-        return semaine;
-    }
+    public List<Tache> getTaches() { return taches; }
+    public void setTaches(List<Tache> taches) { this.taches = taches; }
 
-    public void setSemaine(int semaine) {
-        this.semaine = semaine;
-    }
-
-    public List<Tache> getTaches() {
-        return taches;
-    }
-
-    public void setTaches(List<Tache> taches) {
-        this.taches = taches;
-    }
-
-    public void addTache(Tache tache) {taches.add(tache);}
-
-    public void removeTache(Tache tache) {taches.remove(tache);}
-
-    public String getNote() {
-        return note;
-    }
-
-    public void setNote(String note) {
-        this.note = note;
-    }
+    public String getNote() { return note; }
+    public void setNote(String note) { this.note = note; }
 }

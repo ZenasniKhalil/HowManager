@@ -109,6 +109,9 @@ Map<TypeMajoration,Float> computeNbHeuresWithMajoration(Planning p){
         }
     return planning;
     }
+    public List<Planning> listerTous() {
+        return planningRepository.findAll();
+    }
 }
 
 

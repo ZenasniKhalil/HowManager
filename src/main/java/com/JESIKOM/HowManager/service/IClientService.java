@@ -22,7 +22,7 @@ interface IClientService {
     public List<Client>getClientByEmail(String email);
 
     //Plutot que delete ?
-    public void ArchiveClient(Client client);
+   // public void ArchiveClient(Client client);
 
 
 }
