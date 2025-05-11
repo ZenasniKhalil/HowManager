@@ -14,8 +14,12 @@ public class AuthentificationService {
     private UtilisateurRepository utilisateurRepository;
 
     public Utilisateur authentifier(String email, String motDePasse) throws Exception {
-        return utilisateurRepository.findUserByEmail(email)
+        return utilisateurRepository.findByEmail(email)
                 .filter(u -> BCrypt.checkpw(motDePasse, u.getMotDePasse()))
                 .orElseThrow(() -> new Exception("Email ou mot de passe invalide"));
+    }
+
+    public void setUtilisateurRepository(UtilisateurRepository utilisateurRepository) {
+        this.utilisateurRepository = utilisateurRepository;
     }
 }
