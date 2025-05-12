@@ -210,9 +210,9 @@
 
 
 
-        <ScrollPane layoutX="224.0" layoutY="153.0" prefHeight="1500.0" prefWidth="716.0">
+        <ScrollPane layoutX="224.0" layoutY="153.0" prefHeight="552.0" prefWidth="716.0">
          <content>
-            <AnchorPane prefHeight="900.0" prefWidth="702.0">
+            <AnchorPane prefHeight="800.0" prefWidth="702.0">
                <children>
                   <ListView layoutX="350.0" layoutY="431.0" prefHeight="286.0" prefWidth="347.0" style="-fx-background-color: #D9D9D9;" />
                    <!-- onAction="#ouvrirListeClients" -->
@@ -312,7 +312,7 @@
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Text>
-                              <DatePicker fx:id="ddnField" prefHeight="26.0" prefWidth="146.0" />
+                              <DatePicker fx:id="ddnField" prefHeight="26.0" prefWidth="146.0" promptText="JJ/MM/AAAA" />
                            </children>
                         </HBox>
                      </children>
@@ -338,7 +338,7 @@
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Text>
-                              <DatePicker fx:id="dateReservationField" prefHeight="26.0" prefWidth="114.0">
+                              <DatePicker fx:id="dateReservationField" prefHeight="26.0" prefWidth="114.0" promptText="JJ/MM/AAAA">
                                  <tooltip>
                                     <Tooltip text="Date à laquelle le client a fait la réservation" />
                                  </tooltip></DatePicker>
@@ -351,7 +351,10 @@
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Text>
-                              <DatePicker fx:id="dateDebutField" prefHeight="26.0" prefWidth="103.0" />
+                              <DatePicker fx:id="dateDebutField" prefHeight="26.0" prefWidth="103.0" promptText="JJ/MM/AAAA">
+                                 <tooltip>
+                                    <Tooltip text="Début officiel prévu" />
+                                 </tooltip></DatePicker>
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" layoutX="27.0" layoutY="101.0" prefHeight="27.0" prefWidth="195.0">
@@ -411,7 +414,10 @@
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Text>
-                              <DatePicker fx:id="checkInField" prefHeight="26.0" prefWidth="114.0" />
+                              <DatePicker fx:id="checkInField" prefHeight="26.0" prefWidth="114.0" promptText="JJ/MM/AAAA">
+                                 <tooltip>
+                                    <Tooltip text="Date à laquelle le logement est donné réellement au client" />
+                                 </tooltip></DatePicker>
                            </children>
                         </HBox>
                         <HBox layoutX="217.0" layoutY="72.0" prefHeight="26.0" prefWidth="80.0">
@@ -441,7 +447,10 @@
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Text>
-                              <DatePicker fx:id="checkOutField" prefHeight="26.0" prefWidth="114.0" />
+                              <DatePicker fx:id="checkOutField" prefHeight="26.0" prefWidth="114.0" promptText="JJ/MM/AAAA">
+                                 <tooltip>
+                                    <Tooltip text="Date à laquelle le client part du logement" />
+                                 </tooltip></DatePicker>
                            </children>
                         </HBox>
                         <HBox layoutX="218.0" layoutY="132.0" prefHeight="26.0" prefWidth="80.0">

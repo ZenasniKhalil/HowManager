@@ -1,11 +1,13 @@
 package com.JESIKOM.HowManager.models;
 
 import jakarta.persistence.*;
+import lombok.ToString;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
+@ToString
 @Table(name = "reservation")
 public class Reservation {
     @Id
@@ -66,6 +68,7 @@ public class Reservation {
         this.dateDebut = dateDebut;
         this.nombreNuits = nombreNuits;
         this.nombreAdultes = nombreAdultes;
+        this.nombreEnfants = nombreEnfants;
         this.statut = statut;
         this.acompte = acompte;
         this.remarque = remarque;

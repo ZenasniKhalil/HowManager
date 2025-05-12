@@ -6,6 +6,8 @@ import com.JESIKOM.HowManager.models.Logement;
 import com.JESIKOM.HowManager.models.Reservation;
 import com.JESIKOM.HowManager.models.TypeIdentite;
 import com.JESIKOM.HowManager.service.ClientService;
+import com.JESIKOM.HowManager.service.LogementService;
+import com.JESIKOM.HowManager.service.ReservationService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,6 +34,8 @@ public class EnregistrerClientValiderController {
 
 
     private ClientService clientService;
+    private ReservationService reservationService;
+    private LogementService logementService;
     private LocalDate ddn;
     private Client client;
     private Reservation reservation;
@@ -47,8 +51,9 @@ public class EnregistrerClientValiderController {
 
 
     //Injection Spring
-    public EnregistrerClientValiderController(ClientService clientService){
+    public EnregistrerClientValiderController(ClientService clientService, ReservationService reservationService){
         this.clientService = clientService;
+        this.reservationService = reservationService;
     }
 
     public void closepopup(){
@@ -61,15 +66,17 @@ public class EnregistrerClientValiderController {
 
         try {
             System.out.println(" affichage" +client.toString()+"\n");
-
             Client savedClient = clientService.addClient(client);
+            System.out.println(" affichage" +reservation.toString()+"\n");
+            Reservation savedReservation = reservationService.addReservation(reservation);
 
-            if (savedClient != null) {
+            if (savedClient != null && savedReservation != null) {
                 System.out.println("Test id Client : "+savedClient.getId());
+                System.out.println("Test id reservation : "+savedReservation.getId());
                 ouvrirConfirmationEnregistrementClient(event);
             } else {
-                System.out.println("client null");
-                showAlert("Erreur", "Ce client existe déjà ou des champs sont invalides.");
+                System.out.println("client/réservation null");
+                showAlert("Erreur", "Ce client/cette réservation existe déjà ou des champs sont invalides.");
             }
 
         } catch (Exception e) {
@@ -88,32 +95,16 @@ public class EnregistrerClientValiderController {
             popupStage.setResizable(false);
 
 
-
-
-            /*
-            // Lui passer les données du formulaire
-            this.setClientInfos(
-                    nomField.getText(),
-                    prenomField.getText(),
-                    telephoneField.getText(),
-                    emailField.getText(),
-                    remarqueArea.getText(),
-                    this.clientService
-            );
-
-             */
-
-
-            //ChargerPhotoProfilController popupController = loader.getController();
-            //popupController.setMainController(this);
-
-
             // Fermer la fenêtre actuelle
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             currentStage.close();
 
 
             popupStage.showAndWait();
+
+
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -145,6 +136,12 @@ public class EnregistrerClientValiderController {
         this.client.setTypeIdentite(TypeIdentite.labelToTypeIdentite(typeId));
         this.client.setRemarque(remarque);
         System.out.println(client.toString());
+    }
+
+    @FXML
+    private void onNonClicked(ActionEvent event) {
+        Stage popupStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        popupStage.close(); // juste fermer le popup
     }
 
 }

@@ -103,6 +103,22 @@ public class Logement {
     public void setPrix(double prix) {
         this.prix = prix;
     }
+
+    public static Boolean stringToBoolean(String s){
+        Boolean res = null;
+        switch (s) {
+            case "OUI", "oui" :
+                res = true;
+            break;
+            case "NON", "non" :
+                res = false;
+            break;
+            default:
+                System.out.println("Choix incorrect ! Soit OUI soit NON");
+                break;
+        }
+        return res;
+    }
 }
 
 
