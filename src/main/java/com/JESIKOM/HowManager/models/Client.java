@@ -1,10 +1,12 @@
 package com.JESIKOM.HowManager.models;
 
 import jakarta.persistence.*;
+import lombok.ToString;
 
 import java.time.LocalDate;
 
 @Entity
+@ToString
 @Table(name = "client")
 public class Client {
 
@@ -30,10 +32,10 @@ public class Client {
     @Column(name = "date_naissance", nullable = false)
     private LocalDate dateNaissance;
 
-    @Column( length = 50)
+    @Column( length = 50, nullable = false)
     private String nationalite;
 
-    @Column(name = "num_identite", unique = true, length = 50)
+    @Column(name = "num_identite", unique = true, length = 50, nullable = false)
     private String numeroIdentite;
 
     /**
@@ -49,6 +51,16 @@ public class Client {
 
 
     public Client() {
+        this.nom = "ras";
+        this.prenom = "ras";
+        this.telephone = "ras";
+        this.email = "ras";
+        this.adresse = "ras";
+        this.dateNaissance = LocalDate.now();
+        this.nationalite = "ras";
+        this.numeroIdentite = "ras";
+        this.typeIdentite = TypeIdentite.CNI;
+        this.remarque = "ras";
     }
 
     public Client( String nom, String prenom, String telephone, String email, String adresse, LocalDate dateNaissance, String nationalite, String numeroIdentite, TypeIdentite typeIdentite, String remarque) {
@@ -155,4 +167,6 @@ public class Client {
     public void setRemarque(String remarque) {
         this.remarque = remarque;
     }
+
+
 }

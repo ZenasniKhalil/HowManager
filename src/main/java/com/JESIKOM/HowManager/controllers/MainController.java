@@ -1,5 +1,6 @@
 package com.JESIKOM.HowManager.controllers;
 
+import com.JESIKOM.HowManager.JavaFxApplicationSupport;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -223,6 +224,7 @@ public class MainController {
     public void voirClients(ActionEvent event){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/ListesClients.fxml"));
+            loader.setControllerFactory(JavaFxApplicationSupport.getContext()::getBean);  // Injection Spring dans le FXML
             Parent root = loader.load();
 
             //Obtenir le Stage actuel

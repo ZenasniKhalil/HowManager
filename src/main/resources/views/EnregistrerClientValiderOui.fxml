@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="250.0" prefWidth="442.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.JESIKOM.HowManager.controllers.EnregistrerClientValiderOuiController">
-<Button fx:id="btnYes" layoutX="156.0" layoutY="185.0" prefHeight="30.0" prefWidth="103.0" style="-fx-background-color: #004aad;" text="Continuer" textFill="WHITE">
+<Button fx:id="enregistrementEffectueButton" layoutX="156.0" layoutY="185.0" onAction="#voirClients" prefHeight="30.0" prefWidth="103.0" style="-fx-background-color: #004aad;" text="Continuer" textFill="WHITE">
     <font>
         <Font name="System Bold" size="14.0" />
     </font></Button>

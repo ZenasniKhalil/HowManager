@@ -1,11 +1,13 @@
 package com.JESIKOM.HowManager.models;
 
 import jakarta.persistence.*;
+import lombok.ToString;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
+@ToString
 @Table(name = "reservation")
 public class Reservation {
     @Id
@@ -58,14 +60,15 @@ public class Reservation {
     @Column(name = "check_out")
     private LocalDateTime checkOut;
 
-    public Reservation(Long id, Client client, Logement logement, LocalDateTime dateReservation, LocalDate dateDebut, int nombreNuits, int nombreAdultes, int nombreEnfants, StatutReservation statut, double acompte, String remarque, ModePaiement modePaiement, LocalDateTime checkIn, LocalDateTime checkOut) {
-        this.id = id;
+    public Reservation(Client client, Logement logement, LocalDateTime dateReservation, LocalDate dateDebut, int nombreNuits, int nombreAdultes, int nombreEnfants, StatutReservation statut, double acompte, String remarque, ModePaiement modePaiement, LocalDateTime checkIn, LocalDateTime checkOut) {
+        //this.id = id;
         this.client = client;
         this.logement = logement;
         this.dateReservation = dateReservation;
         this.dateDebut = dateDebut;
         this.nombreNuits = nombreNuits;
         this.nombreAdultes = nombreAdultes;
+        this.nombreEnfants = nombreEnfants;
         this.statut = statut;
         this.acompte = acompte;
         this.remarque = remarque;
