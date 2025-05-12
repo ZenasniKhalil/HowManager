@@ -4,6 +4,7 @@ import com.JESIKOM.HowManager.JavaFxApplicationSupport;
 import com.JESIKOM.HowManager.models.Client;
 import com.JESIKOM.HowManager.models.Logement;
 import com.JESIKOM.HowManager.models.Reservation;
+import com.JESIKOM.HowManager.models.StatutReservation;
 import com.JESIKOM.HowManager.service.ClientService;
 import com.JESIKOM.HowManager.service.LogementService;
 import com.JESIKOM.HowManager.service.ReservationService;
@@ -24,12 +25,14 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
 public class ListesClientsController {
+    public Button enregistrerNouveauClient;
     @FXML private MenuItem menuItem1;
     @FXML private MenuItem menuItem2;
     @FXML private MenuItem menuItem3;
@@ -43,33 +46,50 @@ public class ListesClientsController {
     @Autowired
     private ReservationService reservationService;
 
+    @Autowired
+    private LogementService logementService;
 
-    @FXML
-    private TableView<Client> tableClients;
-
-    @FXML
-    private TableColumn<Client, Long> colID;
-
-    @FXML
-    private TableColumn<Client, String> colNom;
-
-    @FXML
-    private TableColumn<Client, String> colPrenom;
-
-    @FXML
-    private TableColumn<Client, String> colEmail;
-
-    @FXML
-    private TableColumn<Client, String> colTelephone;
-
-    @FXML
-    private TableColumn<Client, String> colRemarque;
-
-    @FXML
-    private TextField searchField;
-
+    /*Debut table Client*/
+    @FXML private TableView<Client> tableClients;
+    @FXML private TableColumn<Client, Long> colID;
+    @FXML private TableColumn<Client, String> colNom;
+    @FXML private TableColumn<Client, String> colPrenom;
+    @FXML private TableColumn<Client, String> colEmail;
+    @FXML private TableColumn<Client, String> colTelephone;
+    @FXML private TableColumn<Client, String> colRemarque;
     private ObservableList<Client> clientsData = FXCollections.observableArrayList();
+    /*Fin table Client*/
 
+    /*Debut table Réservation*/
+    @FXML private TableView<Reservation> tableReservations;
+    @FXML private TableColumn<Reservation, Long> colIDResa;
+    @FXML private TableColumn<Reservation, String> colIDClient;
+    @FXML private TableColumn<Reservation, String> colIDLogement;
+    @FXML private TableColumn<Reservation, String> colDateDebut;
+    @FXML private TableColumn<Reservation, String> colNbreNuits;
+    @FXML private TableColumn<Reservation, String> colStatut;
+    @FXML private TableColumn<Reservation, String> colAcompte;
+    @FXML private TableColumn<Reservation, String > colRemarqueResa;
+    @FXML private TableColumn<Reservation, String> colCheckIn;
+    @FXML private TableColumn<Reservation, String> colCheckOut;
+    private ObservableList<Reservation> resaData = FXCollections.observableArrayList();
+    /*Fin table Réservation*/
+
+    /*Debut table Logement*/
+    @FXML private TableView<Logement> tableLogements;
+    @FXML private TableColumn<Logement, Integer> colLogementID;
+    @FXML private TableColumn<Logement, String> colTypeLogement;
+    @FXML private TableColumn<Logement, String> colCapciteLogement;
+    @FXML private TableColumn<Logement, String> colDisponibleLogement;
+    @FXML private TableColumn<Logement, String> colPropreLogement;
+    @FXML private TableColumn<Logement, String> colCommentaireLogement;
+    @FXML private TableColumn<Logement, String> colPrixLogement;
+    private ObservableList<Logement> logementData = FXCollections.observableArrayList();
+    /*Fin table Logement*/
+
+    @FXML private Button tableauBord;
+
+    @FXML private TextField searchField;
 
 
     @FXML
@@ -77,6 +97,7 @@ public class ListesClientsController {
         //Rendre l'image cliquable pour rouvrir la popup
         profileImage.setOnMouseClicked(event -> chargerPhotoProfil());
 
+        /*Début initialisation table Client*/
         //Associer les propriétés de Client aux colonnes
         colID.setCellValueFactory(new PropertyValueFactory<>("id"));
         colNom.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getNom()));
@@ -172,12 +193,53 @@ public class ListesClientsController {
                 }
             }
         });
+        /*Fin initialisation table Client*/
+
+        /*Début initialisation table Réservation*/
+        //Associer les propriétés de Client aux colonnes
+        colIDResa.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colIDClient.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cellData.getValue().getClient().getId())));
+        colIDLogement.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cellData.getValue().getLogement().getNumero())));
+        colDateDebut.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cellData.getValue().getDateDebut())));
+        colNbreNuits.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cellData.getValue().getNombreNuits())));
+        colStatut.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cellData.getValue().getStatut())));
+        colAcompte.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cellData.getValue().getAcompte())));
+        colRemarqueResa.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getRemarque()));
+        colCheckIn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cellData.getValue().getCheckIn())));
+        colCheckOut.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cellData.getValue().getCheckOut())));
+        loadReservations();
+        /*Fin initialisation table Réservation*/
+
+        /*Début initialisation table Logement*/
+        //Associer les propriétés de Client aux colonnes
+        colLogementID.setCellValueFactory(new PropertyValueFactory<>("numero"));
+        colTypeLogement.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cellData.getValue().getType())));
+        colCapciteLogement.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cellData.getValue().getCapacite())));
+        colDisponibleLogement.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cellData.getValue().isDisponible())));
+        colPropreLogement.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cellData.getValue().isPropre())));
+        colCommentaireLogement.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cellData.getValue().getCommentaire())));
+        colPrixLogement.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cellData.getValue().getPrix())));
+        loadLogements();
+        /*Fin initialisation table Logement*/
+
     }
 
     private void loadClients() {
         List<Client> clients = clientService.getAllClients();
         clientsData.setAll(clients);
         tableClients.setItems(clientsData);
+    }
+
+    private void loadReservations() {
+        List<Reservation> reservations = reservationService.getAllReservations();
+        resaData.setAll(reservations);
+        tableReservations.setItems(resaData);
+    }
+
+    private void loadLogements(){
+        List<Logement> logements = logementService.getAllLogements();
+        logementData.setAll(logements);
+        tableLogements.setItems(logementData);
     }
 
 
@@ -219,6 +281,24 @@ public class ListesClientsController {
         try {
             System.out.println("ouvrirPageCreerClient()");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/EnregistrerClient.fxml"));
+            loader.setControllerFactory(JavaFxApplicationSupport.getContext()::getBean);
+            Parent root = loader.load();
+
+            //Obtenir le Stage actuel
+            Stage stage = (Stage) tableClients.getScene().getWindow(); // ← adapte ici aussi
+
+            stage.setScene(new Scene(root)); // Remplacer le contenu
+            stage.show(); // si nécessaire
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void retourTableauBord(){
+        try {
+            System.out.println("retourTableauBord()");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/main.fxml"));
             loader.setControllerFactory(JavaFxApplicationSupport.getContext()::getBean);
             Parent root = loader.load();
 

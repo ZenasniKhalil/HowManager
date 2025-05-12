@@ -10,6 +10,7 @@
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -209,9 +210,9 @@
 
 
 
-        <ScrollPane layoutX="224.0" layoutY="153.0" prefHeight="552.0" prefWidth="716.0">
+        <ScrollPane layoutX="224.0" layoutY="153.0" prefHeight="1500.0" prefWidth="716.0">
          <content>
-            <AnchorPane prefHeight="552.0" prefWidth="702.0">
+            <AnchorPane prefHeight="900.0" prefWidth="702.0">
                <children>
                   <ListView layoutX="350.0" layoutY="431.0" prefHeight="286.0" prefWidth="347.0" style="-fx-background-color: #D9D9D9;" />
                    <!-- onAction="#ouvrirListeClients" -->
@@ -337,7 +338,10 @@
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Text>
-                              <DatePicker prefHeight="26.0" prefWidth="114.0" />
+                              <DatePicker fx:id="dateReservationField" prefHeight="26.0" prefWidth="114.0">
+                                 <tooltip>
+                                    <Tooltip text="Date à laquelle le client a fait la réservation" />
+                                 </tooltip></DatePicker>
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" layoutX="30.0" layoutY="25.0" prefHeight="38.0" prefWidth="178.0">
@@ -347,7 +351,7 @@
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Text>
-                              <DatePicker prefHeight="26.0" prefWidth="103.0" />
+                              <DatePicker fx:id="dateDebutField" prefHeight="26.0" prefWidth="103.0" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" layoutX="27.0" layoutY="101.0" prefHeight="27.0" prefWidth="195.0">
@@ -357,7 +361,7 @@
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Text>
-                              <TextField prefHeight="26.0" prefWidth="65.0" />
+                              <TextField fx:id="nbreNuitsField" prefHeight="26.0" prefWidth="65.0" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" layoutX="33.0" layoutY="154.0" prefHeight="40.0" prefWidth="132.0">
@@ -367,7 +371,7 @@
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Text>
-                              <TextField prefHeight="25.0" prefWidth="73.0" />
+                              <TextField fx:id="nbreEnfantsField" prefHeight="25.0" prefWidth="73.0" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" layoutX="194.0" layoutY="154.0" prefHeight="40.0" prefWidth="143.0">
@@ -377,7 +381,7 @@
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Text>
-                              <TextField prefHeight="25.0" prefWidth="73.0" />
+                              <TextField fx:id="nbreAdultesField" prefHeight="25.0" prefWidth="73.0" />
                            </children>
                         </HBox>
                         <HBox layoutX="231.0" layoutY="-12.0" prefHeight="26.0" prefWidth="80.0">
@@ -387,7 +391,7 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Text>
-                              <TextField prefHeight="26.0" prefWidth="30.0" />
+                              <TextField fx:id="heureReservationField" prefHeight="26.0" prefWidth="30.0" />
                            </children>
                         </HBox>
                         <HBox layoutX="313.0" layoutY="-10.0">
@@ -397,7 +401,7 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Text>
-                              <TextField prefHeight="25.0" prefWidth="28.0" />
+                              <TextField fx:id="minuteReservationField" prefHeight="25.0" prefWidth="28.0" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" layoutX="33.0" layoutY="66.0" prefHeight="38.0" prefWidth="183.0">
@@ -407,7 +411,7 @@
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Text>
-                              <DatePicker prefHeight="26.0" prefWidth="114.0" />
+                              <DatePicker fx:id="checkInField" prefHeight="26.0" prefWidth="114.0" />
                            </children>
                         </HBox>
                         <HBox layoutX="217.0" layoutY="72.0" prefHeight="26.0" prefWidth="80.0">
@@ -417,7 +421,7 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Text>
-                              <TextField prefHeight="26.0" prefWidth="30.0" />
+                              <TextField fx:id="checkInHeureField" prefHeight="26.0" prefWidth="30.0" />
                            </children>
                         </HBox>
                         <HBox layoutX="298.0" layoutY="73.0">
@@ -427,7 +431,7 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Text>
-                              <TextField prefHeight="25.0" prefWidth="28.0" />
+                              <TextField fx:id="checkInMinuteField" prefHeight="25.0" prefWidth="28.0" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" layoutX="33.0" layoutY="125.0" prefHeight="38.0" prefWidth="183.0">
@@ -437,7 +441,7 @@
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Text>
-                              <DatePicker prefHeight="26.0" prefWidth="114.0" />
+                              <DatePicker fx:id="checkOutField" prefHeight="26.0" prefWidth="114.0" />
                            </children>
                         </HBox>
                         <HBox layoutX="218.0" layoutY="132.0" prefHeight="26.0" prefWidth="80.0">
@@ -447,7 +451,7 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Text>
-                              <TextField prefHeight="26.0" prefWidth="30.0" />
+                              <TextField fx:id="checkOutHeureField" prefHeight="26.0" prefWidth="30.0" />
                            </children>
                         </HBox>
                         <HBox layoutX="298.0" layoutY="132.0">
@@ -457,7 +461,7 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Text>
-                              <TextField prefHeight="25.0" prefWidth="28.0" />
+                              <TextField fx:id="checkOutMinuteField" prefHeight="25.0" prefWidth="28.0" />
                            </children>
                         </HBox>
                      </children>
@@ -481,7 +485,7 @@
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Text>
-                        <TextField prefHeight="26.0" prefWidth="215.0" />
+                        <TextField fx:id="codePromoField" prefHeight="26.0" prefWidth="215.0" />
                      </children>
                   </HBox>
                   <ListView layoutX="352.0" layoutY="431.0" prefHeight="30.0" prefWidth="344.0" style="-fx-background-color: #65A8FF63;" />
@@ -538,34 +542,29 @@
                         <TextField fx:id="numIdField" prefHeight="26.0" prefWidth="62.0" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" layoutX="6.0" layoutY="495.0" prefHeight="26.0" prefWidth="182.0">
+                  <HBox alignment="CENTER" layoutX="9.0" layoutY="495.0" prefHeight="26.0" prefWidth="150.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="N° Logement" wrappingWidth="78.24267625808716" HBox.hgrow="ALWAYS">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Text>
-                        <MenuButton mnemonicParsing="false" prefHeight="26.0" prefWidth="98.0" text="Selectionner">
-                           <items>
-                              <MenuItem mnemonicParsing="false" text="Action 1" />
-                              <MenuItem mnemonicParsing="false" text="Action 2" />
-                           </items>
-                        </MenuButton>
+                        <TextField fx:id="idLogementField" prefHeight="26.0" prefWidth="78.0" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" layoutX="143.0" layoutY="459.0" prefHeight="40.0" prefWidth="191.0">
+                  <HBox alignment="CENTER" layoutX="125.0" layoutY="459.0" prefHeight="40.0" prefWidth="224.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Type logement" wrappingWidth="88.6426854133606" HBox.hgrow="ALWAYS">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Text>
-                        <MenuButton mnemonicParsing="false" text="Selectionner">
+                        <MenuButton fx:id="menuButtonTypeLogement" mnemonicParsing="false" prefHeight="26.0" prefWidth="143.0" text="Selectionner">
                            <items>
-                              <MenuItem mnemonicParsing="false" text="APPARTEMENT" />
-                              <MenuItem mnemonicParsing="false" text="MAISON" />
-                              <MenuItem mnemonicParsing="false" text="STUDIO" />
-                              <MenuItem mnemonicParsing="false" text="BUNGALOW" />
+                              <MenuItem fx:id="menuItemAppartement" mnemonicParsing="false" text="APPARTEMENT" />
+                              <MenuItem fx:id="menuItemMaison" mnemonicParsing="false" text="MAISON" />
+                              <MenuItem fx:id="menuItemStudio" mnemonicParsing="false" text="STUDIO" />
+                              <MenuItem fx:id="menuItemBungalow" mnemonicParsing="false" text="BUNGALOW" />
                            </items>
                         </MenuButton>
                      </children>
@@ -577,12 +576,12 @@
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Text>
-                        <MenuButton mnemonicParsing="false" text="Selectionner">
+                        <MenuButton fx:id="menuButtonStatutReservation" mnemonicParsing="false" text="Selectionner">
                            <items>
-                              <MenuItem mnemonicParsing="false" text="EN ATTENTE" />
-                              <MenuItem mnemonicParsing="false" text="CONFIRMÉE" />
-                              <MenuItem mnemonicParsing="false" text="ANNULÉE" />
-                              <MenuItem mnemonicParsing="false" text="TERMINÉE" />
+                              <MenuItem fx:id="menuItemEnAttente" mnemonicParsing="false" text="EN ATTENTE" />
+                              <MenuItem fx:id="menuItemConfirmee" mnemonicParsing="false" text="CONFIRMÉE" />
+                              <MenuItem fx:id="menuItemAnnulee" mnemonicParsing="false" text="ANNULÉE" />
+                              <MenuItem fx:id="menuItemTerminee" mnemonicParsing="false" text="TERMINÉE" />
                            </items>
                         </MenuButton>
                      </children>
@@ -592,48 +591,38 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Text>
-                  <TextArea layoutX="542.0" layoutY="362.0" prefHeight="55.0" prefWidth="150.0" wrapText="true" />
-                  <HBox alignment="CENTER" layoutX="8.0" layoutY="463.0" prefHeight="32.0" prefWidth="130.0">
+                  <TextArea fx:id="remarqueReservationField" layoutX="542.0" layoutY="362.0" prefHeight="55.0" prefWidth="150.0" wrapText="true" />
+                  <HBox alignment="CENTER" layoutX="7.0" layoutY="463.0" prefHeight="32.0" prefWidth="115.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Capacité du logement" wrappingWidth="74.03744888305664">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Text>
-                        <TextField prefHeight="26.0" prefWidth="54.0" />
+                        <TextField fx:id="capaciteLogementField" prefHeight="26.0" prefWidth="36.0" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" layoutX="6.0" layoutY="524.0" prefHeight="26.0" prefWidth="260.0">
+                  <HBox alignment="CENTER" layoutX="8.0" layoutY="523.0" prefHeight="26.0" prefWidth="224.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Disponibilité du logement" wrappingWidth="153.4426884651184" HBox.hgrow="ALWAYS">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Text>
-                        <MenuButton mnemonicParsing="false" prefHeight="26.0" prefWidth="99.0" text="Selectionner">
-                           <items>
-                              <MenuItem mnemonicParsing="false" text="OUI" />
-                              <MenuItem mnemonicParsing="false" text="NON" />
-                           </items>
-                        </MenuButton>
+                        <TextField fx:id="dispoLogementField" prefHeight="26.0" prefWidth="70.0" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" layoutX="8.0" layoutY="550.0" prefHeight="34.0" prefWidth="233.0">
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="549.0" prefHeight="34.0" prefWidth="208.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Propreté du logement" wrappingWidth="134.24274110794067" HBox.hgrow="ALWAYS">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Text>
-                        <MenuButton mnemonicParsing="false" prefHeight="26.0" prefWidth="98.0" text="Selectionner">
-                           <items>
-                              <MenuItem mnemonicParsing="false" text="OUI" />
-                              <MenuItem mnemonicParsing="false" text="NON" />
-                           </items>
-                        </MenuButton>
+                        <TextField fx:id="propreLogementField" prefHeight="26.0" prefWidth="75.0" />
                      </children>
                   </HBox>
-                  <TextArea layoutX="181.0" layoutY="585.0" prefHeight="55.0" prefWidth="150.0" wrapText="true" />
+                  <TextArea fx:id="commentaireLogementField" layoutX="181.0" layoutY="585.0" prefHeight="55.0" prefWidth="150.0" wrapText="true" />
                   <Text layoutX="9.0" layoutY="597.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Commentaire sur le logement">
                      <font>
                         <Font name="System Bold" size="12.0" />
@@ -646,7 +635,7 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Text>
-                        <TextField prefHeight="26.0" prefWidth="67.0" />
+                        <TextField fx:id="prixLogementField" prefHeight="26.0" prefWidth="67.0" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" layoutX="172.0" layoutY="640.0" prefHeight="34.0" prefWidth="161.0">
@@ -656,7 +645,7 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Text>
-                        <TextField prefHeight="26.0" prefWidth="78.0" />
+                        <TextField fx:id="acompteLogementField" prefHeight="26.0" prefWidth="78.0" />
                      </children>
                   </HBox>
                   <Text layoutX="141.0" layoutY="662.0" strokeType="OUTSIDE" strokeWidth="0.0" text="€">
@@ -676,10 +665,17 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Text>
-                        <TextField prefHeight="26.0" prefWidth="167.0" />
+                        <MenuButton fx:id="menuButtonModePaiement" mnemonicParsing="false" prefHeight="26.0" prefWidth="98.0" text="Selectionner">
+                           <items>
+                              <MenuItem fx:id="menuItemEspece" mnemonicParsing="false" text="ESPECE" />
+                              <MenuItem fx:id="menuItemCarteBancaire" mnemonicParsing="false" text="CARTE_BANCAIRE" />
+                              <MenuItem fx:id="menuItemMobileMoney" mnemonicParsing="false" text="MOBILE_MONEY" />
+                              <MenuItem fx:id="menuItemVirement" mnemonicParsing="false" text="VIREMENT" />
+                           </items>
+                        </MenuButton>
                      </children>
                   </HBox>
-                  <Button layoutX="222.0" layoutY="735.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="260.0" style="-fx-background-color: #ffffff; -fx-border-color: #004aad; -fx-border-radius: 5; -fx-background-color: #009dab;" text="Enregistrer en tant que brouillon" textFill="WHITE">
+                  <Button fx:id="enregistrerBrouillonResaButton" layoutX="222.0" layoutY="735.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="260.0" style="-fx-background-color: #ffffff; -fx-border-color: #004aad; -fx-border-radius: 5; -fx-background-color: #009dab;" text="Enregistrer en tant que brouillon" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>

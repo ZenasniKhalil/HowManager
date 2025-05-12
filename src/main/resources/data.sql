@@ -43,6 +43,14 @@ VALUES (3, 'STUDIO', 2, 0, 1, 'Studio cosy, actuellement réservé pour la semai
 INSERT INTO logement (logement_id, type, capacite, disponible, propre, commentaire, prix)
 VALUES (4, 'BUNGALOW', 5, 1, 1, 'Bungalow en bord de plage, idéal pour des vacances relaxantes.', 150.0);
 
+-- Logement 5
+INSERT INTO logement (logement_id, type, capacite, disponible, propre, commentaire, prix)
+VALUES (5, 'BUNGALOW', 7, 1, 1, 'Vue sur la plage.', 250.0);
+
+-- Logement 6
+INSERT INTO logement (logement_id, type, capacite, disponible, propre, commentaire, prix)
+VALUES (6, 'MAISON', 5, 1, 1, 'Petit déjeuner gratuit.', 350.0);
+
 -- Insertion des réservations dans H2 Database
 
 -- Réservation 1 : Client 1, Logement 1

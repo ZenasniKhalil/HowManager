@@ -77,6 +77,13 @@ public class Logement {
         return propre;
     }
 
+    public String isPropreOuiNon(){
+        if(propre){
+            return "OUI";
+        }
+        return "NON";
+    }
+
     public void setPropre(boolean propre) {
         this.propre = propre;
     }

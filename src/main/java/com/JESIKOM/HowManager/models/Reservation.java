@@ -58,8 +58,8 @@ public class Reservation {
     @Column(name = "check_out")
     private LocalDateTime checkOut;
 
-    public Reservation(Long id, Client client, Logement logement, LocalDateTime dateReservation, LocalDate dateDebut, int nombreNuits, int nombreAdultes, int nombreEnfants, StatutReservation statut, double acompte, String remarque, ModePaiement modePaiement, LocalDateTime checkIn, LocalDateTime checkOut) {
-        this.id = id;
+    public Reservation(Client client, Logement logement, LocalDateTime dateReservation, LocalDate dateDebut, int nombreNuits, int nombreAdultes, int nombreEnfants, StatutReservation statut, double acompte, String remarque, ModePaiement modePaiement, LocalDateTime checkIn, LocalDateTime checkOut) {
+        //this.id = id;
         this.client = client;
         this.logement = logement;
         this.dateReservation = dateReservation;

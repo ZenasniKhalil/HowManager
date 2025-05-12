@@ -2,6 +2,8 @@ package com.JESIKOM.HowManager.controllers;
 
 import com.JESIKOM.HowManager.JavaFxApplicationSupport;
 import com.JESIKOM.HowManager.models.Client;
+import com.JESIKOM.HowManager.models.Logement;
+import com.JESIKOM.HowManager.models.Reservation;
 import com.JESIKOM.HowManager.models.TypeIdentite;
 import com.JESIKOM.HowManager.service.ClientService;
 import javafx.event.ActionEvent;
@@ -32,6 +34,8 @@ public class EnregistrerClientValiderController {
     private ClientService clientService;
     private LocalDate ddn;
     private Client client;
+    private Reservation reservation;
+    private Logement logement;
 
 
     @FXML private TextField nomField;
@@ -142,4 +146,5 @@ public class EnregistrerClientValiderController {
         this.client.setRemarque(remarque);
         System.out.println(client.toString());
     }
+
 }
