@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<!--  -->
+
+<AnchorPane fx:id="enregistrerClientPane" prefHeight="700.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.JESIKOM.HowManager.controllers.EnregistrerClientController">
+    <children>
+        <HBox layoutX="115.0" layoutY="89.0">
+            <children>
+                <StackPane>
+                    <children>
+
+                        <Button prefHeight="26.0" prefWidth="27.0" />
+                        <ImageView fitHeight="26.0" fitWidth="27.0">
+                            <image>
+                                <Image url="@../images/chercher.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </StackPane>
+                <TextField prefHeight="26.0" prefWidth="378.0" promptText="Rechercher" />
+            </children>
+        </HBox>
+        <Pane layoutX="-3.0" layoutY="153.0" prefHeight="552.0" prefWidth="234.0" style="-fx-background-color: #3498db;">
+            <children>
+                <StackPane layoutX="214.0" layoutY="-18.0" />
+                <StackPane layoutX="170.0" layoutY="-18.0" prefHeight="64.0" prefWidth="70.0">
+                    <children>
+                        <ImageView fitHeight="75.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/fleche_gauche_retour.png" />
+                            </image>
+                        </ImageView>
+                        <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="0.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
+                    </children>
+                </StackPane>
+                <Group layoutX="-2.0" layoutY="36.0">
+                    <children>
+                        <Button layoutX="28.0" layoutY="6.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="191.0" style="-fx-background-color: #3477db;" text="TABLEAU DE BORD" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Button>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3477db" height="41.0" layoutX="2.0" layoutY="6.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke-width: 0;" width="27.0" />
+                        <ImageView fitHeight="55.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/tableau_de_bord.png" />
+                            </image>
+                        </ImageView>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#004aadf5" height="41.0" layoutX="219.0" layoutY="6.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke-width: 0;" width="14.0" />
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                    </children>
+                </Group>
+                <Group layoutX="-4.0" layoutY="73.0">
+                    <children>
+                        <Button layoutX="4.0" layoutY="21.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="218.0" style="-fx-background-color: #004aad;" text="RÉSERVATIONS" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Button>
+                        <ImageView fitHeight="65.0" fitWidth="75.0" layoutX="-4.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/reservations.png" />
+                            </image>
+                        </ImageView>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#004aadf5" height="41.0" layoutX="221.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke-width: 0;" width="14.0" />
+                    </children>
+                </Group>
+                <Group layoutX="-3.0" layoutY="126.0">
+                    <children>
+                        <Button layoutX="-40.0" layoutY="73.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="276.0" style="-fx-background-color: #3477db;" text="PERSONNEL" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Button>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#004aadf5" height="41.0" layoutX="221.0" layoutY="73.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke-width: 0;" width="14.0" />
+                        <ImageView fitHeight="102.0" fitWidth="75.0" layoutX="-9.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/personnel.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </Group>
+                <Group layoutX="-76.0" layoutY="130.0">
+                    <children>
+                        <Button layoutY="16.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="308.0" style="-fx-background-color: #3477db;" text="STOCKS" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Button>
+                        <ImageView fitHeight="65.0" fitWidth="65.0" layoutX="69.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/stocks.png" />
+                            </image>
+                        </ImageView>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#004aadf5" height="41.0" layoutX="293.0" layoutY="16.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke-width: 0;" width="14.0" />
+                    </children>
+                </Group>
+                <Button layoutX="9.0" layoutY="252.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="224.0" style="-fx-background-color: #3477db;" text="INFOS COURANTES" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Button>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3477db" height="41.0" layoutY="252.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke-width: 0;" width="27.0" />
+                <ImageView fitHeight="75.0" fitWidth="65.0" layoutX="-9.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/infos_courantes.png" />
+                    </image>
+                </ImageView>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#004aadf5" height="41.0" layoutX="218.0" layoutY="252.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke-width: 0;" width="14.0" />
+            </children></Pane>
+        <Group layoutX="757.0" layoutY="-9.0">
+            <children>
+                <StackPane layoutX="6.0" prefHeight="129.0" prefWidth="129.0">
+                    <children>
+                        <ImageView fitHeight="129.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/utilisateur.png" />
+                            </image>
+                        </ImageView>
+                        <!-- onAction="#chargerPhotoProfil" -->
+                        <Button fx:id="profileButton" mnemonicParsing="false" prefHeight="55.0" prefWidth="54.0" style="-fx-background-radius: 50; -fx-background-color: transparent; -fx-border-color: transparent;" />
+                        <ImageView fx:id="profileImage" fitHeight="55.0" fitWidth="54.0" layoutX="50" layoutY="50" />
+                    </children>
+                </StackPane>
+                <MenuButton contentDisplay="CENTER" layoutY="98.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="150.0" text="Sylvain ROY">
+                    <items>
+                        <!-- onAction="#voirMonProfil" -->
+                        <MenuItem fx:id="voirMonProfilButton" mnemonicParsing="false" text="Voir mon profil" />
+                        <SeparatorMenuItem mnemonicParsing="false" text="sep1" />
+                        <MenuItem mnemonicParsing="false" text="Me déconnecter" />
+                    </items>
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                    <graphic>
+                        <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
+                    </graphic>
+                </MenuButton>
+            </children>
+        </Group>
+        <StackPane layoutX="555.0" layoutY="76.0" style="-fx-background-color: transparent; -fx-border-color: transparent;">
+            <children>
+                <ImageView fitHeight="53.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/notifications.png" />
+                    </image>
+                </ImageView>
+                <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
+            </children>
+        </StackPane>
+        <StackPane layoutX="638.0" layoutY="79.0">
+            <children>
+                <ImageView fitHeight="46.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/messages.png" />
+                    </image>
+                </ImageView>
+                <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
+            </children>
+        </StackPane>
+        <StackPane layoutX="-33.0" layoutY="-25.0" />
+        <StackPane layoutX="595.0" layoutY="75.0">
+            <children>
+                <ImageView fitHeight="52.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/parametres.png" />
+                    </image>
+                </ImageView>
+                <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="54.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
+            </children>
+        </StackPane>
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+        <ImageView fitHeight="212.0" fitWidth="208.0" layoutX="-41.0" layoutY="-28.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/logo_avec_nom.png" />
+            </image>
+        </ImageView>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <ScrollPane layoutX="224.0" layoutY="153.0" prefHeight="552.0" prefWidth="716.0">
+            <content>
+                <AnchorPane prefHeight="618.0" prefWidth="702.0">
+                    <children>
+                        <Button layoutX="248.0" layoutY="148.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="270.0" style="-fx-border-image-slice: 50; -fx-border-radius: 40; -fx-background-radius: 40; -fx-background-color: #004aad;" text="Tous les employés" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="19.0" />
+                            </font>
+                        </Button>
+                        <Button layoutX="171.0" layoutY="569.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="130.0" style="-fx-background-color: #ffffff; -fx-border-color: #004aad;" text="Annuler" textFill="#004aad">
+                            <font>
+                                <Font name="System Bold" size="24.0" />
+                            </font>
+                        </Button>
+                        <Button fx:id="validerButton" layoutX="397.0" layoutY="569.0" mnemonicParsing="false" onAction="#ouvrirConfirmationValider" prefHeight="41.0" prefWidth="129.0" style="-fx-background-color: #004aad;" text="Valider" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="24.0" />
+                            </font>
+                        </Button>
+                        <HBox alignment="CENTER" layoutX="-11.0" layoutY="380.0" prefHeight="40.0" prefWidth="260.0" />
+                        <HBox alignment="CENTER" layoutX="53.0" layoutY="484.0" prefHeight="27.0" prefWidth="249.0" />
+                  <Button layoutX="248.0" layoutY="235.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="270.0" style="-fx-border-image-slice: 50; -fx-border-radius: 10; -fx-background-radius: 100; -fx-background-color: #FFFF;" text="Planning employés" textFill="#004aad" textOverrun="CLIP">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Button>
+                    </children>
+                </AnchorPane>
+            </content>
+        </ScrollPane>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </children>
+</AnchorPane>
