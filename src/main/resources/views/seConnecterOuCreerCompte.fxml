@@ -83,7 +83,7 @@
             <Font size="18.0" />
          </font>
       </PasswordField>
-      <Label layoutX="65.0" layoutY="425.0" text="Email oublié ?" textFill="#0646a7" underline="true">
+      <Label fx:id="emailOublie" layoutX="65.0" layoutY="425.0" text="Email oublié ?" textFill="#0646a7" underline="true">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>

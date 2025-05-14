@@ -5,11 +5,12 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.PerspectiveTransform?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -38,58 +39,6 @@
                 <TextField prefHeight="26.0" prefWidth="378.0" promptText="Rechercher" />
             </children>
         </HBox>
-        <Pane layoutX="233.0" layoutY="153.0" prefHeight="550.0" prefWidth="716.0" style="-fx-background-color: lightgray;">
-         <children>
-            <TextField alignment="CENTER" layoutX="218.0" layoutY="13.0" minWidth="-Infinity" prefHeight="38.0" prefWidth="230.0" style="-fx-background-color: #0646A7;">
-               <font>
-                  <Font name="System Bold" size="26.0" />
-               </font>
-            </TextField>
-            <TextField editable="false" text="client">
-               <effect>
-                  <PerspectiveTransform />
-               </effect>
-            </TextField>
-            <Text fill="WHITE" layoutX="292.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clients" wrappingWidth="121.04057632304063">
-               <font>
-                  <Font name="System Bold" size="27.0" />
-               </font>
-            </Text>
-            <TextField layoutX="76.0" layoutY="100.0" prefHeight="38.0" prefWidth="189.0" promptText="Rechercher" />
-            <Button layoutX="40.0" layoutY="101.0" prefHeight="38.0" prefWidth="38.0" />
-            <ImageView fitHeight="45.0" fitWidth="38.0" layoutX="38.0" layoutY="97.0">
-               <image>
-                  <Image url="@../images/chercher.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="enregistrerNouveauClient" layoutX="409.0" layoutY="104.0" mnemonicParsing="false" onAction="#ouvrirPageCreerClient" style="-fx-background-color: #146CDF;" text="Enregistrer un nouveau Client" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="19.0" />
-               </font>
-            </Button>
-            <ListView layoutX="1.0" layoutY="183.0" prefHeight="364.0" prefWidth="715.0" />
-            <MenuButton id="menuButtonMain" layoutX="246.0" layoutY="188.0" mnemonicParsing="false" style="-fx-background-color: #BAB8B8;" text="Type des clients">
-              <items>
-                  <MenuItem fx:id="menuItem1" text="Clients Actuels" />
-                  <MenuItem fx:id="menuItem2" text="Anciens Clients" />
-                  <MenuItem fx:id="menuItem3" text="Clients Enregistres" />
-              </items>
-               <font>
-                  <Font name="System Bold" size="19.0" />
-               </font>
-            </MenuButton>
-             <TableView fx:id="tableClients" layoutX="9.0" layoutY="231.0" prefHeight="302.0" prefWidth="698.0">
-                 <columns>
-                     <TableColumn fx:id="colID" prefWidth="200" text="ID" />
-                     <TableColumn fx:id="colNom" prefWidth="200" text="Nom" />
-                     <TableColumn fx:id="colPrenom" prefWidth="200" text="Prénom" />
-                     <TableColumn fx:id="colEmail" prefWidth="200" text="Email" />
-                     <TableColumn fx:id="colTelephone" prefWidth="200" text="Téléphone" />
-                     <TableColumn fx:id="colRemarque" prefWidth="200" text="Remarque" />
-                 </columns>
-             </TableView>
-
-         </children></Pane>
         <Pane layoutX="1.0" layoutY="153.0" prefHeight="550.0" prefWidth="232.0" style="-fx-background-color: #3498db;">
             <children>
                 <StackPane layoutX="214.0" layoutY="-18.0" />
@@ -105,7 +54,7 @@
                 </StackPane>
                 <Group layoutX="-2.0" layoutY="36.0">
                     <children>
-                        <Button layoutX="28.0" layoutY="6.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="191.0" style="-fx-background-color: #3477db;" text="TABLEAU DE BORD" textFill="WHITE">
+                        <Button fx:id="tableauBord" layoutX="28.0" layoutY="6.0" mnemonicParsing="false" onAction="#retourTableauBord" prefHeight="40.0" prefWidth="191.0" style="-fx-background-color: #3477db;" text="TABLEAU DE BORD" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>
@@ -251,6 +200,113 @@
         </StackPane>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <ScrollPane layoutX="234.0" layoutY="153.0" prefHeight="550.0" prefWidth="716.0">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1229.0" prefWidth="716.0">
+               <children>
+                  <ListView layoutY="506.0" prefHeight="326.0" prefWidth="716.0" />
+                  <TextField alignment="CENTER" layoutX="136.0" layoutY="6.0" minWidth="-Infinity" prefHeight="56.0" prefWidth="418.0" style="-fx-background-color: #0646A7;">
+                     <font>
+                        <Font name="System Bold" size="26.0" />
+                     </font>
+                  </TextField>
+                  <Text fill="WHITE" layoutX="150.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clients - Réservations - Logements" wrappingWidth="405.6000000000001">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Text>
+                  <Group layoutX="7.0" layoutY="86.0">
+                     <children>
+                        <TextField layoutX="38.0" layoutY="3.0" prefHeight="38.0" prefWidth="189.0" promptText="Rechercher" />
+                        <Button layoutX="2.0" layoutY="4.0" prefHeight="38.0" prefWidth="38.0" />
+                        <ImageView fitHeight="45.0" fitWidth="38.0">
+                           <image>
+                              <Image url="@../images/chercher.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Group>
+                  <Button fx:id="enregistrerNouveauClient" layoutX="401.0" layoutY="89.0" mnemonicParsing="false" onAction="#ouvrirPageCreerClient" style="-fx-background-color: #146CDF;" text="Enregistrer un nouveau Client" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Button>
+                  <ListView layoutX="2.0" layoutY="193.0" prefHeight="288.0" prefWidth="715.0" />
+                  <Separator layoutX="11.0" layoutY="506.0" prefHeight="0.0" prefWidth="698.0" />
+                  <MenuButton id="menuButtonMain" layoutX="270.0" layoutY="506.0" mnemonicParsing="false" style="-fx-background-color: #BAB8B8;" text="Réservations">
+                     <items>
+                         <!--
+                        <MenuItem fx:id="menuItem11" text="Clients Actuels" />
+                        <MenuItem fx:id="menuItem21" text="Anciens Clients" />
+                        <MenuItem fx:id="menuItem31" text="Clients Enregistres" />
+                        -->
+                     </items>
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </MenuButton>
+                  <TableView fx:id="tableReservations" layoutX="1.0" layoutY="548.0" prefHeight="237.0" prefWidth="958.0">
+                     <columns>
+                        <TableColumn fx:id="colIDResa" prefWidth="79.20000916719437" text="ID" />
+                        <TableColumn fx:id="colIDClient" minWidth="0.0" prefWidth="71.20001220703125" text="Client_ID" />
+                        <TableColumn fx:id="colIDLogement" text="Logement_ID" />
+                        <TableColumn fx:id="colDateDebut" prefWidth="98.4000244140625" text="Date de début" />
+                        <TableColumn fx:id="colNbreNuits" minWidth="0.0" prefWidth="110.39999999999998" text="Nombre de nuits" />
+                        <TableColumn fx:id="colStatut" prefWidth="75.0" text="Statut" />
+                        <TableColumn fx:id="colAcompte" prefWidth="75.0" text="Acompte" />
+                        <TableColumn fx:id="colRemarqueResa" prefWidth="75.0" text="Remarque" />
+                        <TableColumn fx:id="colCheckIn" prefWidth="75.0" text="Check in" />
+                        <TableColumn fx:id="colCheckOut" prefWidth="75.0" text="Check out" />
+                     </columns>
+                  </TableView>
+                  <MenuButton id="menuButtonMain" contentDisplay="CENTER" layoutX="233.0" layoutY="150.0" mnemonicParsing="false" style="-fx-background-color: #BAB8B8;" text="Type des clients">
+                     <items>
+                        <MenuItem fx:id="menuItem1" text="Clients Actuels" />
+                        <MenuItem fx:id="menuItem2" text="Anciens Clients" />
+                        <MenuItem fx:id="menuItem3" text="Clients Enregistres" />
+                     </items>
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </MenuButton>
+                  <TableView fx:id="tableClients" layoutY="195.0" prefHeight="237.0" prefWidth="716.0">
+                     <columns>
+                        <TableColumn fx:id="colID" prefWidth="200" text="ID" />
+                        <TableColumn fx:id="colNom" prefWidth="200" text="Nom" />
+                        <TableColumn fx:id="colPrenom" prefWidth="200" text="Prénom" />
+                        <TableColumn fx:id="colEmail" prefWidth="200" text="Email" />
+                        <TableColumn fx:id="colTelephone" prefWidth="200" text="Téléphone" />
+                        <TableColumn fx:id="colRemarque" prefWidth="200" text="Remarque" />
+                     </columns>
+                  </TableView>
+                  <Separator layoutX="1.0" layoutY="861.0" prefHeight="3.0" prefWidth="702.0" />
+                  <MenuButton id="menuButtonMain" layoutX="270.0" layoutY="862.0" mnemonicParsing="false" style="-fx-background-color: #BAB8B8;" text="Logements">
+                     <items>
+                         <!--
+                        <MenuItem fx:id="menuItem111" text="Clients Actuels" />
+                        <MenuItem fx:id="menuItem211" text="Anciens Clients" />
+                        <MenuItem fx:id="menuItem311" text="Clients Enregistres" />
+                        -->
+                     </items>
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </MenuButton>
+                  <TableView fx:id="tableLogements" layoutX="1.0" layoutY="904.0" prefHeight="237.0" prefWidth="716.0">
+                     <columns>
+                        <TableColumn fx:id="colLogementID" prefWidth="200" text="Logement_ID" />
+                        <TableColumn fx:id="colTypeLogement" prefWidth="200" text="Type" />
+                        <TableColumn fx:id="colCapciteLogement" prefWidth="200" text="Capacité (nbre de personnes)" />
+                        <TableColumn fx:id="colDisponibleLogement" prefWidth="200" text="Disponible" />
+                        <TableColumn fx:id="colPropreLogement" prefWidth="200" text="Propre" />
+                        <TableColumn fx:id="colCommentaireLogement" prefWidth="200" text="Commentaire" />
+                        <TableColumn fx:id="colPrixLogement" prefWidth="75.0" text="Prix (en €)" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
 
 
     </children>
