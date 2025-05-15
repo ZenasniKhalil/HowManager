@@ -61,8 +61,9 @@ public class Personnel {
     private String notes;
 
 
-    @OneToMany(mappedBy = "personnel") // ou employe selon ta base
+    @OneToMany(mappedBy = "personnel", fetch = FetchType.EAGER)
     private List<WeeklyTimeSlot> weeklyTimeSlots;
+
 
     @Column(name = "taux_horaire")
     private float tauxHoraire;

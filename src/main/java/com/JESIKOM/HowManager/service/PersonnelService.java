@@ -62,9 +62,10 @@ public class PersonnelService {
 
 
     public List<Personnel> getAllPersonnel() {
-        return personnelRepository.findAll();
+        List<Personnel> list = personnelRepository.findAll();
+        list.forEach(p -> p.getWeeklyTimeSlots().size());
+        return list;
     }
-
     public Optional<Personnel> getPersonnelByMatricule(Long matricule) {
         return personnelRepository.findByMatricule(matricule);
     }
