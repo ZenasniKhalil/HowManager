@@ -37,11 +37,4 @@ interface ILogementService {
 
     int getNbLogementOccupe();
 
-
-
-
-
-
-
-
 }

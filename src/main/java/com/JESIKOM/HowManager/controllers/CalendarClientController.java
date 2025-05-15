@@ -57,7 +57,7 @@ public class CalendarClientController implements Initializable {
             client.setDateNaissance(LocalDate.of(1990, 1, 1));
             client.setNationalite("Française");
             client.setNumeroIdentite("ID123");
-            client.setTypeIdentite(TypeIdentite.CIN);
+            client.setTypeIdentite(TypeIdentite.CNI);
             clientService.addClient(client);
         }
 

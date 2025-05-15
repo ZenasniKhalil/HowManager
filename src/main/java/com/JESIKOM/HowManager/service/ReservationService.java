@@ -106,4 +106,8 @@ public class ReservationService implements IReservationService {
         return reservationRepository.countReservationByDateDebutBetween(startDate, endDate);
     }
 
+    public List<Reservation> getReservationsByLogement_Numero(int logementNum){
+        return reservationRepository.findReservationsByLogement_Numero(logementNum);
+    }
+
 }

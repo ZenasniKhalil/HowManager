@@ -47,7 +47,7 @@ public class ClientServiceTest {
             LocalDate.of(1992, 7, 23),
             "Française",
             "987654321",
-            TypeIdentite.CIN,
+            TypeIdentite.CNI,
             "Demande une chambre avec vue");
 
     @Test

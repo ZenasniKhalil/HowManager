@@ -3,7 +3,7 @@
 -- Client 1
 INSERT INTO client (nom, prenom, telephone, email, adresse, date_naissance, nationalite, num_identite, type_identite, remarque)
 VALUES ('Dupont', 'Jean', '0612345678', 'jean.dupont@email.com', '12 rue de Paris, 75001 Paris',
-        '1980-05-15', 'Française', '980512AB1234', 'CIN', 'Client fidèle depuis 2015');
+        '1980-05-15', 'Française', '980512AB1234', 'CNI', 'Client fidèle depuis 2015');
 
 -- Client 2
 INSERT INTO client (nom, prenom, telephone, email, adresse, date_naissance, nationalite, num_identite, type_identite, remarque)
@@ -18,7 +18,7 @@ VALUES ('Rodriguez', 'Carlos', '0734567890', 'carlos.rodriguez@email.com', '8 ru
 -- Client 4
 INSERT INTO client (nom, prenom, telephone, email, adresse, date_naissance, nationalite, num_identite, type_identite, remarque)
 VALUES ('Dubois', 'Marie', '0645678901', 'marie.dubois@email.com', '42 boulevard Haussmann, 75009 Paris',
-        '1988-11-05', 'Française', '881105CD5678', 'CIN', 'Allergique aux arachides');
+        '1988-11-05', 'Française', '881105CD5678', 'CNI', 'Allergique aux arachides');
 
 -- Client 5
 INSERT INTO client (nom, prenom, telephone, email, adresse, date_naissance, nationalite, num_identite, type_identite, remarque)
@@ -42,6 +42,14 @@ VALUES (3, 'STUDIO', 2, 0, 1, 'Studio cosy, actuellement réservé pour la semai
 -- Logement 4
 INSERT INTO logement (logement_id, type, capacite, disponible, propre, commentaire, prix)
 VALUES (4, 'BUNGALOW', 5, 1, 1, 'Bungalow en bord de plage, idéal pour des vacances relaxantes.', 150.0);
+
+-- Logement 5
+INSERT INTO logement (logement_id, type, capacite, disponible, propre, commentaire, prix)
+VALUES (5, 'BUNGALOW', 7, 1, 1, 'Vue sur la plage.', 250.0);
+
+-- Logement 6
+INSERT INTO logement (logement_id, type, capacite, disponible, propre, commentaire, prix)
+VALUES (6, 'MAISON', 5, 1, 1, 'Petit déjeuner gratuit.', 350.0);
 
 -- Insertion des réservations dans H2 Database
 
