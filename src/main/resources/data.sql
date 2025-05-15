@@ -87,6 +87,7 @@ VALUES (2, 3, '2025-03-12T15:00:00', '2025-04-15', 3, 1,1,'EN_ATTENTE', 50.0, 'A
 INSERT INTO reservation (client_id, logement_id, date_reservation, date_debut, nombre_nuits, nombre_adultes, nombre_enfants, statut, acompte, remarque, mode_paiement, check_in, check_out)
 VALUES (3, 2, '2025-02-20T10:45:00', '2025-03-05', 7, 2, 2, 'CONFIRMEE', 300.0, 'Famille avec deux enfants.', 'VIREMENT', NULL, NULL);
 
+
 -- Réservation 4 : Client 4, Logement 4
 INSERT INTO reservation (client_id, logement_id, date_reservation, date_debut, nombre_nuits, nombre_adultes, nombre_enfants, statut, acompte, remarque, mode_paiement, check_in, check_out)
 VALUES (4, 4, '2025-01-10T09:00:00', '2025-05-01', 10, 3, 0, 'ANNULEE', 0.0, 'Annulée pour raisons médicales.', 'ESPECE', NULL, NULL);
@@ -127,7 +128,7 @@ INSERT INTO personnel (matricule,date_naissance, nom, prenom, genre, nationalite
 VALUES (1,'1990-05-15', 'Doe', 'John', 'Homme', 'Française', '0600000001', 'john.doe@example.com', '123 Rue A', 'Actif', 'Technicien', '/contrat/john.pdf', 15.5, 35, 140),
        (2,'1985-10-20', 'Smith', 'Alice', 'Femme', 'Française', '0600000002', 'alice.smith@example.com', '456 Rue B', 'Actif', 'Manager', '/contrat/alice.pdf', 20, 40, 160);
 
-/*INSERT INTO weekly_time_slot (id,start_day, start_time, end_day, end_time,personnel_id)
+INSERT INTO weekly_time_slot (id,start_day, start_time, end_day, end_time,personnel_id)
 VALUES
     (1,'MONDAY', '08:00:00', 'MONDAY', '12:00:00',1),
     (2,'MONDAY', '11:00:00', 'MONDAY', '15:00:00',1), -- Se chevauche avec la première
