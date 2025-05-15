@@ -25,7 +25,7 @@ import java.time.temporal.WeekFields;
 import java.util.*;
 
 @Controller
-public class CalendarController implements Initializable {
+public class CalendarClientController implements Initializable {
 
     ZonedDateTime dateFocus;
     ZonedDateTime today;
