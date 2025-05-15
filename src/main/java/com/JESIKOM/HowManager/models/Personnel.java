@@ -60,6 +60,10 @@ public class Personnel {
     @Column(columnDefinition = "TEXT")
     private String notes;
 
+
+    @OneToMany(mappedBy = "personnel") // ou employe selon ta base
+    private List<WeeklyTimeSlot> weeklyTimeSlots;
+
     @Column(name = "taux_horaire")
     private float tauxHoraire;
 
@@ -95,6 +99,7 @@ public class Personnel {
         plannings = new ArrayList<>();
         personnelDocuments = new ArrayList<>();
         majorations = new HashMap<>();
+
     }
 
     public Long getMatricule() {
@@ -251,6 +256,11 @@ public class Personnel {
     public void setPlanningPatterns(List<PlanningPattern> planningPatterns) {
         this.planningPatterns = planningPatterns;
     }
+    public void setWeeklyTimeSlots(List<WeeklyTimeSlot> slots) {
+        this.weeklyTimeSlots = slots;
+    }
+   public List<WeeklyTimeSlot>  getWeeklyTimeSlots(){return this.weeklyTimeSlots; }
+
     public void addPlanningPattern(PlanningPattern planningPattern) {planningPatterns.add(planningPattern);}
 
     public void removePlanningPattern(PlanningPattern planningPattern){planningPatterns.remove(planningPattern);}

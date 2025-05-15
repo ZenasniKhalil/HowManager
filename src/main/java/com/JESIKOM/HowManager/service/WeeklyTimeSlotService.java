@@ -82,6 +82,10 @@ public class WeeklyTimeSlotService {
         return  slotFollower.getStartDay().equals(slotFollowed.getEndDay()) &&
                 slotFollower.getStartTime().equals(slotFollowed.getEndTime());
     }
+    public List<WeeklyTimeSlot> getByEmploye(Long employeId) {
+        return weeklyTimeSlotRepository.findByPersonnelMatricule(employeId);
+    }
+
 
     public boolean overlapsWith(WeeklyTimeSlot slot1, WeeklyTimeSlot slot2) {
         return  !(isFollowing(slot1,slot2)||isFollowing(slot2,slot1)) &&
