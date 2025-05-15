@@ -25,6 +25,7 @@ public class WeeklyTimeSlot {
     @JoinColumn(name = "personnel_id", nullable = false)
     private Personnel personnel;
 
+
     public Personnel getPersonnel() {
         return personnel;
     }

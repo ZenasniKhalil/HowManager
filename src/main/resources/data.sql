@@ -51,28 +51,6 @@ VALUES (5, 'BUNGALOW', 7, 1, 1, 'Vue sur la plage.', 250.0);
 INSERT INTO logement (logement_id, type, capacite, disponible, propre, commentaire, prix)
 VALUES (6, 'MAISON', 5, 1, 1, 'Petit déjeuner gratuit.', 350.0);
 
--- Logement 7
-INSERT INTO logement (logement_id, type, capacite, disponible, propre, commentaire, prix)
-VALUES (7, 'MAISON', 6, 0, 1, 'Croissant fait maison.', 300.0);
-
--- Logement 8
-INSERT INTO logement (logement_id, type, capacite, disponible, propre, commentaire, prix)
-VALUES (8, 'MAISON', 3, 0, 1, 'Autrefois habité par DeGaulle.', 300.0);
-
--- Logement 9
-INSERT INTO logement (logement_id, type, capacite, disponible, propre, commentaire, prix)
-VALUES (9, 'STUDIO', 1, 0, 1, 'Type étudiant.', 178.0);
-
--- Logement 10
-INSERT INTO logement (logement_id, type, capacite, disponible, propre, commentaire, prix)
-VALUES (10, 'APPARTEMENT', 7, 0, 1, 'Proche de la gare RERB Antony.', 800.0);
-
--- Logement 11
-INSERT INTO logement (logement_id, type, capacite, disponible, propre, commentaire, prix)
-VALUES (11, 'BUNGALOW', 2, 0, 1, 'Luxueux.', 1300.0);
-
-
-
 -- Insertion des réservations dans H2 Database
 
 -- Réservation 1 : Client 1, Logement 1
@@ -83,59 +61,20 @@ VALUES (1, 1, '2025-03-12T14:30:00', '2025-04-01', 5, 2,0, 'CONFIRMEE', 150.0, '
 INSERT INTO reservation (client_id, logement_id, date_reservation, date_debut, nombre_nuits, nombre_adultes, nombre_enfants, statut, acompte, remarque, mode_paiement, check_in, check_out)
 VALUES (2, 3, '2025-03-12T15:00:00', '2025-04-15', 3, 1,1,'EN_ATTENTE', 50.0, 'Arrivée tardive prévue.', 'MOBILE_MONEY', NULL, NULL);
 
--- Réservation 3 : Client 3, Logement 2
-INSERT INTO reservation (client_id, logement_id, date_reservation, date_debut, nombre_nuits, nombre_adultes, nombre_enfants, statut, acompte, remarque, mode_paiement, check_in, check_out)
-VALUES (3, 2, '2025-02-20T10:45:00', '2025-03-05', 7, 2, 2, 'CONFIRMEE', 300.0, 'Famille avec deux enfants.', 'VIREMENT', NULL, NULL);
-
-
--- Réservation 4 : Client 4, Logement 4
-INSERT INTO reservation (client_id, logement_id, date_reservation, date_debut, nombre_nuits, nombre_adultes, nombre_enfants, statut, acompte, remarque, mode_paiement, check_in, check_out)
-VALUES (4, 4, '2025-01-10T09:00:00', '2025-05-01', 10, 3, 0, 'ANNULEE', 0.0, 'Annulée pour raisons médicales.', 'ESPECE', NULL, NULL);
-
--- Réservation 5 : Client 5, Logement 5
-INSERT INTO reservation (client_id, logement_id, date_reservation, date_debut, nombre_nuits, nombre_adultes, nombre_enfants, statut, acompte, remarque, mode_paiement, check_in, check_out)
-VALUES (5, 5, '2025-02-15T16:20:00', '2025-07-10', 14, 2, 1, 'CONFIRMEE', 500.0, 'Vacances d''été.', 'CARTE_BANCAIRE', NULL, NULL);
-
--- Réservation 6 : Client 1, Logement 6
-INSERT INTO reservation (client_id, logement_id, date_reservation, date_debut, nombre_nuits, nombre_adultes, nombre_enfants, statut, acompte, remarque, mode_paiement, check_in, check_out)
-VALUES (1, 6, '2025-03-25T11:15:00', '2025-05-20', 3, 1, 0, 'CONFIRMEE', 100.0, 'Séjour professionnel.', 'MOBILE_MONEY', NULL, NULL);
-
--- Réservation 7 : Client 2, Logement 7
-INSERT INTO reservation (client_id, logement_id, date_reservation, date_debut, nombre_nuits, nombre_adultes, nombre_enfants, statut, acompte, remarque, mode_paiement, check_in, check_out)
-VALUES (2, 7, '2025-03-18T18:00:00', '2025-06-05', 2, 2, 0, 'EN_ATTENTE', 0.0, 'Pas encore de confirmation.', 'ESPECE', NULL, NULL);
-
--- Réservation 8 : Client 3, Logement 8
-INSERT INTO reservation (client_id, logement_id, date_reservation, date_debut, nombre_nuits, nombre_adultes, nombre_enfants, statut, acompte, remarque, mode_paiement, check_in, check_out)
-VALUES (3, 8, '2025-03-19T08:00:00', '2025-06-20', 4, 1, 0, 'CONFIRMEE', 200.0, 'Court séjour solo.', 'CARTE_BANCAIRE', NULL, NULL);
-
--- Réservation 9 : Client 4, Logement 9
-INSERT INTO reservation (client_id, logement_id, date_reservation, date_debut, nombre_nuits, nombre_adultes, nombre_enfants, statut, acompte, remarque, mode_paiement, check_in, check_out)
-VALUES (4, 9, '2025-03-22T12:30:00', '2025-06-25', 1, 1, 0, 'CONFIRMEE', 50.0, 'Juste une nuit.', 'ESPECE', NULL, NULL);
-
--- Réservation 10 : Client 5, Logement 10
-INSERT INTO reservation (client_id, logement_id, date_reservation, date_debut, nombre_nuits, nombre_adultes, nombre_enfants, statut, acompte, remarque, mode_paiement, check_in, check_out)
-VALUES (5, 10, '2025-03-23T09:45:00', '2025-08-01', 6, 2, 2, 'EN_ATTENTE', 0.0, 'Vacances famille août.', 'CARTE_BANCAIRE', NULL, NULL);
-
--- Réservation 11 : Client 2, Logement 11
-INSERT INTO reservation (client_id, logement_id, date_reservation, date_debut, nombre_nuits, nombre_adultes, nombre_enfants, statut, acompte, remarque, mode_paiement, check_in, check_out)
-VALUES (2, 11, '2025-03-30T17:10:00', '2025-12-24', 7, 2, 0, 'CONFIRMEE', 1000.0, 'Séjour de Noël.', 'VIREMENT', NULL, NULL);
-
-
-
 --MANAGEMENT PART
 -- Insérer 2 personnels sans planning ni planningPattern
 INSERT INTO personnel (matricule,date_naissance, nom, prenom, genre, nationalite, phone, email, adresse, status, poste, lien_contrat, taux_horaire, nb_heure_semaine, nb_heure_mois)
 VALUES (1,'1990-05-15', 'Doe', 'John', 'Homme', 'Française', '0600000001', 'john.doe@example.com', '123 Rue A', 'Actif', 'Technicien', '/contrat/john.pdf', 15.5, 35, 140),
        (2,'1985-10-20', 'Smith', 'Alice', 'Femme', 'Française', '0600000002', 'alice.smith@example.com', '456 Rue B', 'Actif', 'Manager', '/contrat/alice.pdf', 20, 40, 160);
 
-INSERT INTO weekly_time_slot (id,start_day, start_time, end_day, end_time,personnel_id)
+INSERT INTO weekly_time_slot (start_day, start_time, end_day, end_time,personnel_id)
 VALUES
-    (1,'MONDAY', '08:00:00', 'MONDAY', '12:00:00',1),
-    (2,'MONDAY', '11:00:00', 'MONDAY', '15:00:00',1), -- Se chevauche avec la première
-    (3,'TUESDAY', '09:00:00', 'TUESDAY', '13:00:00',1),
-    (4,'WEDNESDAY', '09:00:00', 'WEDNESDAY', '12:00:00',2),
-    (5,'WEDNESDAY', '10:30:00', 'WEDNESDAY', '14:00:00',2), -- Se chevauche avec la première
-    (6,'THURSDAY', '14:00:00', 'THURSDAY', '18:00:00',2);*/
+    ('MONDAY', '08:00:00', 'MONDAY', '12:00:00',1),
+    ('MONDAY', '11:00:00', 'MONDAY', '15:00:00',2), -- Se chevauche avec la première
+    ('TUESDAY', '09:00:00', 'TUESDAY', '13:00:00',1),
+    ('WEDNESDAY', '09:00:00', 'WEDNESDAY', '12:00:00',1),
+    ('WEDNESDAY', '10:30:00', 'WEDNESDAY', '14:00:00',2), -- Se chevauche avec la première
+    ('THURSDAY', '14:00:00', 'THURSDAY', '18:00:00',2);
 
 -- Associer les WeeklyTimeSlot aux PlageHoraire
 INSERT INTO plage_horaire (weekly_time_slot_id, poste, lieu, notes)
