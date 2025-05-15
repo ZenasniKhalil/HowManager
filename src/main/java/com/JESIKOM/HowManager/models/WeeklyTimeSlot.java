@@ -14,13 +14,24 @@ import java.time.LocalTime;
 /**
  * Classe de créneau horaire
  */
+
 public class WeeklyTimeSlot {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne
+    @JoinColumn(name = "personnel_id", nullable = false)
+    private Personnel personnel;
 
+    public Personnel getPersonnel() {
+        return personnel;
+    }
+
+    public void setPersonnel(Personnel personnel) {
+        this.personnel = personnel;
+    }
     /**
      * Jour de debut (énuméré)
      */
