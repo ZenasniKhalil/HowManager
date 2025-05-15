@@ -174,11 +174,12 @@
                            <Font size="18.0" />
                         </font>
                      </Label>
-                     <TableView prefHeight="200.0" prefWidth="130.0">
+                     <TableView fx:id="tableViewEvenements" prefHeight="200.0" prefWidth="130.0">
                         <columns>
-                           <TableColumn fx:id="colIdClient" prefWidth="150.0" text="Identifiant client" />
-                           <TableColumn fx:id="colIdLogement" prefWidth="150.0" text="N° de Logement" />
-                           <TableColumn fx:id="colNature" prefWidth="120.0" text="Nature" />
+                           <TableColumn fx:id="colIdClient" prefWidth="164.00005799531937" text="Identifiant client" />
+                           <TableColumn fx:id="colIdLogement" prefWidth="175.99998474121094" text="N° de Logement" />
+                           <TableColumn fx:id="colNature" prefWidth="181.5999755859375" text="Nature" />
+                     <TableColumn fx:id="colDate" prefWidth="164.7999267578125" text="Date" />
                         </columns>
                      </TableView>
                
