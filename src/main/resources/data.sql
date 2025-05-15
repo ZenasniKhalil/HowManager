@@ -67,14 +67,14 @@ INSERT INTO personnel (matricule,date_naissance, nom, prenom, genre, nationalite
 VALUES (1,'1990-05-15', 'Doe', 'John', 'Homme', 'Française', '0600000001', 'john.doe@example.com', '123 Rue A', 'Actif', 'Technicien', '/contrat/john.pdf', 15.5, 35, 140),
        (2,'1985-10-20', 'Smith', 'Alice', 'Femme', 'Française', '0600000002', 'alice.smith@example.com', '456 Rue B', 'Actif', 'Manager', '/contrat/alice.pdf', 20, 40, 160);
 
-/*INSERT INTO weekly_time_slot (id,start_day, start_time, end_day, end_time,personnel_id)
+INSERT INTO weekly_time_slot (start_day, start_time, end_day, end_time,personnel_id)
 VALUES
-    (1,'MONDAY', '08:00:00', 'MONDAY', '12:00:00',1),
-    (2,'MONDAY', '11:00:00', 'MONDAY', '15:00:00',1), -- Se chevauche avec la première
-    (3,'TUESDAY', '09:00:00', 'TUESDAY', '13:00:00',1),
-    (4,'WEDNESDAY', '09:00:00', 'WEDNESDAY', '12:00:00',2),
-    (5,'WEDNESDAY', '10:30:00', 'WEDNESDAY', '14:00:00',2), -- Se chevauche avec la première
-    (6,'THURSDAY', '14:00:00', 'THURSDAY', '18:00:00',2);*/
+    ('MONDAY', '08:00:00', 'MONDAY', '12:00:00',1),
+    ('MONDAY', '11:00:00', 'MONDAY', '15:00:00',2), -- Se chevauche avec la première
+    ('TUESDAY', '09:00:00', 'TUESDAY', '13:00:00',1),
+    ('WEDNESDAY', '09:00:00', 'WEDNESDAY', '12:00:00',1),
+    ('WEDNESDAY', '10:30:00', 'WEDNESDAY', '14:00:00',2), -- Se chevauche avec la première
+    ('THURSDAY', '14:00:00', 'THURSDAY', '18:00:00',2);
 
 -- Associer les WeeklyTimeSlot aux PlageHoraire
 INSERT INTO plage_horaire (weekly_time_slot_id, poste, lieu, notes)

@@ -4,6 +4,7 @@ package com.JESIKOM.HowManager.models;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.http.server.DelegatingServerHttpResponse;
+import jakarta.persistence.*;
 
 import java.sql.Time;
 import java.time.DayOfWeek;
@@ -17,6 +18,11 @@ public class TimeSlot {
     public final LocalDateTime startDateTime;
     public final LocalDateTime endDateTime;
 
+
+
+    @ManyToOne
+    @JoinColumn(name = "weekly_time_slot_id", nullable = false)
+    private WeeklyTimeSlot weeklyTimeSlot;
 
     private TimeSlot(TimeSlot ts1,TimeSlot ts2) {
         if(ts1.startDateTime.isBefore(ts2.startDateTime))
