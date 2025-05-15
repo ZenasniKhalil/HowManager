@@ -54,4 +54,7 @@ public class Planning {
 
     public String getNote() { return note; }
     public void setNote(String note) { this.note = note; }
+
+    public void addTache(Tache t1) {
+    }
 }
