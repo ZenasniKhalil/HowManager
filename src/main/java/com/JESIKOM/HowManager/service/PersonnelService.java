@@ -1,10 +1,13 @@
 package com.JESIKOM.HowManager.service;
 
+import org.springframework.transaction.annotation.Transactional;
 import com.JESIKOM.HowManager.models.Personnel;
+import com.JESIKOM.HowManager.models.WeeklyTimeSlot;
 import com.JESIKOM.HowManager.models.Planning;
 import com.JESIKOM.HowManager.models.TypeMajoration;
 import com.JESIKOM.HowManager.repository.PersonnelRepository;
 import com.JESIKOM.HowManager.repository.PlanningRepository;
+import com.JESIKOM.HowManager.repository.WeeklyTimeSlotRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +27,10 @@ public class PersonnelService {
     @Autowired
     private PlanningRepository planningRepository;
 
+    @Autowired
+    private WeeklyTimeSlotRepository weeklyTimeSlotRepository;
+
+
     public Map<TypeMajoration, Float> getHeuresEffectuees(int year, int month) {
         return null; // à implémenter plus tard
     }
@@ -41,11 +48,24 @@ public class PersonnelService {
 
         return savedPersonnel;
     }
+    @Transactional
+    public void ajouterPlanning(Long personnelId, List<WeeklyTimeSlot> slots) {
+        Personnel personnel = personnelRepository.findById(personnelId)
+                .orElseThrow(() -> new RuntimeException("Personnel non trouvé"));
 
-    public List<Personnel> getAllPersonnel() {
-        return personnelRepository.findAll();
+        for (WeeklyTimeSlot slot : slots) {
+            slot.setPersonnel(personnel);
+        }
+
+        weeklyTimeSlotRepository.saveAll(slots);
     }
 
+
+    public List<Personnel> getAllPersonnel() {
+        List<Personnel> list = personnelRepository.findAll();
+        list.forEach(p -> p.getWeeklyTimeSlots().size());
+        return list;
+    }
     public Optional<Personnel> getPersonnelByMatricule(Long matricule) {
         return personnelRepository.findByMatricule(matricule);
     }

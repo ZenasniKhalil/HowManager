@@ -3,6 +3,8 @@ package com.JESIKOM.HowManager.service;
 import com.JESIKOM.HowManager.models.*;
 import com.JESIKOM.HowManager.models.Tache;
 import com.JESIKOM.HowManager.repository.PlanningRepository;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ManyToOne;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -109,6 +111,8 @@ Map<TypeMajoration,Float> computeNbHeuresWithMajoration(Planning p){
         }
     return planning;
     }
+
+    @ManyToOne(fetch = FetchType.EAGER)
     public List<Planning> listerTous() {
         return planningRepository.findAll();
     }

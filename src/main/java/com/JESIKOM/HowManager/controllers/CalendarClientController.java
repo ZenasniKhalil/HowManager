@@ -1,11 +1,8 @@
 package com.JESIKOM.HowManager.controllers;
 
 import com.JESIKOM.HowManager.models.CalendarActivity;
-import com.JESIKOM.HowManager.models.Client;
-import com.JESIKOM.HowManager.models.Planning;
-import com.JESIKOM.HowManager.models.TypeIdentite;
-import com.JESIKOM.HowManager.service.ClientService;
-import com.JESIKOM.HowManager.service.PlanningService;
+import com.JESIKOM.HowManager.models.Reservation;
+import com.JESIKOM.HowManager.service.ReservationService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,46 +18,23 @@ import org.springframework.stereotype.Controller;
 
 import java.net.URL;
 import java.time.*;
-import java.time.temporal.WeekFields;
 import java.util.*;
 
 @Controller
-public class CalendarController implements Initializable {
+public class CalendarClientController implements Initializable {
 
     ZonedDateTime dateFocus;
     ZonedDateTime today;
 
-    @FXML
-    private Text year;
-
-    @FXML
-    private Text month;
-
-    @FXML
-    private FlowPane calendar;
+    @FXML private Text year;
+    @FXML private Text month;
+    @FXML private FlowPane calendar;
 
     @Autowired
-    private PlanningService planningService;
-
-    @Autowired
-    private ClientService clientService;
+    private ReservationService reservationService;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        if (clientService.getClientByEmail("demo@client.com").isEmpty()) {
-            Client client = new Client();
-            client.setNom("Démo");
-            client.setPrenom("Testeur");
-            client.setEmail("demo@client.com");
-            client.setTelephone("0123456789");
-            client.setAdresse("Rue de test");
-            client.setDateNaissance(LocalDate.of(1990, 1, 1));
-            client.setNationalite("Française");
-            client.setNumeroIdentite("ID123");
-            client.setTypeIdentite(TypeIdentite.CNI);
-            clientService.addClient(client);
-        }
-
         dateFocus = ZonedDateTime.now();
         today = ZonedDateTime.now();
         drawCalendar();
@@ -92,10 +66,7 @@ public class CalendarController implements Initializable {
 
         Map<Integer, List<CalendarActivity>> calendarActivityMap = getCalendarActivitiesMonth(dateFocus);
 
-        int monthMaxDate = dateFocus.getMonth().maxLength();
-        if (dateFocus.getYear() % 4 != 0 && monthMaxDate == 29) {
-            monthMaxDate = 28;
-        }
+        int monthMaxDate = dateFocus.getMonth().length(dateFocus.toLocalDate().isLeapYear());
         int dateOffset = ZonedDateTime.of(dateFocus.getYear(), dateFocus.getMonthValue(), 1, 0, 0, 0, 0, dateFocus.getZone()).getDayOfWeek().getValue();
 
         for (int i = 0; i < 6; i++) {
@@ -117,8 +88,7 @@ public class CalendarController implements Initializable {
                     int currentDate = calculatedDate - dateOffset;
                     if (currentDate <= monthMaxDate) {
                         Text date = new Text(String.valueOf(currentDate));
-                        double textTranslationY = -(rectangleHeight / 2) * 0.75;
-                        date.setTranslateY(textTranslationY);
+                        date.setTranslateY(-(rectangleHeight / 2) * 0.75);
                         date.setStyle("-fx-font-weight: bold; -fx-fill: #333;");
                         stackPane.getChildren().add(date);
 
@@ -126,11 +96,12 @@ public class CalendarController implements Initializable {
                         if (calendarActivities != null) {
                             createCalendarActivity(calendarActivities, rectangleHeight, rectangleWidth, stackPane);
                         }
-                    }
-                    if (today.getYear() == dateFocus.getYear()
-                            && today.getMonth() == dateFocus.getMonth()
-                            && today.getDayOfMonth() == currentDate) {
-                        rectangle.setStroke(Color.BLUE);
+
+                        if (today.getYear() == dateFocus.getYear()
+                                && today.getMonth() == dateFocus.getMonth()
+                                && today.getDayOfMonth() == currentDate) {
+                            rectangle.setStroke(Color.BLUE);
+                        }
                     }
                 }
                 calendar.getChildren().add(stackPane);
@@ -138,7 +109,7 @@ public class CalendarController implements Initializable {
         }
     }
 
-    private void createCalendarActivity(List<CalendarActivity> calendarActivities, double rectangleHeight, double rectangleWidth, StackPane stackPane) {
+    private void createCalendarActivity(List<CalendarActivity> activities, double rectangleHeight, double rectangleWidth, StackPane stackPane) {
         VBox calendarActivityBox = new VBox();
         calendarActivityBox.setSpacing(2);
 
@@ -157,63 +128,49 @@ public class CalendarController implements Initializable {
                         "-fx-border-radius: 8;"
         );
 
-        for (int k = 0; k < calendarActivities.size(); k++) {
+        for (int k = 0; k < activities.size(); k++) {
             if (k >= 2) {
-                Text moreActivities = new Text("...");
-                moreActivities.setWrappingWidth(boxWidth * 0.95);
-                moreActivities.setStyle("-fx-font-size: 11px;");
-                calendarActivityBox.getChildren().add(moreActivities);
-                moreActivities.setOnMouseClicked(mouseEvent -> System.out.println(calendarActivities));
+                Text more = new Text("...");
+                more.setStyle("-fx-font-size: 11px;");
+                calendarActivityBox.getChildren().add(more);
                 break;
             }
 
-            Text text = new Text(calendarActivities.get(k).getClientName() + ", " + calendarActivities.get(k).getDate().toLocalTime());
-            text.setWrappingWidth(boxWidth * 0.95);
+            Text text = new Text(activities.get(k).getClientName() + "\nlog " + activities.get(k).getLogementId());
+
             text.setStyle("-fx-font-size: 11px;");
             calendarActivityBox.getChildren().add(text);
-            text.setOnMouseClicked(mouseEvent -> System.out.println(text.getText()));
         }
 
-        calendarActivityBox.setTranslateY(rectangleHeight * 0.30); // ✅ DESCENDU ici
+        calendarActivityBox.setTranslateY(rectangleHeight * 0.30);
         StackPane.setAlignment(calendarActivityBox, Pos.TOP_CENTER);
         stackPane.getChildren().add(calendarActivityBox);
     }
 
     private Map<Integer, List<CalendarActivity>> getCalendarActivitiesMonth(ZonedDateTime dateFocus) {
-        List<Planning> plannings = planningService.listerTous();
-        List<CalendarActivity> calendarActivities = new ArrayList<>();
+        List<Reservation> reservations = reservationService.getAllReservations();
+        List<CalendarActivity> activities = new ArrayList<>();
 
-        for (Planning planning : plannings) {
-            if (planning.getClient() != null) {
-                try {
-                    ZonedDateTime mondayOfWeek = ZonedDateTime.of(planning.getAnnee(), 1, 1, 10, 0, 0, 0, dateFocus.getZone())
-                            .with(WeekFields.ISO.weekOfWeekBasedYear(), planning.getSemaine())
-                            .with(DayOfWeek.MONDAY);
+        for (Reservation res : reservations) {
+            if (res.getClient() != null && res.getDateDebut() != null) {
+                ZonedDateTime resDate = res.getDateDebut().atStartOfDay(ZoneId.systemDefault());
 
-                    if (mondayOfWeek.getMonthValue() != dateFocus.getMonthValue()) {
-                        continue;
-                    }
-
-                    calendarActivities.add(new CalendarActivity(
-                            mondayOfWeek,
-                            planning.getClient().getPrenom() + " " + planning.getClient().getNom()
-
-                    ));
-                } catch (Exception e) {
-                    System.out.println("Erreur date planning : " + e.getMessage());
+                if (resDate.getMonthValue() == dateFocus.getMonthValue() &&
+                        resDate.getYear() == dateFocus.getYear()) {
+                    activities.add(new CalendarActivity(resDate, res.getClient().getPrenom() + " " + res.getClient().getNom(),res.getLogement().getNumero()));
                 }
             }
         }
 
-        return createCalendarMap(calendarActivities);
+        return createCalendarMap(activities);
     }
 
-    private Map<Integer, List<CalendarActivity>> createCalendarMap(List<CalendarActivity> calendarActivities) {
-        Map<Integer, List<CalendarActivity>> calendarActivityMap = new HashMap<>();
-        for (CalendarActivity activity : calendarActivities) {
-            int activityDate = activity.getDate().getDayOfMonth();
-            calendarActivityMap.computeIfAbsent(activityDate, k -> new ArrayList<>()).add(activity);
+    private Map<Integer, List<CalendarActivity>> createCalendarMap(List<CalendarActivity> activities) {
+        Map<Integer, List<CalendarActivity>> map = new HashMap<>();
+        for (CalendarActivity a : activities) {
+            int day = a.getDate().getDayOfMonth();
+            map.computeIfAbsent(day, k -> new ArrayList<>()).add(a);
         }
-        return calendarActivityMap;
+        return map;
     }
 }

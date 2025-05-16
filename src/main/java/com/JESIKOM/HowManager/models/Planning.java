@@ -15,9 +15,10 @@ public class Planning {
     @JoinColumn(name = "personnel_id")
     private Personnel personnel;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "client_id")
     private Client client;
+
 
     @Column(nullable = false)
     private int annee;
