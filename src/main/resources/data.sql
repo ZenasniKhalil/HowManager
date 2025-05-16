@@ -55,11 +55,11 @@ VALUES (6, 'MAISON', 5, 1, 1, 'Petit déjeuner gratuit.', 350.0);
 
 -- Réservation 1 : Client 1, Logement 1
 INSERT INTO reservation (client_id, logement_id, date_reservation, date_debut, nombre_nuits, nombre_adultes, nombre_enfants, statut, acompte, remarque, mode_paiement, check_in, check_out)
-VALUES (1, 1, '2025-03-12T14:30:00', '2025-04-01', 5, 2,0, 'CONFIRMEE', 150.0, 'Besoin d''un lit bébé.', 'CARTE_BANCAIRE', NULL, NULL);
+VALUES (1, 1, '2025-03-12T14:30:00', '2025-05-01', 5, 2,0, 'CONFIRMEE', 150.0, 'Besoin d''un lit bébé.', 'CARTE_BANCAIRE', NULL, NULL);
 
 -- Réservation 2 : Client 2, Logement 3
 INSERT INTO reservation (client_id, logement_id, date_reservation, date_debut, nombre_nuits, nombre_adultes, nombre_enfants, statut, acompte, remarque, mode_paiement, check_in, check_out)
-VALUES (2, 3, '2025-03-12T15:00:00', '2025-04-15', 3, 1,1,'EN_ATTENTE', 50.0, 'Arrivée tardive prévue.', 'MOBILE_MONEY', NULL, NULL);
+VALUES (2, 3, '2025-03-12T15:00:00', '2025-05-15', 3, 1,1,'EN_ATTENTE', 50.0, 'Arrivée tardive prévue.', 'MOBILE_MONEY', NULL, NULL);
 
 --MANAGEMENT PART
 -- Insérer 2 personnels sans planning ni planningPattern
@@ -94,6 +94,9 @@ VALUES ('Planning Semaine A', 'Régulier du lundi au vendredi', 'Note A'),
 INSERT INTO planning (personnel_id, annee, semaine, note)
 VALUES (1, 2024, 14, 'Planning semaine 14 pour John'),
        (2, 2024, 15, 'Planning semaine 15 pour Alice');
+
+INSERT INTO planning (semaine, annee, client_id) VALUES (1, 2025, 1);
+INSERT INTO planning (semaine, annee, client_id) VALUES (2, 2025, 2);
 
 -- Insérer 3 tâches (dont 2 qui se chevauchent)
 INSERT INTO tache (id,date_debut,date_fin, status)
