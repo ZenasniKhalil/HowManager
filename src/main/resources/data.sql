@@ -1,6 +1,9 @@
 -- Insertions des clients dans H2 Database
 
 -- Client 1
+INSERT INTO utilisateur(nom,email,role,mot_de_passe)
+-- mot de passe admin123
+VALUES('admin','admin@how.com','admin','$2a$10$lSXDAsN6dk2GQUL1jfSocel/blXygMGNez4E91EOosa.bLTXkSUqu');
 INSERT INTO client (nom, prenom, telephone, email, adresse, date_naissance, nationalite, num_identite, type_identite, remarque)
 VALUES ('Dupont', 'Jean', '0612345678', 'jean.dupont@email.com', '12 rue de Paris, 75001 Paris',
         '1980-05-15', 'Française', '980512AB1234', 'CNI', 'Client fidèle depuis 2015');
