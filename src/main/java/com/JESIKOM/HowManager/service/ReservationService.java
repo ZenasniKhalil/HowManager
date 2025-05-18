@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -61,6 +62,10 @@ public class ReservationService implements IReservationService {
         }).orElse(null);
     }
 
+    public List<Reservation> getAllREservationWithNoCheckout(){
+        return reservationRepository.findReservationByCheckOutIsNull();
+    }
+
 
     public void deleteReservation(Long id) {
         reservationRepository.deleteById(id);
@@ -109,5 +114,23 @@ public class ReservationService implements IReservationService {
     public List<Reservation> getReservationsByLogement_Numero(int logementNum){
         return reservationRepository.findReservationsByLogement_Numero(logementNum);
     }
+
+    public void checkIn(Long id) throws IllegalArgumentException {
+        Optional<Reservation> optRes=getReservationById(id);
+        if(optRes.isEmpty())
+            throw new IllegalArgumentException("Id not found");
+        Reservation reservation=optRes.get();
+        reservation.setCheckIn(LocalDateTime.now());
+        updateReservation((reservation.getId()),reservation);
+    }
+    public void checkOut(Long id) throws IllegalArgumentException {
+        Optional<Reservation> optRes=getReservationById(id);
+        if(optRes.isEmpty())
+            throw new IllegalArgumentException("Id not found");
+        Reservation reservation=optRes.get();
+        reservation.setCheckOut(LocalDateTime.now());
+        updateReservation((reservation.getId()),reservation);
+    }
+
 
 }

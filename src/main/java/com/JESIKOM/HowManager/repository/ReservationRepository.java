@@ -16,5 +16,7 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
 
     int countReservationByDateDebutBetween(LocalDate startDate, LocalDate endDate);
 
+    List<Reservation>findReservationByCheckOutIsNull();
+
 
 }
