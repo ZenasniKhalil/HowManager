@@ -126,6 +126,23 @@ public class EnregistrerEmployeController {
             e.printStackTrace();
         }
     }
+    public void retourTableauBord(ActionEvent event){
+        try {
+            System.out.println("retourTableauBord()");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/main.fxml"));
+            loader.setControllerFactory(JavaFxApplicationSupport.getContext()::getBean);
+            Parent root = loader.load();
+
+            //Obtenir le Stage actuel
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            stage.setScene(new Scene(root)); // Remplacer le contenu
+            stage.show(); // si nécessaire
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     public void initialize() {
