@@ -62,20 +62,20 @@
                         <Image url="@../images/chercher.png" />
                     </image>
                 </ImageView>
-                <Button fx:id="enregistrerNouveauClient" layoutX="409.0" layoutY="104.0" mnemonicParsing="false" onAction="#ouvrirPageCreerClient" style="-fx-background-color: #146CDF;" text="Enregistrer un nouvel employé" textFill="WHITE">
+                <Button fx:id="enregistrerNouveauEmploye" layoutX="409.0" layoutY="104.0" mnemonicParsing="false" onAction="#ouvrirPageCreerPersonnel" style="-fx-background-color: #146CDF;" text="Enregistrer un nouvel employé" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="19.0" />
                     </font>
                 </Button>
                 <ListView layoutX="1.0" layoutY="183.0" prefHeight="364.0" prefWidth="715.0" />
-                <TableView fx:id="tableClients" layoutX="9.0" layoutY="231.0" prefHeight="302.0" prefWidth="698.0">
+                <TableView fx:id="tablePersonnel" layoutX="9.0" layoutY="231.0" prefHeight="302.0" prefWidth="705.0">
                     <columns>
                         <TableColumn fx:id="colID" prefWidth="200" text="ID" />
                         <TableColumn fx:id="colNom" prefWidth="200" text="Nom" />
                         <TableColumn fx:id="colPrenom" prefWidth="200" text="Prénom" />
                         <TableColumn fx:id="colEmail" prefWidth="200" text="Email" />
                         <TableColumn fx:id="colTelephone" prefWidth="200" text="Téléphone" />
-                        <TableColumn fx:id="colRemarque" prefWidth="200" text="Remarque" />
+                        <TableColumn fx:id="colPoste" prefWidth="200" text="Poste" />
                     </columns>
                 </TableView>
 
@@ -126,7 +126,7 @@
                 </Group>
                 <Group layoutX="-3.0" layoutY="126.0">
                     <children>
-                        <Button layoutX="-40.0" layoutY="73.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="276.0" style="-fx-background-color: #004aad;" text="PERSONNEL" textFill="WHITE">
+                        <Button layoutX="-40.0" layoutY="73.0" mnemonicParsing="false" onAction="#ouvrirPersonnel" prefHeight="40.0" prefWidth="276.0" style="-fx-background-color: #004aad;" text="PERSONNEL" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>

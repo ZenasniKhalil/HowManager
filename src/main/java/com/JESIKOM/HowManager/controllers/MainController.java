@@ -20,7 +20,6 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.springframework.stereotype.Controller;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -224,6 +223,23 @@ public class MainController {
     public void voirClients(ActionEvent event){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/ListesClients.fxml"));
+            loader.setControllerFactory(JavaFxApplicationSupport.getContext()::getBean);  // Injection Spring dans le FXML
+            Parent root = loader.load();
+
+            //Obtenir le Stage actuel
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            stage.setScene(new Scene(root)); // Remplacer le contenu
+            stage.show(); // si nécessaire
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void voirPersonnel(ActionEvent event){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/Personnel.fxml"));
             loader.setControllerFactory(JavaFxApplicationSupport.getContext()::getBean);  // Injection Spring dans le FXML
             Parent root = loader.load();
 

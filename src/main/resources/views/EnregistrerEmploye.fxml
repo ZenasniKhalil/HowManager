@@ -86,7 +86,7 @@
                 </Group>
                 <Group layoutX="-3.0" layoutY="126.0">
                     <children>
-                        <Button layoutX="-40.0" layoutY="73.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="276.0" style="-fx-background-color: #004aad;" text="PERSONNEL" textFill="WHITE">
+                        <Button layoutX="-40.0" layoutY="73.0" mnemonicParsing="false" onAction="#ouvrirPersonnel" prefHeight="40.0" prefWidth="276.0" style="-fx-background-color: #004aad;" text="PERSONNEL" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>
@@ -233,7 +233,7 @@
                                 <Font name="System Bold" size="24.0" />
                             </font>
                         </Button>
-                        <Button fx:id="validerButton" layoutX="397.0" layoutY="569.0" mnemonicParsing="false" onAction="#ouvrirConfirmationValider" prefHeight="41.0" prefWidth="129.0" style="-fx-background-color: #004aad;" text="Valider" textFill="WHITE">
+                        <Button fx:id="validerButton" layoutX="397.0" layoutY="569.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="129.0" style="-fx-background-color: #004aad;" text="Valider" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="24.0" />
                             </font>
