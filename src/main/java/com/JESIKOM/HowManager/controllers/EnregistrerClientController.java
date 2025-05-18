@@ -65,7 +65,7 @@ public class EnregistrerClientController {
     @FXML private TextField heureReservationField;
     @FXML private TextField minuteReservationField;
     @FXML private DatePicker dateDebutField;
-    @FXML private DatePicker checkInField;
+    //@FXML private DatePicker checkInField;
     @FXML private TextField checkInHeureField;
     @FXML private TextField checkInMinuteField;
     @FXML private TextField nbreNuitsField;
@@ -219,15 +219,15 @@ public class EnregistrerClientController {
                 || dispoLogementField.getText().isEmpty()
                 || propreLogementField.getText().isEmpty()
                 || prixLogementField.getText().isEmpty()
-                || dateReservationField.getValue() == null
-                || heureReservationField.getText().isEmpty()
-                || minuteReservationField.getText().isEmpty()
-                || checkInField.getValue() == null
-                || checkInHeureField.getText().isEmpty()
-                || checkInMinuteField.getText().isEmpty()
-                || checkOutField.getValue() == null
-                || checkOutHeureField.getText().isEmpty()
-                || checkOutMinuteField.getText().isEmpty()
+                //|| dateReservationField.getValue() == null
+                //|| heureReservationField.getText().isEmpty()
+                //|| minuteReservationField.getText().isEmpty()
+                //|| checkInField.getValue() == null
+                //|| checkInHeureField.getText().isEmpty()
+                //|| checkInMinuteField.getText().isEmpty()
+                //|| checkOutField.getValue() == null
+                //|| checkOutHeureField.getText().isEmpty()
+                //|| checkOutMinuteField.getText().isEmpty()
                 || dateDebutField.getValue() == null
                 || nbreNuitsField.getText().isEmpty()
                 || nbreAdultesField.getText().isEmpty()
@@ -244,10 +244,7 @@ public class EnregistrerClientController {
             return;
         }
 
-        validerReservation(checkInField,
-                            checkOutField,
-                            dateDebutField,
-                            dateReservationField,
+        validerReservation(dateDebutField,
                             nbreAdultesField,
                             nbreEnfantsField,
                 Integer.parseInt(capaciteLogementField.getText()));
@@ -289,22 +286,22 @@ public class EnregistrerClientController {
                     Double.parseDouble(prixLogementField.getText())
             );
 
-            LocalDate dateResa = dateReservationField.getValue(); // récupère la date
-            int heureResa = Integer.parseInt(heureReservationField.getText());
-            int minuteResa = Integer.parseInt(minuteReservationField.getText());
-            LocalDateTime dateReservation = LocalDateTime.of(dateResa, LocalTime.of(heureResa, minuteResa));
-            LocalDate dateCheckInLocalDate = checkInField.getValue();
-            int heureCheckIn = Integer.parseInt(checkInHeureField.getText());
-            int minuteCheckIn = Integer.parseInt(checkInMinuteField.getText());
-            LocalDateTime dateCheckIn = LocalDateTime.of(dateCheckInLocalDate, LocalTime.of(heureCheckIn, minuteCheckIn));
-            LocalDate dateCheckOutLocalDate = checkOutField.getValue();
-            int heureCheckOut = Integer.parseInt(checkOutHeureField.getText());
-            int minuteCheckOut = Integer.parseInt(checkOutMinuteField.getText());
-            LocalDateTime dateCheckOut = LocalDateTime.of(dateCheckOutLocalDate, LocalTime.of(heureCheckOut, minuteCheckOut));
+            //LocalDate dateResa = dateReservationField.getValue(); // récupère la date
+            //int heureResa = Integer.parseInt(heureReservationField.getText());
+            //int minuteResa = Integer.parseInt(minuteReservationField.getText());
+            //LocalDateTime dateReservation = LocalDateTime.of(dateResa, LocalTime.of(heureResa, minuteResa));
+            //LocalDate dateCheckInLocalDate = checkInField.getValue();
+            //int heureCheckIn = Integer.parseInt(checkInHeureField.getText());
+            //int minuteCheckIn = Integer.parseInt(checkInMinuteField.getText());
+            //LocalDateTime dateCheckIn = LocalDateTime.of(dateCheckInLocalDate, LocalTime.of(heureCheckIn, minuteCheckIn));
+            //LocalDate dateCheckOutLocalDate = checkOutField.getValue();
+            //int heureCheckOut = Integer.parseInt(checkOutHeureField.getText());
+            //int minuteCheckOut = Integer.parseInt(checkOutMinuteField.getText());
+            //LocalDateTime dateCheckOut = LocalDateTime.of(dateCheckOutLocalDate, LocalTime.of(heureCheckOut, minuteCheckOut));
             Reservation reservation = new Reservation(
                     client,
                     logement,
-                    dateReservation,
+                    LocalDateTime.now(),
                     dateDebutField.getValue(),
                     Integer.parseInt(nbreNuitsField.getText()),
                     Integer.parseInt(nbreAdultesField.getText()),
@@ -313,8 +310,8 @@ public class EnregistrerClientController {
                     Double.parseDouble(acompteLogementField.getText()),
                     remarqueReservationField.getText(),
                     ModePaiement.labelToModePaiement(menuButtonModePaiement.getText()),
-                    dateCheckIn,
-                    dateCheckOut
+                    null,
+                    null
             );
             valideur.setReservation(reservation);
 
@@ -367,12 +364,15 @@ public class EnregistrerClientController {
         /*Fin choix menuButtonStatutReservation*/
 
         /*Début heures et minutes valides*/
+        /*
         ajouterValidationHeure(heureReservationField, 0, 23, "heure");
         ajouterValidationHeure(minuteReservationField, 0, 59, "minute");
         ajouterValidationHeure(checkInHeureField, 0, 23, "heure");
         ajouterValidationHeure(checkInMinuteField, 0, 59, "minute");
         ajouterValidationHeure(checkOutHeureField, 0, 23, "heure");
         ajouterValidationHeure(checkOutMinuteField, 0, 59, "minute");
+
+         */
         /*Fin heures et minutes valides*/
 
         /*Début dates valides*/
@@ -462,7 +462,7 @@ public class EnregistrerClientController {
         }
         return true;
     }
-
+/*
     private void ajouterValidationHeure(TextField field, int min, int max, String label) {
         field.focusedProperty().addListener((obs, oldVal, newVal) -> {
             if (!newVal) { // Perte de focus
@@ -479,6 +479,8 @@ public class EnregistrerClientController {
             }
         });
     }
+
+ */
 
     private void afficherAlerteHeureInvalide(String label, int min, int max) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -507,14 +509,15 @@ public class EnregistrerClientController {
         });
     }
 
-    private void validerReservation(DatePicker checkIn, DatePicker checkOut, DatePicker dateDebut, DatePicker dateResa,
+    private void validerReservation(DatePicker dateDebut,
                                     TextField nbAdultesField, TextField nbEnfantsField, int capaciteLogement) {
-        LocalDate dateCheckIn = checkIn.getValue();
-        LocalDate dateCheckOut = checkOut.getValue();
+        //LocalDate dateCheckIn = checkIn.getValue();
+        //LocalDate dateCheckOut = checkOut.getValue();
         LocalDate dateDebutService = dateDebut.getValue();
-        LocalDate dateReser = dateResa.getValue();
+        LocalDate dateReser = LocalDate.now();
 
         // Vérifier les dates
+        /*
         if (dateCheckIn == null || dateCheckOut == null) {
             afficherAlerte("Dates manquantes", "Veuillez renseigner la date de check-in et de check-out.");
             return;
@@ -525,6 +528,8 @@ public class EnregistrerClientController {
             return;
         }
 
+
+
         if (dateDebutService != null && dateDebutService.isAfter(dateCheckOut)) {
             afficherAlerte("Erreur de service", "La date de début du service doit être avant ou le jour du check-out.");
             return;
@@ -534,6 +539,8 @@ public class EnregistrerClientController {
             afficherAlerte("Erreur de dates", "La date de réservation doit être avant ou le jour du check-out.");
             return;
         }
+
+         */
 
         // Vérifier la capacité
         try {
@@ -614,16 +621,16 @@ public class EnregistrerClientController {
                 && propreLogementField.getText().isEmpty()
                 //&& commentaireLogementField.getText().isEmpty()
                 && prixLogementField.getText().isEmpty()
-                && dateReservationField.getValue() == null
-                && heureReservationField.getText().isEmpty()
-                && minuteReservationField.getText().isEmpty()
+                //&& dateReservationField.getValue() == null
+                //&& heureReservationField.getText().isEmpty()
+                //&& minuteReservationField.getText().isEmpty()
                 && dateDebutField.getValue() == null
-                && checkInField.getValue() == null
-                && checkInHeureField.getText().isEmpty()
-                && checkInMinuteField.getText().isEmpty()
-                && checkOutField.getValue() == null
-                && checkOutHeureField.getText().isEmpty()
-                && checkOutMinuteField.getText().isEmpty()
+                //&& checkInField.getValue() == null
+                //&& checkInHeureField.getText().isEmpty()
+                //&& checkInMinuteField.getText().isEmpty()
+                //&& checkOutField.getValue() == null
+                //&& checkOutHeureField.getText().isEmpty()
+                //&& checkOutMinuteField.getText().isEmpty()
                 && nbreNuitsField.getText().isEmpty()
                 && nbreAdultesField.getText().isEmpty()
                 && nbreEnfantsField.getText().isEmpty()

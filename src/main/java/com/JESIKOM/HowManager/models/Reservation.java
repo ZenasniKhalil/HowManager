@@ -1,6 +1,7 @@
 package com.JESIKOM.HowManager.models;
 
 import jakarta.persistence.*;
+import javafx.scene.control.DatePicker;
 import lombok.ToString;
 
 import java.time.LocalDate;
@@ -60,7 +61,7 @@ public class Reservation {
     @Column(name = "check_out")
     private LocalDateTime checkOut;
 
-    public Reservation(Client client, Logement logement, LocalDateTime dateReservation, LocalDate dateDebut, int nombreNuits, int nombreAdultes, int nombreEnfants, StatutReservation statut, double acompte, String remarque, ModePaiement modePaiement, LocalDateTime checkIn, LocalDateTime checkOut) {
+    public Reservation(Client client, Logement logement, LocalDateTime dateReservation, LocalDate dateDebut, int nombreNuits, int nombreAdultes, int nombreEnfants, StatutReservation statut, double acompte, String remarque, ModePaiement modePaiement, LocalDateTime checkIn, LocalDateTime checkOut ) {
         //this.id = id;
         this.client = client;
         this.logement = logement;

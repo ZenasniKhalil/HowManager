@@ -224,8 +224,8 @@ public class ListesClientsController {
         colStatut.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cellData.getValue().getStatut())));
         colAcompte.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cellData.getValue().getAcompte())));
         colRemarqueResa.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getRemarque()));
-        colCheckIn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cellData.getValue().getCheckIn())));
-        colCheckOut.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cellData.getValue().getCheckOut())));
+        colCheckIn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getCheckIn() != null ? String.valueOf(cellData.getValue().getCheckIn()) : "Non fait"));
+        colCheckOut.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getCheckOut() != null ? String.valueOf(cellData.getValue().getCheckOut()) : "Non fait"));
         loadReservations();
 
         tableReservations.setOnMouseClicked(event -> {
