@@ -15,6 +15,7 @@
 
 <AnchorPane prefHeight="548.0" prefWidth="638.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.JESIKOM.HowManager.controllers.ModifMonProfilController">
 <children>
+      <Button layoutX="20.0" layoutY="77.0" mnemonicParsing="false" prefHeight="112.0" prefWidth="113.0" />
     <Label layoutX="23.0" layoutY="202.0" text="Nom " textFill="#004aad">
         <font>
             <Font size="18.0" />
@@ -81,7 +82,7 @@
     </TextField>
       <StackPane layoutX="167.0" layoutY="344.0">
          <children>
-            <TextField fx:id="mdpModifProfilFieldVisible"  prefHeight="26.0" prefWidth="179.0" promptText="Mot de passe"/>
+            <TextField fx:id="mdpModifProfilFieldVisible" prefHeight="26.0" prefWidth="179.0" promptText="Mot de passe" />
           <PasswordField fx:id="mdpModifProfilField" prefHeight="26.0" prefWidth="179.0" promptText="Mot de passe">
                <font>
                   <Font size="14.0" />

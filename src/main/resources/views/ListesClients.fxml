@@ -113,18 +113,6 @@
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#004aadf5" height="41.0" layoutX="293.0" layoutY="16.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke-width: 0;" width="14.0" />
                     </children>
                 </Group>
-                <Button layoutX="9.0" layoutY="252.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="224.0" style="-fx-background-color: #3477db;" text="INFOS COURANTES" textFill="WHITE">
-                    <font>
-                        <Font name="System Bold" size="18.0" />
-                    </font>
-                </Button>
-                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3477db" height="41.0" layoutY="252.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke-width: 0;" width="27.0" />
-                <ImageView fitHeight="75.0" fitWidth="65.0" layoutX="-9.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/infos_courantes.png" />
-                    </image>
-                </ImageView>
-                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#004aadf5" height="41.0" layoutX="218.0" layoutY="252.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke-width: 0;" width="14.0" />
             </children></Pane>
         <Group layoutX="757.0" layoutY="-9.0">
             <children>
@@ -139,7 +127,7 @@
                         <ImageView fx:id="profileImage" fitHeight="55.0" fitWidth="54.0" layoutX="50" layoutY="50" />
                     </children>
                 </StackPane>
-                <MenuButton contentDisplay="CENTER" layoutY="98.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="150.0" text="Sylvain ROY">
+                <MenuButton fx:id="nomUtilisateur" contentDisplay="CENTER" layoutY="98.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="150.0">
                     <items>
                         <MenuItem fx:id="voirMonProfilButton" mnemonicParsing="false" onAction="#voirMonProfil" text="Voir mon profil" />
                         <SeparatorMenuItem mnemonicParsing="false" text="sep1" />
@@ -154,26 +142,8 @@
                 </MenuButton>
             </children>
         </Group>
-        <StackPane layoutX="555.0" layoutY="76.0" style="-fx-background-color: transparent; -fx-border-color: transparent;">
-            <children>
-                <ImageView fitHeight="53.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/notifications.png" />
-                    </image>
-                </ImageView>
-                <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
-            </children>
-        </StackPane>
-        <StackPane layoutX="638.0" layoutY="79.0">
-            <children>
-                <ImageView fitHeight="46.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/messages.png" />
-                    </image>
-                </ImageView>
-                <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
-            </children>
-        </StackPane>
+        <StackPane layoutX="555.0" layoutY="76.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
+        <StackPane layoutX="638.0" layoutY="79.0" />
         <StackPane layoutX="-33.0" layoutY="-25.0">
             <children>
                 <ImageView fitHeight="112.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true">
@@ -188,16 +158,7 @@
             </ImageView>
             </children>
         </StackPane>
-        <StackPane layoutX="595.0" layoutY="75.0">
-            <children>
-                <ImageView fitHeight="52.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/parametres.png" />
-                    </image>
-                </ImageView>
-                <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="54.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
-            </children>
-        </StackPane>
+        <StackPane layoutX="595.0" layoutY="75.0" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
       <ScrollPane layoutX="234.0" layoutY="153.0" prefHeight="550.0" prefWidth="716.0">
@@ -226,25 +187,13 @@
                         </ImageView>
                      </children>
                   </Group>
-                  <Button fx:id="enregistrerNouveauClient" layoutX="401.0" layoutY="89.0" mnemonicParsing="false" onAction="#ouvrirPageCreerClient" style="-fx-background-color: #146CDF;" text="Enregistrer un nouveau Client" textFill="WHITE">
+                  <Button fx:id="enregistrerNouveauClient" layoutX="401.0" layoutY="89.0" mnemonicParsing="false" onAction="#ouvrirPageCreerClient" style="-fx-background-color: #146CDF;" text="Enregistrer un nouveau client" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="19.0" />
                      </font>
                   </Button>
                   <ListView layoutX="2.0" layoutY="193.0" prefHeight="288.0" prefWidth="715.0" />
                   <Separator layoutX="11.0" layoutY="506.0" prefHeight="0.0" prefWidth="698.0" />
-                  <MenuButton id="menuButtonMain" layoutX="270.0" layoutY="506.0" mnemonicParsing="false" style="-fx-background-color: #BAB8B8;" text="Réservations">
-                     <items>
-                         <!--
-                        <MenuItem fx:id="menuItem11" text="Clients Actuels" />
-                        <MenuItem fx:id="menuItem21" text="Anciens Clients" />
-                        <MenuItem fx:id="menuItem31" text="Clients Enregistres" />
-                        -->
-                     </items>
-                     <font>
-                        <Font name="System Bold" size="19.0" />
-                     </font>
-                  </MenuButton>
                   <TableView fx:id="tableReservations" layoutX="1.0" layoutY="548.0" prefHeight="237.0" prefWidth="958.0">
                      <columns>
                         <TableColumn fx:id="colIDResa" prefWidth="79.20000916719437" text="ID" />
@@ -259,16 +208,6 @@
                         <TableColumn fx:id="colCheckOut" prefWidth="75.0" text="Check out" />
                      </columns>
                   </TableView>
-                  <MenuButton id="menuButtonMain" contentDisplay="CENTER" layoutX="233.0" layoutY="150.0" mnemonicParsing="false" style="-fx-background-color: #BAB8B8;" text="Type des clients">
-                     <items>
-                        <MenuItem fx:id="menuItem1" text="Clients Actuels" />
-                        <MenuItem fx:id="menuItem2" text="Anciens Clients" />
-                        <MenuItem fx:id="menuItem3" text="Clients Enregistres" />
-                     </items>
-                     <font>
-                        <Font name="System Bold" size="19.0" />
-                     </font>
-                  </MenuButton>
                   <TableView fx:id="tableClients" layoutY="195.0" prefHeight="237.0" prefWidth="716.0">
                      <columns>
                         <TableColumn fx:id="colID" prefWidth="200" text="ID" />
@@ -280,18 +219,6 @@
                      </columns>
                   </TableView>
                   <Separator layoutX="1.0" layoutY="861.0" prefHeight="3.0" prefWidth="702.0" />
-                  <MenuButton id="menuButtonMain" layoutX="270.0" layoutY="862.0" mnemonicParsing="false" style="-fx-background-color: #BAB8B8;" text="Logements">
-                     <items>
-                         <!--
-                        <MenuItem fx:id="menuItem111" text="Clients Actuels" />
-                        <MenuItem fx:id="menuItem211" text="Anciens Clients" />
-                        <MenuItem fx:id="menuItem311" text="Clients Enregistres" />
-                        -->
-                     </items>
-                     <font>
-                        <Font name="System Bold" size="19.0" />
-                     </font>
-                  </MenuButton>
                   <TableView fx:id="tableLogements" layoutX="1.0" layoutY="904.0" prefHeight="237.0" prefWidth="716.0">
                      <columns>
                         <TableColumn fx:id="colLogementID" prefWidth="200" text="Logement_ID" />
@@ -303,6 +230,21 @@
                         <TableColumn fx:id="colPrixLogement" prefWidth="75.0" text="Prix (en €)" />
                      </columns>
                   </TableView>
+                  <Button layoutX="298.0" layoutY="151.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="99.0" style="-fx-background-color: #BAB8B8;" text="Clients">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="284.0" layoutY="504.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="150.0" style="-fx-background-color: #BAB8B8;" text="Réservations">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="289.0" layoutY="861.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="130.0" style="-fx-background-color: #BAB8B8;" text="Logements">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
          </content>

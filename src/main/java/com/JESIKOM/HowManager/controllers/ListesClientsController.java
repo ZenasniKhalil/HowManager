@@ -1,10 +1,7 @@
 package com.JESIKOM.HowManager.controllers;
 
 import com.JESIKOM.HowManager.JavaFxApplicationSupport;
-import com.JESIKOM.HowManager.models.Client;
-import com.JESIKOM.HowManager.models.Logement;
-import com.JESIKOM.HowManager.models.Reservation;
-import com.JESIKOM.HowManager.models.StatutReservation;
+import com.JESIKOM.HowManager.models.*;
 import com.JESIKOM.HowManager.service.ClientService;
 import com.JESIKOM.HowManager.service.LogementService;
 import com.JESIKOM.HowManager.service.ReservationService;
@@ -39,6 +36,7 @@ public class ListesClientsController {
     @FXML private MenuItem voirMonProfilButton;
     @FXML Button profileButton; // Récupère le bouton
     @FXML private ImageView profileImage;
+    @FXML private MenuButton nomUtilisateur;
 
     @Autowired
     private ClientService clientService;
@@ -90,10 +88,31 @@ public class ListesClientsController {
     @FXML private Button tableauBord;
 
     @FXML private TextField searchField;
+    private Utilisateur utilisateur;
 
+    @Autowired
+    private sessionUtilisateur userSession;
+
+
+/*
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        if (userSession != null && userSession.getUtilisateurConnecte() != null) {
+            nomUtilisateur.setText(userSession.getUtilisateurConnecte().getNom());
+        } else {
+            nomUtilisateur.setText("Utilisateur");
+        }
+    }
+
+ */
 
     @FXML
     public void initialize() {
+        if (userSession != null && userSession.getUtilisateurConnecte() != null) {
+            nomUtilisateur.setText(userSession.getUtilisateurConnecte().getNom());
+        } else {
+            nomUtilisateur.setText("Utilisateur");
+        }
         //Rendre l'image cliquable pour rouvrir la popup
         profileImage.setOnMouseClicked(event -> chargerPhotoProfil());
 
@@ -223,6 +242,15 @@ public class ListesClientsController {
         /*Fin initialisation table Logement*/
 
     }
+
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
+        if (nomUtilisateur != null && utilisateur != null) {
+            nomUtilisateur.setText(utilisateur.getNom());
+        }
+    }
+
+
 
     private void loadClients() {
         List<Client> clients = clientService.getAllClients();
