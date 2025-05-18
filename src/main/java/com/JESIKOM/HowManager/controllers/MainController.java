@@ -1,7 +1,8 @@
 package com.JESIKOM.HowManager.controllers;
 
 import com.JESIKOM.HowManager.JavaFxApplicationSupport;
-import com.JESIKOM.HowManager.models.EvenementClient;
+import com.JESIKOM.HowManager.models.*;
+import com.JESIKOM.HowManager.service.TacheService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,18 +19,18 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.hibernate.validator.constraints.URL;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.File;
-import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 
@@ -38,6 +39,7 @@ public class MainController implements Initializable {
 
     @FXML Button profileButton; // Récupère le bouton
     @FXML private ImageView profileImage;
+    @FXML private MenuButton nomUtilisateur;
     @FXML private MenuItem voirProfil;
     @FXML private MenuItem voirMonProfilButton;
     @FXML private MenuItem deconnexionItem;
@@ -48,14 +50,43 @@ public class MainController implements Initializable {
     private int currentYear = 2025; // Année affichée par défaut
     private final Map<Integer, int[]> reservationsData = new HashMap<>();
     @FXML private Button reservations;
-    @FXML
-    private TableView<EvenementClient> tableViewEvenements;
+    @FXML private Button tableau__bord;
+    @FXML private Rectangle tableau_bord;
 
-    @FXML private TableColumn<EvenementClient, String> colIdClient;
-    @FXML private TableColumn<EvenementClient, String> colIdLogement;
-    @FXML private TableColumn<EvenementClient, String> colNature;
-    @FXML private TableColumn<EvenementClient, LocalDate> colDate;
-    private ObservableList<EvenementClient> listeEvenements = FXCollections.observableArrayList();
+    /*Début check*/
+    @FXML private TableView<CheckInCheckOut> tableCheckInCheckOut;
+    @FXML private TableColumn<CheckInCheckOut, String> colIDClientCheck;
+    @FXML private TableColumn<CheckInCheckOut, String> colIDLogementCheck;
+    @FXML private TableColumn<CheckInCheckOut, String> colNatureCheck;
+    @FXML private TableColumn<CheckInCheckOut, LocalDate> colDateCheck;
+    private ObservableList<CheckInCheckOut> listeCheckInCheckOut = FXCollections.observableArrayList();
+    /*Fin Check*/
+
+    private Utilisateur utilisateur;
+    /*Début tâches diverses*/
+    @FXML private TableView<Tache> tableTachesDiverses;
+    @FXML private TableColumn<Tache, String> colDescriptionTache;
+    @FXML private TableColumn<Tache, LocalDate> colDateEcheanceTache;
+    @FXML private TableColumn<Tache, String> colStatutTache;
+    private ObservableList<Tache> tacheData = FXCollections.observableArrayList();
+    @Autowired
+    private TacheService tacheService;
+    /*Fin tâches diverses*/
+
+    /*Début paiement*/
+    @FXML private TableView<PaiementClient> tablePaiement;
+    @FXML private TableView<PaiementClient>tableViewEvenements;
+    @FXML private TableColumn<PaiementClient, Integer>colIDClientPaiement;
+    @FXML private TableColumn<PaiementClient, Integer>colIDLogementPaiement;
+    @FXML private TableColumn<PaiementClient, Double>colPrixLogementPaiement;
+    @FXML private TableColumn<PaiementClient, Double>colSommeVerseePaiement;
+    @FXML private TableColumn<PaiementClient, LocalDate>colDateEcheancePaiement;
+    private ObservableList<PaiementClient> paiementData = FXCollections.observableArrayList();
+    /*Fin paiement*/
+
+    @Autowired private sessionUtilisateur userSession; // ou ton type exact
+
+
 
 
     public MainController() {
@@ -81,13 +112,80 @@ public class MainController implements Initializable {
 
         /*Table Check in / Check out debut*/
         // Liaison colonnes -> propriétés EvenementClient
-        colIdClient.setCellValueFactory(new PropertyValueFactory<>("identifiantClient"));
-        colIdLogement.setCellValueFactory(new PropertyValueFactory<>("numeroLogement"));
-        colNature.setCellValueFactory(new PropertyValueFactory<>("nature"));
-        colDate.setCellValueFactory(new PropertyValueFactory<>("dateEvenement"));
+        colIDClientCheck.setCellValueFactory(new PropertyValueFactory<>("identifiantClient"));
+        colIDLogementCheck.setCellValueFactory(new PropertyValueFactory<>("numeroLogement"));
+        colNatureCheck.setCellValueFactory(new PropertyValueFactory<>("nature"));
+        colDateCheck.setCellValueFactory(new PropertyValueFactory<>("dateCheck"));
+        tableCheckInCheckOut.setItems(listeCheckInCheckOut);
         chargerEvenementsDepuisBDD();
-        tableViewEvenements.setItems(listeEvenements);
         /*Table Check in / Check out fin*/
+
+        /*Début TachesDiverves*/
+        //Associer les propriétés de Client aux colonnes
+        colDescriptionTache.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colDateEcheanceTache.setCellValueFactory(new PropertyValueFactory<>("dateFin"));
+        colStatutTache.setCellValueFactory(new PropertyValueFactory<>("status"));
+        loadTaches();
+        /*Fin TachesDiverves*/
+
+        /*Début PaiementClient*/
+        colIDClientPaiement.setCellValueFactory(new PropertyValueFactory<>("idClient"));
+        colIDLogementPaiement.setCellValueFactory(new PropertyValueFactory<>("idLogement"));
+        colPrixLogementPaiement.setCellValueFactory(new PropertyValueFactory<>("prixLogement"));
+        colSommeVerseePaiement.setCellValueFactory(new PropertyValueFactory<>("sommeVersee"));
+        colDateEcheancePaiement.setCellValueFactory(new PropertyValueFactory<>("dateEcheance"));
+        tablePaiement.setItems(paiementData);
+        loadPaiementDataFromDB();
+        /*Fin PaiementClient*/
+    }
+
+    private void loadPaiementDataFromDB() {
+        paiementData.clear();
+
+        //Connexion à la base
+        String url = "jdbc:h2:mem:testdb";
+        String user = "demo";
+        String password = "";
+
+        String sql = """
+        SELECT r.client_id, r.logement_id, l.prix AS prix_logement, r.acompte, r.check_out
+        FROM reservation r
+        JOIN logement l ON r.logement_id = l.logement_id
+        WHERE r.acompte < l.prix
+        """;
+
+        try (Connection conn = DriverManager.getConnection(url, user, password);
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                int clientId = rs.getInt("client_id");
+                int logementId = rs.getInt("logement_id");
+                double prixLogement = rs.getDouble("prix_logement");
+                double sommeVersee = rs.getDouble("acompte");
+                LocalDate dateEcheance = rs.getDate("check_out").toLocalDate();
+
+                PaiementClient paiement = new PaiementClient(clientId, logementId, prixLogement, sommeVersee, dateEcheance);
+                paiementData.add(paiement);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    private void loadTaches() {
+        List<Tache> taches = tacheService.getAllTaches();
+        tacheData.setAll(taches);
+        tableTachesDiverses.setItems(tacheData);
+    }
+
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
+        if (nomUtilisateur != null && utilisateur != null) {
+            nomUtilisateur.setText(utilisateur.getNom());
+        }
     }
 
     private void chargerEvenementsDepuisBDD() {
@@ -118,15 +216,17 @@ public class MainController implements Initializable {
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
 
-            listeEvenements.clear();
+            listeCheckInCheckOut.clear();
 
             while (rs.next()) {
-                String idClient = rs.getString("id_client");
-                String numLogement = rs.getString("numero_logement");
+                String idClient = rs.getString("client_id");
+                String numLogement = rs.getString("logement_id");
                 String nature = rs.getString("nature");
                 LocalDate dateEvenement = rs.getDate("date_evenement").toLocalDate();
+                System.out.println("Date evenement : " +  dateEvenement.getMonth());
 
-                listeEvenements.add(new EvenementClient(idClient, numLogement, nature, dateEvenement));
+
+                listeCheckInCheckOut.add(new CheckInCheckOut(idClient, numLogement, nature, dateEvenement));
             }
 
         } catch (SQLException e) {
@@ -373,12 +473,18 @@ public class MainController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/voirMonProfil.fxml"));
             Stage popupStage = new Stage();
+            //loader.setControllerFactory(JavaFxApplicationSupport.getContext()::getBean);
+
             popupStage.initModality(Modality.APPLICATION_MODAL);
             popupStage.setScene(new Scene(loader.load()));
             popupStage.setResizable(false);
 
-            //ChargerPhotoProfilController popupController = loader.getController();
-            //popupController.setMainController(this);
+            VoirMonProfilController controller1 = loader.getController();
+            controller1.setUserSession(this.userSession); // injecte ici
+
+            //ModifMonProfilController controller2 = loader.getController();
+            //controller2.setUserSession(this.userSession);
+
 
             popupStage.showAndWait();
         } catch (Exception e) {
@@ -386,9 +492,15 @@ public class MainController implements Initializable {
         }
     }
 
+
+    public void setUserSession(sessionUtilisateur session) {
+        this.userSession = session;
+    }
+
     public void demandeDeconnexion(){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/seDeconnecter.fxml"));
+            loader.setControllerFactory(JavaFxApplicationSupport.getContext()::getBean);
             Stage popupStage = new Stage();
             popupStage.initModality(Modality.APPLICATION_MODAL);
             popupStage.setScene(new Scene(loader.load()));

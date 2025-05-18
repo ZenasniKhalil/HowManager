@@ -1,17 +1,17 @@
 package com.JESIKOM.HowManager.models;
 import java.time.LocalDate;
 
-public class EvenementClient {
+public class CheckInCheckOut {
     private String identifiantClient;
     private String numeroLogement;
     private String nature;
-    private LocalDate dateEvenement;
+    private LocalDate dateCheck;
 
-    public EvenementClient(String identifiantClient, String numeroLogement, String nature, LocalDate dateEvenement) {
+    public CheckInCheckOut(String identifiantClient, String numeroLogement, String nature, LocalDate dateCheck) {
         this.identifiantClient = identifiantClient;
         this.numeroLogement = numeroLogement;
         this.nature = nature;
-        this.dateEvenement = dateEvenement;
+        this.dateCheck = dateCheck;
     }
 
     public String getIdentifiantClient() {
@@ -26,8 +26,8 @@ public class EvenementClient {
         return nature;
     }
 
-    public LocalDate getDateEvenement() {
-        return dateEvenement;
+    public LocalDate getDateCheck() {
+        return dateCheck;
     }
 }
 

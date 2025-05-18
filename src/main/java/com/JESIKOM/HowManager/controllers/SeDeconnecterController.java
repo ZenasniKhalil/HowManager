@@ -1,5 +1,6 @@
 package com.JESIKOM.HowManager.controllers;
 
+import com.JESIKOM.HowManager.JavaFxApplicationSupport;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,7 +24,9 @@ public class SeDeconnecterController {
     public void deconnexion(ActionEvent event) {
         //à finir
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/seConnecterOuCreerCompte.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/seConnecter.fxml"));
+            loader.setControllerFactory(JavaFxApplicationSupport.getContext()::getBean);  // Injection Spring dans le FXML
+
             Stage popupStage = new Stage();
             popupStage.initModality(Modality.APPLICATION_MODAL);
             popupStage.setScene(new Scene(loader.load()));

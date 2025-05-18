@@ -82,6 +82,10 @@ public class TacheService {
     Map<TypeMajoration,Float> computeHeuresMajorees(Tache t){ return new HashMap<>();}
 
 
+    public List<Tache> getAllTaches() {
+        return tacheRepository.findAll();
+    }
+
 }
 
 

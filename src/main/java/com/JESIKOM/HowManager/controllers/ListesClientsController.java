@@ -246,6 +246,7 @@ public class ListesClientsController {
     public void chargerPhotoProfil() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/chargerPhotoProfil.fxml"));
+            loader.setControllerFactory(JavaFxApplicationSupport.getContext()::getBean);
             Stage popupStage = new Stage();
             popupStage.initModality(Modality.APPLICATION_MODAL);
             popupStage.setScene(new Scene(loader.load()));
@@ -263,6 +264,7 @@ public class ListesClientsController {
     public void voirMonProfil(){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/voirMonProfil.fxml"));
+            loader.setControllerFactory(JavaFxApplicationSupport.getContext()::getBean);
             Stage popupStage = new Stage();
             popupStage.initModality(Modality.APPLICATION_MODAL);
             popupStage.setScene(new Scene(loader.load()));
