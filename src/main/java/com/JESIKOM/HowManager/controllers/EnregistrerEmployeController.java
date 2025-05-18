@@ -3,8 +3,10 @@ package com.JESIKOM.HowManager.controllers;
 import com.JESIKOM.HowManager.JavaFxApplicationSupport;
 import com.JESIKOM.HowManager.models.Personnel;
 import com.JESIKOM.HowManager.service.PersonnelService;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -43,8 +45,8 @@ public class EnregistrerEmployeController {
     @Autowired
     private PersonnelService personnelService;
 
-    @FXML
-    private void ouvrirConfirmationValider() throws IOException {
+   // @FXML
+    /*private void ouvrirConfirmationValider() throws IOException {
         try {
             BoxBlur blur = new BoxBlur(5, 5, 3);
             enregistrerPersonnelPane.setEffect(blur);
@@ -63,7 +65,7 @@ public class EnregistrerEmployeController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
     @FXML
     public void validerEnregistrement() {
@@ -86,8 +88,8 @@ public class EnregistrerEmployeController {
         }
         personnelService.addPersonnel(p);
 
-        Stage stage = (Stage) nomField.getScene().getWindow();
-        stage.close();
+
+
     }
 
     @FXML
@@ -104,6 +106,22 @@ public class EnregistrerEmployeController {
             popupStage.setScene(new Scene(loader.load()));
             popupStage.setResizable(false);
             popupStage.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void ouvrirPersonnel(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/Personnel.fxml"));
+            loader.setControllerFactory(JavaFxApplicationSupport.getContext()::getBean);  // Injection Spring dans le FXML
+            Parent root = loader.load();
+
+            //Obtenir le Stage actuel
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            stage.setScene(new Scene(root)); // Remplacer le contenu
+            stage.show(); // si nécessaire
+
         } catch (Exception e) {
             e.printStackTrace();
         }

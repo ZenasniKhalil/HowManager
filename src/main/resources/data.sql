@@ -63,9 +63,9 @@ VALUES (2, 3, '2025-03-12T15:00:00', '2025-04-15', 3, 1,1,'EN_ATTENTE', 50.0, 'A
 
 --MANAGEMENT PART
 -- Insérer 2 personnels sans planning ni planningPattern
-INSERT INTO personnel (matricule,date_naissance, nom, prenom, genre, nationalite, phone, email, adresse, status, poste, lien_contrat, taux_horaire, nb_heure_semaine, nb_heure_mois)
-VALUES (1,'1990-05-15', 'Doe', 'John', 'Homme', 'Française', '0600000001', 'john.doe@example.com', '123 Rue A', 'Actif', 'Technicien', '/contrat/john.pdf', 15.5, 35, 140),
-       (2,'1985-10-20', 'Smith', 'Alice', 'Femme', 'Française', '0600000002', 'alice.smith@example.com', '456 Rue B', 'Actif', 'Manager', '/contrat/alice.pdf', 20, 40, 160);
+INSERT INTO personnel (date_naissance, nom, prenom, genre, nationalite, phone, email, adresse, status, poste, lien_contrat, taux_horaire, nb_heure_semaine, nb_heure_mois)
+VALUES ('1990-05-15', 'Doe', 'John', 'Homme', 'Française', '0600000001', 'john.doe@example.com', '123 Rue A', 'Actif', 'Technicien', '/contrat/john.pdf', 15.5, 35, 140),
+       ('1985-10-20', 'Smith', 'Alice', 'Femme', 'Française', '0600000002', 'alice.smith@example.com', '456 Rue B', 'Actif', 'Manager', '/contrat/alice.pdf', 20, 40, 160);
 
 INSERT INTO weekly_time_slot (start_day, start_time, end_day, end_time,personnel_id)
 VALUES

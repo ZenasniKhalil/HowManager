@@ -29,6 +29,7 @@ public class JavaFxApplicationSupport extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/seConnecter.fxml"));
         loader.setControllerFactory(context::getBean);  //Injection Spring dans le FXML
 
