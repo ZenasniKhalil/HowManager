@@ -55,11 +55,11 @@ VALUES (6, 'MAISON', 5, 1, 1, 'Petit déjeuner gratuit.', 350.0);
 
 -- Réservation 1 : Client 1, Logement 1
 INSERT INTO reservation (client_id, logement_id, date_reservation, date_debut, nombre_nuits, nombre_adultes, nombre_enfants, statut, acompte, remarque, mode_paiement, check_in, check_out)
-VALUES (1, 1, '2025-03-12T14:30:00', '2025-04-01', 5, 2,0, 'CONFIRMEE', 150.0, 'Besoin d''un lit bébé.', 'CARTE_BANCAIRE', '2025-06-12T14:30:00', '2025-05-30T14:30:00');
+VALUES (1, 1, '2025-03-12T14:30:00', '2025-05-01', 5, 2,0, 'CONFIRMEE', 150.0, 'Besoin d''un lit bébé.', 'CARTE_BANCAIRE', '2025-06-12T14:30:00', '2025-05-30T14:30:00');
 
 -- Réservation 2 : Client 2, Logement 3
 INSERT INTO reservation (client_id, logement_id, date_reservation, date_debut, nombre_nuits, nombre_adultes, nombre_enfants, statut, acompte, remarque, mode_paiement, check_in, check_out)
-VALUES (2, 3, '2025-03-12T15:00:00', '2025-04-15', 3, 1,1,'EN_ATTENTE', 50.0, 'Arrivée tardive prévue.', 'MOBILE_MONEY', '2025-05-01T14:30:00', '2025-05-29T14:30:00');
+VALUES (2, 3, '2025-03-12T15:00:00', '2025-05-15', 3, 1,1,'EN_ATTENTE', 50.0, 'Arrivée tardive prévue.', 'MOBILE_MONEY', '2025-05-01T14:30:00', '2025-05-29T14:30:00');
 
 --MANAGEMENT PART
 -- Insérer 2 personnels sans planning ni planningPattern

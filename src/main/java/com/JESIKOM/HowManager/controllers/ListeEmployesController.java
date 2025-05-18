@@ -7,8 +7,10 @@ import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -132,6 +134,24 @@ public class ListeEmployesController {
             Stage stage = (Stage) tablePersonnel.getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void retourTableauBord(ActionEvent event){
+        try {
+            System.out.println("retourTableauBord()");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/main.fxml"));
+            loader.setControllerFactory(JavaFxApplicationSupport.getContext()::getBean);
+            Parent root = loader.load();
+
+            //Obtenir le Stage actuel
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            stage.setScene(new Scene(root)); // Remplacer le contenu
+            stage.show(); // si nécessaire
 
         } catch (Exception e) {
             e.printStackTrace();
