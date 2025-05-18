@@ -22,11 +22,13 @@ import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -40,6 +42,7 @@ public class EnregistrerClientController {
     @FXML private MenuItem voirMonProfilButton;
     @FXML private Button retourListeClients;
     @FXML private Button validerButton;
+    @FXML private Button annulerButton;
     @FXML private AnchorPane enregistrerClientPane;
     ListesClientsController listesClientsController;
 
@@ -201,7 +204,7 @@ public class EnregistrerClientController {
     }
 
 
-    private boolean champsClientEtReservationValides() {
+    boolean champsClientEtReservationValides() {
         // Vérifie les champs Client
         if (nomField.getText().isEmpty() || prenomField.getText().isEmpty() || telephoneField.getText().isEmpty()
                 || emailField.getText().isEmpty() || adresseField.getText().isEmpty() || ddnField.getValue() == null
@@ -545,6 +548,92 @@ public class EnregistrerClientController {
         } catch (NumberFormatException e) {
             afficherAlerte("Erreur de format", "Veuillez entrer des nombres valides pour les adultes et enfants.");
         }
+    }
+
+    @FXML
+    public void ouvrirConfirmationAnnuler() throws IOException {
+        // Appliquer un flou sur la fenêtre principale
+        BoxBlur blur = new BoxBlur(5, 5, 3);
+        enregistrerClientPane.setEffect(blur);
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/EnregistrerClientAnnuler.fxml"));
+        fxmlLoader.setControllerFactory(JavaFxApplicationSupport.getContext()::getBean);  // Injection Spring dans le FXML
+        Parent popupRoot = fxmlLoader.load();
+
+        Stage popupStage = new Stage();
+        popupStage.initModality(Modality.WINDOW_MODAL); // bloque interaction avec la fenêtre principale
+        popupStage.initOwner(enregistrerClientPane.getScene().getWindow()); // rattacher au parent
+        popupStage.setScene(new Scene(popupRoot));
+        popupStage.setOnHiding(e -> {
+            // Supprimer le flou lorsque la popup se ferme
+            enregistrerClientPane.setEffect(null);
+        });
+        popupStage.setResizable(false);
+
+        popupStage.show();
+    }
+
+    public TextField getNomField(){
+        return this.nomField;
+    }
+
+    public TextField getPrenomField() {
+        return this.prenomField;
+    }
+
+    public TextField getTelephoneField(){
+        return telephoneField;
+    }
+
+    public TextField getEmailField(){
+        return emailField;
+    }
+
+    public TextField getAdresseField(){
+        return adresseField;
+    }
+
+    public MenuButton getMenuButtonTypeIdentite(){
+        return menuButtonTypeIdentite;
+    }
+
+    public DatePicker getDdnField(){
+        return ddnField;
+    }
+
+    public boolean champsTousVides(){
+        return (nomField.getText().isEmpty() && prenomField.getText().isEmpty() && telephoneField.getText().isEmpty()
+                && emailField.getText().isEmpty() && adresseField.getText().isEmpty()
+                && ddnField.getValue() == null
+                && natField.getText().isEmpty() && numIdField.getText().isEmpty()
+                && Objects.equals(menuButtonTypeIdentite.getText(), "Sélectionner")
+                && Objects.equals(menuButtonTypeLogement.getText(), "Sélectionner")
+                && idLogementField.getText().isEmpty()
+                && capaciteLogementField.getText().isEmpty()
+                && dispoLogementField.getText().isEmpty()
+                && propreLogementField.getText().isEmpty()
+                //&& commentaireLogementField.getText().isEmpty()
+                && prixLogementField.getText().isEmpty()
+                && dateReservationField.getValue() == null
+                && heureReservationField.getText().isEmpty()
+                && minuteReservationField.getText().isEmpty()
+                && dateDebutField.getValue() == null
+                && checkInField.getValue() == null
+                && checkInHeureField.getText().isEmpty()
+                && checkInMinuteField.getText().isEmpty()
+                && checkOutField.getValue() == null
+                && checkOutHeureField.getText().isEmpty()
+                && checkOutMinuteField.getText().isEmpty()
+                && nbreNuitsField.getText().isEmpty()
+                && nbreAdultesField.getText().isEmpty()
+                && nbreEnfantsField.getText().isEmpty()
+                //&& remarqueArea.getText().isEmpty()
+                && remarqueReservationField.getText().isEmpty()
+                //&& codePromoField.getText().isEmpty()
+                && Objects.equals(menuButtonStatutReservation.getText(), "Sélectionner")
+                && Objects.equals(menuButtonModePaiement.getText(), "Sélectionner")
+                && acompteLogementField.getText().isEmpty());
+
     }
 
 
