@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.JESIKOM.HowManager.controllers.SeConnecterOuCreerCompteController">
+<AnchorPane prefHeight="700.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.JESIKOM.HowManager.controllers.SeConnecterController">
 <children>
     <HBox layoutX="115.0" layoutY="89.0" />
     <HBox layoutX="116.0" layoutY="27.0" prefHeight="31.0" prefWidth="631.0" />
@@ -53,16 +53,6 @@
             <Font name="Berlin Sans FB Bold" size="36.0" />
          </font>
       </Label>
-      <Label layoutX="83.0" layoutY="231.0" text="Nouveau sur l'application ?" textFill="#0646a7">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label layoutX="260.0" layoutY="231.0" text="Créer mon compte" textFill="#0646a7" underline="true">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
       <Label layoutX="64.0" layoutY="265.0" text="Email *" textFill="#0646a7">
          <font>
             <Font size="18.0" />
@@ -78,27 +68,27 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="passwordField" layoutX="64.0" layoutY="371.0" prefHeight="40.0" prefWidth="223.0" promptText="Mot de passe">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </PasswordField>
-      <Label fx:id="emailOublie" layoutX="65.0" layoutY="425.0" text="Email oublié ?" textFill="#0646a7" underline="true">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
-      <Button layoutX="148.0" layoutY="514.0" mnemonicParsing="false" onAction="#handleConnexion" prefHeight="54.0" prefWidth="176.0" style="-fx-background-color: #0646a7;" text="Se connecter" textFill="WHITE">
+
+    <StackPane layoutX="64.0" layoutY="371.0" prefHeight="40.0" prefWidth="223.0">
+        <PasswordField fx:id="passwordField" promptText="Mot de passe" prefHeight="40.0" prefWidth="223.0">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </PasswordField>
+        <TextField fx:id="passwordFieldVisible" promptText="Mot de passe" visible="false" managed="false" prefHeight="40.0" prefWidth="223.0">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </TextField>
+    </StackPane>
+
+
+    <Button fx:id="seConnecterButton" layoutX="148.0" layoutY="514.0" mnemonicParsing="false" onAction="#handleConnexion" prefHeight="54.0" prefWidth="176.0" style="-fx-background-color: #0646a7;" text="Se connecter" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Label layoutX="65.0" layoutY="448.0" text="Mot de passe oublié ?" textFill="#0646a7" underline="true">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
-      <CheckBox fx:id="showPasswordCheckBox" layoutX="289.0" layoutY="381.0" text="Afficher" />
+      <CheckBox fx:id="showPasswordCheckBox" layoutX="289.0" layoutY="381.0" onAction="#toggleAfficherMotDePasse" text="Afficher" />
 
 
 </children>

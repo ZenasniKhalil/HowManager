@@ -25,6 +25,8 @@ public class Utilisateur {
 //    }
 
 
+    public Long getId(){ return id; }
+
     public String getNom() {
         return nom;
     }

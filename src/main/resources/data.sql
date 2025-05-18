@@ -1,9 +1,6 @@
 -- Insertions des clients dans H2 Database
 
 -- Client 1
-INSERT INTO utilisateur(nom,email,role,mot_de_passe)
--- mot de passe admin123
-VALUES('admin','admin@how.com','admin','$2a$10$lSXDAsN6dk2GQUL1jfSocel/blXygMGNez4E91EOosa.bLTXkSUqu');
 INSERT INTO client (nom, prenom, telephone, email, adresse, date_naissance, nationalite, num_identite, type_identite, remarque)
 VALUES ('Dupont', 'Jean', '0612345678', 'jean.dupont@email.com', '12 rue de Paris, 75001 Paris',
         '1980-05-15', 'Française', '980512AB1234', 'CNI', 'Client fidèle depuis 2015');
@@ -58,11 +55,11 @@ VALUES (6, 'MAISON', 5, 1, 1, 'Petit déjeuner gratuit.', 350.0);
 
 -- Réservation 1 : Client 1, Logement 1
 INSERT INTO reservation (client_id, logement_id, date_reservation, date_debut, nombre_nuits, nombre_adultes, nombre_enfants, statut, acompte, remarque, mode_paiement, check_in, check_out)
-VALUES (1, 1, '2025-03-12T14:30:00', '2025-05-01', 5, 2,0, 'CONFIRMEE', 150.0, 'Besoin d''un lit bébé.', 'CARTE_BANCAIRE', NULL, NULL);
+VALUES (1, 1, '2025-03-12T14:30:00', '2025-04-01', 5, 2,0, 'CONFIRMEE', 150.0, 'Besoin d''un lit bébé.', 'CARTE_BANCAIRE', '2025-06-12T14:30:00', '2025-05-30T14:30:00');
 
 -- Réservation 2 : Client 2, Logement 3
 INSERT INTO reservation (client_id, logement_id, date_reservation, date_debut, nombre_nuits, nombre_adultes, nombre_enfants, statut, acompte, remarque, mode_paiement, check_in, check_out)
-VALUES (2, 3, '2025-03-12T15:00:00', '2025-05-15', 3, 1,1,'EN_ATTENTE', 50.0, 'Arrivée tardive prévue.', 'MOBILE_MONEY', NULL, NULL);
+VALUES (2, 3, '2025-03-12T15:00:00', '2025-04-15', 3, 1,1,'EN_ATTENTE', 50.0, 'Arrivée tardive prévue.', 'MOBILE_MONEY', '2025-05-01T14:30:00', '2025-05-29T14:30:00');
 
 --MANAGEMENT PART
 -- Insérer 2 personnels sans planning ni planningPattern
@@ -98,11 +95,12 @@ INSERT INTO planning (personnel_id, annee, semaine, note)
 VALUES (1, 2024, 14, 'Planning semaine 14 pour John'),
        (2, 2024, 15, 'Planning semaine 15 pour Alice');
 
-INSERT INTO planning (semaine, annee, client_id) VALUES (1, 2025, 1);
-INSERT INTO planning (semaine, annee, client_id) VALUES (2, 2025, 2);
-
 -- Insérer 3 tâches (dont 2 qui se chevauchent)
-INSERT INTO tache (id,date_debut,date_fin, status)
-VALUES    (4, '2025-01-01','2025-01-01','PLANIFIEE'),
-          (5, '2025-01-01','2025-01-01','EN_COURS'),
-          (6, '2025-01-02','2025-01-02','PLANIFIEE');
+INSERT INTO tache (id,date_debut,date_fin, status, description)
+VALUES    (4, '2025-01-01','2025-01-01','PLANIFIEE', 'nettoyer le logement 10'),
+          (5, '2025-01-01','2025-01-01','EN_COURS', 'recevoir le client 5 pour son check in'),
+          (6, '2025-01-02','2025-01-02','PLANIFIEE', 'changer ampoule logement 2');
+
+-- Utilisateur 1
+INSERT INTO utilisateur (id, nom, email, mot_de_passe)
+VALUES (1, 'Sieg', 'sieg@gmail.com', '$2a$10$Ncg8KyuDgy6agZb8i4/TeubJdVzVVR1PP8lWlLr09/jG947imiVKO');

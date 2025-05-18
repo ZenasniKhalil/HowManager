@@ -23,6 +23,8 @@ public class Tache  extends PlageHoraire{
     //@Column(nullable = false)
     StatusTache status;
 
+    String description;
+
     public LocalDate getDateDebut() {
         return dateDebut;
     }
@@ -46,6 +48,10 @@ public class Tache  extends PlageHoraire{
     public void setStatus(StatusTache status) {
         this.status = status;
     }
+
+    public String getDescrition(){ return description; }
+
+    public void setDescription(String description){ this.description = description; }
     
 
 

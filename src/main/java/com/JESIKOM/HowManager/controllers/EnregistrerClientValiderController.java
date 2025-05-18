@@ -98,12 +98,7 @@ public class EnregistrerClientValiderController {
             // Fermer la fenêtre actuelle
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             currentStage.close();
-
-
             popupStage.showAndWait();
-
-
-
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -43,35 +43,6 @@
             <TextField prefHeight="26.0" prefWidth="378.0" promptText="Rechercher" />
          </children>
       </HBox>
-      <HBox layoutX="116.0" layoutY="27.0" prefHeight="31.0" prefWidth="631.0">
-         <children>
-            <Button mnemonicParsing="false" prefWidth="150.0" style="-fx-background-color: #3498db; -fx-border-color: black;" text="Tableau de bord">
-               <font>
-                  <Font name="System Bold Italic" size="14.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" prefWidth="125.0" style="-fx-background-color: #3498db; -fx-border-color: black;" text="Réservations">
-               <font>
-                  <Font name="System Bold Italic" size="14.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" prefWidth="95.0" style="-fx-background-color: #3498db; -fx-border-color: black;" text="Stocks">
-               <font>
-                  <Font name="System Bold Italic" size="14.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #3498db; -fx-border-color: black;" text="Personnel">
-               <font>
-                  <Font name="System Bold Italic" size="14.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="137.0" style="-fx-background-color: #3498db; -fx-border-color: black;" text="Infos courantes">
-               <font>
-                  <Font name="System Bold Italic" size="14.0" />
-               </font>
-            </Button>
-         </children>
-      </HBox>
 
       <ScrollPane fitToHeight="false" fitToWidth="true" layoutX="233.0" layoutY="153.0" pannable="true" prefHeight="550.0" prefWidth="716.0" style="-fx-background-color: transparent;" vbarPolicy="AS_NEEDED">
          <content>
@@ -129,42 +100,26 @@
                </Label>
                <VBox alignment="CENTER" style="-fx-border-color: #3498db;">
                   <children>
-                     <Button mnemonicParsing="false" style="-fx-background-color: #ffffff; -fx-border-color: #004aad;" text="Maintenance" textFill="#3498db" />
-                     <TableView prefHeight="200.0" prefWidth="200.0">
+                     <Button mnemonicParsing="false" text="Tâches diverses" />
+                     <TableView fx:id="tableTachesDiverses" prefHeight="200.0" prefWidth="585.0">
                        <columns>
-                          <TableColumn fx:id="colDescription1" prefWidth="150.0" text="Description" />
-                          <TableColumn fx:id="colDate1" prefWidth="150.0" text="Date d'échéance" />
-                          <TableColumn fx:id="colPriorite1" prefWidth="120.0" text="Priorité" />
-                          <TableColumn fx:id="colStatut1" prefWidth="120.0" text="Statut" />
-                          <TableColumn fx:id="colAssigne1" prefWidth="150.0" text="Attribué à" />
+                          <TableColumn fx:id="colDescriptionTache" prefWidth="329.60003048181534" text="Description" />
+                          <TableColumn fx:id="colDateEcheanceTache" prefWidth="204.0" text="Date d'échéance" />
+                          <TableColumn fx:id="colStatutTache" prefWidth="177.5999755859375" text="Statut" />
                        </columns>
                      </TableView>
                   </children>
                </VBox>
                <VBox alignment="CENTER" style="-fx-border-color: #3498db;">
                   <children>
-                     <Button mnemonicParsing="false" style="-fx-border-color: #004aad;" text="Nettoyage" />
-                     <TableView prefHeight="200.0" prefWidth="200.0">
-                        <columns>
-                           <TableColumn fx:id="colDescription2" prefWidth="150.0" text="Description" />
-                           <TableColumn fx:id="colDate2" prefWidth="150.0" text="Date d'échéance" />
-                           <TableColumn fx:id="colPriorite2" prefWidth="120.0" text="Priorité" />
-                           <TableColumn fx:id="colStatut2" prefWidth="120.0" text="Statut" />
-                           <TableColumn fx:id="colAssigne2" prefWidth="150.0" text="Attribué à" />
-                        </columns>
-                     </TableView>
-                  </children>
-               </VBox>
-               <VBox alignment="CENTER" style="-fx-border-color: #3498db;">
-                  <children>
                      <Button mnemonicParsing="false" text="Paiement" />
-                     <TableView prefHeight="200.0" prefWidth="200.0">
+                     <TableView fx:id="tablePaiement" prefHeight="200.0" prefWidth="200.0">
                         <columns>
-                           <TableColumn fx:id="colDescription3" prefWidth="150.0" text="Description" />
-                           <TableColumn fx:id="colDate3" prefWidth="150.0" text="Date d'échéance" />
-                           <TableColumn fx:id="colPriorite3" prefWidth="120.0" text="Priorité" />
-                           <TableColumn fx:id="colStatut3" prefWidth="120.0" text="Statut" />
-                           <TableColumn fx:id="colAssigne3" prefWidth="150.0" text="Attribué à" />
+                           <TableColumn fx:id="colIDClientPaiement" prefWidth="107.2000213265419" text="Identifiant client" />
+                           <TableColumn fx:id="colIDLogementPaiement" prefWidth="139.20001220703125" text="N° de Logement" />
+                           <TableColumn fx:id="colPrixLogementPaiement" prefWidth="183.20004272460938" text="Prix du Logement" />
+                           <TableColumn fx:id="colSommeVerseePaiement" prefWidth="140.79998779296875" text="Somme versée" />
+                           <TableColumn fx:id="colDateEcheancePaiement" prefWidth="132.800048828125" text="Date d'échéance" />
                         </columns>
                      </TableView>
                   </children>
@@ -174,11 +129,12 @@
                            <Font size="18.0" />
                         </font>
                      </Label>
-                     <TableView prefHeight="200.0" prefWidth="130.0">
+                     <TableView fx:id="tableCheckInCheckOut" prefHeight="200.0" prefWidth="130.0">
                         <columns>
-                           <TableColumn fx:id="colIdClient" prefWidth="150.0" text="Identifiant client" />
-                           <TableColumn fx:id="colIdLogement" prefWidth="150.0" text="N° de Logement" />
-                           <TableColumn fx:id="colNature" prefWidth="120.0" text="Nature" />
+                           <TableColumn fx:id="colIDClientCheck" prefWidth="164.00005799531937" text="Identifiant client" />
+                           <TableColumn fx:id="colIDLogementCheck" prefWidth="175.99998474121094" text="N° de Logement" />
+                           <TableColumn fx:id="colNatureCheck" prefWidth="181.5999755859375" text="Nature" />
+                     <TableColumn fx:id="colDateCheck" prefWidth="164.7999267578125" text="Date" />
                         </columns>
                      </TableView>
                
@@ -260,18 +216,6 @@
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#004aadf5" height="41.0" layoutX="293.0" layoutY="16.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke-width: 0;" width="14.0" />
                </children>
             </Group>
-            <Button fx:id="infos_courantes" layoutX="9.0" layoutY="252.0" mnemonicParsing="false" onAction="#changeBackgroundButtonColor" prefHeight="40.0" prefWidth="224.0" style="-fx-background-color: #3477db;" text="INFOS COURANTES" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Button>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3477db" height="41.0" layoutY="252.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke-width: 0;" width="27.0" />
-            <ImageView fitHeight="75.0" fitWidth="65.0" layoutX="-9.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/infos_courantes.png" />
-               </image>
-            </ImageView>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#004aadf5" height="41.0" layoutX="218.0" layoutY="252.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke-width: 0;" width="14.0" />
          </children>
       </Pane>
 
@@ -288,7 +232,7 @@
                   <ImageView fx:id="profileImage" fitHeight="55.0" fitWidth="54.0" layoutX="50" layoutY="50" />
                </children>
             </StackPane>
-            <MenuButton contentDisplay="CENTER" layoutY="98.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="150.0" text="Sylvain ROY">
+            <MenuButton fx:id="nomUtilisateur" contentDisplay="CENTER" layoutY="98.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="150.0">
                <items>
                   <MenuItem fx:id="voirMonProfilButton" mnemonicParsing="false" onAction="#voirMonProfil" text="Voir mon profil" />
                   <SeparatorMenuItem mnemonicParsing="false" text="sep1" />
@@ -303,26 +247,8 @@
             </MenuButton>
          </children>
       </Group>
-      <StackPane layoutX="555.0" layoutY="76.0" style="-fx-background-color: transparent; -fx-border-color: transparent;">
-         <children>
-            <ImageView fitHeight="53.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/notifications.png" />
-               </image>
-            </ImageView>
-            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
-         </children>
-      </StackPane>
-      <StackPane layoutX="638.0" layoutY="79.0">
-         <children>
-            <ImageView fitHeight="46.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/messages.png" />
-               </image>
-            </ImageView>
-            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
-         </children>
-      </StackPane>
+      <StackPane layoutX="555.0" layoutY="76.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
+      <StackPane layoutX="638.0" layoutY="79.0" />
       <StackPane layoutX="-33.0" layoutY="-25.0">
          <children>
             <ImageView fitHeight="178.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
@@ -333,16 +259,7 @@
             <Button mnemonicParsing="false" prefHeight="192.0" prefWidth="178.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
          </children>
       </StackPane>
-      <StackPane layoutX="595.0" layoutY="75.0">
-         <children>
-            <ImageView fitHeight="52.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/parametres.png" />
-               </image>
-            </ImageView>
-            <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="54.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
-         </children>
-      </StackPane>
+      <StackPane layoutX="595.0" layoutY="75.0" />
 
 
    </children>

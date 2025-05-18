@@ -29,8 +29,8 @@ public class JavaFxApplicationSupport extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/CalendrierClient.fxml"));
-        loader.setControllerFactory(context::getBean);  // Injection Spring dans le FXML
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/seConnecter.fxml"));
+        loader.setControllerFactory(context::getBean);  //Injection Spring dans le FXML
 
         Parent root = loader.load();
         primaryStage.setTitle("How Manager");
