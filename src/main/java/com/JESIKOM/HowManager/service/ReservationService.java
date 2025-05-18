@@ -2,6 +2,7 @@ package com.JESIKOM.HowManager.service;
 
 import com.JESIKOM.HowManager.models.Logement;
 import com.JESIKOM.HowManager.models.Reservation;
+import com.JESIKOM.HowManager.models.StatutReservation;
 import com.JESIKOM.HowManager.repository.ClientRepository;
 import com.JESIKOM.HowManager.repository.LogementRepository;
 import com.JESIKOM.HowManager.repository.ReservationRepository;
@@ -62,10 +63,6 @@ public class ReservationService implements IReservationService {
         }).orElse(null);
     }
 
-    public List<Reservation> getAllREservationWithNoCheckout(){
-        return reservationRepository.findReservationByCheckOutIsNull();
-    }
-
 
     public void deleteReservation(Long id) {
         reservationRepository.deleteById(id);
@@ -115,12 +112,19 @@ public class ReservationService implements IReservationService {
         return reservationRepository.findReservationsByLogement_Numero(logementNum);
     }
 
+    public List<Reservation> getReservationsByStatut(StatutReservation statut){
+        return reservationRepository.findReservationByStatutIs(statut);
+    }
+
+
+
     public void checkIn(Long id) throws IllegalArgumentException {
         Optional<Reservation> optRes=getReservationById(id);
         if(optRes.isEmpty())
             throw new IllegalArgumentException("Id not found");
         Reservation reservation=optRes.get();
         reservation.setCheckIn(LocalDateTime.now());
+        reservation.setStatut(StatutReservation.EN_COURS);
         updateReservation((reservation.getId()),reservation);
     }
     public void checkOut(Long id) throws IllegalArgumentException {
@@ -129,8 +133,10 @@ public class ReservationService implements IReservationService {
             throw new IllegalArgumentException("Id not found");
         Reservation reservation=optRes.get();
         reservation.setCheckOut(LocalDateTime.now());
+        reservation.setStatut(StatutReservation.TERMINEE);
         updateReservation((reservation.getId()),reservation);
     }
+
 
 
 }

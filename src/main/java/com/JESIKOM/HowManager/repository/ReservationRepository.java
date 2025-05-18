@@ -1,6 +1,7 @@
 package com.JESIKOM.HowManager.repository;
 
 import com.JESIKOM.HowManager.models.Reservation;
+import com.JESIKOM.HowManager.models.StatutReservation;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDate;
@@ -16,7 +17,8 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
 
     int countReservationByDateDebutBetween(LocalDate startDate, LocalDate endDate);
 
-    List<Reservation>findReservationByCheckOutIsNull();
+    List<Reservation>findReservationByStatutIsNot(StatutReservation statut);
 
+    List<Reservation>findReservationByStatutIs(StatutReservation statut);
 
 }
