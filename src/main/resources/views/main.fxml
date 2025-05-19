@@ -190,7 +190,7 @@
             </Group>
             <Group layoutX="-76.0" layoutY="130.0">
                <children>
-                  <Button fx:id="stocks" layoutY="16.0" mnemonicParsing="false" onAction="#changeBackgroundButtonColor" prefHeight="40.0" prefWidth="308.0" style="-fx-background-color: #3477db;" text="STOCKS" textFill="WHITE">
+                  <Button fx:id="stocks" layoutY="16.0" mnemonicParsing="false" onAction="#voirStock" prefHeight="40.0" prefWidth="308.0" style="-fx-background-color: #3477db;" text="STOCKS" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
