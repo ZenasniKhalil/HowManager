@@ -127,8 +127,6 @@ public class ReservationService implements IReservationService {
         return reservationRepository.countReservationByMoisAndAnnee(mois,annee);
     }
 
-
-
     public void checkIn(Long id) throws IllegalArgumentException {
         Optional<Reservation> optRes=getReservationById(id);
         if(optRes.isEmpty())
