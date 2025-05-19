@@ -92,7 +92,7 @@
          </Group>
          <Group layoutX="-3.0" layoutY="126.0">
             <children>
-               <Button layoutX="-40.0" layoutY="73.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="276.0" style="-fx-background-color: #3477db;" text="PERSONNEL" textFill="WHITE">
+               <Button layoutX="-40.0" layoutY="73.0" mnemonicParsing="false" onAction="#ouvrirPersonnel" prefHeight="40.0" prefWidth="276.0" style="-fx-background-color: #3477db;" text="PERSONNEL" textFill="WHITE">
                   <font>
                      <Font name="System Bold" size="18.0" />
                   </font>
@@ -120,18 +120,6 @@
                </ImageView>
             </children>
          </Group>
-         <Button layoutX="9.0" layoutY="252.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="224.0" style="-fx-background-color: #3477db;" text="INFOS COURANTES" textFill="WHITE">
-            <font>
-               <Font name="System Bold" size="18.0" />
-            </font>
-         </Button>
-         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3477db" height="41.0" layoutY="252.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke-width: 0;" width="27.0" />
-         <ImageView fitHeight="75.0" fitWidth="65.0" layoutX="-9.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@../images/infos_courantes.png" />
-            </image>
-         </ImageView>
-         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#004aadf5" height="41.0" layoutX="218.0" layoutY="252.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke-width: 0;" width="14.0" />
       </children>
    </Pane>
 

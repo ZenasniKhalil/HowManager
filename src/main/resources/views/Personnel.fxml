@@ -19,7 +19,7 @@
 
 <!--  -->
 
-<AnchorPane fx:id="enregistrerClientPane" prefHeight="700.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.JESIKOM.HowManager.controllers.EnregistrerClientController">
+<AnchorPane fx:id="enregistrerClientPane" prefHeight="700.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.JESIKOM.HowManager.controllers.PersonnelController">
     <children>
         <HBox layoutX="115.0" layoutY="89.0">
             <children>
@@ -52,7 +52,7 @@
                 </StackPane>
                 <Group layoutX="-2.0" layoutY="36.0">
                     <children>
-                        <Button layoutX="28.0" layoutY="6.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="191.0" style="-fx-background-color: #3477db;" text="TABLEAU DE BORD" textFill="WHITE">
+                        <Button layoutX="28.0" layoutY="6.0" mnemonicParsing="false" onAction="#retourTableauBord" prefHeight="40.0" prefWidth="193.0" style="-fx-background-color: #3477db;" text="TABLEAU DE BORD" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>
@@ -64,12 +64,12 @@
                             </image>
                         </ImageView>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#004aadf5" height="41.0" layoutX="219.0" layoutY="6.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke-width: 0;" width="14.0" />
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="49.0" fitWidth="219.0" pickOnBounds="true" preserveRatio="true" />
                     </children>
                 </Group>
                 <Group layoutX="-4.0" layoutY="73.0">
                     <children>
-                        <Button layoutX="4.0" layoutY="21.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="218.0" style="-fx-background-color: #004aad;" text="RÉSERVATIONS" textFill="WHITE">
+                        <Button layoutX="4.0" layoutY="21.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="218.0" style="-fx-background-color: #3477db;" text="RÉSERVATIONS" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>
@@ -84,7 +84,7 @@
                 </Group>
                 <Group layoutX="-3.0" layoutY="126.0">
                     <children>
-                        <Button layoutX="-40.0" layoutY="73.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="276.0" style="-fx-background-color: #3477db;" text="PERSONNEL" textFill="WHITE">
+                        <Button layoutX="-40.0" layoutY="73.0" mnemonicParsing="false" onAction="#voirPersonnel" prefHeight="40.0" prefWidth="276.0" style="-fx-background-color: #004aad;" text="PERSONNEL" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>
@@ -112,18 +112,6 @@
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#004aadf5" height="41.0" layoutX="293.0" layoutY="16.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke-width: 0;" width="14.0" />
                     </children>
                 </Group>
-                <Button layoutX="9.0" layoutY="252.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="224.0" style="-fx-background-color: #3477db;" text="INFOS COURANTES" textFill="WHITE">
-                    <font>
-                        <Font name="System Bold" size="18.0" />
-                    </font>
-                </Button>
-                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3477db" height="41.0" layoutY="252.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke-width: 0;" width="27.0" />
-                <ImageView fitHeight="75.0" fitWidth="65.0" layoutX="-9.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/infos_courantes.png" />
-                    </image>
-                </ImageView>
-                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#004aadf5" height="41.0" layoutX="218.0" layoutY="252.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke-width: 0;" width="14.0" />
             </children></Pane>
         <Group layoutX="757.0" layoutY="-9.0">
             <children>
@@ -210,7 +198,7 @@
             <content>
                 <AnchorPane prefHeight="618.0" prefWidth="702.0">
                     <children>
-                        <Button layoutX="248.0" layoutY="148.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="270.0" style="-fx-border-image-slice: 50; -fx-border-radius: 40; -fx-background-radius: 40; -fx-background-color: #004aad;" text="Tous les employés" textFill="WHITE">
+                        <Button layoutX="248.0" layoutY="148.0" mnemonicParsing="false" onAction="#voirListe" prefHeight="40.0" prefWidth="270.0" style="-fx-border-image-slice: 50; -fx-border-radius: 40; -fx-background-radius: 40; -fx-background-color: #004aad;" text="Tous les employés" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="19.0" />
                             </font>
@@ -220,14 +208,14 @@
                                 <Font name="System Bold" size="24.0" />
                             </font>
                         </Button>
-                        <Button fx:id="validerButton" layoutX="397.0" layoutY="569.0" mnemonicParsing="false" onAction="#ouvrirConfirmationValider" prefHeight="41.0" prefWidth="129.0" style="-fx-background-color: #004aad;" text="Valider" textFill="WHITE">
+                        <Button fx:id="validerButton" layoutX="397.0" layoutY="569.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="129.0" style="-fx-background-color: #004aad;" text="Valider" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="24.0" />
                             </font>
                         </Button>
                         <HBox alignment="CENTER" layoutX="-11.0" layoutY="380.0" prefHeight="40.0" prefWidth="260.0" />
                         <HBox alignment="CENTER" layoutX="53.0" layoutY="484.0" prefHeight="27.0" prefWidth="249.0" />
-                  <Button layoutX="248.0" layoutY="235.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="270.0" style="-fx-border-image-slice: 50; -fx-border-radius: 10; -fx-background-radius: 100; -fx-background-color: #FFFF;" text="Planning employés" textFill="#004aad" textOverrun="CLIP">
+                  <Button layoutX="248.0" layoutY="235.0" mnemonicParsing="false" onAction="#ouvrirPlanning" prefHeight="40.0" prefWidth="270.0" style="-fx-border-image-slice: 50; -fx-border-radius: 10; -fx-background-radius: 100; -fx-background-color: #FFFF;" text="Planning employés" textFill="#004aad" textOverrun="CLIP">
                      <font>
                         <Font name="System Bold" size="19.0" />
                      </font>

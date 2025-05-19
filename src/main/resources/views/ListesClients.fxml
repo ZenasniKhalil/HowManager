@@ -21,7 +21,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="700.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.JESIKOM.HowManager.controllers.ListesClientsController">
+<AnchorPane prefHeight="700.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.JESIKOM.HowManager.controllers.ListesClientsController">
     <children>
         <HBox layoutX="115.0" layoutY="89.0">
             <children>
@@ -85,7 +85,7 @@
                 </Group>
                 <Group layoutX="-3.0" layoutY="126.0">
                     <children>
-                        <Button layoutX="-40.0" layoutY="73.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="276.0" style="-fx-background-color: #3477db;" text="PERSONNEL" textFill="WHITE">
+                        <Button layoutX="-40.0" layoutY="73.0" mnemonicParsing="false" onAction="#ouvrirPersonnel" prefHeight="40.0" prefWidth="276.0" style="-fx-background-color: #3477db;" text="PERSONNEL" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>
@@ -187,7 +187,7 @@
                         </ImageView>
                      </children>
                   </Group>
-                  <Button fx:id="enregistrerNouveauClient" layoutX="401.0" layoutY="89.0" mnemonicParsing="false" onAction="#ouvrirPageCreerClient" style="-fx-background-color: #146CDF;" text="Enregistrer un nouveau client" textFill="WHITE">
+                  <Button fx:id="enregistrerNouveauClient" layoutX="402.0" layoutY="74.0" mnemonicParsing="false" onAction="#ouvrirPageCreerClient" prefHeight="40.0" prefWidth="289.0" style="-fx-background-color: #146CDF;" text="Enregistrer un nouveau client" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="19.0" />
                      </font>
@@ -241,6 +241,11 @@
                      </font>
                   </Button>
                   <Button layoutX="289.0" layoutY="861.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="130.0" style="-fx-background-color: #BAB8B8;" text="Logements">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="401.0" layoutY="120.0" mnemonicParsing="false" onAction="#ouvrirPlanning" prefHeight="40.0" prefWidth="296.0" style="-fx-background-color: #BAB8B8;" text="Afficher planning reservations" textFill="#1f1b1b">
                      <font>
                         <Font name="System Bold" size="19.0" />
                      </font>

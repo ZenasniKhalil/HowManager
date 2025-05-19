@@ -1,18 +1,24 @@
 package com.JESIKOM.HowManager.controllers;
 
+import com.JESIKOM.HowManager.JavaFxApplicationSupport;
 import com.JESIKOM.HowManager.models.CalendarActivity;
 import com.JESIKOM.HowManager.models.Reservation;
 import com.JESIKOM.HowManager.service.ReservationService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -172,5 +178,20 @@ public class CalendarClientController implements Initializable {
             map.computeIfAbsent(day, k -> new ArrayList<>()).add(a);
         }
         return map;
+    }
+
+    public void ouvrirPersonnel(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/Personnel.fxml"));
+            loader.setControllerFactory(JavaFxApplicationSupport.getContext()::getBean);
+            Parent root = loader.load();
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

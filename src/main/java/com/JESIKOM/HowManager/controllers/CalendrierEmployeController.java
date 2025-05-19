@@ -1,9 +1,16 @@
 package com.JESIKOM.HowManager.controllers;
 
+import com.JESIKOM.HowManager.JavaFxApplicationSupport;
 import com.JESIKOM.HowManager.models.Personnel;
 import com.JESIKOM.HowManager.models.WeeklyTimeSlot;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import com.JESIKOM.HowManager.service.PersonnelService;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.*;
 
 import javafx.scene.control.Button;
@@ -130,5 +137,22 @@ public class CalendrierEmployeController {
 
         fakeEmploye.setWeeklyTimeSlots(slots);
         return fakeEmploye;
+    }
+    public void retourTableauBord(ActionEvent event){
+        try {
+            System.out.println("retourTableauBord()");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/main.fxml"));
+            loader.setControllerFactory(JavaFxApplicationSupport.getContext()::getBean);
+            Parent root = loader.load();
+
+            //Obtenir le Stage actuel
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            stage.setScene(new Scene(root)); // Remplacer le contenu
+            stage.show(); // si nécessaire
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
