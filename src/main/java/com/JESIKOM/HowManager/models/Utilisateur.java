@@ -14,6 +14,7 @@ public class Utilisateur {
     private String email;
 
     private String role;
+    @Column(name="mot_de_passe")
     private String motDePasse;  // Stocké en hashé
 
 //    public String getMotDePasse() {
@@ -23,7 +24,6 @@ public class Utilisateur {
 //    public String getNom() {
 //        return nom;
 //    }
-
 
     public Long getId(){ return id; }
 

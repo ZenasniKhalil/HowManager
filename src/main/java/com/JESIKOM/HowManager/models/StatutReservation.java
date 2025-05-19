@@ -4,7 +4,9 @@ public enum StatutReservation {
     EN_ATTENTE("EN_ATTENTE"),
     CONFIRMEE("CONFIRMEE"),
     ANNULEE("ANNULEE"),
+    EN_COURS("EN_COURS"),
     TERMINEE("TERMINEE");
+
 
     private final String label;
 
