@@ -2,6 +2,8 @@ package com.JESIKOM.HowManager.controllers;
 
 import com.JESIKOM.HowManager.JavaFxApplicationSupport;
 import com.JESIKOM.HowManager.models.*;
+import com.JESIKOM.HowManager.service.LogementService;
+import com.JESIKOM.HowManager.service.ReservationService;
 import com.JESIKOM.HowManager.service.TacheService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -76,7 +78,7 @@ public class MainController implements Initializable {
     /*Début paiement*/
     @FXML private TableView<PaiementClient> tablePaiement;
     @FXML private TableView<PaiementClient>tableViewEvenements;
-    @FXML private TableColumn<PaiementClient, Integer>colIDClientPaiement;
+    @FXML private TableColumn<PaiementClient, Long>colIDClientPaiement;
     @FXML private TableColumn<PaiementClient, Integer>colIDLogementPaiement;
     @FXML private TableColumn<PaiementClient, Double>colPrixLogementPaiement;
     @FXML private TableColumn<PaiementClient, Double>colSommeVerseePaiement;
@@ -84,9 +86,12 @@ public class MainController implements Initializable {
     private ObservableList<PaiementClient> paiementData = FXCollections.observableArrayList();
     /*Fin paiement*/
 
-    @Autowired private sessionUtilisateur userSession; // ou ton type exact
-
-
+    @Autowired
+    private sessionUtilisateur userSession; // ou ton type exact
+    @Autowired
+    private ReservationService reservationService;
+    @Autowired
+    private LogementService logementService;
 
 
     public MainController() {
@@ -141,7 +146,17 @@ public class MainController implements Initializable {
 
     private void loadPaiementDataFromDB() {
         paiementData.clear();
-
+        List<Reservation> reservationList = reservationService.getAllReservations();
+        for (Reservation r : reservationList){
+            Long clientId = r.getClient().getId();
+            int logementId = r.getLogement().getNumero();
+            double prixLogement = r.getLogement().getPrix();
+            double sommeVersee = r.getAcompte();
+            LocalDate dateEcheance = reservationService.getDate_Fin(r);
+            PaiementClient paiement = new PaiementClient(clientId, logementId, prixLogement, sommeVersee, dateEcheance);
+            paiementData.add(paiement);
+        }
+/*
         //Connexion à la base
         String url = "jdbc:h2:mem:testdb";
         String user = "demo";
@@ -172,6 +187,10 @@ public class MainController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        */
+
+
+
     }
 
 
@@ -189,6 +208,7 @@ public class MainController implements Initializable {
     }
 
     private void chargerEvenementsDepuisBDD() {
+/*
         String url = "jdbc:h2:mem:testdb";
         String user = "demo";
         String password = "";
@@ -201,7 +221,7 @@ public class MainController implements Initializable {
                 "SELECT r.client_id, r.numero_logement, 'Check-out' AS nature, r.date_check_out AS date_evenement " +
                 "FROM Reservation r WHERE r.date_check_out >= CURRENT_DATE " +
                 ") AS events ORDER BY date_evenement ASC";
-         */
+
         String sql = "SELECT client_id, logement_id, nature, date_evenement FROM ( " +
                 "SELECT r.client_id, r.logement_id, 'Check-in' AS nature, r.check_in AS date_evenement " +
                 "FROM reservation r WHERE r.check_in >= CURRENT_DATE " +
@@ -230,12 +250,22 @@ public class MainController implements Initializable {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        }*/
+        listeCheckInCheckOut.clear();
+        List<Reservation> resasEnCours = reservationService.getReservationsByStatut(StatutReservation.EN_COURS);
+        for (Reservation r : resasEnCours) {
+            String idClient = r.getClient().getId().toString();
+            String numlogement = String.valueOf(r.getLogement().getNumero());
+            /*TODO...*/
+            //listeCheckInCheckOut.add(new CheckInCheckOut(idClient, numLogement, nature, dateEvenement));
+
         }
+
     }
 
 
     private void chargerDiagrammeLogementsOccupes() {
-        //Connexion à la base
+       /* //Connexion à la base
         String url = "jdbc:h2:mem:testdb";
         String user = "demo";
         String password = "";
@@ -257,6 +287,16 @@ public class MainController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        */
+        //Récupération des données
+        Map<String, Integer> typeCounts = new HashMap<>();
+
+        for (TypeLogement t : TypeLogement.values()){
+            System.out.println("type :"+t.toString());
+            int count = logementService.getNbLogementOccupeByType(t);
+            System.out.println("count : "+count);
+            typeCounts.put(t.toString(),count);
+        }
 
         // Vider les anciennes données du graphique
         pieChart_logements_occupes.getData().clear();
@@ -269,6 +309,7 @@ public class MainController implements Initializable {
     }
 
     private void chargerDiagrammeLogementsDisponibles() {
+        /*
         //Connexion à la base
         String url = "jdbc:h2:mem:testdb";
         String user = "demo";
@@ -290,7 +331,16 @@ public class MainController implements Initializable {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        }*/
+        //Récupération des données
+        Map<String, Integer> typeCounts = new HashMap<>();
+
+        for (TypeLogement t : TypeLogement.values()){
+            System.out.println("type :"+t.toString());
+            int count = logementService.getNbLogementDisponibleByType(t);
+            typeCounts.put(t.toString(),count);
         }
+
 
         // Vider les anciennes données du graphique
         pieChart_logements_disponibles.getData().clear();
@@ -312,6 +362,12 @@ public class MainController implements Initializable {
 
         // Préparer une carte mois → nombre de réservations (initialisée à 0)
         Map<Integer, Integer> reservationsParMois = new HashMap<>();
+
+        for (int i=1; i<=12;i++){
+            int count =reservationService.getCountReservationsByMoisandAnnee(i,annee);
+            reservationsParMois.put(i,count);
+        }
+        /*
         for (int mois = 1; mois <= 12; mois++) {
             reservationsParMois.put(mois, 0);
         }
@@ -339,7 +395,7 @@ public class MainController implements Initializable {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        }*/
 
         // Ajouter les données au BarChart
         String[] nomsMois = {
@@ -349,7 +405,7 @@ public class MainController implements Initializable {
 
         for (int mois = 1; mois <= 12; mois++) {
             int total = reservationsParMois.get(mois);
-            series.getData().add(new XYChart.Data<>(nomsMois[mois - 1], total));
+            series.getData().add(new XYChart.Data<>(nomsMois[mois-1], total));
         }
 
         barChart.getData().add(series);
