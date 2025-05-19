@@ -3,10 +3,14 @@ package com.JESIKOM.HowManager.controllers;
 import com.JESIKOM.HowManager.JavaFxApplicationSupport;
 import com.JESIKOM.HowManager.models.Personnel;
 import com.JESIKOM.HowManager.service.PersonnelService;
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -62,7 +66,9 @@ public class ListeEmployesController {
     public void initialize() {
         profileImage.setOnMouseClicked(event -> chargerPhotoProfil());
 
-        colID.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colID.setCellValueFactory(cellData ->
+                new ReadOnlyObjectWrapper<>(cellData.getValue().getMatricule())
+        );
         colNom.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getNom()));
         colPrenom.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getPrenom()));
         colEmail.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getEmail()));
@@ -106,7 +112,7 @@ public class ListeEmployesController {
 
     public void ouvrirPageCreerPersonnel() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/EnregistrerPersonnel.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/EnregistrerEmploye.fxml"));
             loader.setControllerFactory(JavaFxApplicationSupport.getContext()::getBean);
             Parent root = loader.load();
 
@@ -118,4 +124,39 @@ public class ListeEmployesController {
             e.printStackTrace();
         }
     }
+
+    public void ouvrirPersonnel() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/Personnel.fxml"));
+            loader.setControllerFactory(JavaFxApplicationSupport.getContext()::getBean);
+            Parent root = loader.load();
+
+            Stage stage = (Stage) tablePersonnel.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void retourTableauBord(ActionEvent event){
+        try {
+            System.out.println("retourTableauBord()");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/main.fxml"));
+            loader.setControllerFactory(JavaFxApplicationSupport.getContext()::getBean);
+            Parent root = loader.load();
+
+            //Obtenir le Stage actuel
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            stage.setScene(new Scene(root)); // Remplacer le contenu
+            stage.show(); // si nécessaire
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

@@ -55,17 +55,17 @@ VALUES (6, 'MAISON', 5, 1, 1, 'Petit déjeuner gratuit.', 350.0);
 
 -- Réservation 1 : Client 1, Logement 1
 INSERT INTO reservation (client_id, logement_id, date_reservation, date_debut, nombre_nuits, nombre_adultes, nombre_enfants, statut, acompte, remarque, mode_paiement, check_in, check_out)
-VALUES (1, 1, '2025-03-12T14:30:00', '2025-04-01', 5, 2,0, 'CONFIRMEE', 150.0, 'Besoin d''un lit bébé.', 'CARTE_BANCAIRE', '2025-06-12T14:30:00', '2025-05-30T14:30:00');
+VALUES (1, 1, '2025-03-12T14:30:00', '2025-05-01', 5, 2,0, 'CONFIRMEE', 150.0, 'Besoin d''un lit bébé.', 'CARTE_BANCAIRE', '2025-06-12T14:30:00', '2025-05-30T14:30:00');
 
 -- Réservation 2 : Client 2, Logement 3
 INSERT INTO reservation (client_id, logement_id, date_reservation, date_debut, nombre_nuits, nombre_adultes, nombre_enfants, statut, acompte, remarque, mode_paiement, check_in, check_out)
-VALUES (2, 3, '2025-03-12T15:00:00', '2025-04-15', 3, 1,1,'EN_ATTENTE', 50.0, 'Arrivée tardive prévue.', 'MOBILE_MONEY', '2025-05-01T14:30:00', '2025-05-29T14:30:00');
+VALUES (2, 3, '2025-03-12T15:00:00', '2025-05-15', 3, 1,1,'EN_ATTENTE', 50.0, 'Arrivée tardive prévue.', 'MOBILE_MONEY', '2025-05-01T14:30:00', '2025-05-29T14:30:00');
 
 --MANAGEMENT PART
 -- Insérer 2 personnels sans planning ni planningPattern
-INSERT INTO personnel (matricule,date_naissance, nom, prenom, genre, nationalite, phone, email, adresse, status, poste, lien_contrat, taux_horaire, nb_heure_semaine, nb_heure_mois)
-VALUES (1,'1990-05-15', 'Doe', 'John', 'Homme', 'Française', '0600000001', 'john.doe@example.com', '123 Rue A', 'Actif', 'Technicien', '/contrat/john.pdf', 15.5, 35, 140),
-       (2,'1985-10-20', 'Smith', 'Alice', 'Femme', 'Française', '0600000002', 'alice.smith@example.com', '456 Rue B', 'Actif', 'Manager', '/contrat/alice.pdf', 20, 40, 160);
+INSERT INTO personnel (date_naissance, nom, prenom, genre, nationalite, phone, email, adresse, status, poste, lien_contrat, taux_horaire, nb_heure_semaine, nb_heure_mois)
+VALUES ('1990-05-15', 'Doe', 'John', 'Homme', 'Française', '0600000001', 'john.doe@example.com', '123 Rue A', 'Actif', 'Technicien', '/contrat/john.pdf', 15.5, 35, 140),
+       ('1985-10-20', 'Smith', 'Alice', 'Femme', 'Française', '0600000002', 'alice.smith@example.com', '456 Rue B', 'Actif', 'Manager', '/contrat/alice.pdf', 20, 40, 160);
 
 INSERT INTO weekly_time_slot (start_day, start_time, end_day, end_time,personnel_id)
 VALUES

@@ -7,9 +7,11 @@ import com.JESIKOM.HowManager.service.LogementService;
 import com.JESIKOM.HowManager.service.ReservationService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -30,13 +32,20 @@ import java.util.List;
 @Component
 public class ListesClientsController {
     public Button enregistrerNouveauClient;
-    @FXML private MenuItem menuItem1;
-    @FXML private MenuItem menuItem2;
-    @FXML private MenuItem menuItem3;
-    @FXML private MenuItem voirMonProfilButton;
-    @FXML Button profileButton; // Récupère le bouton
-    @FXML private ImageView profileImage;
-    @FXML private MenuButton nomUtilisateur;
+    @FXML
+    private MenuItem menuItem1;
+    @FXML
+    private MenuItem menuItem2;
+    @FXML
+    private MenuItem menuItem3;
+    @FXML
+    private MenuItem voirMonProfilButton;
+    @FXML
+    Button profileButton; // Récupère le bouton
+    @FXML
+    private ImageView profileImage;
+    @FXML
+    private MenuButton nomUtilisateur;
 
     @Autowired
     private ClientService clientService;
@@ -48,46 +57,74 @@ public class ListesClientsController {
     private LogementService logementService;
 
     /*Debut table Client*/
-    @FXML private TableView<Client> tableClients;
-    @FXML private TableColumn<Client, Long> colID;
-    @FXML private TableColumn<Client, String> colNom;
-    @FXML private TableColumn<Client, String> colPrenom;
-    @FXML private TableColumn<Client, String> colEmail;
-    @FXML private TableColumn<Client, String> colTelephone;
-    @FXML private TableColumn<Client, String> colRemarque;
+    @FXML
+    private TableView<Client> tableClients;
+    @FXML
+    private TableColumn<Client, Long> colID;
+    @FXML
+    private TableColumn<Client, String> colNom;
+    @FXML
+    private TableColumn<Client, String> colPrenom;
+    @FXML
+    private TableColumn<Client, String> colEmail;
+    @FXML
+    private TableColumn<Client, String> colTelephone;
+    @FXML
+    private TableColumn<Client, String> colRemarque;
     private ObservableList<Client> clientsData = FXCollections.observableArrayList();
     /*Fin table Client*/
 
     /*Debut table Réservation*/
-    @FXML private TableView<Reservation> tableReservations;
-    @FXML private TableColumn<Reservation, Long> colIDResa;
-    @FXML private TableColumn<Reservation, String> colIDClient;
-    @FXML private TableColumn<Reservation, String> colIDLogement;
-    @FXML private TableColumn<Reservation, String> colDateDebut;
-    @FXML private TableColumn<Reservation, String> colNbreNuits;
-    @FXML private TableColumn<Reservation, String> colStatut;
-    @FXML private TableColumn<Reservation, String> colAcompte;
-    @FXML private TableColumn<Reservation, String > colRemarqueResa;
-    @FXML private TableColumn<Reservation, String> colCheckIn;
-    @FXML private TableColumn<Reservation, String> colCheckOut;
+    @FXML
+    private TableView<Reservation> tableReservations;
+    @FXML
+    private TableColumn<Reservation, Long> colIDResa;
+    @FXML
+    private TableColumn<Reservation, String> colIDClient;
+    @FXML
+    private TableColumn<Reservation, String> colIDLogement;
+    @FXML
+    private TableColumn<Reservation, String> colDateDebut;
+    @FXML
+    private TableColumn<Reservation, String> colNbreNuits;
+    @FXML
+    private TableColumn<Reservation, String> colStatut;
+    @FXML
+    private TableColumn<Reservation, String> colAcompte;
+    @FXML
+    private TableColumn<Reservation, String> colRemarqueResa;
+    @FXML
+    private TableColumn<Reservation, String> colCheckIn;
+    @FXML
+    private TableColumn<Reservation, String> colCheckOut;
     private ObservableList<Reservation> resaData = FXCollections.observableArrayList();
     /*Fin table Réservation*/
 
     /*Debut table Logement*/
-    @FXML private TableView<Logement> tableLogements;
-    @FXML private TableColumn<Logement, Integer> colLogementID;
-    @FXML private TableColumn<Logement, String> colTypeLogement;
-    @FXML private TableColumn<Logement, String> colCapciteLogement;
-    @FXML private TableColumn<Logement, String> colDisponibleLogement;
-    @FXML private TableColumn<Logement, String> colPropreLogement;
-    @FXML private TableColumn<Logement, String> colCommentaireLogement;
-    @FXML private TableColumn<Logement, String> colPrixLogement;
+    @FXML
+    private TableView<Logement> tableLogements;
+    @FXML
+    private TableColumn<Logement, Integer> colLogementID;
+    @FXML
+    private TableColumn<Logement, String> colTypeLogement;
+    @FXML
+    private TableColumn<Logement, String> colCapciteLogement;
+    @FXML
+    private TableColumn<Logement, String> colDisponibleLogement;
+    @FXML
+    private TableColumn<Logement, String> colPropreLogement;
+    @FXML
+    private TableColumn<Logement, String> colCommentaireLogement;
+    @FXML
+    private TableColumn<Logement, String> colPrixLogement;
     private ObservableList<Logement> logementData = FXCollections.observableArrayList();
     /*Fin table Logement*/
 
-    @FXML private Button tableauBord;
+    @FXML
+    private Button tableauBord;
 
-    @FXML private TextField searchField;
+    @FXML
+    private TextField searchField;
     private Utilisateur utilisateur;
 
     @Autowired
@@ -176,23 +213,23 @@ public class ListesClientsController {
                     List<Reservation> reservationClient = reservationService.getReservationsByClient(clientSelectionne.getId());
                     //Le code ci-dessous suppose que le client ne peut réserver qu'un seul logement
                     Label infosLogementClient = new Label(
-                                 "Numéro de logement : " + reservationClient.get(0).getLogement().getNumero() + "\n" +
-                                     "Type de logement : " + reservationClient.get(0).getLogement().getType() + "\n" +
-                                     "Capacité du logement : " + reservationClient.get(0).getLogement().getCapacite() + " personnes au maximum\n" +
-                                     "Nombre d'adultes prévu par le client : " + reservationClient.get(0).getNombreAdultes() + "\n" +
-                                     "Nombre d'enfants prévu par le client : " + reservationClient.get(0).getNombreEnfants() + "\n" +
-                                     "Disponibilité actuelle du logement : " + (reservationClient.get(0).getLogement().isDisponible() ? "OUI" : "NON") + "\n" +
-                                     "Propreté actuelle du logement : " + (reservationClient.get(0).getLogement().isPropre() ? "OUI" : "NON") + "\n" +
-                                     "Commentaire sur le logement : " + reservationClient.get(0).getLogement().getCommentaire() + "\n" +
-                                     "Prix du logement : " + reservationClient.get(0).getLogement().getPrix() + " €\n" +
-                                     "Montant payé à l'avance : " + reservationClient.get(0).getAcompte() + " €\n"
+                            "Numéro de logement : " + reservationClient.get(0).getLogement().getNumero() + "\n" +
+                                    "Type de logement : " + reservationClient.get(0).getLogement().getType() + "\n" +
+                                    "Capacité du logement : " + reservationClient.get(0).getLogement().getCapacite() + " personnes au maximum\n" +
+                                    "Nombre d'adultes prévu par le client : " + reservationClient.get(0).getNombreAdultes() + "\n" +
+                                    "Nombre d'enfants prévu par le client : " + reservationClient.get(0).getNombreEnfants() + "\n" +
+                                    "Disponibilité actuelle du logement : " + (reservationClient.get(0).getLogement().isDisponible() ? "OUI" : "NON") + "\n" +
+                                    "Propreté actuelle du logement : " + (reservationClient.get(0).getLogement().isPropre() ? "OUI" : "NON") + "\n" +
+                                    "Commentaire sur le logement : " + reservationClient.get(0).getLogement().getCommentaire() + "\n" +
+                                    "Prix du logement : " + reservationClient.get(0).getLogement().getPrix() + " €\n" +
+                                    "Montant payé à l'avance : " + reservationClient.get(0).getAcompte() + " €\n"
                     );
 
                     //"Titre 3" : Réservation du client
                     Label titre3 = new Label("Réservation du client sélectionné");
                     titre3.setStyle("-fx-font-weight: bold; -fx-font-size: 14px;");
                     Label infosReservationClient = new Label(
-                                    "Date de réservation : " + reservationClient.get(0).getDateReservation() + "\n" +
+                            "Date de réservation : " + reservationClient.get(0).getDateReservation() + "\n" +
                                     "Date de début : " + reservationClient.get(0).getDateDebut() + "\n" +
                                     "Nombre de nuits : " + reservationClient.get(0).getNombreNuits() + "\n" +
                                     "Statut de la réservation : " + reservationClient.get(0).getStatut() + "\n" +
@@ -331,7 +368,6 @@ public class ListesClientsController {
     }
 
 
-
     private void loadClients() {
         List<Client> clients = clientService.getAllClients();
         clientsData.setAll(clients);
@@ -344,7 +380,7 @@ public class ListesClientsController {
         tableReservations.setItems(resaData);
     }
 
-    private void loadLogements(){
+    private void loadLogements() {
         List<Logement> logements = logementService.getAllLogements();
         logementData.setAll(logements);
         tableLogements.setItems(logementData);
@@ -369,7 +405,7 @@ public class ListesClientsController {
         }
     }
 
-    public void voirMonProfil(){
+    public void voirMonProfil() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/voirMonProfil.fxml"));
             loader.setControllerFactory(JavaFxApplicationSupport.getContext()::getBean);
@@ -405,7 +441,7 @@ public class ListesClientsController {
         }
     }
 
-    public void retourTableauBord(){
+    public void retourTableauBord() {
         try {
             System.out.println("retourTableauBord()");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/main.fxml"));
@@ -422,5 +458,38 @@ public class ListesClientsController {
             e.printStackTrace();
         }
     }
+
+    public void ouvrirPersonnel(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/Personnel.fxml"));
+            loader.setControllerFactory(JavaFxApplicationSupport.getContext()::getBean);
+            Parent root = loader.load();
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void ouvrirPlanning(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/CalendrierClient.fxml"));
+            loader.setControllerFactory(JavaFxApplicationSupport.getContext()::getBean);
+            Parent root = loader.load();
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
 
 }

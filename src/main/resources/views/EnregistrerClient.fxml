@@ -23,7 +23,7 @@
 
 <!--  -->
 
-<AnchorPane fx:id="enregistrerClientPane" prefHeight="700.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.JESIKOM.HowManager.controllers.EnregistrerClientController">
+<AnchorPane fx:id="enregistrerClientPane" prefHeight="700.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.JESIKOM.HowManager.controllers.EnregistrerClientController">
     <children>
         <HBox layoutX="115.0" layoutY="89.0">
             <children>
@@ -88,7 +88,7 @@
                 </Group>
                 <Group layoutX="-3.0" layoutY="126.0">
                     <children>
-                        <Button layoutX="-40.0" layoutY="73.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="276.0" style="-fx-background-color: #3477db;" text="PERSONNEL" textFill="WHITE">
+                        <Button layoutX="-40.0" layoutY="73.0" mnemonicParsing="false" onAction="#ouvrirPersonnel" prefHeight="40.0" prefWidth="276.0" style="-fx-background-color: #3477db;" text="PERSONNEL" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>
