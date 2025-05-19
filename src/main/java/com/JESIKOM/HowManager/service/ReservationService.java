@@ -116,6 +116,14 @@ public class ReservationService implements IReservationService {
         return reservationRepository.findReservationByStatutIs(statut);
     }
 
+    public List<Reservation> getReservationsByMoisandAnnee(int mois,int annee) {
+
+        return reservationRepository.findReservationByMoisAndAnnee(mois, annee);
+    }
+    public int getCountReservationsByMoisandAnnee(int mois,int annee){
+        return reservationRepository.countReservationByMoisAndAnnee(mois,annee);
+    }
+
 
 
     public void checkIn(Long id) throws IllegalArgumentException {

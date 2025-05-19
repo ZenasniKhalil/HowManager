@@ -11,13 +11,13 @@ public class PaiementClient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private int idClient;
+    private Long idClient;
     private int idLogement;
     private double prixLogement;
     private double sommeVersee;
     private LocalDate dateEcheance;
 
-    public PaiementClient(int idClient, int idLogement, double prixLogement, double sommeVersee, LocalDate dateEcheance) {
+    public PaiementClient(Long idClient, int idLogement, double prixLogement, double sommeVersee, LocalDate dateEcheance) {
         this.idClient = idClient;
         this.idLogement = idLogement;
         this.prixLogement = prixLogement;
@@ -25,7 +25,10 @@ public class PaiementClient {
         this.dateEcheance = dateEcheance;
     }
 
-    public int getIdClient() {
+    public PaiementClient() {
+    }
+
+    public Long getIdClient() {
         return idClient;
     }
 
