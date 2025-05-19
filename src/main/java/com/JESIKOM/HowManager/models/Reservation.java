@@ -82,6 +82,11 @@ public class Reservation {
 
     }
 
+    public String checkInOrCheckOutToString(){
+        //
+        return null;
+    }
+
     public Long getId() {
         return id;
     }

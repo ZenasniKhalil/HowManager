@@ -42,6 +42,9 @@ public class ReservationService implements IReservationService {
         else return null;
     }
 
+    public boolean isPaidReservation(Reservation reservation){
+        return reservation.getLogement().getPrix() > reservation.getAcompte();
+    }
 
     public Reservation updateReservation(Long id, Reservation updatedReservation) {
         return reservationRepository.findById(id).map(reservation -> {

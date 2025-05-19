@@ -55,14 +55,6 @@ public class MainController implements Initializable {
     @FXML private Button tableau__bord;
     @FXML private Rectangle tableau_bord;
 
-    /*Début check*/
-    @FXML private TableView<CheckInCheckOut> tableCheckInCheckOut;
-    @FXML private TableColumn<CheckInCheckOut, String> colIDClientCheck;
-    @FXML private TableColumn<CheckInCheckOut, String> colIDLogementCheck;
-    @FXML private TableColumn<CheckInCheckOut, String> colNatureCheck;
-    @FXML private TableColumn<CheckInCheckOut, LocalDate> colDateCheck;
-    private ObservableList<CheckInCheckOut> listeCheckInCheckOut = FXCollections.observableArrayList();
-    /*Fin Check*/
 
     private Utilisateur utilisateur;
     /*Début tâches diverses*/
@@ -115,15 +107,6 @@ public class MainController implements Initializable {
         chargerDiagrammeLogementsDisponibles();
         /*Diagramme circulaire logements disponibles fin*/
 
-        /*Table Check in / Check out debut*/
-        // Liaison colonnes -> propriétés EvenementClient
-        colIDClientCheck.setCellValueFactory(new PropertyValueFactory<>("identifiantClient"));
-        colIDLogementCheck.setCellValueFactory(new PropertyValueFactory<>("numeroLogement"));
-        colNatureCheck.setCellValueFactory(new PropertyValueFactory<>("nature"));
-        colDateCheck.setCellValueFactory(new PropertyValueFactory<>("dateCheck"));
-        tableCheckInCheckOut.setItems(listeCheckInCheckOut);
-        chargerEvenementsDepuisBDD();
-        /*Table Check in / Check out fin*/
 
         /*Début TachesDiverves*/
         //Associer les propriétés de Client aux colonnes
@@ -153,8 +136,10 @@ public class MainController implements Initializable {
             double prixLogement = r.getLogement().getPrix();
             double sommeVersee = r.getAcompte();
             LocalDate dateEcheance = reservationService.getDate_Fin(r);
-            PaiementClient paiement = new PaiementClient(clientId, logementId, prixLogement, sommeVersee, dateEcheance);
-            paiementData.add(paiement);
+            if(reservationService.isPaidReservation(r)) {
+                PaiementClient paiement = new PaiementClient(clientId, logementId, prixLogement, sommeVersee, dateEcheance);
+                paiementData.add(paiement);
+            }
         }
 /*
         //Connexion à la base
@@ -207,61 +192,7 @@ public class MainController implements Initializable {
         }
     }
 
-    private void chargerEvenementsDepuisBDD() {
-/*
-        String url = "jdbc:h2:mem:testdb";
-        String user = "demo";
-        String password = "";
 
-        /*
-        String sql = "SELECT client_id, logement_id, nature, date_evenement FROM ( " +
-                "SELECT r.client_id, r.numero_logement, 'Check-in' AS nature, r.date_check_in AS date_evenement " +
-                "FROM Reservation r WHERE r.date_check_in >= CURRENT_DATE " +
-                "UNION " +
-                "SELECT r.client_id, r.numero_logement, 'Check-out' AS nature, r.date_check_out AS date_evenement " +
-                "FROM Reservation r WHERE r.date_check_out >= CURRENT_DATE " +
-                ") AS events ORDER BY date_evenement ASC";
-
-        String sql = "SELECT client_id, logement_id, nature, date_evenement FROM ( " +
-                "SELECT r.client_id, r.logement_id, 'Check-in' AS nature, r.check_in AS date_evenement " +
-                "FROM reservation r WHERE r.check_in >= CURRENT_DATE " +
-                "UNION " +
-                "SELECT r.client_id, r.logement_id, 'Check-out' AS nature, r.check_out AS date_evenement " +
-                "FROM reservation r WHERE r.check_out >= CURRENT_DATE " +
-                ") AS events ORDER BY date_evenement ASC";
-
-
-        try (Connection conn = DriverManager.getConnection(url, user, password);
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-
-            listeCheckInCheckOut.clear();
-
-            while (rs.next()) {
-                String idClient = rs.getString("client_id");
-                String numLogement = rs.getString("logement_id");
-                String nature = rs.getString("nature");
-                LocalDate dateEvenement = rs.getDate("date_evenement").toLocalDate();
-                System.out.println("Date evenement : " +  dateEvenement.getMonth());
-
-
-                listeCheckInCheckOut.add(new CheckInCheckOut(idClient, numLogement, nature, dateEvenement));
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }*/
-        listeCheckInCheckOut.clear();
-        List<Reservation> resasEnCours = reservationService.getReservationsByStatut(StatutReservation.EN_COURS);
-        for (Reservation r : resasEnCours) {
-            String idClient = r.getClient().getId().toString();
-            String numlogement = String.valueOf(r.getLogement().getNumero());
-            /*TODO...*/
-            //listeCheckInCheckOut.add(new CheckInCheckOut(idClient, numLogement, nature, dateEvenement));
-
-        }
-
-    }
 
 
     private void chargerDiagrammeLogementsOccupes() {
@@ -298,10 +229,10 @@ public class MainController implements Initializable {
             typeCounts.put(t.toString(),count);
         }
 
-        // Vider les anciennes données du graphique
+        //Vider les anciennes données du graphique
         pieChart_logements_occupes.getData().clear();
 
-        // Ajouter les données récupérées
+        //Ajouter les données récupérées
         for (Map.Entry<String, Integer> entry : typeCounts.entrySet()) {
             PieChart.Data slice = new PieChart.Data(entry.getKey(), entry.getValue());
             pieChart_logements_occupes.getData().add(slice);
