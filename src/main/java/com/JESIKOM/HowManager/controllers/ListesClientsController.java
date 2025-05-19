@@ -261,9 +261,18 @@ public class ListesClientsController {
         colStatut.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cellData.getValue().getStatut())));
         colAcompte.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cellData.getValue().getAcompte())));
         colRemarqueResa.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getRemarque()));
-        colCheckIn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cellData.getValue().getCheckIn())));
-        colCheckOut.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cellData.getValue().getCheckOut())));
+        colCheckIn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getCheckIn() != null ? String.valueOf(cellData.getValue().getCheckIn()) : "Non fait"));
+        colCheckOut.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getCheckOut() != null ? String.valueOf(cellData.getValue().getCheckOut()) : "Non fait"));
         loadReservations();
+
+        tableReservations.setOnMouseClicked(event -> {
+            if(event.getClickCount() == 2){
+                Reservation reservationSelectionnee = tableReservations.getSelectionModel().getSelectedItem();
+                if (reservationSelectionnee != null) {
+                    showActionAlert(reservationSelectionnee);
+                }
+            }
+        });
         /*Fin initialisation table Réservation*/
 
         /*Début initialisation table Logement*/
@@ -278,6 +287,77 @@ public class ListesClientsController {
         loadLogements();
         /*Fin initialisation table Logement*/
 
+    }
+
+    private void showConfirmationAlert(String operation, Reservation reservation) {
+        // Création de l'alerte de confirmation
+        Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmAlert.setTitle("Confirmation");
+        confirmAlert.setHeaderText("Confirmer l'opération");
+        confirmAlert.setContentText("Êtes-vous sûr de vouloir effectuer l'opération " + operation + " ?");
+
+        // Ajout des boutons standard "OK" et "Annuler"
+        ButtonType confirmButton = ButtonType.OK;
+        ButtonType cancelButton = ButtonType.CANCEL;
+        confirmAlert.getButtonTypes().setAll(confirmButton, cancelButton);
+        //Reservation reservationSelectionnee = tableReservations.getSelectionModel().getSelectedItem();
+
+
+        // Affichage de l'alerte de confirmation et traitement du résultat
+        confirmAlert.showAndWait().ifPresent(buttonType -> {
+            if (buttonType == confirmButton) {
+                System.out.println("Confirmation bouton ok clic");
+                // L'utilisateur a confirmé, exécuter le service
+                processService(operation, reservation);
+            }
+            // Quoi qu'il arrive, la première alerte est déjà fermée
+        });
+    }
+
+    private void showActionAlert(Reservation reservation) {
+        // Création de l'alerte principale avec les trois boutons
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Action réservation");
+        alert.setHeaderText("Veuillez choisir une opération");
+        alert.setContentText("Sélectionnez l'opération que vous souhaitez effectuer :");
+
+        // Création des boutons personnalisés
+        ButtonType checkInButton = new ButtonType("Check in", ButtonBar.ButtonData.YES);
+        ButtonType checkOutButton = new ButtonType("Check out", ButtonBar.ButtonData.YES);
+        ButtonType cancelButton = new ButtonType("Annuler", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+        // Ajout des boutons à l'alerte
+        alert.getButtonTypes().setAll(checkInButton, checkOutButton, cancelButton);
+
+        // Affichage de l'alerte et traitement du résultat
+        alert.showAndWait().ifPresent(buttonType -> {
+            if (buttonType == checkInButton) {
+                System.out.println("Check in clic");
+                showConfirmationAlert("Check in", reservation);
+            } else if (buttonType == checkOutButton) {
+                System.out.println("Check out clic");
+                showConfirmationAlert("Check out", reservation);
+            }
+            // Si c'est "Annuler", on ne fait rien
+        });
+    }
+
+    private void processService(String operation, Reservation reservation){
+        try {
+            if(operation == "Check in"){
+                System.out.println("reservationService : " + reservationService);
+                reservationService.checkIn(reservation.getId());
+                System.out.println(reservationService.getReservationById(reservation.getId()).get().getCheckIn().getMonth());
+            }else if(operation == "Check out"){
+                reservationService.checkOut(reservation.getId());
+                System.out.println(reservationService.getReservationById(reservation.getId()).get().getCheckOut());
+                System.out.println(reservationService.getReservationById(reservation.getId()).get().getCheckOut().getMonth());
+            }else{
+                System.out.println("Pas bonne route !!");
+            }
+        }catch (IllegalArgumentException e){
+            System.out.println("Erreur : réservation non trouvée !" + e.getMessage());
+        }
     }
 
     public void setUtilisateur(Utilisateur utilisateur) {

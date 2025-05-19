@@ -2,6 +2,7 @@ package com.JESIKOM.HowManager.service;
 
 import com.JESIKOM.HowManager.models.Logement;
 import com.JESIKOM.HowManager.models.Reservation;
+import com.JESIKOM.HowManager.models.StatutReservation;
 import com.JESIKOM.HowManager.repository.ClientRepository;
 import com.JESIKOM.HowManager.repository.LogementRepository;
 import com.JESIKOM.HowManager.repository.ReservationRepository;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,6 +42,9 @@ public class ReservationService implements IReservationService {
         else return null;
     }
 
+    public boolean isPaidReservation(Reservation reservation){
+        return reservation.getLogement().getPrix() > reservation.getAcompte();
+    }
 
     public Reservation updateReservation(Long id, Reservation updatedReservation) {
         return reservationRepository.findById(id).map(reservation -> {
@@ -109,5 +114,38 @@ public class ReservationService implements IReservationService {
     public List<Reservation> getReservationsByLogement_Numero(int logementNum){
         return reservationRepository.findReservationsByLogement_Numero(logementNum);
     }
+
+    public List<Reservation> getReservationsByStatut(StatutReservation statut){
+        return reservationRepository.findReservationByStatutIs(statut);
+    }
+
+    public List<Reservation> getReservationsByMoisandAnnee(int mois,int annee) {
+
+        return reservationRepository.findReservationByMoisAndAnnee(mois, annee);
+    }
+    public int getCountReservationsByMoisandAnnee(int mois,int annee){
+        return reservationRepository.countReservationByMoisAndAnnee(mois,annee);
+    }
+
+    public void checkIn(Long id) throws IllegalArgumentException {
+        Optional<Reservation> optRes=getReservationById(id);
+        if(optRes.isEmpty())
+            throw new IllegalArgumentException("Id not found");
+        Reservation reservation=optRes.get();
+        reservation.setCheckIn(LocalDateTime.now());
+        reservation.setStatut(StatutReservation.EN_COURS);
+        updateReservation((reservation.getId()),reservation);
+    }
+    public void checkOut(Long id) throws IllegalArgumentException {
+        Optional<Reservation> optRes=getReservationById(id);
+        if(optRes.isEmpty())
+            throw new IllegalArgumentException("Id not found");
+        Reservation reservation=optRes.get();
+        reservation.setCheckOut(LocalDateTime.now());
+        reservation.setStatut(StatutReservation.TERMINEE);
+        updateReservation((reservation.getId()),reservation);
+    }
+
+
 
 }
