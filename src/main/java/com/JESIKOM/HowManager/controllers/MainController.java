@@ -201,7 +201,6 @@ public class MainController implements Initializable {
                 "SELECT r.client_id, r.numero_logement, 'Check-out' AS nature, r.date_check_out AS date_evenement " +
                 "FROM Reservation r WHERE r.date_check_out >= CURRENT_DATE " +
                 ") AS events ORDER BY date_evenement ASC";
-
          */
         String sql = "SELECT client_id, logement_id, nature, date_evenement FROM ( " +
                 "SELECT r.client_id, r.logement_id, 'Check-in' AS nature, r.check_in AS date_evenement " +
