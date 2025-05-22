@@ -27,6 +27,9 @@ import java.util.Map;
 
 @Controller
 public class PersonnelController {
+    @FXML private Button tableau_de_bordButton;
+    @FXML private Button reservationsButton;
+
     public void voirListe(ActionEvent event){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/ListeEmployes.fxml"));
@@ -83,6 +86,40 @@ public class PersonnelController {
             System.out.println("retourTableauBord()");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/main.fxml"));
             loader.setControllerFactory(JavaFxApplicationSupport.getContext()::getBean);
+            Parent root = loader.load();
+
+            //Obtenir le Stage actuel
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            stage.setScene(new Scene(root)); // Remplacer le contenu
+            stage.show(); // si nécessaire
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void voirClients(ActionEvent event){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/ListesClients.fxml"));
+            loader.setControllerFactory(JavaFxApplicationSupport.getContext()::getBean);  // Injection Spring dans le FXML
+            Parent root = loader.load();
+
+            //Obtenir le Stage actuel
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            stage.setScene(new Scene(root)); // Remplacer le contenu
+            stage.show(); // si nécessaire
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void voirStock(ActionEvent event){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/Stock.fxml"));
+            loader.setControllerFactory(JavaFxApplicationSupport.getContext()::getBean);  // Injection Spring dans le FXML
             Parent root = loader.load();
 
             //Obtenir le Stage actuel

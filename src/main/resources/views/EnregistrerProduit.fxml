@@ -18,8 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.JESIKOM.HowManager.controllers.EnregistrerStock">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.JESIKOM.HowManager.controllers.EnregistrerStock">
    <children>
       <HBox layoutX="135.0" layoutY="109.0">
          <children>
@@ -125,7 +124,7 @@
                   <ImageView fx:id="profileImage" fitHeight="55.0" fitWidth="54.0" layoutX="50" layoutY="50" />
                </children>
             </StackPane>
-            <MenuButton contentDisplay="CENTER" layoutY="98.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="150.0" text="Sylvain ROY">
+            <MenuButton contentDisplay="CENTER" layoutY="98.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="150.0">
                <items>
                   <MenuItem fx:id="voirMonProfilButton" mnemonicParsing="false" text="Voir mon profil" />
                   <SeparatorMenuItem mnemonicParsing="false" text="sep1" />
@@ -140,26 +139,8 @@
             </MenuButton>
          </children>
       </Group>
-      <StackPane layoutX="575.0" layoutY="96.0" style="-fx-background-color: transparent; -fx-border-color: transparent;">
-         <children>
-            <ImageView fitHeight="53.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/notifications.png" />
-               </image>
-            </ImageView>
-            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
-         </children>
-      </StackPane>
-      <StackPane layoutX="658.0" layoutY="99.0">
-         <children>
-            <ImageView fitHeight="46.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/messages.png" />
-               </image>
-            </ImageView>
-            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
-         </children>
-      </StackPane>
+      <StackPane layoutX="575.0" layoutY="96.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
+      <StackPane layoutX="658.0" layoutY="99.0" />
       <StackPane layoutX="-13.0" layoutY="-5.0">
          <children>
             <ImageView fitHeight="112.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true">
@@ -174,16 +155,7 @@
             </ImageView>
          </children>
       </StackPane>
-      <StackPane layoutX="615.0" layoutY="95.0">
-         <children>
-            <ImageView fitHeight="52.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/parametres.png" />
-               </image>
-            </ImageView>
-            <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="54.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
-         </children>
-      </StackPane>
+      <StackPane layoutX="615.0" layoutY="95.0" />
       <AnchorPane layoutX="231.0" layoutY="174.0" prefHeight="618.0" prefWidth="702.0">
          <children>
             <Button fx:id="retourListeClients" layoutX="18.0" layoutY="27.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="129.0" style="-fx-background-color: #146CDF;" text="Stocks" textFill="WHITE">
@@ -196,7 +168,7 @@
                   <Image url="@../images/fleche.png" />
                </image>
             </ImageView>
-            <Button layoutX="375.0" layoutY="19.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="318.0" style="-fx-background-color: #004aad;" text="Enregistrer Un nouveau Produit" textFill="WHITE">
+            <Button layoutX="375.0" layoutY="19.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="318.0" style="-fx-background-color: #004aad;" text="Enregistrer un nouveau produit" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font>
@@ -227,7 +199,7 @@
                   </HBox>
                   <HBox alignment="CENTER" layoutX="60.0" layoutY="25.0" prefHeight="50.0" prefWidth="244.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Quanitité" wrappingWidth="80.31622695922852">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Quantité" wrappingWidth="80.31622695922852">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -304,7 +276,6 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Text>
-            <HBox alignment="CENTER" layoutX="53.0" layoutY="484.0" prefHeight="27.0" prefWidth="249.0" />
             <ImageView fitHeight="28.0" fitWidth="33.0" layoutX="159.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/fleche.png" />
@@ -320,7 +291,7 @@
                   <Font name="System Bold" size="19.0" />
                </font>
             </Button>
-            <Button fx:id="annulerButton" layoutX="379.0" layoutY="456.0" mnemonicParsing="false"  prefHeight="48.0" prefWidth="149.0" style="-fx-background-color: #d6d6ff;" text="Annuler" textFill="#004aad">
+            <Button fx:id="annulerButton" layoutX="379.0" layoutY="456.0" mnemonicParsing="false" onAction="#annulerEnregistrementProduit" prefHeight="48.0" prefWidth="149.0" style="-fx-background-color: #d6d6ff;" text="Annuler" textFill="#004aad">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font>
@@ -348,7 +319,7 @@
             </Text>
             <TextField fx:id="nbHeureMoisField1" layoutX="477.0" layoutY="261.0" prefHeight="25.0" prefWidth="123.0" />
             <Button layoutX="416.0" layoutY="261.0" mnemonicParsing="false" text="Parcourir" />
-            <Text layoutX="350.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Commenatires" wrappingWidth="163.3586676120758">
+            <Text layoutX="354.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Commentaires" wrappingWidth="163.3586676120758">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
