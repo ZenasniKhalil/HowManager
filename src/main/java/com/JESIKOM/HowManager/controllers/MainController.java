@@ -78,7 +78,7 @@ public class MainController implements Initializable {
     /*Fin paiement*/
 
     @Autowired
-    private sessionUtilisateur userSession; // ou ton type exact
+    private sessionUtilisateur userSession;
     @Autowired
     private ReservationService reservationService;
     @Autowired
@@ -172,9 +172,6 @@ public class MainController implements Initializable {
             e.printStackTrace();
         }
         */
-
-
-
     }
 
 
