@@ -20,7 +20,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.JESIKOM.HowManager.controllers.ListeStockController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.JESIKOM.HowManager.controllers.ListeStockController">
    <children>
       <HBox layoutX="125.0" layoutY="99.0">
          <children>
@@ -61,7 +61,7 @@
                   <Image url="@../images/chercher.png" />
                </image>
             </ImageView>
-            <Button fx:id="enregistrerNouveauEmploye" layoutX="409.0" layoutY="104.0" mnemonicParsing="false" onAction="#voirListe" style="-fx-background-color: #146CDF;" text="Enregistrer un nouveau Produit" textFill="WHITE">
+            <Button fx:id="enregistrerNouveauEmploye" layoutX="409.0" layoutY="104.0" mnemonicParsing="false" onAction="#voirListe" style="-fx-background-color: #146CDF;" text="Enregistrer un nouveau produit" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font>
@@ -140,7 +140,7 @@
             </Group>
             <Group layoutX="-76.0" layoutY="130.0">
                <children>
-                  <Button layoutY="16.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="308.0" style="-fx-background-color: #004aad;" text="STOCKS" textFill="WHITE">
+                  <Button layoutY="16.0" mnemonicParsing="false" onAction="#voirStock" prefHeight="40.0" prefWidth="308.0" style="-fx-background-color: #004aad;" text="STOCKS" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -168,7 +168,7 @@
                   <ImageView fx:id="profileImage" fitHeight="55.0" fitWidth="54.0" layoutX="50" layoutY="50" />
                </children>
             </StackPane>
-            <MenuButton contentDisplay="CENTER" layoutY="98.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="150.0" text="Sylvain ROY">
+            <MenuButton contentDisplay="CENTER" layoutY="98.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="150.0">
                <items>
                   <MenuItem fx:id="voirMonProfilButton" mnemonicParsing="false" text="Voir mon profil" />
                   <SeparatorMenuItem mnemonicParsing="false" text="sep1" />
@@ -183,26 +183,8 @@
             </MenuButton>
          </children>
       </Group>
-      <StackPane layoutX="565.0" layoutY="86.0" style="-fx-background-color: transparent; -fx-border-color: transparent;">
-         <children>
-            <ImageView fitHeight="53.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/notifications.png" />
-               </image>
-            </ImageView>
-            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
-         </children>
-      </StackPane>
-      <StackPane layoutX="648.0" layoutY="89.0">
-         <children>
-            <ImageView fitHeight="46.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/messages.png" />
-               </image>
-            </ImageView>
-            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
-         </children>
-      </StackPane>
+      <StackPane layoutX="565.0" layoutY="86.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
+      <StackPane layoutX="648.0" layoutY="89.0" />
       <StackPane layoutX="-23.0" layoutY="-15.0">
          <children>
             <ImageView fitHeight="112.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true">
@@ -217,15 +199,6 @@
             </ImageView>
          </children>
       </StackPane>
-      <StackPane layoutX="605.0" layoutY="85.0">
-         <children>
-            <ImageView fitHeight="52.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/parametres.png" />
-               </image>
-            </ImageView>
-            <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="54.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
-         </children>
-      </StackPane>
+      <StackPane layoutX="605.0" layoutY="85.0" />
    </children>
 </AnchorPane>

@@ -17,8 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.JESIKOM.HowManager.controllers.StockController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.JESIKOM.HowManager.controllers.StockController">
    <children>
       <HBox layoutX="125.0" layoutY="99.0">
          <children>
@@ -50,6 +49,7 @@
             </StackPane>
             <Group layoutX="-2.0" layoutY="36.0">
                <children>
+                  <ImageView fitHeight="49.0" fitWidth="219.0" pickOnBounds="true" preserveRatio="true" />
                   <Button layoutX="28.0" layoutY="6.0" mnemonicParsing="false" onAction="#retourTableauBord" prefHeight="40.0" prefWidth="193.0" style="-fx-background-color: #3477db;" text="TABLEAU DE BORD" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
@@ -62,12 +62,11 @@
                      </image>
                   </ImageView>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#004aadf5" height="41.0" layoutX="219.0" layoutY="6.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke-width: 0;" width="14.0" />
-                  <ImageView fitHeight="49.0" fitWidth="219.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </Group>
             <Group layoutX="-4.0" layoutY="73.0">
                <children>
-                  <Button layoutX="4.0" layoutY="21.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="218.0" style="-fx-background-color: #3477db;" text="RÉSERVATIONS" textFill="WHITE">
+                  <Button fx:id="reservationsButton" layoutX="4.0" layoutY="21.0" mnemonicParsing="false" onAction="#voirClients" prefHeight="40.0" prefWidth="218.0" style="-fx-background-color: #3477db;" text="RÉSERVATIONS" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -125,7 +124,7 @@
                   <ImageView fx:id="profileImage" fitHeight="55.0" fitWidth="54.0" layoutX="50" layoutY="50" />
                </children>
             </StackPane>
-            <MenuButton contentDisplay="CENTER" layoutY="98.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="150.0" text="Sylvain ROY">
+            <MenuButton contentDisplay="CENTER" layoutY="98.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="150.0">
                <items>
                   <MenuItem fx:id="voirMonProfilButton" mnemonicParsing="false" text="Voir mon profil" />
                   <SeparatorMenuItem mnemonicParsing="false" text="sep1" />
@@ -140,37 +139,10 @@
             </MenuButton>
          </children>
       </Group>
-      <StackPane layoutX="565.0" layoutY="86.0" style="-fx-background-color: transparent; -fx-border-color: transparent;">
-         <children>
-            <ImageView fitHeight="53.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/notifications.png" />
-               </image>
-            </ImageView>
-            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
-         </children>
-      </StackPane>
-      <StackPane layoutX="648.0" layoutY="89.0">
-         <children>
-            <ImageView fitHeight="46.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/messages.png" />
-               </image>
-            </ImageView>
-            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
-         </children>
-      </StackPane>
+      <StackPane layoutX="565.0" layoutY="86.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
+      <StackPane layoutX="648.0" layoutY="89.0" />
       <StackPane layoutX="-23.0" layoutY="-15.0" />
-      <StackPane layoutX="605.0" layoutY="85.0">
-         <children>
-            <ImageView fitHeight="52.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/parametres.png" />
-               </image>
-            </ImageView>
-            <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="54.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
-         </children>
-      </StackPane>
+      <StackPane layoutX="605.0" layoutY="85.0" />
       <ImageView fitHeight="212.0" fitWidth="208.0" layoutX="-31.0" layoutY="-18.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/logo_avec_nom.png" />
@@ -180,6 +152,7 @@
          <content>
             <AnchorPane prefHeight="618.0" prefWidth="702.0">
                <children>
+                  <Button layoutX="498.0" layoutY="218.0" mnemonicParsing="false" prefHeight="98.0" prefWidth="101.0" style="-fx-background-radius: 20; -fx-background-color: transparent;" />
                   <Button layoutX="15.0" layoutY="89.0" mnemonicParsing="false" onAction="#voirListe" prefHeight="83.0" prefWidth="193.0" style="-fx-border-image-slice: 50; -fx-border-radius: 40; -fx-background-radius: 25; -fx-background-color: #004aad;" text="Salle De Bain" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="19.0" />

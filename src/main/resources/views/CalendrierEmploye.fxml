@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="700.0" prefWidth="950.0" style="-fx-background-color: #f2fafc;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.JESIKOM.HowManager.controllers.CalendrierEmployeController">
+<AnchorPane prefHeight="700.0" prefWidth="950.0" style="-fx-background-color: #f2fafc;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.JESIKOM.HowManager.controllers.CalendrierEmployeController">
     <FlowPane fx:id="calendar" hgap="10.0" layoutX="247.0" layoutY="115.0" prefHeight="567.0" prefWidth="694.0" vgap="5.0" />
     <HBox alignment="CENTER" layoutX="362.0" layoutY="15.0" prefHeight="44.0" prefWidth="419.0" spacing="5.0">
         <children>
@@ -92,7 +92,7 @@
             </Group>
             <Group layoutX="-3.0" layoutY="126.0">
                 <children>
-                    <Button layoutX="-40.0" layoutY="73.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="276.0" style="-fx-background-color: #004aad;" text="PERSONNEL" textFill="WHITE">
+                    <Button fx:id="personnel" layoutX="-40.0" layoutY="73.0" mnemonicParsing="false" onAction="#voirPersonnel" prefHeight="40.0" prefWidth="276.0" style="-fx-background-color: #004aad;" text="PERSONNEL" textFill="WHITE">
                         <font>
                             <Font name="System Bold" size="18.0" />
                         </font>

@@ -21,7 +21,7 @@
 
 <!--  -->
 
-<AnchorPane fx:id="enregistrerEmployePane" prefHeight="700.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.JESIKOM.HowManager.controllers.EnregistrerEmployeController">
+<AnchorPane fx:id="enregistrerEmployePane" prefHeight="700.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.JESIKOM.HowManager.controllers.EnregistrerEmployeController">
     <children>
         <HBox layoutX="115.0" layoutY="89.0">
             <children>
@@ -114,7 +114,6 @@
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#004aadf5" height="41.0" layoutX="293.0" layoutY="16.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke-width: 0;" width="14.0" />
                     </children>
                 </Group>
-                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#004aadf5" height="41.0" layoutX="218.0" layoutY="252.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke-width: 0;" width="14.0" />
             </children></Pane>
         <Group layoutX="757.0" layoutY="-9.0">
             <children>
@@ -130,7 +129,7 @@
                         <ImageView fx:id="profileImage" fitHeight="55.0" fitWidth="54.0" layoutX="50" layoutY="50" />
                     </children>
                 </StackPane>
-                <MenuButton contentDisplay="CENTER" layoutY="98.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="150.0" text="Sylvain ROY">
+                <MenuButton contentDisplay="CENTER" layoutY="98.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="150.0">
                     <items>
                         <!-- onAction="#voirMonProfil" -->
                         <MenuItem fx:id="voirMonProfilButton" mnemonicParsing="false" text="Voir mon profil" />
@@ -146,37 +145,10 @@
                 </MenuButton>
             </children>
         </Group>
-        <StackPane layoutX="555.0" layoutY="76.0" style="-fx-background-color: transparent; -fx-border-color: transparent;">
-            <children>
-                <ImageView fitHeight="53.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/notifications.png" />
-                    </image>
-                </ImageView>
-                <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
-            </children>
-        </StackPane>
-        <StackPane layoutX="638.0" layoutY="79.0">
-            <children>
-                <ImageView fitHeight="46.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/messages.png" />
-                    </image>
-                </ImageView>
-                <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
-            </children>
-        </StackPane>
+        <StackPane layoutX="555.0" layoutY="76.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
+        <StackPane layoutX="638.0" layoutY="79.0" />
         <StackPane layoutX="-33.0" layoutY="-25.0" />
-        <StackPane layoutX="595.0" layoutY="75.0">
-            <children>
-                <ImageView fitHeight="52.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/parametres.png" />
-                    </image>
-                </ImageView>
-                <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="54.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
-            </children>
-        </StackPane>
+        <StackPane layoutX="595.0" layoutY="75.0" />
         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
         <ImageView fitHeight="212.0" fitWidth="208.0" layoutX="-41.0" layoutY="-28.0" pickOnBounds="true" preserveRatio="true">
@@ -199,7 +171,7 @@
 
         <ScrollPane layoutX="224.0" layoutY="153.0" prefHeight="552.0" prefWidth="716.0">
             <content>
-                <AnchorPane prefHeight="618.0" prefWidth="702.0">
+                <AnchorPane prefHeight="552.0" prefWidth="702.0">
                     <children>
                         <!-- onAction="#ouvrirListeClients" -->
                         <Button fx:id="retourListeClients" layoutX="18.0" layoutY="27.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="129.0" style="-fx-background-color: #146CDF;" text="Personnel" textFill="WHITE">
@@ -212,19 +184,9 @@
                                 <Image url="@../images/fleche.png" />
                             </image>
                         </ImageView>
-                        <Button layoutX="375.0" layoutY="19.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="318.0" style="-fx-background-color: #004aad;" text="Enregistrer Un nouveau Employé" textFill="WHITE">
+                        <Button layoutX="375.0" layoutY="19.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="318.0" style="-fx-background-color: #004aad;" text="Enregistrer un nouvel employé" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="19.0" />
-                            </font>
-                        </Button>
-                        <Button layoutX="171.0" layoutY="569.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="130.0" style="-fx-background-color: #ffffff; -fx-border-color: #004aad;" text="Annuler" textFill="#004aad">
-                            <font>
-                                <Font name="System Bold" size="24.0" />
-                            </font>
-                        </Button>
-                        <Button fx:id="validerButton" layoutX="397.0" layoutY="569.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="129.0" style="-fx-background-color: #004aad;" text="Valider" textFill="WHITE">
-                            <font>
-                                <Font name="System Bold" size="24.0" />
                             </font>
                         </Button>
                         <ListView layoutX="4.0" layoutY="89.0" prefHeight="338.0" prefWidth="344.0" style="-fx-background-color: #D9D9D9;" />
